@@ -4,12 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Murat Aslan | Open Source Developer</title>
-    <meta name="description"
-        content="Full Stack Developer & Open Source Contributor with 50+ PRs to major projects like Coolify, Deno, Traefik, and more.">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+    <title>Murat Aslan - Developer</title>
+    <meta name="description" content="Full Stack Developer & Open Source Contributor">
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
         rel="stylesheet">
     <style>
         * {
@@ -19,619 +17,496 @@
         }
 
         :root {
-            --bg-primary: #0a0a0a;
-            --bg-secondary: #111111;
-            --bg-card: #1a1a1a;
-            --text-primary: #ffffff;
-            --text-secondary: #a0a0a0;
-            --accent: #6366f1;
-            --accent-glow: rgba(99, 102, 241, 0.3);
-            --gradient-1: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #d946ef 100%);
-            --gradient-2: linear-gradient(135deg, #06b6d4 0%, #3b82f6 100%);
+            --bg: #0d1117;
+            --bg-alt: #161b22;
+            --border: #30363d;
+            --text: #c9d1d9;
+            --text-muted: #8b949e;
+            --accent: #58a6ff;
+            --green: #3fb950;
+            --orange: #d29922;
         }
 
         body {
-            font-family: 'Inter', sans-serif;
-            background: var(--bg-primary);
-            color: var(--text-primary);
-            line-height: 1.6;
-            overflow-x: hidden;
+            font-family: 'Space Grotesk', -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        code,
+        .mono {
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 900px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 24px;
         }
 
-        /* Hero Section */
-        .hero {
-            min-height: 100vh;
+        /* Header */
+        header {
+            padding: 80px 0 60px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .intro {
             display: flex;
             align-items: center;
-            position: relative;
-            overflow: hidden;
+            gap: 24px;
+            margin-bottom: 32px;
         }
 
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle at 30% 30%, var(--accent-glow) 0%, transparent 50%),
-                radial-gradient(circle at 70% 70%, rgba(217, 70, 239, 0.2) 0%, transparent 50%);
-            animation: aurora 20s ease infinite;
+        .avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: var(--bg-alt);
+            border: 2px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
         }
 
-        @keyframes aurora {
-
-            0%,
-            100% {
-                transform: translate(0, 0) rotate(0deg);
-            }
-
-            50% {
-                transform: translate(-5%, -5%) rotate(180deg);
-            }
+        .intro-text h1 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 4px;
         }
 
-        .hero-content {
-            position: relative;
-            z-index: 1;
+        .intro-text p {
+            color: var(--text-muted);
+            font-size: 16px;
         }
 
-        .badge {
-            display: inline-flex;
+        .bio {
+            font-size: 18px;
+            color: var(--text);
+            margin-bottom: 24px;
+            max-width: 700px;
+        }
+
+        .links {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .links a {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-muted);
+            font-size: 14px;
+            transition: color 0.2s;
+        }
+
+        .links a:hover {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        /* Section */
+        section {
+            padding: 48px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        section:last-of-type {
+            border-bottom: none;
+        }
+
+        h2 {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 24px;
+            display: flex;
             align-items: center;
             gap: 8px;
-            background: var(--bg-card);
-            border: 1px solid rgba(99, 102, 241, 0.3);
-            padding: 8px 16px;
-            border-radius: 50px;
-            font-size: 14px;
-            margin-bottom: 24px;
-            animation: fadeInUp 0.6s ease;
         }
 
-        .badge-dot {
-            width: 8px;
-            height: 8px;
-            background: #22c55e;
-            border-radius: 50%;
-            animation: pulse 2s ease infinite;
-        }
-
-        @keyframes pulse {
-
-            0%,
-            100% {
-                opacity: 1;
-            }
-
-            50% {
-                opacity: 0.5;
-            }
-        }
-
-        .hero h1 {
-            font-size: clamp(3rem, 8vw, 5rem);
-            font-weight: 900;
-            line-height: 1.1;
-            margin-bottom: 16px;
-            animation: fadeInUp 0.6s ease 0.1s both;
-        }
-
-        .hero h1 span {
-            background: var(--gradient-1);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .hero .subtitle {
-            font-size: clamp(1.2rem, 3vw, 1.5rem);
-            color: var(--text-secondary);
-            margin-bottom: 24px;
-            animation: fadeInUp 0.6s ease 0.2s both;
-        }
-
-        .hero .description {
-            font-size: 18px;
-            color: var(--text-secondary);
-            max-width: 600px;
-            margin-bottom: 32px;
-            animation: fadeInUp 0.6s ease 0.3s both;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .stats {
+        /* Stats */
+        .stats-row {
             display: flex;
-            gap: 40px;
+            gap: 48px;
+            margin-bottom: 32px;
             flex-wrap: wrap;
-            margin-bottom: 40px;
-            animation: fadeInUp 0.6s ease 0.4s both;
         }
 
         .stat {
-            text-align: left;
+            text-align: center;
         }
 
-        .stat-value {
-            font-size: 2.5rem;
-            font-weight: 800;
-            background: var(--gradient-1);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        .stat-num {
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--green);
+            font-family: 'JetBrains Mono', monospace;
         }
 
         .stat-label {
-            color: var(--text-secondary);
-            font-size: 14px;
+            font-size: 13px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
-        .cta-buttons {
-            display: flex;
-            gap: 16px;
-            flex-wrap: wrap;
-            animation: fadeInUp 0.6s ease 0.5s both;
+        /* Table */
+        .pr-table {
+            width: 100%;
+            border-collapse: collapse;
         }
 
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 14px 28px;
-            border-radius: 12px;
+        .pr-table th,
+        .pr-table td {
+            text-align: left;
+            padding: 12px 16px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .pr-table th {
+            background: var(--bg-alt);
+            font-size: 12px;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            letter-spacing: 0.5px;
             font-weight: 600;
-            text-decoration: none;
-            transition: all 0.3s ease;
         }
 
-        .btn-primary {
-            background: var(--gradient-1);
-            color: white;
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 40px var(--accent-glow);
-        }
-
-        .btn-secondary {
-            background: var(--bg-card);
-            color: white;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .btn-secondary:hover {
-            background: var(--bg-secondary);
-            border-color: var(--accent);
-        }
-
-        /* Section Styling */
-        section {
-            padding: 100px 0;
-        }
-
-        .section-title {
-            font-size: 2.5rem;
-            font-weight: 800;
-            margin-bottom: 16px;
-            text-align: center;
-        }
-
-        .section-subtitle {
-            color: var(--text-secondary);
-            text-align: center;
-            margin-bottom: 60px;
-        }
-
-        /* Contributions Grid */
-        .contributions-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 24px;
-        }
-
-        .contribution-card {
-            background: var(--bg-card);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 16px;
-            padding: 24px;
-            transition: all 0.3s ease;
-        }
-
-        .contribution-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--accent);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-        }
-
-        .contribution-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 16px;
-        }
-
-        .contribution-title {
-            font-size: 1.25rem;
-            font-weight: 700;
-        }
-
-        .contribution-stars {
-            display: flex;
-            align-items: center;
-            gap: 4px;
-            color: #fbbf24;
+        .pr-table td {
             font-size: 14px;
         }
 
-        .contribution-description {
-            color: var(--text-secondary);
-            font-size: 14px;
-            margin-bottom: 16px;
+        .pr-table tr:hover td {
+            background: var(--bg-alt);
         }
 
-        .contribution-footer {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+        .project-name {
+            font-weight: 600;
+            color: var(--text);
         }
 
-        .pr-count {
-            background: rgba(99, 102, 241, 0.2);
+        .stars {
+            color: var(--orange);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 13px;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .badge-merged {
+            background: rgba(63, 185, 80, 0.15);
+            color: var(--green);
+        }
+
+        .badge-open {
+            background: rgba(88, 166, 255, 0.15);
             color: var(--accent);
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 13px;
-            font-weight: 600;
         }
 
-        .status {
-            font-size: 13px;
+        .badge-new {
+            background: rgba(210, 153, 34, 0.15);
+            color: var(--orange);
         }
 
-        .status-merged {
-            color: #22c55e;
+        /* Skills */
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
         }
 
-        .status-open {
-            color: #3b82f6;
+        .skill {
+            background: var(--bg-alt);
+            border: 1px solid var(--border);
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-size: 14px;
+            font-family: 'JetBrains Mono', monospace;
         }
 
-        .status-new {
-            color: #f59e0b;
-        }
-
-        /* Skills Section */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 16px;
-        }
-
-        .skill-item {
-            background: var(--bg-card);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 12px;
-            padding: 20px;
-            text-align: center;
-            transition: all 0.3s ease;
-        }
-
-        .skill-item:hover {
-            border-color: var(--accent);
-            transform: scale(1.05);
-        }
-
-        .skill-name {
-            font-weight: 600;
-            margin-bottom: 8px;
-        }
-
-        .skill-bar {
-            height: 6px;
-            background: var(--bg-secondary);
-            border-radius: 3px;
+        /* Terminal */
+        .terminal {
+            background: var(--bg-alt);
+            border: 1px solid var(--border);
+            border-radius: 8px;
             overflow: hidden;
+            margin: 24px 0;
         }
 
-        .skill-progress {
-            height: 100%;
-            background: var(--gradient-1);
-            border-radius: 3px;
+        .terminal-header {
+            background: var(--border);
+            padding: 8px 12px;
+            display: flex;
+            gap: 6px;
+        }
+
+        .terminal-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .terminal-dot.red {
+            background: #ff5f56;
+        }
+
+        .terminal-dot.yellow {
+            background: #ffbd2e;
+        }
+
+        .terminal-dot.green {
+            background: #27c93f;
+        }
+
+        .terminal-body {
+            padding: 16px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 14px;
+            line-height: 1.8;
+        }
+
+        .terminal-line {
+            margin-bottom: 4px;
+        }
+
+        .prompt {
+            color: var(--green);
+        }
+
+        .command {
+            color: var(--text);
+        }
+
+        .output {
+            color: var(--text-muted);
+            padding-left: 16px;
         }
 
         /* Footer */
         footer {
-            background: var(--bg-secondary);
-            padding: 60px 0;
+            padding: 40px 0;
             text-align: center;
         }
 
-        .social-links {
+        .footer-links {
             display: flex;
             justify-content: center;
-            gap: 20px;
-            margin-bottom: 30px;
-        }
-
-        .social-link {
-            width: 50px;
-            height: 50px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: var(--bg-card);
-            border-radius: 12px;
-            color: white;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        .social-link:hover {
-            background: var(--accent);
-            transform: translateY(-3px);
+            gap: 32px;
+            margin-bottom: 16px;
         }
 
         .footer-text {
-            color: var(--text-secondary);
-            font-size: 14px;
+            color: var(--text-muted);
+            font-size: 13px;
         }
 
         /* Responsive */
-        @media (max-width: 768px) {
-            .stats {
-                gap: 20px;
+        @media (max-width: 600px) {
+            .intro {
+                flex-direction: column;
+                text-align: center;
             }
 
-            .stat-value {
-                font-size: 2rem;
+            .stats-row {
+                justify-content: center;
+                gap: 32px;
+            }
+
+            .pr-table {
+                font-size: 13px;
+            }
+
+            .pr-table th,
+            .pr-table td {
+                padding: 8px;
             }
         }
     </style>
 </head>
 
 <body>
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <div class="badge">
-                    <span class="badge-dot"></span>
-                    Available for collaboration
-                </div>
-                <h1>Hi, I'm <span>Murat Aslan</span></h1>
-                <p class="subtitle">Open Source Developer & Full Stack Engineer</p>
-                <p class="description">
-                    Passionate open source contributor with 50+ pull requests to 22+ major projects
-                    including Coolify, Deno, Traefik, FAISS, and more. Building the future of software, one PR at a
-                    time.
-                </p>
-
-                <div class="stats">
-                    <div class="stat">
-                        <div class="stat-value">50+</div>
-                        <div class="stat-label">Pull Requests</div>
-                    </div>
-                    <div class="stat">
-                        <div class="stat-value">22+</div>
-                        <div class="stat-label">Projects</div>
-                    </div>
-                    <div class="stat">
-                        <div class="stat-value">6</div>
-                        <div class="stat-label">PRs Today!</div>
-                    </div>
-                </div>
-
-                <div class="cta-buttons">
-                    <a href="https://github.com/murataslan1" class="btn btn-primary">
-                        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
-                            <path
-                                d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
-                        </svg>
-                        View GitHub
-                    </a>
-                    <a href="https://linkedin.com/in/murataslan1" class="btn btn-secondary">
-                        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
-                            <path
-                                d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
-                        </svg>
-                        LinkedIn
-                    </a>
+    <div class="container">
+        <header>
+            <div class="intro">
+                <div class="avatar">👨‍💻</div>
+                <div class="intro-text">
+                    <h1>Murat Aslan</h1>
+                    <p>Full Stack Developer · Ankara, TR</p>
                 </div>
             </div>
-        </div>
-    </section>
 
-    <!-- Contributions Section -->
-    <section id="contributions">
-        <div class="container">
-            <h2 class="section-title">🚀 Open Source Contributions</h2>
-            <p class="section-subtitle">Major projects I've contributed to in December 2025</p>
-
-            <div class="contributions-grid">
-                <div class="contribution-card">
-                    <div class="contribution-header">
-                        <span class="contribution-title">🧊 Coolify</span>
-                        <span class="contribution-stars">⭐ 40k</span>
-                    </div>
-                    <p class="contribution-description">Self-hostable PaaS alternative. Fixed Docker version detection,
-                        Unicode support, IPv4/IPv6 validation, and more.</p>
-                    <div class="contribution-footer">
-                        <span class="pr-count">12 PRs</span>
-                        <span class="status status-merged">✅ 6 Merged</span>
-                    </div>
-                </div>
-
-                <div class="contribution-card">
-                    <div class="contribution-header">
-                        <span class="contribution-title">🦕 Deno std</span>
-                        <span class="contribution-stars">⭐ 3.5k</span>
-                    </div>
-                    <p class="contribution-description">The Deno Standard Library. Fixed CSV parsing for empty strings
-                        and dedent trailing newlines behavior.</p>
-                    <div class="contribution-footer">
-                        <span class="pr-count">2 PRs</span>
-                        <span class="status status-new">🆕 Today</span>
-                    </div>
-                </div>
-
-                <div class="contribution-card">
-                    <div class="contribution-header">
-                        <span class="contribution-title">🔷 Traefik</span>
-                        <span class="contribution-stars">⭐ 54k</span>
-                    </div>
-                    <p class="contribution-description">Cloud native application proxy. Improved ForwardAuth logging and
-                        error handling.</p>
-                    <div class="contribution-footer">
-                        <span class="pr-count">3 PRs</span>
-                        <span class="status status-merged">✅ 1 Merged</span>
-                    </div>
-                </div>
-
-                <div class="contribution-card">
-                    <div class="contribution-header">
-                        <span class="contribution-title">🧠 FAISS</span>
-                        <span class="contribution-stars">⭐ 33k</span>
-                    </div>
-                    <p class="contribution-description">Meta's AI similarity search library. Updated C API documentation
-                        and examples.</p>
-                    <div class="contribution-footer">
-                        <span class="pr-count">2 PRs</span>
-                        <span class="status status-open">🔄 Open</span>
-                    </div>
-                </div>
-
-                <div class="contribution-card">
-                    <div class="contribution-header">
-                        <span class="contribution-title">📊 Milvus</span>
-                        <span class="contribution-stars">⭐ 32k</span>
-                    </div>
-                    <p class="contribution-description">Open-source vector database. Multiple enhancement PRs for
-                        improved functionality.</p>
-                    <div class="contribution-footer">
-                        <span class="pr-count">4 PRs</span>
-                        <span class="status status-open">🔄 Open</span>
-                    </div>
-                </div>
-
-                <div class="contribution-card">
-                    <div class="contribution-header">
-                        <span class="contribution-title">🔷 .NET Aspire</span>
-                        <span class="contribution-stars">⭐ 10.9k</span>
-                    </div>
-                    <p class="contribution-description">Microsoft's cloud-ready stack. Fixed UI consistency issues.</p>
-                    <div class="contribution-footer">
-                        <span class="pr-count">1 PR</span>
-                        <span class="status status-new">🆕 Open</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Skills Section -->
-    <section id="skills" style="background: var(--bg-secondary);">
-        <div class="container">
-            <h2 class="section-title">💻 Tech Stack</h2>
-            <p class="section-subtitle">Technologies I work with</p>
-
-            <div class="skills-grid">
-                <div class="skill-item">
-                    <div class="skill-name">TypeScript</div>
-                    <div class="skill-bar">
-                        <div class="skill-progress" style="width: 95%"></div>
-                    </div>
-                </div>
-                <div class="skill-item">
-                    <div class="skill-name">React / Next.js</div>
-                    <div class="skill-bar">
-                        <div class="skill-progress" style="width: 90%"></div>
-                    </div>
-                </div>
-                <div class="skill-item">
-                    <div class="skill-name">Go</div>
-                    <div class="skill-bar">
-                        <div class="skill-progress" style="width: 85%"></div>
-                    </div>
-                </div>
-                <div class="skill-item">
-                    <div class="skill-name">PHP / Laravel</div>
-                    <div class="skill-bar">
-                        <div class="skill-progress" style="width: 85%"></div>
-                    </div>
-                </div>
-                <div class="skill-item">
-                    <div class="skill-name">Docker</div>
-                    <div class="skill-bar">
-                        <div class="skill-progress" style="width: 80%"></div>
-                    </div>
-                </div>
-                <div class="skill-item">
-                    <div class="skill-name">Kubernetes</div>
-                    <div class="skill-bar">
-                        <div class="skill-progress" style="width: 75%"></div>
-                    </div>
-                </div>
-                <div class="skill-item">
-                    <div class="skill-name">Python</div>
-                    <div class="skill-bar">
-                        <div class="skill-progress" style="width: 75%"></div>
-                    </div>
-                </div>
-                <div class="skill-item">
-                    <div class="skill-name">Rust</div>
-                    <div class="skill-bar">
-                        <div class="skill-progress" style="width: 70%"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="social-links">
-                <a href="https://github.com/murataslan1" class="social-link" title="GitHub">
-                    <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
-                        <path
-                            d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
-                    </svg>
-                </a>
-                <a href="https://linkedin.com/in/murataslan1" class="social-link" title="LinkedIn">
-                    <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
-                        <path
-                            d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
-                    </svg>
-                </a>
-                <a href="https://twitter.com/iammurataslan" class="social-link" title="Twitter">
-                    <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
-                        <path
-                            d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-                    </svg>
-                </a>
-            </div>
-            <p class="footer-text">
-                © 2025 Murat Aslan. Open Source Developer. 🚀 50+ PRs to 22+ Major Projects
+            <p class="bio">
+                I build software and contribute to open source. Currently focused on DevOps tooling,
+                web infrastructure, and developer experience. 50+ PRs to projects like Coolify, Deno, and Traefik.
             </p>
-        </div>
-    </footer>
+
+            <div class="links">
+                <a href="https://github.com/murataslan1">
+                    <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                        <path
+                            d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
+                    </svg>
+                    GitHub
+                </a>
+                <a href="https://linkedin.com/in/murataslan1">
+                    <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                        <path
+                            d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z" />
+                    </svg>
+                    LinkedIn
+                </a>
+                <a href="https://twitter.com/iammurataslan">
+                    <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                        <path
+                            d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865l8.875 11.633Z" />
+                    </svg>
+                    Twitter
+                </a>
+                <a href="mailto:murataslan0.tr@gmail.com">
+                    <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                        <path
+                            d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555ZM0 4.697v7.104l5.803-3.558L0 4.697ZM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757Zm3.436-.586L16 11.801V4.697l-5.803 3.546Z" />
+                    </svg>
+                    Email
+                </a>
+            </div>
+        </header>
+
+        <section>
+            <h2>📊 Stats</h2>
+            <div class="stats-row">
+                <div class="stat">
+                    <div class="stat-num">50+</div>
+                    <div class="stat-label">Pull Requests</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-num">22</div>
+                    <div class="stat-label">Projects</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-num">6</div>
+                    <div class="stat-label">Merged</div>
+                </div>
+            </div>
+
+            <div class="terminal">
+                <div class="terminal-header">
+                    <div class="terminal-dot red"></div>
+                    <div class="terminal-dot yellow"></div>
+                    <div class="terminal-dot green"></div>
+                </div>
+                <div class="terminal-body">
+                    <div class="terminal-line"><span class="prompt">$</span> <span class="command">git log --oneline |
+                            head -6</span></div>
+                    <div class="terminal-line output">d7e7aef fix(coolify): IPv4/IPv6 validation</div>
+                    <div class="terminal-line output">8963548 fix(deno): dedent trailing newlines</div>
+                    <div class="terminal-line output">54b708a fix(csv): empty string parsing</div>
+                    <div class="terminal-line output">b2c4e91 fix(coolify): unicode support</div>
+                    <div class="terminal-line output">a1d3f72 fix(coolify): docker version comparison</div>
+                    <div class="terminal-line output">c9e8b34 fix(coolify): freshrss postgres host</div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>🔧 Recent Contributions</h2>
+            <table class="pr-table">
+                <thead>
+                    <tr>
+                        <th>Project</th>
+                        <th>Stars</th>
+                        <th>PRs</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><a href="https://github.com/coollabsio/coolify" class="project-name">coollabsio/coolify</a>
+                        </td>
+                        <td class="stars">40k ⭐</td>
+                        <td>12</td>
+                        <td><span class="badge badge-merged">6 merged</span></td>
+                    </tr>
+                    <tr>
+                        <td><a href="https://github.com/denoland/std" class="project-name">denoland/std</a></td>
+                        <td class="stars">3.5k ⭐</td>
+                        <td>2</td>
+                        <td><span class="badge badge-new">new</span></td>
+                    </tr>
+                    <tr>
+                        <td><a href="https://github.com/traefik/traefik" class="project-name">traefik/traefik</a></td>
+                        <td class="stars">54k ⭐</td>
+                        <td>3</td>
+                        <td><span class="badge badge-merged">1 merged</span></td>
+                    </tr>
+                    <tr>
+                        <td><a href="https://github.com/facebookresearch/faiss"
+                                class="project-name">facebookresearch/faiss</a></td>
+                        <td class="stars">33k ⭐</td>
+                        <td>2</td>
+                        <td><span class="badge badge-open">open</span></td>
+                    </tr>
+                    <tr>
+                        <td><a href="https://github.com/milvus-io/milvus" class="project-name">milvus-io/milvus</a></td>
+                        <td class="stars">32k ⭐</td>
+                        <td>4</td>
+                        <td><span class="badge badge-open">open</span></td>
+                    </tr>
+                    <tr>
+                        <td><a href="https://github.com/dotnet/aspire" class="project-name">dotnet/aspire</a></td>
+                        <td class="stars">10.9k ⭐</td>
+                        <td>1</td>
+                        <td><span class="badge badge-open">open</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section>
+            <h2>💻 Stack</h2>
+            <div class="skills-list">
+                <span class="skill">TypeScript</span>
+                <span class="skill">Go</span>
+                <span class="skill">PHP</span>
+                <span class="skill">Python</span>
+                <span class="skill">Rust</span>
+                <span class="skill">React</span>
+                <span class="skill">Next.js</span>
+                <span class="skill">Node.js</span>
+                <span class="skill">Laravel</span>
+                <span class="skill">Docker</span>
+                <span class="skill">Kubernetes</span>
+                <span class="skill">PostgreSQL</span>
+            </div>
+        </section>
+
+        <footer>
+            <div class="footer-links">
+                <a href="https://github.com/murataslan1">GitHub</a>
+                <a href="https://linkedin.com/in/murataslan1">LinkedIn</a>
+                <a href="https://twitter.com/iammurataslan">Twitter</a>
+            </div>
+            <p class="footer-text">© 2025 Murat Aslan</p>
+        </footer>
+    </div>
 </body>
 
 </html>
