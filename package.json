@@ -1,5 +1,5 @@
 {
-  "homepage": "http://murataslan1.github.io/react-portfolio",
+  "homepage": "https://murataslan1.github.io/",
   "name": "react-portfolio",
   "version": "0.1.0",
   "private": true,
@@ -11,14 +11,14 @@
     "bootstrap": "^4.6.0",
     "emailjs-com": "^2.6.4",
     "gh-pages": "^3.2.3",
-    "react": "^17.0.1",
-    "react-animated-cursor": "^2.1.8",
+    "react": "^18.2.0",
+    "react-animated-cursor": "^2.11.2",
     "react-bootstrap": "^1.4.3",
-    "react-dom": "^17.0.1",
+    "react-dom": "^18.2.0",
     "react-helmet-async": "^1.0.7",
     "react-icons": "^4.1.0",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "4.0.1",
+    "react-scripts": "5.0.1",
     "react-transition-group": "^4.4.2",
     "typewriter-effect": "^2.18.2",
     "web-vitals": "^0.2.4"
@@ -32,14 +32,24 @@
     "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
-    "extends": ["react-app", "react-app/jest"]
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
   },
   "browserslist": {
-    "production": [">0.2%", "not dead", "not op_mini all"],
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
     "development": [
       "last 1 chrome version",
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "ajv": "^8.17.1"
   }
 }

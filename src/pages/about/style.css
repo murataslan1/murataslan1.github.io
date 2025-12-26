@@ -1,100 +1,306 @@
+/* ==========================================
+   ABOUT PAGE - RETRO-FUTURISTIC STYLE
+   ========================================== */
+
+.About-header {
+    padding-top: calc(var(--space-2xl) + 60px);
+    padding-bottom: var(--space-2xl);
+    min-height: 100vh;
+}
+
+/* Section Spacing */
 .sec_sp {
-    margin-bottom: calc(3rem + 5.128vw)
+    margin-bottom: calc(var(--space-xl) + 3vw);
+}
+
+/* Page Title */
+.About-header .display-4 {
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    color: var(--text-color-2);
+    opacity: 0;
+    animation: fadeInUp 0.6s ease forwards;
+}
+
+/* Horizontal Rule - Neon Style */
+.t_border {
+    border: none !important;
+    height: 2px;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color), transparent);
+    opacity: 0;
+    animation: fadeInUp 0.6s ease 0.2s forwards;
+}
+
+/* Section Titles */
+.color_sec {
+    color: var(--primary-color) !important;
+    font-family: var(--font-mono);
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    position: relative;
+    padding-left: var(--space-lg);
+}
+
+.color_sec::before {
+    content: '//';
+    position: absolute;
+    left: 0;
+    color: var(--tertiary-color);
+    font-weight: 400;
+}
+
+/* About Me Text */
+.About-header p {
+    font-size: 1.125rem;
+    line-height: 1.8;
+    color: var(--text-color);
+}
+
+/* ==========================================
+   WORK TIMELINE - Git Commit Style
+   ========================================== */
+.table {
+    border-collapse: separate;
+    border-spacing: 0;
 }
 
 .table td,
 .table th {
     color: var(--text-color);
+    padding: var(--space-md);
+    border: none;
+    border-bottom: 1px solid var(--border-color);
+    vertical-align: middle;
+    font-family: var(--font-body);
 }
 
-.t_border {
-    border-color: var(--text-color) !important;
+.table th {
+    font-family: var(--font-mono);
+    color: var(--primary-color);
+    font-weight: 600;
+    position: relative;
+    padding-left: var(--space-xl);
 }
 
+/* Git commit dot */
+.table th::before {
+    content: '';
+    position: absolute;
+    left: var(--space-md);
+    top: 50%;
+    transform: translateY(-50%);
+    width: 12px;
+    height: 12px;
+    background: var(--primary-color);
+    border-radius: 50%;
+    box-shadow: var(--glow-cyan);
+}
+
+/* Git branch line */
+.table th::after {
+    content: '';
+    position: absolute;
+    left: calc(var(--space-md) + 5px);
+    top: 0;
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(to bottom, var(--primary-color), var(--secondary-color));
+    z-index: -1;
+}
+
+.table tr:first-child th::after {
+    top: 50%;
+    height: 50%;
+}
+
+.table tr:last-child th::after {
+    height: 50%;
+}
+
+.table td:last-child {
+    color: var(--text-muted);
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+}
+
+.table tr {
+    transition: var(--transition-fast);
+}
+
+.table tr:hover {
+    background: rgba(0, 255, 249, 0.05);
+}
+
+/* ==========================================
+   SKILLS - Neon Progress Bars
+   ========================================== */
 .progress-title {
-    font-size: 16px;
-    font-weight: 700;
-    margin: 15px 0 20px;
-    font-family: 'Raleway';
+    font-size: 0.875rem;
+    font-weight: 600;
+    margin: var(--space-lg) 0 var(--space-md);
+    font-family: var(--font-mono);
+    color: var(--text-color);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .progress {
-    height: 5px;
-    background: var(--secondary);
-    border-radius: 0;
+    height: 4px;
+    background: var(--bg-tertiary);
+    border-radius: 2px;
     box-shadow: none;
-    margin-bottom: 30px;
+    margin-bottom: var(--space-md);
     overflow: visible;
+    position: relative;
+}
+
+.progress::before {
+    content: '';
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    right: -1px;
+    bottom: -1px;
+    border: 1px solid var(--border-color);
+    border-radius: 3px;
 }
 
 .progress .progress-bar {
     position: relative;
-    background: var(--text-color);
-    animation: animate-positive 2s;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    animation: progress-animate 1.5s ease forwards;
     overflow: visible;
-    opacity: 0.9;
+    border-radius: 2px;
+    box-shadow: 0 0 10px rgba(0, 255, 249, 0.5);
+}
+
+/* Glowing dot at the end */
+.progress .progress-bar::after {
+    content: '';
+    position: absolute;
+    right: -4px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 12px;
+    height: 12px;
+    background: var(--secondary-color);
+    border-radius: 50%;
+    box-shadow: var(--glow-pink);
 }
 
 .progress .progress-value {
     position: absolute;
-    top: -30px;
-    right: 8px;
-    font-size: 17px;
-    font-weight: bold;
-    font-style: italic;
-    color: var(--text-color);
+    top: -28px;
+    right: 0;
+    font-size: 0.75rem;
+    font-weight: 700;
+    font-family: var(--font-mono);
+    color: var(--primary-color);
 }
 
-@-webkit-keyframes animate-positive {
+@keyframes progress-animate {
     0% {
-        width: 0%;
+        width: 0;
     }
 }
 
-@keyframes animate-positive {
-    0% {
-        width: 0%;
-    }
+/* ==========================================
+   SERVICES - Terminal Card Style
+   ========================================== */
+.service_ {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: var(--space-lg);
+    margin-bottom: var(--space-md);
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
 }
 
-.section-title {
-    font-size: 45px;
+/* Terminal-style header bar */
+.service_::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 32px;
+    background: linear-gradient(90deg, var(--bg-tertiary), var(--bg-secondary));
+    border-bottom: 1px solid var(--border-color);
+}
+
+/* Terminal dots */
+.service_::after {
+    content: '● ● ●';
+    position: absolute;
+    top: 8px;
+    left: var(--space-md);
+    font-size: 10px;
+    letter-spacing: 4px;
+    color: var(--text-muted);
+}
+
+.service_:hover {
+    border-color: var(--primary-color);
+    box-shadow: var(--glow-cyan);
+    transform: translateY(-2px);
 }
 
 .service__title {
-    padding: 8px 0;
-    border-bottom: solid 2px var(--secondary-color);
+    padding: calc(var(--space-lg) + 8px) 0 var(--space-sm);
+    border-bottom: none;
+    font-family: var(--font-mono);
+    font-size: 1rem;
+    color: var(--primary-color);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
 }
 
+.service_desc {
+    color: var(--text-muted);
+    font-size: 0.9375rem;
+    line-height: 1.7;
+    margin: 0;
+}
+
+/* Section title for services */
 .service-section .service-category-title {
-    padding-bottom: 4px;
+    padding-bottom: var(--space-sm);
 }
 
-
-/*! CSS Used keyframes */
-
-@-webkit-keyframes fadeInUp {
-    0% {
-        opacity: 0;
-        -webkit-transform: translate3d(0, 100%, 0);
-        transform: translate3d(0, 100%, 0);
-    }
-    to {
-        opacity: 1;
-        -webkit-transform: translateZ(0);
-        transform: translateZ(0);
-    }
-}
-
+/* ==========================================
+   ANIMATIONS
+   ========================================== */
 @keyframes fadeInUp {
-    0% {
+    from {
         opacity: 0;
-        -webkit-transform: translate3d(0, 100%, 0);
-        transform: translate3d(0, 100%, 0);
+        transform: translateY(30px);
     }
+
     to {
         opacity: 1;
-        -webkit-transform: translateZ(0);
-        transform: translateZ(0);
+        transform: translateY(0);
     }
+}
+
+/* Stagger animation for sections */
+.sec_sp:nth-child(1) {
+    animation-delay: 0.2s;
+}
+
+.sec_sp:nth-child(2) {
+    animation-delay: 0.4s;
+}
+
+.sec_sp:nth-child(3) {
+    animation-delay: 0.6s;
+}
+
+.sec_sp:nth-child(4) {
+    animation-delay: 0.8s;
 }

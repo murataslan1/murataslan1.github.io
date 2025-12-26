@@ -1,86 +1,120 @@
+/* ==========================================
+   SOCIAL ICONS - FLOATING SIDEBAR
+   ========================================== */
+
 .stick_follow_icon {
     top: 50%;
     left: 30px;
-    width: 20px;
-    height: 200px;
+    width: 24px;
     position: fixed;
-    margin-top: -100px;
+    transform: translateY(-50%);
+    z-index: var(--z-sticky);
 }
 
 .stick_follow_icon ul {
     list-style: none;
     padding: 0;
     margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
 }
 
 .stick_follow_icon svg {
-    width: 1.3em;
-    height: 1.3em;
-    fill: var(--text-color)
-}
-
-.stick_follow_icon p {
-    top: 70px;
-    left: -24px;
-    width: 68px;
-    height: 20px;
-    color: var(--text-color);
-    font-size: 12px;
-    font-weight: 600;
-    line-height: 1.2;
-    white-space: nowrap;
-    position: relative;
-    transform: rotate( -90deg);
+    width: 1.25em;
+    height: 1.25em;
+    fill: var(--text-muted);
+    transition: all 0.3s ease;
 }
 
 .stick_follow_icon ul li {
     display: block;
-    font-size: 12px;
     text-align: center;
-    margin-bottom: 10px;
-    transition: all .3s;
+    transition: all 0.3s ease;
 }
 
-.stick_follow_icon p:after {
-    top: 9px;
-    right: -48px;
+.stick_follow_icon ul li a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 40px;
-    height: 1px;
-    content: "";
-    display: block;
-    position: absolute;
-    background-color: var(--text-color);
+    height: 40px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    margin-left: -8px;
+    transition: all 0.3s ease;
 }
 
+.stick_follow_icon ul li a:hover {
+    border-color: var(--primary-color);
+    box-shadow: var(--glow-cyan);
+}
+
+.stick_follow_icon ul li a:hover svg {
+    fill: var(--primary-color);
+    transform: scale(1.1);
+}
+
+/* "Follow Me" Label */
+.stick_follow_icon p {
+    position: relative;
+    color: var(--text-muted);
+    font-size: 0.625rem;
+    font-family: var(--font-mono);
+    font-weight: 600;
+    line-height: 1.2;
+    white-space: nowrap;
+    transform: rotate(-90deg);
+    transform-origin: center;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    margin-top: var(--space-xl);
+    margin-left: -1.5rem;
+}
+
+.stick_follow_icon p::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: -40px;
+    width: 30px;
+    height: 1px;
+    background: linear-gradient(90deg, var(--primary-color), transparent);
+}
+
+/* ==========================================
+   RESPONSIVE - Mobile Layout
+   ========================================== */
 @media only screen and (max-width: 991px) {
     .stick_follow_icon {
-        width: unset;
-        height: unset;
+        width: 100%;
         position: static;
-        margin-top: unset;
+        transform: none;
         display: flex;
         flex-direction: row-reverse;
         justify-content: center;
-        padding: 40px 0;
+        padding: var(--space-xl) 0;
         align-items: center;
+        gap: var(--space-lg);
     }
+
     .stick_follow_icon p {
-        top: unset;
-        left: unset;
-        width: unset;
-        height: unset;
-        white-space: nowrap;
-        position: relative;
-        transform: unset;
-        font-size: 17px;
-        margin-right: 65px;
+        transform: none;
+        font-size: 0.75rem;
+        margin: 0;
+        margin-right: var(--space-md);
     }
+
+    .stick_follow_icon p::after {
+        display: none;
+    }
+
     .stick_follow_icon ul {
-        margin-bottom: 20px;
+        flex-direction: row;
+        gap: var(--space-sm);
     }
-    .stick_follow_icon ul li {
-        display: inline;
-        margin-bottom: 29px;
-        margin-right: 10px;
+
+    .stick_follow_icon ul li a {
+        margin-left: 0;
     }
 }

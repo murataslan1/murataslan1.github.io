@@ -1,64 +1,223 @@
+/* ==========================================
+   RETRO-FUTURISTIC TERMINAL DESIGN SYSTEM
+   Cyberpunk aesthetic for Open Source Developer Portfolio
+   ========================================== */
+
+/* Google Fonts Import */
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap');
+
+/* ==========================================
+   DESIGN TOKENS - Dark Theme (Default)
+   ========================================== */
 :root {
-    --bg-color: #0c0c0c;
-    --primary-color: #0d0d0d;
-    --secondary-color: #fff;
-    --text-color: #fff;
-    --text-color-2: #fff;
-    --overlay-color: rgb(12 12 12 / 63%);
+    /* Core Colors - Cyberpunk Palette */
+    --bg-color: #0a0a0f;
+    --bg-secondary: #12121a;
+    --bg-tertiary: #1a1a2e;
+    
+    --primary-color: #00fff9;      /* Electric Cyan */
+    --secondary-color: #ff00ff;    /* Hot Pink */
+    --tertiary-color: #39ff14;     /* Matrix Green */
+    --accent-color: #f0db4f;       /* JavaScript Yellow */
+    
+    --text-color: #e8e8e8;
+    --text-muted: #6b6b7b;
+    --text-color-2: #ffffff;
+    
+    --overlay-color: rgba(10, 10, 15, 0.92);
+    --card-bg: rgba(18, 18, 26, 0.8);
+    --border-color: rgba(0, 255, 249, 0.2);
+    
+    /* Glow Effects */
+    --glow-cyan: 0 0 20px rgba(0, 255, 249, 0.4), 0 0 40px rgba(0, 255, 249, 0.2);
+    --glow-pink: 0 0 20px rgba(255, 0, 255, 0.4), 0 0 40px rgba(255, 0, 255, 0.2);
+    --glow-green: 0 0 20px rgba(57, 255, 20, 0.4), 0 0 40px rgba(57, 255, 20, 0.2);
+    --glow-text: 0 0 10px currentColor;
+    
+    /* Typography */
+    --font-display: 'Space Mono', 'JetBrains Mono', monospace;
+    --font-body: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-mono: 'JetBrains Mono', 'Space Mono', monospace;
+    
+    /* Spacing Scale */
+    --space-xs: 0.25rem;
+    --space-sm: 0.5rem;
+    --space-md: 1rem;
+    --space-lg: 2rem;
+    --space-xl: 4rem;
+    --space-2xl: 8rem;
+    
+    /* Border Radius */
+    --radius-sm: 4px;
+    --radius-md: 8px;
+    --radius-lg: 16px;
+    
+    /* Transitions */
+    --transition-fast: 150ms ease;
+    --transition-base: 300ms ease;
+    --transition-slow: 500ms cubic-bezier(0.4, 0, 0.2, 1);
+    
+    /* Z-index Scale */
+    --z-base: 1;
+    --z-dropdown: 100;
+    --z-sticky: 500;
+    --z-modal: 1000;
+    --z-cursor: 999999;
 }
 
+/* ==========================================
+   LIGHT THEME
+   ========================================== */
 [data-theme="light"] {
-    --bg-color: #ffffff;
-    --primary-color: #ffffff;
-    --secondary-color: #000;
-    --text-color: #000;
-    --text-color-2: #000;
-    --overlay-color: rgb(255 255 255 / 70%);
+    --bg-color: #f5f5f7;
+    --bg-secondary: #ffffff;
+    --bg-tertiary: #e8e8ec;
+    
+    --primary-color: #0077cc;
+    --secondary-color: #cc0077;
+    --tertiary-color: #00aa44;
+    
+    --text-color: #1a1a2e;
+    --text-muted: #5a5a6e;
+    --text-color-2: #0a0a0f;
+    
+    --overlay-color: rgba(245, 245, 247, 0.95);
+    --card-bg: rgba(255, 255, 255, 0.9);
+    --border-color: rgba(0, 119, 204, 0.2);
+    
+    --glow-cyan: 0 2px 20px rgba(0, 119, 204, 0.15);
+    --glow-pink: 0 2px 20px rgba(204, 0, 119, 0.15);
+    --glow-green: 0 2px 20px rgba(0, 170, 68, 0.15);
 }
 
-html,
-body {
+/* ==========================================
+   BASE STYLES
+   ========================================== */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
     height: 100%;
 }
 
 body {
     margin: 0;
-    height: 100%;
+    min-height: 100vh;
     overflow-x: hidden;
-    overflow-y: visible;
     background-color: var(--bg-color);
     color: var(--text-color);
-    font-family: 'Raleway', sans-serif;
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.6;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    padding-top: 60px;
-    border-left: 10px solid var(--primary-color);
-    border-right: 10px solid var(--primary-color);
+    padding-top: 0;
+    border: none;
+    position: relative;
 }
 
-ul {
-    list-style: none;
+/* Scanline Effect Overlay */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: var(--z-modal);
+    background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(0, 255, 249, 0.015) 2px,
+        rgba(0, 255, 249, 0.015) 4px
+    );
+    opacity: 0.5;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    font-family: Marcellus;
+/* Noise Texture Overlay */
+body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: calc(var(--z-modal) - 1);
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    opacity: 0.03;
 }
 
-a,
-a:hover {
-    color: var(--text-color);
+[data-theme="light"] body::before,
+[data-theme="light"] body::after {
+    opacity: 0;
+}
+
+/* ==========================================
+   TYPOGRAPHY
+   ========================================== */
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    line-height: 1.2;
+    margin: 0 0 var(--space-md);
+    color: var(--text-color-2);
+}
+
+h1 {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    letter-spacing: -0.02em;
+}
+
+h2 {
+    font-size: clamp(2rem, 4vw, 3rem);
+}
+
+h3 {
+    font-size: clamp(1.5rem, 3vw, 2rem);
 }
 
 p {
     word-break: break-word;
     hyphens: auto;
+    margin: 0 0 var(--space-md);
 }
 
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: var(--transition-fast);
+}
+
+a:hover {
+    color: var(--secondary-color);
+    text-shadow: var(--glow-text);
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+code, pre {
+    font-family: var(--font-mono);
+}
+
+/* Terminal-style prompt */
+.terminal-prompt::before {
+    content: '$_ ';
+    color: var(--tertiary-color);
+    font-family: var(--font-mono);
+}
+
+/* ==========================================
+   UTILITY CLASSES
+   ========================================== */
 .ovhidden {
     overflow: hidden;
 }
@@ -68,28 +227,174 @@ p {
     color: var(--text-color-2);
 }
 
-code {
-    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
-}
-
-.cursor__dot div {
-    z-index: 999999 !important;
-}
-
-.cursor__dot div:last-child {
-    filter: invert(1);
-    background-color: var(--primary-color) !important;
-}
-
-.cursor__dot div:first-child {
-    filter: invert(1);
-    background-color: var(--overlay-color) !important;
-}
-
 .color_pr {
     color: var(--primary-color) !important;
 }
 
 .color_sec {
-    color: var(--secondary-color);
+    color: var(--secondary-color) !important;
 }
+
+/* Glow Effects */
+.glow-cyan {
+    text-shadow: var(--glow-cyan);
+}
+
+.glow-pink {
+    text-shadow: var(--glow-pink);
+}
+
+.glow-green {
+    text-shadow: var(--glow-green);
+}
+
+/* Gradient Text */
+.gradient-text {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 50%, var(--tertiary-color) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* ==========================================
+   CUSTOM CURSOR
+   ========================================== */
+.cursor__dot div {
+    z-index: var(--z-cursor) !important;
+}
+
+.cursor__dot div:last-child {
+    background-color: var(--primary-color) !important;
+    mix-blend-mode: difference;
+}
+
+.cursor__dot div:first-child {
+    background-color: var(--secondary-color) !important;
+    opacity: 0.5;
+}
+
+/* ==========================================
+   CUSTOM SCROLLBAR
+   ========================================== */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, var(--primary-color), var(--secondary-color));
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, var(--secondary-color), var(--primary-color));
+}
+
+/* Firefox scrollbar */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: var(--primary-color) var(--bg-secondary);
+}
+
+/* ==========================================
+   SELECTION
+   ========================================== */
+::selection {
+    background: var(--primary-color);
+    color: var(--bg-color);
+}
+
+::-moz-selection {
+    background: var(--primary-color);
+    color: var(--bg-color);
+}
+
+/* ==========================================
+   ANIMATIONS
+   ========================================== */
+@keyframes glitch {
+    0%, 100% { transform: translate(0); }
+    20% { transform: translate(-2px, 2px); }
+    40% { transform: translate(-2px, -2px); }
+    60% { transform: translate(2px, 2px); }
+    80% { transform: translate(2px, -2px); }
+}
+
+@keyframes pulse-glow {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+@keyframes typing-cursor {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes borderGlow {
+    0%, 100% {
+        box-shadow: 0 0 5px var(--primary-color),
+                    0 0 10px var(--primary-color),
+                    inset 0 0 5px rgba(0, 255, 249, 0.1);
+    }
+    50% {
+        box-shadow: 0 0 10px var(--primary-color),
+                    0 0 20px var(--primary-color),
+                    0 0 30px var(--primary-color),
+                    inset 0 0 10px rgba(0, 255, 249, 0.2);
+    }
+}
+
+/* Animation Utilities */
+.animate-fadeInUp {
+    animation: fadeInUp 0.6s ease forwards;
+}
+
+.animate-slideIn {
+    animation: slideIn 0.5s ease forwards;
+}
+
+.animate-float {
+    animation: float 3s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* Staggered Animation Delays */
+.delay-100 { animation-delay: 100ms; }
+.delay-200 { animation-delay: 200ms; }
+.delay-300 { animation-delay: 300ms; }
+.delay-400 { animation-delay: 400ms; }
+.delay-500 { animation-delay: 500ms; }

@@ -1,80 +1,255 @@
+/* ==========================================
+   PORTFOLIO PAGE - TERMINAL WINDOW CARDS
+   ========================================== */
+
+.Portfolio-header {
+    padding-top: calc(var(--space-2xl) + 60px);
+    padding-bottom: var(--space-2xl);
+    min-height: 100vh;
+}
+
+/* Grid Layout */
 .po_items_ho {
-    column-width: 15em;
-    -moz-column-width: 15em;
-    -webkit-column-width: 15em;
-    column-gap: 4rem;
-    -moz-column-gap: 4rem;
-    -webkit-column-gap: 4rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: var(--space-lg);
+    padding: var(--space-lg) 0;
 }
 
+@media (max-width: 768px) {
+    .po_items_ho {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ==========================================
+   PORTFOLIO CARD - Terminal Window Style
+   ========================================== */
 .po_item {
-    display: inline-block;
+    display: block;
     width: 100%;
-    text-align: center;
-    margin: 0.5rem auto;
+    text-align: left;
+    margin: 0;
     position: relative;
-    background: var(--secondary-color);
-    padding: 6px;
-    border: 1px solid var(--secondary-color);
-    transition: 0.3s ease;
-    font-size: 0;
-    min-height: 300px;
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    font-size: 1rem;
+    min-height: auto;
+    padding: 0;
+    opacity: 0;
+    animation: fadeInUp 0.6s ease forwards;
 }
 
-.po_item img {
-    max-width: 100%;
+/* Staggered animation */
+.po_item:nth-child(1) {
+    animation-delay: 0.1s;
 }
 
-.po_item .content {
+.po_item:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.po_item:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+.po_item:nth-child(4) {
+    animation-delay: 0.4s;
+}
+
+.po_item:nth-child(5) {
+    animation-delay: 0.5s;
+}
+
+.po_item:nth-child(6) {
+    animation-delay: 0.6s;
+}
+
+.po_item:nth-child(7) {
+    animation-delay: 0.7s;
+}
+
+.po_item:nth-child(8) {
+    animation-delay: 0.8s;
+}
+
+/* Terminal Header Bar */
+.po_item::before {
+    content: '';
     position: absolute;
-    height: 0;
-    width: 0;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: var(--overlay-color);
-    z-index: 1;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-    height: 100%;
-    width: 100%;
-    transition: 0.3s ease-in-out;
-    opacity: 0;
-    border: 1px solid black;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 36px;
+    background: var(--bg-tertiary);
+    border-bottom: 1px solid var(--border-color);
+    z-index: 2;
 }
 
-.po_item .content {
-    opacity: 0;
-    transition-delay: 1s;
-    transition: 0.3s ease;
-    font-size: 20px;
+/* Terminal Dots */
+.po_item::after {
+    content: '';
+    position: absolute;
+    top: 12px;
+    left: 14px;
+    width: 12px;
+    height: 12px;
+    background: #ff5f56;
+    border-radius: 50%;
+    box-shadow:
+        18px 0 0 #ffbd2e,
+        36px 0 0 #27ca40;
+    z-index: 3;
 }
 
 .po_item:hover {
-    box-shadow: 0 10px 15px 0 rgba(0, 0, 0, 0.25);
+    border-color: var(--primary-color);
+    box-shadow: var(--glow-cyan);
+    transform: translateY(-8px);
 }
 
-.po_item:hover .content {
-    height: calc(100% - 30px);
-    width: calc(100% - 30px);
+/* Image Container */
+.po_item img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    margin-top: 36px;
+    filter: saturate(0.8);
+    transition: all 0.4s ease;
+}
+
+.po_item:hover img {
+    filter: saturate(1) brightness(1.1);
+}
+
+/* Glitch effect on hover */
+.po_item:hover img {
+    animation: glitch 0.3s ease;
+}
+
+/* ==========================================
+   OVERLAY CONTENT
+   ========================================== */
+.po_item .content {
+    position: absolute;
+    top: 36px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to top, var(--bg-color) 0%, rgba(10, 10, 15, 0.9) 60%, transparent 100%);
+    z-index: 1;
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: column;
+    padding: var(--space-lg);
+    height: auto;
+    width: 100%;
     opacity: 1;
+    transition: all 0.4s ease;
+    border: none;
 }
 
-.po_item:hover .content {
-    opacity: 1;
-    color: var(--secondary-color);
+.po_item .content p {
+    font-family: var(--font-body);
+    font-size: 0.9375rem;
+    color: var(--text-color);
+    margin-bottom: var(--space-md);
+    line-height: 1.5;
+    max-height: 3em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
 }
 
+/* View Project Button */
 .po_item .content a {
-    background: var(--bg-color);
-    border: solid 1px var(--text-color);
-    padding: 4px 8px;
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-sm);
+    background: transparent;
+    border: 1px solid var(--primary-color);
+    padding: var(--space-sm) var(--space-md);
     text-align: center;
-    font-size: 1rem;
+    font-size: 0.75rem;
+    font-family: var(--font-mono);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--primary-color);
+    transition: all 0.3s ease;
+}
+
+.po_item .content a::after {
+    content: '→';
+    transition: transform 0.3s ease;
 }
 
 .po_item .content a:hover {
+    background: var(--primary-color);
+    color: var(--bg-color);
     text-decoration: none;
+    box-shadow: var(--glow-cyan);
+}
+
+.po_item .content a:hover::after {
+    transform: translateX(4px);
+}
+
+/* ==========================================
+   PAGE TITLE
+   ========================================== */
+.Portfolio-header .display-4 {
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    color: var(--text-color-2);
+    opacity: 0;
+    animation: fadeInUp 0.6s ease forwards;
+}
+
+/* ==========================================
+   ANIMATIONS
+   ========================================== */
+@keyframes glitch {
+
+    0%,
+    100% {
+        transform: translate(0);
+        filter: saturate(1) brightness(1.1);
+    }
+
+    20% {
+        transform: translate(-2px, 2px);
+        filter: saturate(1.5) hue-rotate(10deg);
+    }
+
+    40% {
+        transform: translate(-2px, -2px);
+        filter: saturate(1.2) hue-rotate(-5deg);
+    }
+
+    60% {
+        transform: translate(2px, 2px);
+        filter: saturate(1.3) hue-rotate(5deg);
+    }
+
+    80% {
+        transform: translate(2px, -2px);
+        filter: saturate(1.1);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
