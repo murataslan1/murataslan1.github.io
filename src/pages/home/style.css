@@ -1,5 +1,5 @@
 /* ==========================================
-   HOME PAGE - RETRO-FUTURISTIC HERO
+   HOME PAGE - BRUTALIST-LUXE HERO
    ========================================== */
 
 section {
@@ -17,7 +17,7 @@ section {
     overflow: hidden;
 }
 
-/* Background Grid Pattern */
+/* Background with subtle radial gradients */
 .home::before {
     content: '';
     position: absolute;
@@ -25,13 +25,10 @@ section {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image:
-        radial-gradient(circle at 20% 80%, rgba(0, 255, 249, 0.1) 0%, transparent 40%),
-        radial-gradient(circle at 80% 20%, rgba(255, 0, 255, 0.1) 0%, transparent 40%),
-        linear-gradient(var(--border-color) 1px, transparent 1px),
-        linear-gradient(90deg, var(--border-color) 1px, transparent 1px);
-    background-size: 100% 100%, 100% 100%, 80px 80px, 80px 80px;
-    opacity: 0.5;
+    background:
+        radial-gradient(ellipse 80% 50% at 20% -20%, rgba(255, 107, 53, 0.08) 0%, transparent 50%),
+        radial-gradient(ellipse 60% 40% at 90% 100%, rgba(0, 212, 170, 0.06) 0%, transparent 50%),
+        radial-gradient(circle at 50% 50%, rgba(255, 210, 63, 0.03) 0%, transparent 40%);
     z-index: -1;
 }
 
@@ -78,20 +75,17 @@ section {
     }
 }
 
-/* Terminal-style name */
+/* Intro label */
 .intro_sec .text h2 {
-    font-size: clamp(1rem, 2.5vw, 1.25rem);
+    font-size: clamp(0.875rem, 2.5vw, 1rem);
     margin-bottom: var(--space-md);
-    font-weight: 400;
+    font-weight: 500;
     font-family: var(--font-mono);
-    color: var(--tertiary-color);
+    color: var(--secondary-color);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
     opacity: 0;
     animation: fadeInUp 0.6s ease forwards;
-}
-
-.intro_sec .text h2::before {
-    content: '$_ ';
-    color: var(--text-muted);
 }
 
 /* Main heading with typewriter */
@@ -99,11 +93,17 @@ section {
 .fluidz-48 {
     font-size: clamp(2rem, 5vw, 3.5rem);
     margin-bottom: var(--space-lg);
-    font-weight: 700;
+    font-weight: 800;
     font-family: var(--font-display);
     min-height: 4.5rem;
+    letter-spacing: -0.02em;
     opacity: 0;
     animation: fadeInUp 0.6s ease 0.2s forwards;
+}
+
+/* First letter accent */
+.intro_sec .text h1::first-letter {
+    color: var(--primary-color);
 }
 
 /* Typewriter Styling */
@@ -113,11 +113,10 @@ section {
 
 .Typewriter__wrapper {
     color: var(--primary-color);
-    text-shadow: var(--glow-cyan);
 }
 
 .Typewriter__cursor {
-    color: var(--tertiary-color);
+    color: var(--secondary-color);
     font-weight: 400;
     animation: typing-cursor 0.8s step-end infinite;
 }
@@ -125,8 +124,8 @@ section {
 /* Description text */
 .intro_sec .text p {
     font-size: 1.125rem;
-    line-height: 1.7;
-    color: var(--text-muted);
+    line-height: 1.8;
+    color: var(--text-color-2);
     margin-bottom: var(--space-xl);
     max-width: 500px;
     opacity: 0;
@@ -134,7 +133,7 @@ section {
 }
 
 /* ==========================================
-   CTA BUTTONS - Neon Style
+   CTA BUTTONS - Brutalist Style
    ========================================== */
 .intro_btn-action {
     display: flex;
@@ -147,12 +146,13 @@ section {
 .ac_btn {
     position: relative;
     padding: var(--space-md) var(--space-lg);
-    font-family: var(--font-mono);
+    font-family: var(--font-body);
     font-size: 0.875rem;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.1em;
     border: 2px solid var(--primary-color);
+    border-radius: var(--radius-sm);
     background: transparent;
     color: var(--primary-color);
     cursor: pointer;
@@ -164,25 +164,11 @@ section {
     justify-content: center;
 }
 
-.ac_btn::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(0, 255, 249, 0.2), transparent);
-    transition: left 0.5s ease;
-}
-
-.ac_btn:hover::before {
-    left: 100%;
-}
-
 .ac_btn:hover {
-    box-shadow: var(--glow-cyan);
-    color: var(--text-color-2);
-    background: rgba(0, 255, 249, 0.1);
+    background: var(--primary-color);
+    color: var(--bg-color);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 40px rgba(255, 107, 53, 0.3);
 }
 
 /* Primary Button */
@@ -198,18 +184,14 @@ section {
 
 /* Secondary Button */
 #button_h {
-    border-color: var(--secondary-color);
-    color: var(--secondary-color);
-}
-
-#button_h::before {
-    background: linear-gradient(90deg, transparent, rgba(255, 0, 255, 0.2), transparent);
+    border-color: var(--text-color);
+    color: var(--text-color);
 }
 
 #button_h:hover {
-    box-shadow: var(--glow-pink);
-    color: var(--text-color-2);
-    background: rgba(255, 0, 255, 0.1);
+    background: var(--text-color);
+    color: var(--bg-color);
+    box-shadow: none;
 }
 
 /* Remove old ring animations */
@@ -225,13 +207,13 @@ section {
     background-position: center;
     min-height: 500px;
     position: relative;
-    border-radius: var(--radius-lg);
+    border-radius: var(--radius-sm);
     overflow: hidden;
     opacity: 0;
     animation: fadeInUp 0.8s ease 0.3s forwards;
 }
 
-/* Glowing border effect */
+/* Orange accent border */
 .intro_sec .h_bg-image::before {
     content: '';
     position: absolute;
@@ -239,10 +221,9 @@ section {
     left: 0;
     right: 0;
     bottom: 0;
-    border: 2px solid var(--primary-color);
-    border-radius: var(--radius-lg);
-    opacity: 0.5;
-    animation: borderGlow 3s ease-in-out infinite;
+    border: 3px solid var(--primary-color);
+    border-radius: var(--radius-sm);
+    opacity: 0.8;
 }
 
 /* Gradient overlay */
@@ -271,37 +252,6 @@ section {
    ========================================== */
 .intro_sec .h_bg-image .block {
     display: none;
-    /* Hiding the original floating block */
-}
-
-/* Floating code symbols (add via JS or static HTML) */
-.floating-symbol {
-    position: absolute;
-    font-family: var(--font-mono);
-    font-size: 1.5rem;
-    color: var(--primary-color);
-    opacity: 0.3;
-    animation: float 4s ease-in-out infinite;
-}
-
-.floating-symbol:nth-child(1) {
-    top: 20%;
-    left: 10%;
-    animation-delay: 0s;
-}
-
-.floating-symbol:nth-child(2) {
-    top: 60%;
-    right: 15%;
-    animation-delay: 1s;
-    color: var(--secondary-color);
-}
-
-.floating-symbol:nth-child(3) {
-    bottom: 30%;
-    left: 20%;
-    animation-delay: 2s;
-    color: var(--tertiary-color);
 }
 
 /* ==========================================
@@ -317,7 +267,7 @@ section {
 
 .btn-portfolio {
     background: var(--primary-color);
-    border-radius: 0;
+    border-radius: var(--radius-sm);
 }
 
 .btn-portfolio a {
