@@ -1,0 +1,160 @@
+/* ==========================================
+   GITHUB ACTIVITY COMPONENT STYLES
+   Matching the brutalist-luxe design system
+   ========================================== */
+
+.github-activity {
+    padding: var(--space-xl) var(--space-lg);
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.github-activity .section-title {
+    font-size: clamp(2rem, 4vw, 3rem);
+    margin-bottom: var(--space-xl);
+    text-align: center;
+}
+
+/* Stats Grid */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: var(--space-lg);
+    margin-bottom: var(--space-xl);
+}
+
+.stat-card {
+    padding: var(--space-lg);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    cursor: pointer;
+}
+
+.stat-value {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 800;
+    color: var(--primary-color);
+    line-height: 1;
+}
+
+.stat-label {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+/* Contribution Graph */
+.contribution-graph {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: var(--space-lg);
+    margin-bottom: var(--space-xl);
+    overflow-x: auto;
+}
+
+.contribution-graph h3 {
+    margin-bottom: var(--space-lg);
+}
+
+.contribution-graph .react-activity-calendar {
+    margin: 0 auto;
+}
+
+.contribution-graph .react-activity-calendar__legend {
+    margin-top: var(--space-md);
+}
+
+.contribution-graph text {
+    fill: var(--text-muted) !important;
+    font-family: var(--font-mono) !important;
+    font-size: 12px !important;
+}
+
+/* Project Contributions Grid */
+.project-contributions h3 {
+    margin-bottom: var(--space-lg);
+}
+
+.contributions-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: var(--space-md);
+}
+
+.contribution-card {
+    padding: var(--space-md);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    transition: all var(--transition-base);
+    cursor: pointer;
+}
+
+.contrib-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.contrib-project {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: var(--text-color);
+}
+
+.contrib-status {
+    font-size: 1rem;
+}
+
+.contrib-stats {
+    display: flex;
+    justify-content: space-between;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+.contrib-stars {
+    color: var(--tertiary-color);
+}
+
+.contrib-prs {
+    color: var(--secondary-color);
+}
+
+/* Status colors */
+.status-merged {
+    color: #22c55e;
+}
+
+.status-open {
+    color: #3b82f6;
+}
+
+.status-bounty {
+    color: var(--primary-color);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .contributions-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .contribution-graph {
+        padding: var(--space-md);
+    }
+}

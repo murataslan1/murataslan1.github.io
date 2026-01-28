@@ -12,9 +12,11 @@ section {
 .home {
     min-height: 100vh;
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    align-items: stretch;
     position: relative;
-    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: visible;
 }
 
 /* Background with subtle radial gradients */
@@ -38,8 +40,12 @@ section {
 .intro_sec {
     min-height: 100vh;
     margin-top: 0;
-    padding: var(--space-xl) 0;
+    padding: var(--space-xl) var(--space-lg);
     width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    box-sizing: border-box;
 }
 
 @media (max-width: 991.98px) {
@@ -54,6 +60,7 @@ section {
 .intro_sec .h_bg-image {
     width: 50%;
     flex: 0 0 50%;
+    min-width: 0;
 }
 
 @media (max-width: 991.98px) {
@@ -68,7 +75,9 @@ section {
 .intro_sec .intro {
     max-width: 550px;
     margin: 0;
-    padding: var(--space-xl) var(--space-lg);
+    padding: var(--space-lg);
+    word-wrap: break-word;
+    overflow-wrap: break-word;
 }
 
 @media (max-width: 991.98px) {
@@ -87,8 +96,6 @@ section {
     color: var(--secondary-color);
     text-transform: uppercase;
     letter-spacing: 0.15em;
-    opacity: 0;
-    animation: fadeInUp 0.6s ease forwards;
 }
 
 /* Main heading with typewriter */
@@ -100,8 +107,6 @@ section {
     font-family: var(--font-display);
     min-height: 4.5rem;
     letter-spacing: -0.02em;
-    opacity: 0;
-    animation: fadeInUp 0.6s ease 0.2s forwards;
 }
 
 /* First letter accent */
@@ -131,8 +136,6 @@ section {
     color: var(--text-color-2);
     margin-bottom: var(--space-xl);
     max-width: 500px;
-    opacity: 0;
-    animation: fadeInUp 0.6s ease 0.4s forwards;
 }
 
 /* ==========================================
@@ -142,8 +145,6 @@ section {
     display: flex;
     flex-wrap: wrap;
     gap: var(--space-md);
-    opacity: 0;
-    animation: fadeInUp 0.6s ease 0.6s forwards;
 }
 
 .ac_btn {
