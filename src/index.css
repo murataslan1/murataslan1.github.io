@@ -1,9 +1,10 @@
 /* ==========================================
    BLUREN DESIGN SYSTEM
-   Light theme with colorful accents
+   Light & Dark themes with colorful accents
    ========================================== */
 
-:root {
+:root,
+[data-theme="light"] {
   /* Background colors - LIGHT THEME */
   --color-bg: #ffffff;
   --color-bg-2: #f8fafc;
@@ -71,17 +72,30 @@
   --page-max: 1200px;
 }
 
-/* Force light theme */
-[data-theme="light"],
-[data-theme="dark"],
-:root {
-  --color-bg: #ffffff;
-  --color-bg-2: #f8fafc;
-  --color-surface: #ffffff;
-  --color-ink: #1a1a1a;
-  --color-ink-muted: #4b5563;
-  --color-ink-subtle: #9ca3af;
-  --color-line: rgba(0, 0, 0, 0.08);
+/* DARK THEME */
+[data-theme="dark"] {
+  /* Background colors */
+  --color-bg: #0a0a0f;
+  --color-bg-2: #121218;
+  --color-surface: #1a1a24;
+  --color-card: #1a1a24;
+  
+  /* Glassmorphism - Dark */
+  --glass-bg: rgba(26, 26, 36, 0.8);
+  --glass-bg-hover: rgba(26, 26, 36, 0.95);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-border-hover: rgba(255, 255, 255, 0.15);
+  
+  /* Text colors - Light text on dark bg */
+  --color-ink: #f5f5f5;
+  --color-ink-muted: #a1a1aa;
+  --color-ink-subtle: #71717a;
+  --color-line: rgba(255, 255, 255, 0.08);
+  
+  /* Shadows - Glow for dark theme */
+  --shadow-soft: 0 20px 60px rgba(0, 0, 0, 0.4);
+  --shadow-lift: 0 10px 40px rgba(0, 0, 0, 0.3);
+  --shadow-glow: 0 0 40px rgba(37, 99, 235, 0.25);
 }
 
 *,

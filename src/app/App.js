@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import {
   BrowserRouter as Router,
@@ -13,7 +13,7 @@ import "./App.css";
 
 function _ScrollToTop(props) {
   const { pathname } = useLocation();
-  useEffect(() => {
+  React.useEffect(() => {
     window.scrollTo(0, 0);
   }, [pathname]);
   return props.children;
@@ -21,11 +21,6 @@ function _ScrollToTop(props) {
 const ScrollToTop = withRouter(_ScrollToTop);
 
 export default function App() {
-  // Light theme
-  useEffect(() => {
-    document.documentElement.setAttribute('data-theme', 'light');
-  }, []);
-
   return (
     <HelmetProvider>
       <Router basename={process.env.PUBLIC_URL}>
