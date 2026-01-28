@@ -4,7 +4,7 @@ const meta = {
   description:
     "Full Stack Developer & Open Source Contributor with 75+ PRs to major projects like VS Code, Cortex, Coolify, Deno, Traefik, and more.",
   siteUrl: "https://murataslan1.github.io/",
-  image: "https://avatars.githubusercontent.com/u/78961478?v=4",
+  image: "/avatar.png",
   role: "Full Stack Developer",
   location: "Ankara, Turkey"
 };
@@ -19,7 +19,7 @@ const introdata = {
   },
   description:
     "Passionate open source contributor with 75+ pull requests to 30+ major projects including VS Code (165k⭐), Coolify (40k⭐), Traefik (54k⭐), Cortex Linux, and more. Full stack developer specializing in TypeScript, Go, and Cloud Native technologies.",
-  your_img_url: "https://avatars.githubusercontent.com/u/78961478?v=4"
+  your_img_url: "/avatar.png"
 };
 
 const dataabout = {
