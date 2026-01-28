@@ -25,6 +25,9 @@ import {
   SiFigma,
   SiNotion,
   SiVisualstudiocode,
+  SiDeno,
+  SiTraefikproxy,
+  SiMilvus,
 } from "react-icons/si";
 import { FadeInUp } from "../../components/Motion";
 import { Marquee, MarqueeItem } from "../../components/Marquee";
@@ -32,13 +35,38 @@ import { BentoGrid, BentoItem } from "../../components/BentoGrid";
 import { GitHubActivity } from "../../components/GitHubActivity";
 
 const marqueeStats = [
-  { emoji: "💻", label: "VS Code", value: "165k⭐", color: "blue" },
+  {
+    Icon: SiVisualstudiocode,
+    iconColor: "#007ACC",
+    label: "VS Code",
+    value: "165k⭐",
+    color: "blue",
+  },
   { emoji: "☁️", label: "Coolify", value: "40k⭐", color: "purple" },
-  { emoji: "🔀", label: "Traefik", value: "54k⭐", color: "green" },
-  { emoji: "🦕", label: "Deno", value: "3.5k⭐", color: "orange" },
+  {
+    Icon: SiTraefikproxy,
+    iconColor: "#24A1C1",
+    label: "Traefik",
+    value: "54k⭐",
+    color: "green",
+  },
+  {
+    Icon: SiDeno,
+    iconColor: "#000000",
+    iconColorDark: "#F5F5F5",
+    label: "Deno",
+    value: "3.5k⭐",
+    color: "orange",
+  },
   { emoji: "🐧", label: "Cortex Linux", value: "Bounty", color: "pink" },
   { emoji: "🧠", label: "MindsDB", value: "26k⭐", color: "cyan" },
-  { emoji: "📊", label: "Milvus", value: "32k⭐", color: "blue" },
+  {
+    Icon: SiMilvus,
+    iconColor: "#00A1EA",
+    label: "Milvus",
+    value: "32k⭐",
+    color: "blue",
+  },
   { emoji: "🔥", label: "FAISS", value: "33k⭐", color: "orange" },
 ];
 
@@ -200,7 +228,18 @@ export const Home = () => {
           {marqueeStats.map((stat) => (
             <MarqueeItem
               key={stat.label}
-              emoji={stat.emoji}
+              emoji={!stat.Icon ? stat.emoji : undefined}
+              icon={
+                stat.Icon ? (
+                  <stat.Icon
+                    aria-hidden="true"
+                    style={{
+                      "--icon-color": stat.iconColor,
+                      "--icon-color-dark": stat.iconColorDark || stat.iconColor,
+                    }}
+                  />
+                ) : null
+              }
               label={stat.label}
               value={stat.value}
               className={`marquee-item--stat marquee-item--${stat.color}`}

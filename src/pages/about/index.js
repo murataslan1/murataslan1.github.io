@@ -9,17 +9,59 @@ import {
 } from "../../content_option";
 import Seo from "../../components/Seo";
 import { motion } from "framer-motion";
+import {
+  SiHtml5,
+  SiReact,
+  SiTypescript,
+  SiGo,
+  SiDocker,
+  SiKubernetes,
+  SiGithubactions,
+  SiPostgresql,
+} from "react-icons/si";
 import { FadeInUp, StaggerContainer, StaggerItem } from "../../components/Motion";
 
 const hardSkills = [
-  { emoji: "💻", name: "Web Development" },
-  { emoji: "⚛️", name: "React/Next.js" },
-  { emoji: "📘", name: "TypeScript" },
-  { emoji: "🐹", name: "Go" },
-  { emoji: "🐳", name: "Docker" },
-  { emoji: "☸️", name: "Kubernetes" },
-  { emoji: "🔧", name: "CI/CD" },
-  { emoji: "📊", name: "Databases" },
+  {
+    Icon: SiHtml5,
+    color: "#E34F26",
+    name: "Web Development",
+  },
+  {
+    Icon: SiReact,
+    color: "#61DAFB",
+    name: "React/Next.js",
+  },
+  {
+    Icon: SiTypescript,
+    color: "#3178C6",
+    name: "TypeScript",
+  },
+  {
+    Icon: SiGo,
+    color: "#00ADD8",
+    name: "Go",
+  },
+  {
+    Icon: SiDocker,
+    color: "#2496ED",
+    name: "Docker",
+  },
+  {
+    Icon: SiKubernetes,
+    color: "#326CE5",
+    name: "Kubernetes",
+  },
+  {
+    Icon: SiGithubactions,
+    color: "#2088FF",
+    name: "CI/CD",
+  },
+  {
+    Icon: SiPostgresql,
+    color: "#4169E1",
+    name: "Databases",
+  },
 ];
 
 const softSkills = [
@@ -101,7 +143,15 @@ export const About = () => {
                   className="skill-card glass-card"
                   whileHover={{ scale: 1.05 }}
                 >
-                  <span className="skill-card__emoji">{skill.emoji}</span>
+                  <span
+                    className="skill-card__icon"
+                    style={{
+                      "--icon-color": skill.color,
+                      "--icon-color-dark": skill.colorDark || skill.color,
+                    }}
+                  >
+                    <skill.Icon aria-hidden="true" />
+                  </span>
                   <span className="skill-card__name">{skill.name}</span>
                 </motion.div>
               </StaggerItem>
