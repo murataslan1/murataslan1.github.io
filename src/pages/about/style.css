@@ -28,12 +28,12 @@
 
 .about-hero__content h1 {
   margin-bottom: var(--space-lg);
-  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-size: clamp(1.5rem, 3.5vw, 2.1rem);
   color: var(--color-ink);
 }
 
 .about-hero__desc {
-  font-size: 1rem;
+  font-size: 0.95rem;
   color: var(--color-ink-muted);
   line-height: 1.6;
 }
@@ -58,14 +58,14 @@
 }
 
 .about-stat__value {
-  font-size: 2rem;
+  font-size: 1.6rem;
   font-weight: 700;
   color: var(--accent-blue);
   line-height: 1;
 }
 
 .about-stat__label {
-  font-size: 0.875rem;
+  font-size: 0.8rem;
   color: var(--color-ink-muted);
   margin-top: var(--space-xs);
 }
@@ -102,13 +102,13 @@
 }
 
 .focus-card__title {
-  font-size: 1rem;
+  font-size: 0.95rem;
   font-weight: 600;
   margin: 0 0 var(--space-xs);
 }
 
 .focus-card__desc {
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   color: var(--color-ink-muted);
   margin: 0;
 }
@@ -143,11 +143,11 @@
 }
 
 .skill-card__emoji {
-  font-size: 2rem;
+  font-size: 1.6rem;
 }
 
 .skill-card__name {
-  font-size: 0.875rem;
+  font-size: 0.8rem;
   font-weight: 500;
   color: var(--color-ink);
 }
@@ -173,13 +173,13 @@
 }
 
 .progress-name {
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   font-weight: 500;
   color: var(--color-ink);
 }
 
 .progress-value {
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   color: var(--color-ink-muted);
   font-family: var(--font-mono);
 }
@@ -224,7 +224,7 @@
 }
 
 .timeline-item__title {
-  font-size: 1rem;
+  font-size: 0.95rem;
   font-weight: 600;
   margin: 0;
   color: var(--color-ink);
@@ -241,7 +241,7 @@
 }
 
 .timeline-item__company {
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   color: var(--color-ink-muted);
 }
 
@@ -262,20 +262,20 @@
 }
 
 .value-card__emoji {
-  font-size: 2rem;
+  font-size: 1.6rem;
   display: block;
   margin-bottom: var(--space-sm);
 }
 
 .value-card__title {
-  font-size: 1rem;
+  font-size: 0.95rem;
   font-weight: 600;
   margin: 0 0 var(--space-xs);
   color: var(--color-ink);
 }
 
 .value-card__desc {
-  font-size: 0.875rem;
+  font-size: 0.82rem;
   color: var(--color-ink-muted);
   margin: 0;
 }
@@ -296,14 +296,14 @@
 }
 
 .service-card__title {
-  font-size: 1.125rem;
+  font-size: 1rem;
   font-weight: 600;
   margin: 0 0 var(--space-sm);
   color: var(--color-ink);
 }
 
 .service-card__desc {
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   color: var(--color-ink-muted);
   margin: 0;
   line-height: 1.6;
@@ -325,7 +325,7 @@
   }
 
   .about-stat__value {
-    font-size: 1.75rem;
+    font-size: 1.5rem;
   }
 
   .skills-grid {

@@ -26,7 +26,7 @@
 }
 
 .contact-intro {
-  font-size: 1rem;
+  font-size: 0.9rem;
   color: var(--color-ink-muted);
   max-width: 500px;
   margin: 0 auto;
@@ -66,13 +66,13 @@
 }
 
 .contact-info__emoji {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   line-height: 1;
 }
 
 .contact-info__label {
   display: block;
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   color: var(--color-ink-subtle);
@@ -80,7 +80,7 @@
 }
 
 .contact-info__value {
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   color: var(--color-ink);
   font-weight: 500;
 }
@@ -110,7 +110,7 @@ a.contact-info__value:hover {
 
 .form-group label {
   display: block;
-  font-size: 0.875rem;
+  font-size: 0.8rem;
   font-weight: 500;
   color: var(--color-ink);
   margin-bottom: var(--space-sm);
@@ -125,7 +125,7 @@ a.contact-info__value:hover {
   border-radius: var(--radius-md);
   color: var(--color-ink);
   font-family: var(--font-body);
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   transition: all var(--transition-base);
 }
 
@@ -149,7 +149,7 @@ a.contact-info__value:hover {
 .contact-submit {
   width: 100%;
   padding: 1rem 2rem;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
 }
 
 .contact-submit .spinner {
@@ -196,7 +196,7 @@ a.contact-info__value:hover {
   background: none;
   border: none;
   color: var(--color-ink-muted);
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   cursor: pointer;
   padding: 0;
   line-height: 1;

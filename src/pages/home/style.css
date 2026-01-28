@@ -39,7 +39,7 @@
 }
 
 .hero__title {
-  font-size: clamp(1.75rem, 5vw, 2.5rem);
+  font-size: clamp(1.6rem, 4.5vw, 2.2rem);
   font-weight: 600;
   line-height: 1.2;
   margin-bottom: var(--space-lg);
@@ -49,7 +49,7 @@
 
 .hero__subtitle {
   display: block;
-  font-size: clamp(1rem, 2.5vw, 1.25rem);
+  font-size: clamp(0.9rem, 2.2vw, 1.1rem);
   color: var(--color-ink-muted);
   font-weight: 400;
   margin-top: var(--space-xs);
@@ -79,7 +79,7 @@
 }
 
 .section-heading {
-  font-size: clamp(2rem, 5vw, 3rem);
+  font-size: clamp(1.6rem, 4vw, 2.4rem);
   font-weight: 600;
   color: var(--color-ink);
   margin-bottom: var(--space-2xl);
@@ -110,7 +110,7 @@
 }
 
 .bento-avatar-content .bento-card__label {
-  font-size: 1rem;
+  font-size: 0.95rem;
   font-weight: 600;
   color: var(--color-ink);
   margin-bottom: var(--space-xs);
@@ -118,7 +118,7 @@
 }
 
 .bento-avatar-content p {
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   color: var(--color-ink-muted);
   margin: 0;
   line-height: 1.5;
@@ -166,7 +166,7 @@
 }
 
 .bento-card__value-lg {
-  font-size: 2rem;
+  font-size: 1.6rem;
   font-weight: 700;
   color: var(--color-ink);
   margin-bottom: var(--space-md);
@@ -217,14 +217,14 @@
   background: var(--color-bg-2);
   border: 1px solid var(--glass-border);
   border-radius: var(--radius-full);
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   color: var(--color-ink-muted);
   width: fit-content;
   margin-bottom: var(--space-md);
 }
 
 .bento-whatido h3 {
-  font-size: 1.25rem;
+  font-size: 1.1rem;
   font-weight: 600;
   color: var(--color-ink);
   margin: 0;
@@ -305,14 +305,14 @@
 }
 
 .tech-item__name {
-  font-size: 1rem;
+  font-size: 0.95rem;
   font-weight: 600;
   color: var(--color-ink);
   margin: 0 0 2px 0;
 }
 
 .tech-item__desc {
-  font-size: 0.875rem;
+  font-size: 0.82rem;
   color: var(--color-ink-muted);
   margin: 0;
 }
@@ -366,14 +366,14 @@
 }
 
 .achievement-card__value {
-  font-size: 3.5rem;
+  font-size: 2.6rem;
   font-weight: 700;
   color: var(--color-ink);
   line-height: 1;
 }
 
 .achievement-card__label {
-  font-size: 1.125rem;
+  font-size: 1rem;
   color: var(--color-ink-muted);
 }
 
@@ -394,7 +394,7 @@
 
 .connect-section .ac_btn--lg {
   padding: 1rem 2.5rem;
-  font-size: 1rem;
+  font-size: 0.95rem;
 }
 
 .connect-cards {
@@ -420,7 +420,7 @@
 }
 
 .connect-card__value {
-  font-size: 1.25rem;
+  font-size: 1.05rem;
   font-weight: 600;
   color: var(--color-ink);
   text-decoration: none;
@@ -482,7 +482,7 @@
 
 .footer-col a {
   display: block;
-  font-size: 1rem;
+  font-size: 0.95rem;
   font-weight: 500;
   color: var(--color-ink);
   text-decoration: none;
@@ -509,7 +509,7 @@
 .back-to-top {
   background: none;
   border: none;
-  font-size: 0.875rem;
+  font-size: 0.8rem;
   color: var(--color-ink-muted);
   cursor: pointer;
   transition: color var(--transition-fast);
@@ -565,7 +565,7 @@
   }
 
   .achievement-card__value {
-    font-size: 2.5rem;
+    font-size: 2.2rem;
   }
 
   .connect-cards {

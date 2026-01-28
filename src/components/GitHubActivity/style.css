@@ -69,13 +69,13 @@
 }
 
 .quick-stat__value {
-  font-size: 2rem;
+  font-size: 1.6rem;
   font-weight: 700;
   color: var(--accent-blue);
 }
 
 .quick-stat__label {
-  font-size: 0.8rem;
+  font-size: 0.72rem;
   color: var(--color-ink-muted);
   margin-top: var(--space-xs);
 }
@@ -113,7 +113,7 @@
 }
 
 .activity-feed__title {
-  font-size: 1rem;
+  font-size: 0.9rem;
   font-weight: 600;
   color: var(--color-ink);
   margin: 0;
@@ -172,18 +172,18 @@
 }
 
 .activity-item__action {
-  font-size: 0.875rem;
+  font-size: 0.82rem;
   color: var(--color-ink-muted);
 }
 
 .activity-item__repo {
-  font-size: 0.875rem;
+  font-size: 0.82rem;
   font-weight: 600;
   color: var(--color-ink);
 }
 
 .activity-item__time {
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   color: var(--color-ink-subtle);
   white-space: nowrap;
 }
