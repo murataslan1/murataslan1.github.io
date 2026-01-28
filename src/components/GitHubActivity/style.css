@@ -1,130 +1,190 @@
 /* ==========================================
-   GITHUB ACTIVITY - EDITORIAL STYLE
+   GITHUB ACTIVITY - BLUREN STYLE
    ========================================== */
 
 .github-activity {
-  padding: var(--space-2xl) clamp(1.25rem, 4vw, 3rem);
+  padding: var(--space-3xl) var(--space-lg);
   max-width: var(--page-max);
   margin: 0 auto;
-  width: 100%;
 }
 
-.github-header {
-  margin-bottom: var(--space-xl);
-}
-
-.github-activity .section-title {
-  font-size: clamp(2rem, 4vw, 3rem);
-  margin: var(--space-sm) 0 0;
-}
-
-.stats-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-  gap: var(--space-lg);
+.github-activity__header {
+  text-align: center;
   margin-bottom: var(--space-2xl);
 }
 
-.stat-card {
-  padding: var(--space-lg);
-  border: 1px solid var(--color-line);
-  border-radius: var(--radius-md);
+/* Quick Stats */
+.github-quick-stats {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-xl);
+  margin-bottom: var(--space-2xl);
+  flex-wrap: wrap;
+}
+
+.quick-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: var(--space-lg) var(--space-xl);
   background: var(--color-surface);
-  box-shadow: var(--shadow-lift);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  min-width: 120px;
 }
 
-.stat-value {
-  font-family: var(--font-display);
-  font-size: clamp(2rem, 4vw, 2.8rem);
-  font-weight: 500;
-  color: var(--color-ink);
-  line-height: 1;
+.quick-stat__value {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--accent-blue);
 }
 
-.stat-label {
-  display: block;
+.quick-stat__label {
+  font-size: 0.8rem;
+  color: var(--color-ink-muted);
   margin-top: var(--space-xs);
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  text-transform: uppercase;
-  letter-spacing: 0.14em;
-  color: var(--color-ink-subtle);
 }
 
-.contribution-graph {
+/* Contribution Calendar */
+.contribution-calendar {
   background: var(--color-surface);
-  border: 1px solid var(--color-line);
-  border-radius: var(--radius-md);
-  padding: var(--space-lg);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl);
   margin-bottom: var(--space-2xl);
   overflow-x: auto;
 }
 
-.contribution-graph h3 {
-  margin-bottom: var(--space-lg);
+.contribution-calendar .react-activity-calendar {
+  margin: 0 auto;
 }
 
-.contribution-graph text {
-  fill: var(--color-ink-subtle) !important;
-  font-family: var(--font-mono) !important;
-  font-size: 11px !important;
-}
-
-.project-contributions h3 {
-  margin-bottom: var(--space-lg);
-}
-
-.contributions-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: var(--space-md);
-}
-
-.contribution-card {
-  padding: var(--space-md);
-  border-radius: var(--radius-md);
-  border: 1px solid var(--color-line);
+/* Activity Feed */
+.activity-feed {
   background: var(--color-surface);
-  transition: transform var(--transition-base), box-shadow var(--transition-base);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl);
+  margin-bottom: var(--space-xl);
 }
 
-.contribution-card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-soft);
+.activity-feed__title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-ink);
+  margin: 0 0 var(--space-lg);
 }
 
-.contrib-header {
+.activity-list {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column;
   gap: var(--space-sm);
 }
 
-.contrib-project {
-  font-family: var(--font-display);
-  font-weight: 500;
-  font-size: 1.05rem;
-}
-
-.contrib-status {
-  font-size: 0.9rem;
-}
-
-.contrib-stats {
+.activity-item {
   display: flex;
-  justify-content: space-between;
-  font-family: var(--font-mono);
-  font-size: 0.74rem;
-  color: var(--color-ink-subtle);
-  margin-top: var(--space-sm);
+  align-items: center;
+  gap: var(--space-md);
+  padding: var(--space-md);
+  background: var(--color-bg-2);
+  border-radius: var(--radius-md);
+  transition: transform var(--transition-fast);
 }
 
+.activity-item:hover {
+  transform: translateX(4px);
+}
+
+.activity-item__icon {
+  font-size: 1.25rem;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-sm);
+}
+
+.activity-item--green .activity-item__icon { background: #dcfce7; }
+.activity-item--purple .activity-item__icon { background: #ede9fe; }
+.activity-item--orange .activity-item__icon { background: #ffedd5; }
+.activity-item--blue .activity-item__icon { background: #dbeafe; }
+.activity-item--yellow .activity-item__icon { background: #fef9c3; }
+.activity-item--cyan .activity-item__icon { background: #cffafe; }
+
+.activity-item__content {
+  flex: 1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-xs);
+  align-items: center;
+}
+
+.activity-item__action {
+  font-size: 0.875rem;
+  color: var(--color-ink-muted);
+}
+
+.activity-item__repo {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-ink);
+}
+
+.activity-item__time {
+  font-size: 0.75rem;
+  color: var(--color-ink-subtle);
+  white-space: nowrap;
+}
+
+.activity-loading,
+.activity-empty {
+  text-align: center;
+  padding: var(--space-xl);
+  color: var(--color-ink-muted);
+}
+
+/* GitHub Profile Link */
+.github-profile-link {
+  display: block;
+  text-align: center;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--accent-blue);
+  text-decoration: none;
+  transition: opacity var(--transition-fast);
+}
+
+.github-profile-link:hover {
+  opacity: 0.8;
+}
+
+/* Responsive */
 @media (max-width: 768px) {
-  .stats-grid {
-    grid-template-columns: repeat(2, 1fr);
+  .github-activity {
+    padding: var(--space-2xl) var(--space-md);
   }
 
-  .contributions-grid {
-    grid-template-columns: 1fr;
+  .github-quick-stats {
+    gap: var(--space-md);
+  }
+
+  .quick-stat {
+    min-width: 100px;
+    padding: var(--space-md);
+  }
+
+  .quick-stat__value {
+    font-size: 1.5rem;
+  }
+
+  .activity-item {
+    flex-wrap: wrap;
+  }
+
+  .activity-item__time {
+    width: 100%;
+    margin-top: var(--space-xs);
+    margin-left: calc(36px + var(--space-md));
   }
 }

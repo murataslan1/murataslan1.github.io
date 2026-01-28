@@ -1,20 +1,13 @@
 import React from "react";
 import "./style.css";
-import { introdata, opensourceContributions } from "../../content_option";
+import { introdata, opensourceContributions, contactConfig, socialprofils } from "../../content_option";
 import { Link } from "react-router-dom";
 import Seo from "../../components/Seo";
-import { GitHubActivity } from "../../components/GitHubActivity";
 import { motion } from "framer-motion";
-import { FadeInUp, StaggerContainer, StaggerItem } from "../../components/Motion";
+import { FadeInUp } from "../../components/Motion";
 import { Marquee, MarqueeItem } from "../../components/Marquee";
 import { BentoGrid, BentoItem } from "../../components/BentoGrid";
-
-const stats = [
-  { emoji: "🚀", value: "75+", label: "Pull Requests" },
-  { emoji: "⭐", value: "30+", label: "Projects" },
-  { emoji: "🏆", value: "$100+", label: "Bounties" },
-  { emoji: "🌍", value: "10+", label: "Countries Reached" },
-];
+import { GitHubActivity } from "../../components/GitHubActivity";
 
 const marqueeStats = [
   { emoji: "💻", label: "VS Code", value: "165k⭐", color: "blue" },
@@ -27,13 +20,47 @@ const marqueeStats = [
   { emoji: "🔥", label: "FAISS", value: "33k⭐", color: "orange" },
 ];
 
-const techStack = [
-  { emoji: "⚛️", name: "React", desc: "UI Development" },
-  { emoji: "📘", name: "TypeScript", desc: "Type Safety" },
-  { emoji: "🐹", name: "Go", desc: "Backend Services" },
-  { emoji: "🐳", name: "Docker", desc: "Containerization" },
-  { emoji: "☸️", name: "Kubernetes", desc: "Orchestration" },
-  { emoji: "🐍", name: "Python", desc: "Scripting & ML" },
+// Tech Stack organized by category
+const techCategories = [
+  {
+    title: "Frontend",
+    items: [
+      { icon: "⚛️", name: "React", desc: "For building fast, interactive UIs" },
+      { icon: "📱", name: "Next.js", desc: "React framework with routing & SSR" },
+      { icon: "📘", name: "TypeScript", desc: "Typed JavaScript for safer code" },
+    ]
+  },
+  {
+    title: "Backend",
+    items: [
+      { icon: "🟢", name: "Node.js", desc: "JavaScript runtime for servers" },
+      { icon: "🐹", name: "Go", desc: "Fast compiled language for APIs" },
+      { icon: "🐍", name: "Python", desc: "Scripting & ML applications" },
+    ]
+  },
+  {
+    title: "Tools & DevOps",
+    items: [
+      { icon: "🐙", name: "Git & GitHub", desc: "Version control and collaboration" },
+      { icon: "🐳", name: "Docker", desc: "Containers for isolated environments" },
+      { icon: "☸️", name: "Kubernetes", desc: "Container orchestration at scale" },
+    ]
+  },
+  {
+    title: "Design & Workflow",
+    items: [
+      { icon: "🎨", name: "Figma", desc: "UI/UX design for developers" },
+      { icon: "📝", name: "Notion", desc: "Planning and docs in one place" },
+      { icon: "⚡", name: "VS Code", desc: "Code editor of choice" },
+    ]
+  }
+];
+
+const achievements = [
+  { value: "75+", label: "PRs Merged", emoji: "🚀" },
+  { value: "30+", label: "Projects", emoji: "⭐" },
+  { value: "$100+", label: "Bounties Earned", emoji: "🏆" },
+  { value: "10+", label: "Countries Reached", emoji: "🌍" },
 ];
 
 export const Home = () => {
@@ -59,10 +86,6 @@ export const Home = () => {
               <br />
               <span className="hero__subtitle">I contribute to open source</span>
             </h1>
-          </FadeInUp>
-
-          <FadeInUp delay={0.2}>
-            <p className="hero__description">{introdata.description}</p>
           </FadeInUp>
 
           <FadeInUp delay={0.3} className="hero__actions">
@@ -113,106 +136,178 @@ export const Home = () => {
         </FadeInUp>
 
         <BentoGrid columns={4} className="home-bento">
-          <BentoItem span={2} className="bento-intro">
-            <span className="bento-card__label">Introduction</span>
-            <h3>Full-stack developer with a love for open source</h3>
-            <p>Contributing to projects that millions of developers use daily. From VS Code to Kubernetes ecosystem.</p>
+          <BentoItem span={2} className="bento-intro bento-avatar-card">
+            <div className="bento-avatar-content">
+              <span className="bento-card__label">Hi, I'm Murat.</span>
+              <p>I press buttons and<br/>open source happens</p>
+            </div>
+            <div className="bento-avatar-img" style={{ backgroundImage: `url(${introdata.your_img_url})` }} />
           </BentoItem>
 
-          <BentoItem className="bento-stat">
-            <span className="bento-card__emoji">📍</span>
+          <BentoItem className="bento-location">
+            <div className="location-pins">
+              <span className="pin pin--faded">📍</span>
+              <span className="pin pin--faded">📍</span>
+              <span className="pin pin--active">📍</span>
+              <span className="pin pin--faded">📍</span>
+              <span className="pin pin--faded">📍</span>
+            </div>
             <span className="bento-card__label">Based In</span>
             <span className="bento-card__value-text">Ankara, Turkey</span>
           </BentoItem>
 
-          <BentoItem className="bento-stat">
-            <span className="bento-card__emoji">💼</span>
-            <span className="bento-card__label">Focus</span>
-            <span className="bento-card__value-text">Open Source</span>
+          <BentoItem className="bento-coding-since" row={2}>
+            <span className="bento-card__label">Coding Since</span>
+            <span className="bento-card__value-lg">2018</span>
+            <div className="code-window">
+              <div className="code-window__dots">
+                <span></span><span></span><span></span>
+              </div>
+              <pre className="code-block">
+{`<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Hi, I'm Murat</title>
+</head>
+<body>`}
+              </pre>
+            </div>
           </BentoItem>
 
-          <BentoItem className="bento-code" span={2}>
-            <pre className="code-block">
-              <code>{`// What I do
-const contribute = async () => {
-  await findBugs();
-  await fixIssues();
-  await submitPR();
-  return "🚀 Merged!";
-};`}</code>
-            </pre>
+          <BentoItem className="bento-whatido">
+            <span className="bento-pill">What I Do</span>
+            <h3>Focused on fast builds, clean code, and smart design</h3>
           </BentoItem>
 
-          <BentoItem className="bento-stat">
-            <span className="bento-card__emoji">🎯</span>
-            <span className="bento-card__value">75+</span>
-            <span className="bento-card__stat-label">PRs Merged</span>
-          </BentoItem>
-
-          <BentoItem className="bento-stat">
-            <span className="bento-card__emoji">⭐</span>
-            <span className="bento-card__value">300k+</span>
-            <span className="bento-card__stat-label">Stars Contributed</span>
+          <BentoItem className="bento-learning">
+            <span className="bento-pill">Always Learning</span>
+            <div className="learning-avatar" style={{ backgroundImage: `url(${introdata.your_img_url})` }} />
           </BentoItem>
         </BentoGrid>
       </div>
 
-      {/* Tech Stack Section */}
+      {/* What I Use Section */}
       <div className="tech-section">
         <FadeInUp>
-          <span className="section-title">Tech Stack</span>
-          <h2>What I Use</h2>
+          <h2 className="section-heading">What I Use</h2>
         </FadeInUp>
 
-        <StaggerContainer className="tech-grid">
-          {techStack.map((tech, index) => (
-            <StaggerItem key={tech.name}>
-              <motion.div 
-                className="tech-card glass-card"
-                whileHover={{ scale: 1.05, borderColor: "rgba(255,255,255,0.2)" }}
-              >
-                <span className="tech-card__emoji">{tech.emoji}</span>
-                <h4 className="tech-card__name">{tech.name}</h4>
-                <p className="tech-card__desc">{tech.desc}</p>
-              </motion.div>
-            </StaggerItem>
+        <div className="tech-categories">
+          {techCategories.map((category) => (
+            <div key={category.title} className="tech-category">
+              <h3 className="tech-category__title">{category.title}</h3>
+              <div className="tech-category__items">
+                {category.items.map((item) => (
+                  <motion.div 
+                    key={item.name} 
+                    className="tech-item"
+                    whileHover={{ x: 4 }}
+                  >
+                    <span className="tech-item__icon">{item.icon}</span>
+                    <div className="tech-item__content">
+                      <h4 className="tech-item__name">{item.name}</h4>
+                      <p className="tech-item__desc">{item.desc}</p>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
           ))}
-        </StaggerContainer>
+        </div>
       </div>
 
-      {/* Stats Section */}
-      <div className="stats-section">
+      {/* GitHub Activity Section */}
+      <GitHubActivity />
+
+      {/* Little Big Wins Section */}
+      <div className="achievements-section">
         <FadeInUp>
-          <span className="section-title">Achievements</span>
-          <h2>Little Big Wins</h2>
+          <span className="section-label">ACHIEVEMENTS</span>
+          <h2 className="section-heading">Little Big Wins</h2>
         </FadeInUp>
 
-        <StaggerContainer className="stats-grid">
-          {stats.map((stat) => (
-            <StaggerItem key={stat.label}>
-              <motion.div 
-                className="stat-card-home glass-card"
-                whileHover={{ scale: 1.05 }}
-              >
-                <span className="stat-card-home__emoji">{stat.emoji}</span>
-                <span className="stat-card-home__value">{stat.value}</span>
-                <span className="stat-card-home__label">{stat.label}</span>
-              </motion.div>
-            </StaggerItem>
+        <div className="achievements-grid">
+          {achievements.map((item, idx) => (
+            <motion.div 
+              key={item.label} 
+              className={`achievement-card achievement-card--${idx % 2 === 0 ? 'left' : 'right'}`}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: idx * 0.1 }}
+            >
+              <div className="achievement-card__avatar" style={{ backgroundImage: `url(${introdata.your_img_url})` }} />
+              <div className="achievement-card__content">
+                <span className="achievement-card__value">{item.value}</span>
+                <span className="achievement-card__label">{item.label}</span>
+              </div>
+            </motion.div>
           ))}
-        </StaggerContainer>
+        </div>
       </div>
 
-      {/* GitHub Activity */}
-      <div className="github-section">
+      {/* Let's Connect Section */}
+      <div className="connect-section">
         <FadeInUp>
-          <span className="section-title">Activity</span>
-          <h2>GitHub Contributions</h2>
+          <span className="section-label">GET IN TOUCH</span>
+          <h2 className="section-heading">Let's Connect</h2>
         </FadeInUp>
-        <FadeInUp delay={0.2}>
-          <GitHubActivity />
+
+        <FadeInUp delay={0.1}>
+          <Link to="/contact" className="ac_btn ac_btn--primary ac_btn--lg">
+            Start Project
+          </Link>
         </FadeInUp>
+
+        <div className="connect-cards">
+          <div className="connect-card">
+            <span className="connect-card__label">Let's Talk</span>
+            <a href={`mailto:${contactConfig.YOUR_EMAIL}`} className="connect-card__value">
+              {contactConfig.YOUR_EMAIL}
+            </a>
+          </div>
+          <div className="connect-card">
+            <span className="connect-card__label">Collaborations</span>
+            <a href={socialprofils.github} target="_blank" rel="noreferrer" className="connect-card__value">
+              github.com/murataslan1
+            </a>
+          </div>
+        </div>
       </div>
+
+      {/* Footer */}
+      <footer className="site-footer">
+        <div className="footer-grid">
+          <div className="footer-about">
+            <h4>Hi, I'm Murat.</h4>
+            <p>I press buttons and<br/>interfaces happen</p>
+            <div className="footer-avatar" style={{ backgroundImage: `url(${introdata.your_img_url})` }} />
+          </div>
+
+          <div className="footer-links">
+            <div className="footer-col">
+              <h5>Menu</h5>
+              <Link to="/">Home</Link>
+              <Link to="/portfolio">Works</Link>
+              <Link to="/about">About</Link>
+            </div>
+            <div className="footer-col">
+              <h5>Follow</h5>
+              <a href={socialprofils.github} target="_blank" rel="noreferrer">GitHub</a>
+              <a href={socialprofils.linkedin} target="_blank" rel="noreferrer">LinkedIn</a>
+              <a href={socialprofils.twitter} target="_blank" rel="noreferrer">X (Twitter)</a>
+            </div>
+          </div>
+        </div>
+
+        <div className="footer-bottom">
+          <span>© 2024, Murat Aslan</span>
+          <button onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="back-to-top">
+            Back to Top
+          </button>
+        </div>
+      </footer>
     </section>
   );
 };
