@@ -1,193 +1,218 @@
 import React from "react";
 import "./style.css";
-import { Helmet, HelmetProvider } from "react-helmet-async";
-import Typewriter from "typewriter-effect";
-import { motion } from "framer-motion";
-import { introdata, meta } from "../../content_option";
+import { introdata, opensourceContributions } from "../../content_option";
 import { Link } from "react-router-dom";
-import {
-  CharacterReveal,
-  FloatingElement,
-  MagneticButton,
-  SlideUp,
-} from "../../components/Animations";
+import Seo from "../../components/Seo";
 import { GitHubActivity } from "../../components/GitHubActivity";
-import "../../components/GitHubActivity/style.css";
+import { motion } from "framer-motion";
+import { FadeInUp, StaggerContainer, StaggerItem } from "../../components/Motion";
+import { Marquee, MarqueeItem } from "../../components/Marquee";
+import { BentoGrid, BentoItem } from "../../components/BentoGrid";
 
-// Animation variants
-const heroVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.2,
-      delayChildren: 0.3,
-    },
-  },
-};
+const stats = [
+  { emoji: "🚀", value: "75+", label: "Pull Requests" },
+  { emoji: "⭐", value: "30+", label: "Projects" },
+  { emoji: "🏆", value: "$100+", label: "Bounties" },
+  { emoji: "🌍", value: "10+", label: "Countries Reached" },
+];
 
-const itemVariants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.6,
-      ease: [0.4, 0, 0.2, 1],
-    },
-  },
-};
+const marqueeStats = [
+  { emoji: "💻", label: "VS Code", value: "165k⭐", color: "blue" },
+  { emoji: "☁️", label: "Coolify", value: "40k⭐", color: "purple" },
+  { emoji: "🔀", label: "Traefik", value: "54k⭐", color: "green" },
+  { emoji: "🦕", label: "Deno", value: "3.5k⭐", color: "orange" },
+  { emoji: "🐧", label: "Cortex Linux", value: "Bounty", color: "pink" },
+  { emoji: "🧠", label: "MindsDB", value: "26k⭐", color: "cyan" },
+  { emoji: "📊", label: "Milvus", value: "32k⭐", color: "blue" },
+  { emoji: "🔥", label: "FAISS", value: "33k⭐", color: "orange" },
+];
 
-const buttonVariants = {
-  hidden: { opacity: 0, scale: 0.8 },
-  visible: {
-    opacity: 1,
-    scale: 1,
-    transition: {
-      type: "spring",
-      stiffness: 100,
-      damping: 15,
-    },
-  },
-  hover: {
-    scale: 1.05,
-    transition: {
-      type: "spring",
-      stiffness: 400,
-      damping: 10,
-    },
-  },
-  tap: {
-    scale: 0.95,
-  },
-};
-
-const imageVariants = {
-  hidden: { opacity: 0, scale: 0.8, rotate: -5 },
-  visible: {
-    opacity: 1,
-    scale: 1,
-    rotate: 0,
-    transition: {
-      duration: 0.8,
-      ease: [0.4, 0, 0.2, 1],
-    },
-  },
-};
+const techStack = [
+  { emoji: "⚛️", name: "React", desc: "UI Development" },
+  { emoji: "📘", name: "TypeScript", desc: "Type Safety" },
+  { emoji: "🐹", name: "Go", desc: "Backend Services" },
+  { emoji: "🐳", name: "Docker", desc: "Containerization" },
+  { emoji: "☸️", name: "Kubernetes", desc: "Orchestration" },
+  { emoji: "🐍", name: "Python", desc: "Scripting & ML" },
+];
 
 export const Home = () => {
   return (
-    <HelmetProvider>
-      <motion.section
-        id="home"
-        className="home"
-        initial="hidden"
-        animate="visible"
-        variants={heroVariants}
-      >
-        <Helmet>
-          <meta charSet="utf-8" />
-          <title> {meta.title}</title>
-          <meta name="description" content={meta.description} />
-        </Helmet>
+    <section id="home" className="home">
+      <Seo description={introdata.description} />
 
-        <div className="intro_sec d-block d-lg-flex align-items-center">
-          {/* Floating Avatar */}
-          <FloatingElement
-            className="h_bg-image order-1 order-lg-2 h-100"
-            intensity={8}
-          >
+      {/* Hero Section */}
+      <div className="hero">
+        <div className="hero__content">
+          <FadeInUp className="hero__avatar-wrapper">
             <motion.div
-              className="avatar-container"
+              className="hero__avatar"
               style={{ backgroundImage: `url(${introdata.your_img_url})` }}
-              variants={imageVariants}
-              whileHover={{ scale: 1.05, rotate: 2 }}
-              transition={{ type: "spring", stiffness: 300, damping: 20 }}
+              whileHover={{ scale: 1.05 }}
+              transition={{ duration: 0.3 }}
             />
-          </FloatingElement>
+          </FadeInUp>
 
-          <motion.div
-            className="text order-2 order-lg-1 h-100 d-lg-flex justify-content-center"
-            variants={itemVariants}
-          >
-            <div className="align-self-center">
-              <div className="intro mx-auto">
-                {/* Animated Title */}
-                <motion.h2 className="mb-1x" variants={itemVariants}>
-                  <CharacterReveal text={introdata.title} delay={0.5} />
-                </motion.h2>
+          <FadeInUp delay={0.1}>
+            <h1 className="hero__title">
+              Hi, I'm <span className="gradient-text">Murat</span>
+              <br />
+              <span className="hero__subtitle">I contribute to open source</span>
+            </h1>
+          </FadeInUp>
 
-                {/* Typewriter with animation wrapper */}
-                <motion.h1
-                  className="fluidz-48 mb-1x"
-                  variants={itemVariants}
-                >
-                  <Typewriter
-                    options={{
-                      strings: [
-                        introdata.animated.first,
-                        introdata.animated.second,
-                        introdata.animated.third,
-                      ],
-                      autoStart: true,
-                      loop: true,
-                      deleteSpeed: 10,
-                    }}
-                  />
-                </motion.h1>
+          <FadeInUp delay={0.2}>
+            <p className="hero__description">{introdata.description}</p>
+          </FadeInUp>
 
-                {/* Description with fade in */}
-                <SlideUp delay={1}>
-                  <p className="mb-1x">{introdata.description}</p>
-                </SlideUp>
-
-                {/* Animated Buttons */}
-                <motion.div
-                  className="intro_btn-action pb-5"
-                  variants={itemVariants}
-                >
-                  <MagneticButton strength={0.2}>
-                    <Link to="/portfolio" className="text_2">
-                      <motion.div
-                        id="button_p"
-                        className="ac_btn btn"
-                        variants={buttonVariants}
-                        whileHover="hover"
-                        whileTap="tap"
-                      >
-                        My Portfolio
-                        <div className="ring one"></div>
-                        <div className="ring two"></div>
-                        <div className="ring three"></div>
-                      </motion.div>
-                    </Link>
-                  </MagneticButton>
-
-                  <MagneticButton strength={0.2}>
-                    <Link to="/contact">
-                      <motion.div
-                        id="button_h"
-                        className="ac_btn btn"
-                        variants={buttonVariants}
-                        whileHover="hover"
-                        whileTap="tap"
-                      >
-                        Contact Me
-                        <div className="ring one"></div>
-                        <div className="ring two"></div>
-                        <div className="ring three"></div>
-                      </motion.div>
-                    </Link>
-                  </MagneticButton>
-                </motion.div>
-              </div>
-            </div>
-          </motion.div>
+          <FadeInUp delay={0.3} className="hero__actions">
+            <Link to="/portfolio" className="ac_btn ac_btn--primary">
+              View My Work
+            </Link>
+            <Link to="/contact" className="ac_btn ac_btn--ghost">
+              Get in Touch
+            </Link>
+          </FadeInUp>
         </div>
+      </div>
 
-        {/* GitHub Activity Section */}
-        <GitHubActivity />
-      </motion.section>
-    </HelmetProvider>
+      {/* Marquee Stats */}
+      <div className="marquee-section">
+        <Marquee speed={8}>
+          {marqueeStats.map((stat) => (
+            <MarqueeItem
+              key={stat.label}
+              emoji={stat.emoji}
+              label={stat.label}
+              value={stat.value}
+              className={`marquee-item--stat marquee-item--${stat.color}`}
+            />
+          ))}
+        </Marquee>
+        <Marquee speed={6} direction="right">
+          {opensourceContributions.slice(0, 6).map((item, idx) => {
+            const colors = ["green", "purple", "blue", "orange", "pink", "cyan"];
+            return (
+              <MarqueeItem
+                key={item.project}
+                emoji="✅"
+                label={item.project}
+                value={`${item.prs} PRs`}
+                className={`marquee-item--${colors[idx % colors.length]}`}
+              />
+            );
+          })}
+        </Marquee>
+      </div>
+
+      {/* Bento Grid Section */}
+      <div className="bento-section">
+        <FadeInUp>
+          <span className="section-title">About Me</span>
+          <h2>Building with passion</h2>
+        </FadeInUp>
+
+        <BentoGrid columns={4} className="home-bento">
+          <BentoItem span={2} className="bento-intro">
+            <span className="bento-card__label">Introduction</span>
+            <h3>Full-stack developer with a love for open source</h3>
+            <p>Contributing to projects that millions of developers use daily. From VS Code to Kubernetes ecosystem.</p>
+          </BentoItem>
+
+          <BentoItem className="bento-stat">
+            <span className="bento-card__emoji">📍</span>
+            <span className="bento-card__label">Based In</span>
+            <span className="bento-card__value-text">Ankara, Turkey</span>
+          </BentoItem>
+
+          <BentoItem className="bento-stat">
+            <span className="bento-card__emoji">💼</span>
+            <span className="bento-card__label">Focus</span>
+            <span className="bento-card__value-text">Open Source</span>
+          </BentoItem>
+
+          <BentoItem className="bento-code" span={2}>
+            <pre className="code-block">
+              <code>{`// What I do
+const contribute = async () => {
+  await findBugs();
+  await fixIssues();
+  await submitPR();
+  return "🚀 Merged!";
+};`}</code>
+            </pre>
+          </BentoItem>
+
+          <BentoItem className="bento-stat">
+            <span className="bento-card__emoji">🎯</span>
+            <span className="bento-card__value">75+</span>
+            <span className="bento-card__stat-label">PRs Merged</span>
+          </BentoItem>
+
+          <BentoItem className="bento-stat">
+            <span className="bento-card__emoji">⭐</span>
+            <span className="bento-card__value">300k+</span>
+            <span className="bento-card__stat-label">Stars Contributed</span>
+          </BentoItem>
+        </BentoGrid>
+      </div>
+
+      {/* Tech Stack Section */}
+      <div className="tech-section">
+        <FadeInUp>
+          <span className="section-title">Tech Stack</span>
+          <h2>What I Use</h2>
+        </FadeInUp>
+
+        <StaggerContainer className="tech-grid">
+          {techStack.map((tech, index) => (
+            <StaggerItem key={tech.name}>
+              <motion.div 
+                className="tech-card glass-card"
+                whileHover={{ scale: 1.05, borderColor: "rgba(255,255,255,0.2)" }}
+              >
+                <span className="tech-card__emoji">{tech.emoji}</span>
+                <h4 className="tech-card__name">{tech.name}</h4>
+                <p className="tech-card__desc">{tech.desc}</p>
+              </motion.div>
+            </StaggerItem>
+          ))}
+        </StaggerContainer>
+      </div>
+
+      {/* Stats Section */}
+      <div className="stats-section">
+        <FadeInUp>
+          <span className="section-title">Achievements</span>
+          <h2>Little Big Wins</h2>
+        </FadeInUp>
+
+        <StaggerContainer className="stats-grid">
+          {stats.map((stat) => (
+            <StaggerItem key={stat.label}>
+              <motion.div 
+                className="stat-card-home glass-card"
+                whileHover={{ scale: 1.05 }}
+              >
+                <span className="stat-card-home__emoji">{stat.emoji}</span>
+                <span className="stat-card-home__value">{stat.value}</span>
+                <span className="stat-card-home__label">{stat.label}</span>
+              </motion.div>
+            </StaggerItem>
+          ))}
+        </StaggerContainer>
+      </div>
+
+      {/* GitHub Activity */}
+      <div className="github-section">
+        <FadeInUp>
+          <span className="section-title">Activity</span>
+          <h2>GitHub Contributions</h2>
+        </FadeInUp>
+        <FadeInUp delay={0.2}>
+          <GitHubActivity />
+        </FadeInUp>
+      </div>
+    </section>
   );
 };

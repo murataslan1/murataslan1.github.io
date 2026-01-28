@@ -1,44 +1,27 @@
 /* ==========================================
-   THEME TOGGLE - CYBERPUNK STYLE
+   THEME TOGGLE
    ========================================== */
 
-.theme_toggler {
-    background: transparent;
-    z-index: 1000;
-    display: flex;
-    height: 50px;
-    align-items: center;
-    padding: 0 var(--space-sm);
-    margin-right: var(--space-sm);
+.theme_toggle {
+  margin-left: 1rem;
+  background: transparent;
+  border: 1px solid var(--color-line);
+  border-radius: 999px;
+  padding: 0.35rem 0.6rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-ink);
+  cursor: pointer;
+  transition: all var(--transition-base);
 }
 
-.theme_toggler button {
-    background: transparent;
-    border: 1px solid var(--border-color);
-    border-radius: var(--radius-sm);
-    padding: var(--space-sm);
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.3s ease;
-    color: var(--text-color);
+.theme_toggle:hover {
+  border-color: var(--color-ink);
+  color: var(--color-accent);
 }
 
-.theme_toggler button:hover {
-    border-color: var(--secondary-color);
-    box-shadow: var(--glow-pink);
-    color: var(--secondary-color);
-}
-
-.theme_toggler svg {
-    width: 1.25em;
-    height: 1.25em;
-    fill: currentColor;
-    transition: all 0.3s ease;
-}
-
-/* Moon/Sun icon color */
-.theme_toggler button:hover svg {
-    transform: rotate(15deg);
+.theme_toggle svg {
+  width: 1.3em;
+  height: 1.3em;
 }

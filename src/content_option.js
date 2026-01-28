@@ -2,7 +2,11 @@ const logotext = "MURAT";
 const meta = {
   title: "Murat Aslan | Open Source Developer",
   description:
-    "Full Stack Developer & Open Source Contributor with 75+ PRs to major projects like VS Code, Cortex, Coolify, Deno, Traefik, and more."
+    "Full Stack Developer & Open Source Contributor with 75+ PRs to major projects like VS Code, Cortex, Coolify, Deno, Traefik, and more.",
+  siteUrl: "https://murataslan1.github.io/",
+  image: "https://avatars.githubusercontent.com/u/78961478?v=4",
+  role: "Full Stack Developer",
+  location: "Ankara, Turkey"
 };
 
 const introdata = {
@@ -15,7 +19,7 @@ const introdata = {
   },
   description:
     "Passionate open source contributor with 75+ pull requests to 30+ major projects including VS Code (165k⭐), Coolify (40k⭐), Traefik (54k⭐), Cortex Linux, and more. Full stack developer specializing in TypeScript, Go, and Cloud Native technologies.",
-  your_img_url: "https://avatars.githubusercontent.com/u/murataslan1"
+  your_img_url: "https://avatars.githubusercontent.com/u/78961478?v=4"
 };
 
 const dataabout = {
@@ -94,43 +98,67 @@ const services = [
 const dataportfolio = [
   {
     img: "https://opengraph.githubassets.com/1/cortexlinux/cortex",
+    title: "Cortex Linux",
     desctiption: "Cortex Linux - Implemented Docker Permission Fixer tool (Bounty Hunt) 🚀",
-    link: "https://github.com/cortexlinux/cortex/pull/460"
+    link: "https://github.com/cortexlinux/cortex/pull/460",
+    tags: ["Open Source", "Bounty"],
+    stack: ["Linux", "DevOps"]
   },
   {
     img: "https://opengraph.githubassets.com/1/murataslan1/ai-agent-benchmark",
+    title: "AI Agent Benchmark",
     desctiption: "AI Agent Benchmark - The definitive comparison of AI coding agents (Jan 2026 Data)",
-    link: "https://github.com/murataslan1/ai-agent-benchmark"
+    link: "https://github.com/murataslan1/ai-agent-benchmark",
+    tags: ["Research", "AI"],
+    stack: ["Data", "Web"]
   },
   {
     img: "https://opengraph.githubassets.com/1/microsoft/vscode",
+    title: "VS Code",
     desctiption: "VS Code - Contributed test coverage improvements to the repo (165k⭐)",
-    link: "https://github.com/microsoft/vscode/pulls?q=author%3Amurataslan1"
+    link: "https://github.com/microsoft/vscode/pulls?q=author%3Amurataslan1",
+    tags: ["Open Source", "Tooling"],
+    stack: ["TypeScript", "Developer Tools"]
   },
   {
     img: "https://opengraph.githubassets.com/1/mindsdb/mindsdb",
+    title: "MindsDB",
     desctiption: "MindsDB - Added S3 Region support for integrations",
-    link: "https://github.com/mindsdb/mindsdb/pull/12004"
+    link: "https://github.com/mindsdb/mindsdb/pull/12004",
+    tags: ["Open Source", "Data"],
+    stack: ["Databases", "Python"]
   },
   {
     img: "https://opengraph.githubassets.com/1/coollabsio/coolify",
+    title: "Coolify",
     desctiption: "Coolify - 14 PRs: Docker version fix, Unicode support, IPv4/IPv6 validation, SSH Fixes ($100 Bounty)",
-    link: "https://github.com/coollabsio/coolify/pulls?q=author%3Amurataslan1"
+    link: "https://github.com/coollabsio/coolify/pulls?q=author%3Amurataslan1",
+    tags: ["Open Source", "DevOps"],
+    stack: ["Cloud", "Docker"]
   },
   {
     img: "https://opengraph.githubassets.com/1/denoland/std",
+    title: "Deno Standard Library",
     desctiption: "Deno Standard Library - 2 PRs: CSV parsing fix, Dedent logic",
-    link: "https://github.com/denoland/std/pulls?q=author%3Amurataslan1"
+    link: "https://github.com/denoland/std/pulls?q=author%3Amurataslan1",
+    tags: ["Open Source", "Tooling"],
+    stack: ["TypeScript", "Runtime"]
   },
   {
     img: "https://opengraph.githubassets.com/1/traefik/traefik",
+    title: "Traefik",
     desctiption: "Traefik - 4 PRs: ForwardAuth logging improvements & UI Fixes",
-    link: "https://github.com/traefik/traefik/pulls?q=author%3Amurataslan1"
+    link: "https://github.com/traefik/traefik/pulls?q=author%3Amurataslan1",
+    tags: ["Open Source", "Infra"],
+    stack: ["Networking", "Go"]
   },
   {
     img: "https://opengraph.githubassets.com/1/milvus-io/milvus",
+    title: "Milvus",
     desctiption: "Milvus - 4 enhancement PRs to the vector database",
-    link: "https://github.com/milvus-io/milvus/pulls?q=author%3Amurataslan1"
+    link: "https://github.com/milvus-io/milvus/pulls?q=author%3Amurataslan1",
+    tags: ["Open Source", "Data"],
+    stack: ["Databases", "Cloud"]
   }
 ];
 

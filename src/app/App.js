@@ -5,6 +5,7 @@ import {
   useLocation,
   withRouter,
 } from "react-router-dom";
+import { HelmetProvider } from "react-helmet-async";
 import AppRoutes from "./routes";
 import Headermain from "../header";
 import AnimatedCursor from "react-animated-cursor";
@@ -20,22 +21,29 @@ function _ScrollToTop(props) {
 const ScrollToTop = withRouter(_ScrollToTop);
 
 export default function App() {
+  // Light theme
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', 'light');
+  }, []);
+
   return (
-    <Router basename={process.env.PUBLIC_URL}>
-      <div className="cursor__dot">
-        <AnimatedCursor
-          innerSize={15}
-          outerSize={15}
-          color="255, 255 ,255"
-          outerAlpha={0.4}
-          innerScale={0.7}
-          outerScale={5}
-        />
-      </div>
-      <ScrollToTop>
-        <Headermain />
-        <AppRoutes />
-      </ScrollToTop>
-    </Router>
+    <HelmetProvider>
+      <Router basename={process.env.PUBLIC_URL}>
+        <div className="cursor__dot">
+          <AnimatedCursor
+            innerSize={8}
+            outerSize={28}
+            color="37, 99, 235"
+            outerAlpha={0.2}
+            innerScale={0.9}
+            outerScale={1.8}
+          />
+        </div>
+        <ScrollToTop>
+          <Headermain />
+          <AppRoutes />
+        </ScrollToTop>
+      </Router>
+    </HelmetProvider>
   );
 }

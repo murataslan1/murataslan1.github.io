@@ -1,272 +1,314 @@
 /* ==========================================
-   ABOUT PAGE - BRUTALIST-LUXE STYLE
+   ABOUT PAGE - BLUREN LIGHT STYLE
    ========================================== */
 
-.About-header {
-    padding-top: calc(var(--space-2xl) + 60px);
-    padding-bottom: var(--space-2xl);
-    min-height: 100vh;
+.about-page {
+  min-height: 100vh;
+  padding-top: 120px;
+  padding-bottom: var(--space-3xl);
+  background: var(--color-bg);
 }
 
-/* Section Spacing */
-.sec_sp {
-    margin-bottom: calc(var(--space-xl) + 3vw);
+.about-container {
+  max-width: var(--page-max);
+  margin: 0 auto;
+  padding: 0 var(--space-lg);
 }
 
-/* Page Title */
-.About-header .display-4 {
-    font-family: var(--font-display);
-    font-size: clamp(2.5rem, 6vw, 4rem);
-    font-weight: 800;
-    color: var(--text-color);
-    letter-spacing: -0.02em;
-    opacity: 0;
-    animation: fadeInUp 0.6s ease forwards;
+/* Hero Section */
+.about-hero {
+  text-align: center;
+  margin-bottom: var(--space-3xl);
 }
 
-.About-header .display-4::first-letter {
-    color: var(--primary-color);
+.about-hero__content {
+  max-width: 700px;
+  margin: 0 auto var(--space-2xl);
 }
 
-/* Horizontal Rule - Orange accent */
-.t_border {
-    border: none !important;
-    height: 2px;
-    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color), transparent);
-    opacity: 0;
-    animation: fadeInUp 0.6s ease 0.2s forwards;
+.about-hero__content h1 {
+  margin-bottom: var(--space-lg);
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  color: var(--color-ink);
 }
 
-/* Section Titles */
-.color_sec {
-    color: var(--primary-color) !important;
-    font-family: var(--font-mono);
-    font-size: 0.875rem;
-    text-transform: uppercase;
-    letter-spacing: 0.15em;
-    position: relative;
-    padding-left: var(--space-lg);
+.about-hero__desc {
+  font-size: 1rem;
+  color: var(--color-ink-muted);
+  line-height: 1.6;
 }
 
-.color_sec::before {
-    content: '→';
-    position: absolute;
-    left: 0;
-    color: var(--secondary-color);
-    font-weight: 400;
+.about-stats {
+  display: flex;
+  gap: var(--space-md);
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
-/* About Me Text */
-.About-header p {
-    font-size: 1.125rem;
-    line-height: 1.8;
-    color: var(--text-color-2);
+.about-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: var(--space-xl) var(--space-2xl);
+  min-width: 140px;
+  background: var(--color-surface);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lift);
 }
 
-/* ==========================================
-   WORK TIMELINE - Clean list style
-   ========================================== */
-.table {
-    border-collapse: separate;
-    border-spacing: 0;
+.about-stat__value {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--accent-blue);
+  line-height: 1;
 }
 
-.table td,
-.table th {
-    color: var(--text-color);
-    padding: var(--space-md);
-    border: none;
-    border-bottom: 1px solid var(--border-color);
-    vertical-align: middle;
-    font-family: var(--font-body);
+.about-stat__label {
+  font-size: 0.875rem;
+  color: var(--color-ink-muted);
+  margin-top: var(--space-xs);
 }
 
-.table th {
-    font-family: var(--font-display);
-    color: var(--primary-color);
-    font-weight: 600;
-    position: relative;
-    padding-left: var(--space-xl);
+/* Skills Section */
+.skills-section,
+.progress-section,
+.experience-section,
+.values-section,
+.services-section {
+  margin-bottom: var(--space-3xl);
 }
 
-/* Timeline dot */
-.table th::before {
-    content: '';
-    position: absolute;
-    left: var(--space-md);
-    top: 50%;
-    transform: translateY(-50%);
-    width: 10px;
-    height: 10px;
-    background: var(--primary-color);
-    border-radius: 50%;
+.skills-section h2,
+.progress-section h2,
+.experience-section h2,
+.values-section h2,
+.services-section h2 {
+  margin-bottom: var(--space-xl);
+  color: var(--color-ink);
 }
 
-/* Timeline line */
-.table th::after {
-    content: '';
-    position: absolute;
-    left: calc(var(--space-md) + 4px);
-    top: 0;
-    width: 2px;
-    height: 100%;
-    background: var(--border-color);
-    z-index: -1;
+.mt-section {
+  margin-top: var(--space-2xl);
 }
 
-.table tr:first-child th::after {
-    top: 50%;
-    height: 50%;
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: var(--space-md);
 }
 
-.table tr:last-child th::after {
-    height: 50%;
+.skill-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: var(--space-lg);
+  gap: var(--space-sm);
+  background: var(--color-surface);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lift);
+  transition: all var(--transition-base);
 }
 
-.table td:last-child {
-    color: var(--text-muted);
-    font-family: var(--font-mono);
-    font-size: 0.875rem;
+.skill-card:hover {
+  border-color: var(--glass-border-hover);
+  box-shadow: var(--shadow-soft);
 }
 
-.table tr {
-    transition: var(--transition-fast);
+.skill-card__emoji {
+  font-size: 2rem;
 }
 
-.table tr:hover {
-    background: rgba(255, 107, 53, 0.03);
+.skill-card__name {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-ink);
 }
 
-/* ==========================================
-   SKILLS - Clean Progress Bars
-   ========================================== */
-.progress-title {
-    font-size: 0.875rem;
-    font-weight: 600;
-    margin: var(--space-lg) 0 var(--space-md);
-    font-family: var(--font-body);
-    color: var(--text-color);
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+/* Progress Skills */
+.progress-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+  max-width: 700px;
 }
 
-.progress {
-    height: 4px;
-    background: var(--bg-tertiary);
-    border-radius: 2px;
-    box-shadow: none;
-    margin-bottom: var(--space-md);
-    overflow: hidden;
-    position: relative;
+.progress-item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
 }
 
-.progress .progress-bar {
-    position: relative;
-    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
-    animation: progress-animate 1.5s ease forwards;
-    border-radius: 2px;
+.progress-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.progress .progress-value {
-    position: absolute;
-    top: -28px;
-    right: 0;
-    font-size: 0.75rem;
-    font-weight: 700;
-    font-family: var(--font-mono);
-    color: var(--primary-color);
+.progress-name {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--color-ink);
 }
 
-@keyframes progress-animate {
-    0% {
-        width: 0;
-    }
+.progress-value {
+  font-size: 0.8rem;
+  color: var(--color-ink-muted);
+  font-family: var(--font-mono);
 }
 
-/* ==========================================
-   SERVICES - Brutalist Card Style
-   ========================================== */
-.service_ {
-    background: var(--card-bg);
-    border: 1px solid var(--border-color);
-    border-radius: var(--radius-sm);
+.progress-bar {
+  height: 8px;
+  background: var(--color-bg-2);
+  border: 1px solid var(--glass-border);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: var(--accent-blue);
+  border-radius: 999px;
+}
+
+/* Timeline */
+.timeline {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  max-width: 700px;
+}
+
+.timeline-item {
+  padding: var(--space-lg) var(--space-xl);
+  background: var(--color-surface);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lift);
+}
+
+.timeline-item__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: var(--space-md);
+  margin-bottom: var(--space-xs);
+  flex-wrap: wrap;
+}
+
+.timeline-item__title {
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0;
+  color: var(--color-ink);
+}
+
+.timeline-item__date {
+  font-size: 0.75rem;
+  color: var(--color-ink-muted);
+  font-family: var(--font-mono);
+  background: var(--color-bg-2);
+  padding: 0.25rem 0.75rem;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--glass-border);
+}
+
+.timeline-item__company {
+  font-size: 0.9rem;
+  color: var(--color-ink-muted);
+}
+
+/* Values */
+.values-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--space-md);
+}
+
+.value-card {
+  padding: var(--space-xl);
+  text-align: center;
+  background: var(--color-surface);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lift);
+}
+
+.value-card__emoji {
+  font-size: 2rem;
+  display: block;
+  margin-bottom: var(--space-sm);
+}
+
+.value-card__title {
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0 0 var(--space-xs);
+  color: var(--color-ink);
+}
+
+.value-card__desc {
+  font-size: 0.875rem;
+  color: var(--color-ink-muted);
+  margin: 0;
+}
+
+/* Services */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-md);
+}
+
+.service-card {
+  padding: var(--space-xl);
+  background: var(--color-surface);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lift);
+}
+
+.service-card__title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin: 0 0 var(--space-sm);
+  color: var(--color-ink);
+}
+
+.service-card__desc {
+  font-size: 0.9rem;
+  color: var(--color-ink-muted);
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .about-page {
+    padding-top: 100px;
+  }
+
+  .about-container {
+    padding: 0 var(--space-md);
+  }
+
+  .about-stat {
     padding: var(--space-lg);
-    margin-bottom: var(--space-md);
-    position: relative;
-    overflow: hidden;
-    transition: all 0.3s ease;
-}
+    min-width: 120px;
+  }
 
-/* Left accent bar */
-.service_::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 3px;
-    height: 0;
-    background: var(--primary-color);
-    transition: height 0.3s ease;
-}
+  .about-stat__value {
+    font-size: 1.75rem;
+  }
 
-.service_:hover {
-    border-color: var(--primary-color);
-    transform: translateY(-2px);
-}
+  .skills-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 
-.service_:hover::before {
-    height: 100%;
-}
-
-.service__title {
-    padding: 0 0 var(--space-sm);
-    border-bottom: none;
-    font-family: var(--font-display);
-    font-size: 1.125rem;
-    font-weight: 600;
-    color: var(--text-color);
-    text-transform: uppercase;
-    letter-spacing: 0.03em;
-}
-
-.service_desc {
-    color: var(--text-color-2);
-    font-size: 0.9375rem;
-    line-height: 1.7;
-    margin: 0;
-}
-
-/* ==========================================
-   ANIMATIONS
-   ========================================== */
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(24px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* Stagger animation for sections */
-.sec_sp:nth-child(1) {
-    animation-delay: 0.2s;
-}
-
-.sec_sp:nth-child(2) {
-    animation-delay: 0.4s;
-}
-
-.sec_sp:nth-child(3) {
-    animation-delay: 0.6s;
-}
-
-.sec_sp:nth-child(4) {
-    animation-delay: 0.8s;
+  .timeline-item__header {
+    flex-direction: column;
+    gap: var(--space-xs);
+  }
 }

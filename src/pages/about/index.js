@@ -1,184 +1,205 @@
 import React from "react";
 import "./style.css";
-import { Helmet, HelmetProvider } from "react-helmet-async";
-import { Container, Row, Col } from "react-bootstrap";
-import { motion } from "framer-motion";
 import {
   dataabout,
-  meta,
   worktimeline,
   skills,
   services,
 } from "../../content_option";
+import Seo from "../../components/Seo";
+import { motion } from "framer-motion";
+import { FadeInUp, StaggerContainer, StaggerItem } from "../../components/Motion";
 
-// Animation variants
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.1,
-      delayChildren: 0.2,
-    },
-  },
-};
+const hardSkills = [
+  { emoji: "💻", name: "Web Development" },
+  { emoji: "⚛️", name: "React/Next.js" },
+  { emoji: "📘", name: "TypeScript" },
+  { emoji: "🐹", name: "Go" },
+  { emoji: "🐳", name: "Docker" },
+  { emoji: "☸️", name: "Kubernetes" },
+  { emoji: "🔧", name: "CI/CD" },
+  { emoji: "📊", name: "Databases" },
+];
 
-const itemVariants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.5,
-      ease: [0.4, 0, 0.2, 1],
-    },
-  },
-};
+const softSkills = [
+  { emoji: "💬", name: "Communication" },
+  { emoji: "🧩", name: "Problem-Solving" },
+  { emoji: "🤝", name: "Collaboration" },
+  { emoji: "⏰", name: "Time Management" },
+  { emoji: "🎨", name: "Creativity" },
+  { emoji: "📚", name: "Continuous Learning" },
+];
 
-const progressVariants = {
-  hidden: { width: 0 },
-  visible: (value) => ({
-    width: `${value}%`,
-    transition: {
-      duration: 1.2,
-      ease: [0.4, 0, 0.2, 1],
-      delay: 0.3,
-    },
-  }),
-};
+const values = [
+  { emoji: "✨", title: "Simplicity", desc: "Clarity over complexity" },
+  { emoji: "⚡", title: "Efficiency", desc: "Fast, but never rushed" },
+  { emoji: "♿", title: "Accessibility", desc: "Built for real people" },
+  { emoji: "🎯", title: "Quality", desc: "Code that lasts" },
+];
 
 export const About = () => {
   return (
-    <HelmetProvider>
-      <Container className="About-header">
-        <Helmet>
-          <meta charSet="utf-8" />
-          <title> About | {meta.title}</title>
-          <meta name="description" content={meta.description} />
-        </Helmet>
+    <section className="about-page">
+      <Seo title="About" description={dataabout.aboutme} />
 
-        <motion.div
-          initial="hidden"
-          animate="visible"
-          variants={containerVariants}
-        >
-          <Row className="mb-5 mt-3">
-            <Col lg="8">
-              <motion.h1
-                className="display-4 mb-4"
-                variants={itemVariants}
-              >
-                About me
-              </motion.h1>
-              <motion.hr
-                className="t_border my-4 ml-0 text-left"
-                variants={itemVariants}
-              />
-            </Col>
-          </Row>
+      <div className="about-container">
+        {/* Hero Section */}
+        <div className="about-hero">
+          <FadeInUp className="about-hero__content">
+            <span className="section-title">About Me</span>
+            <h1>I build fast, functional, and elegant experiences</h1>
+            <p className="about-hero__desc">{dataabout.aboutme}</p>
+          </FadeInUp>
 
-          <Row className="sec_sp">
-            <Col lg="5">
-              <motion.h3
-                className="color_sec py-4"
-                variants={itemVariants}
-              >
-                {dataabout.title}
-              </motion.h3>
-            </Col>
-            <Col lg="7" className="d-flex align-items-center">
-              <motion.div variants={itemVariants}>
-                <p>{dataabout.aboutme}</p>
-              </motion.div>
-            </Col>
-          </Row>
+          <FadeInUp delay={0.2} className="about-stats">
+            <div className="about-stat glass-card">
+              <span className="about-stat__value">75+</span>
+              <span className="about-stat__label">PRs Merged</span>
+            </div>
+            <div className="about-stat glass-card">
+              <span className="about-stat__value">30+</span>
+              <span className="about-stat__label">Projects</span>
+            </div>
+            <div className="about-stat glass-card">
+              <span className="about-stat__value">5+</span>
+              <span className="about-stat__label">Years Coding</span>
+            </div>
+          </FadeInUp>
+        </div>
 
-          <Row className="sec_sp">
-            <Col lg="5">
-              <motion.h3
-                className="color_sec py-4"
-                variants={itemVariants}
-              >
-                Work Timeline
-              </motion.h3>
-            </Col>
-            <Col lg="7">
-              <motion.table
-                className="table caption-top"
-                variants={containerVariants}
-              >
-                <tbody>
-                  {worktimeline.map((data, i) => (
-                    <motion.tr key={i} variants={itemVariants}>
-                      <th scope="row">{data.jobtitle}</th>
-                      <td>{data.where}</td>
-                      <td>{data.date}</td>
-                    </motion.tr>
-                  ))}
-                </tbody>
-              </motion.table>
-            </Col>
-          </Row>
+        {/* Skills Section */}
+        <div className="skills-section">
+          <FadeInUp>
+            <span className="section-title">Skills</span>
+            <h2>Hard Skills</h2>
+          </FadeInUp>
+          
+          <StaggerContainer className="skills-grid">
+            {hardSkills.map((skill) => (
+              <StaggerItem key={skill.name}>
+                <motion.div 
+                  className="skill-card glass-card"
+                  whileHover={{ scale: 1.05 }}
+                >
+                  <span className="skill-card__emoji">{skill.emoji}</span>
+                  <span className="skill-card__name">{skill.name}</span>
+                </motion.div>
+              </StaggerItem>
+            ))}
+          </StaggerContainer>
 
-          <Row className="sec_sp">
-            <Col lg="5">
-              <motion.h3
-                className="color_sec py-4"
-                variants={itemVariants}
-              >
-                Skills
-              </motion.h3>
-            </Col>
-            <Col lg="7">
-              <motion.div variants={containerVariants}>
-                {skills.map((data, i) => (
-                  <motion.div key={i} variants={itemVariants}>
-                    <h3 className="progress-title">{data.name}</h3>
-                    <div className="progress">
-                      <motion.div
-                        className="progress-bar"
-                        initial="hidden"
-                        whileInView="visible"
-                        viewport={{ once: true }}
-                        custom={data.value}
-                        variants={progressVariants}
-                      >
-                        <div className="progress-value">{data.value}%</div>
-                      </motion.div>
-                    </div>
-                  </motion.div>
-                ))}
-              </motion.div>
-            </Col>
-          </Row>
+          <FadeInUp className="mt-section">
+            <h2>Soft Skills</h2>
+          </FadeInUp>
 
-          <Row className="sec_sp">
-            <Col lang="5">
-              <motion.h3
-                className="color_sec py-4"
-                variants={itemVariants}
-              >
-                Services
-              </motion.h3>
-            </Col>
-            <Col lg="7">
-              <motion.div variants={containerVariants}>
-                {services.map((data, i) => (
-                  <motion.div
-                    className="service_ py-4"
-                    key={i}
-                    variants={itemVariants}
-                    whileHover={{ x: 10, transition: { duration: 0.2 } }}
-                  >
-                    <h5 className="service__title">{data.title}</h5>
-                    <p className="service_desc">{data.description}</p>
-                  </motion.div>
-                ))}
-              </motion.div>
-            </Col>
-          </Row>
-        </motion.div>
-      </Container>
-    </HelmetProvider>
+          <StaggerContainer className="skills-grid">
+            {softSkills.map((skill) => (
+              <StaggerItem key={skill.name}>
+                <motion.div 
+                  className="skill-card glass-card"
+                  whileHover={{ scale: 1.05 }}
+                >
+                  <span className="skill-card__emoji">{skill.emoji}</span>
+                  <span className="skill-card__name">{skill.name}</span>
+                </motion.div>
+              </StaggerItem>
+            ))}
+          </StaggerContainer>
+        </div>
+
+        {/* Progress Skills */}
+        <div className="progress-section">
+          <FadeInUp>
+            <span className="section-title">Proficiency</span>
+            <h2>Tech Stack</h2>
+          </FadeInUp>
+
+          <div className="progress-list">
+            {skills.map((skill, i) => (
+              <FadeInUp key={skill.name} delay={i * 0.1} className="progress-item">
+                <div className="progress-header">
+                  <span className="progress-name">{skill.name}</span>
+                  <span className="progress-value">{skill.value}%</span>
+                </div>
+                <div className="progress-bar">
+                  <motion.div 
+                    className="progress-fill"
+                    initial={{ width: 0 }}
+                    whileInView={{ width: `${skill.value}%` }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 1, delay: i * 0.1 }}
+                  />
+                </div>
+              </FadeInUp>
+            ))}
+          </div>
+        </div>
+
+        {/* Experience Section */}
+        <div className="experience-section">
+          <FadeInUp>
+            <span className="section-title">Experience</span>
+            <h2>Work History</h2>
+          </FadeInUp>
+
+          <div className="timeline">
+            {worktimeline.map((item, i) => (
+              <FadeInUp key={i} delay={i * 0.1} className="timeline-item glass-card">
+                <div className="timeline-item__header">
+                  <h3 className="timeline-item__title">{item.jobtitle}</h3>
+                  <span className="timeline-item__date">{item.date}</span>
+                </div>
+                <span className="timeline-item__company">{item.where}</span>
+              </FadeInUp>
+            ))}
+          </div>
+        </div>
+
+        {/* Values Section */}
+        <div className="values-section">
+          <FadeInUp>
+            <span className="section-title">Values</span>
+            <h2>My Principles</h2>
+          </FadeInUp>
+
+          <StaggerContainer className="values-grid">
+            {values.map((value) => (
+              <StaggerItem key={value.title}>
+                <motion.div 
+                  className="value-card glass-card"
+                  whileHover={{ scale: 1.02 }}
+                >
+                  <span className="value-card__emoji">{value.emoji}</span>
+                  <h3 className="value-card__title">{value.title}</h3>
+                  <p className="value-card__desc">{value.desc}</p>
+                </motion.div>
+              </StaggerItem>
+            ))}
+          </StaggerContainer>
+        </div>
+
+        {/* Services Section */}
+        <div className="services-section">
+          <FadeInUp>
+            <span className="section-title">Services</span>
+            <h2>What I Offer</h2>
+          </FadeInUp>
+
+          <StaggerContainer className="services-grid">
+            {services.map((service, i) => (
+              <StaggerItem key={i}>
+                <motion.div 
+                  className="service-card glass-card"
+                  whileHover={{ scale: 1.02, borderColor: "rgba(255,255,255,0.15)" }}
+                >
+                  <h3 className="service-card__title">{service.title}</h3>
+                  <p className="service-card__desc">{service.description}</p>
+                </motion.div>
+              </StaggerItem>
+            ))}
+          </StaggerContainer>
+        </div>
+      </div>
+    </section>
   );
 };

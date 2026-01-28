@@ -1,120 +1,93 @@
 /* ==========================================
-   SOCIAL ICONS - FLOATING SIDEBAR
+   SOCIAL ICONS
    ========================================== */
 
 .stick_follow_icon {
-    top: 50%;
-    left: 30px;
-    width: 24px;
-    position: fixed;
-    transform: translateY(-50%);
-    z-index: var(--z-sticky);
+  top: 50%;
+  left: 24px;
+  width: 28px;
+  position: fixed;
+  transform: translateY(-50%);
+  z-index: 300;
 }
 
 .stick_follow_icon ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-md);
-}
-
-.stick_follow_icon svg {
-    width: 1.25em;
-    height: 1.25em;
-    fill: var(--text-muted);
-    transition: all 0.3s ease;
-}
-
-.stick_follow_icon ul li {
-    display: block;
-    text-align: center;
-    transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
 }
 
 .stick_follow_icon ul li a {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 40px;
-    height: 40px;
-    border: 1px solid var(--border-color);
-    border-radius: var(--radius-sm);
-    margin-left: -8px;
-    transition: all 0.3s ease;
+  display: inline-flex;
+  width: 38px;
+  height: 38px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  border: 1px solid var(--color-line);
+  color: var(--color-ink-subtle);
+  transition: all var(--transition-base);
+  background: var(--color-surface);
+  box-shadow: 0 6px 20px rgba(17, 17, 17, 0.08);
 }
 
 .stick_follow_icon ul li a:hover {
-    border-color: var(--primary-color);
-    box-shadow: var(--glow-cyan);
+  color: var(--color-accent);
+  border-color: var(--color-accent);
+  transform: translateY(-2px);
 }
 
-.stick_follow_icon ul li a:hover svg {
-    fill: var(--primary-color);
-    transform: scale(1.1);
-}
-
-/* "Follow Me" Label */
 .stick_follow_icon p {
-    position: relative;
-    color: var(--text-muted);
-    font-size: 0.625rem;
-    font-family: var(--font-mono);
-    font-weight: 600;
-    line-height: 1.2;
-    white-space: nowrap;
-    transform: rotate(-90deg);
-    transform-origin: center;
-    text-transform: uppercase;
-    letter-spacing: 0.2em;
-    margin-top: var(--space-xl);
-    margin-left: -1.5rem;
+  position: relative;
+  color: var(--color-ink-subtle);
+  font-size: 0.6rem;
+  font-family: var(--font-mono);
+  font-weight: 500;
+  line-height: 1.2;
+  white-space: nowrap;
+  transform: rotate(-90deg);
+  transform-origin: center;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  margin-top: var(--space-lg);
+  margin-left: -1.4rem;
 }
 
 .stick_follow_icon p::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    right: -40px;
-    width: 30px;
-    height: 1px;
-    background: linear-gradient(90deg, var(--primary-color), transparent);
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: -40px;
+  width: 32px;
+  height: 1px;
+  background: var(--color-line);
 }
 
-/* ==========================================
-   RESPONSIVE - Mobile Layout
-   ========================================== */
 @media only screen and (max-width: 991px) {
-    .stick_follow_icon {
-        width: 100%;
-        position: static;
-        transform: none;
-        display: flex;
-        flex-direction: row-reverse;
-        justify-content: center;
-        padding: var(--space-xl) 0;
-        align-items: center;
-        gap: var(--space-lg);
-    }
+  .stick_follow_icon {
+    width: 100%;
+    position: static;
+    transform: none;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+    padding: var(--space-xl) 0;
+    align-items: center;
+    gap: var(--space-lg);
+  }
 
-    .stick_follow_icon p {
-        transform: none;
-        font-size: 0.75rem;
-        margin: 0;
-        margin-right: var(--space-md);
-    }
+  .stick_follow_icon p {
+    transform: none;
+    margin: 0;
+    font-size: 0.68rem;
+  }
 
-    .stick_follow_icon p::after {
-        display: none;
-    }
+  .stick_follow_icon p::after {
+    display: none;
+  }
 
-    .stick_follow_icon ul {
-        flex-direction: row;
-        gap: var(--space-sm);
-    }
-
-    .stick_follow_icon ul li a {
-        margin-left: 0;
-    }
+  .stick_follow_icon ul {
+    flex-direction: row;
+    gap: var(--space-sm);
+  }
 }

@@ -1,48 +1,10 @@
 import React, { useState } from "react";
 import * as emailjs from "emailjs-com";
 import "./style.css";
-import { Helmet, HelmetProvider } from "react-helmet-async";
-import { meta } from "../../content_option";
-import { Container, Row, Col, Alert } from "react-bootstrap";
 import { contactConfig } from "../../content_option";
+import Seo from "../../components/Seo";
 import { motion } from "framer-motion";
-
-// Animation variants
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.1,
-      delayChildren: 0.2,
-    },
-  },
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.5,
-      ease: [0.4, 0, 0.2, 1],
-    },
-  },
-};
-
-const formVariants = {
-  hidden: { opacity: 0, x: 30 },
-  visible: {
-    opacity: 1,
-    x: 0,
-    transition: {
-      duration: 0.6,
-      ease: [0.4, 0, 0.2, 1],
-      delay: 0.3,
-    },
-  },
-};
+import { FadeInUp } from "../../components/Motion";
 
 export const ContactUs = () => {
   const [formData, setFormdata] = useState({
@@ -57,7 +19,7 @@ export const ContactUs = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setFormdata({ loading: true });
+    setFormdata((prev) => ({ ...prev, loading: true, show: false }));
 
     const templateParams = {
       from_name: formData.email,
@@ -76,159 +38,169 @@ export const ContactUs = () => {
       .then(
         (result) => {
           console.log(result.text);
-          setFormdata({
+          setFormdata((prev) => ({
+            ...prev,
             loading: false,
             alertmessage: "SUCCESS! Thank you for your message",
             variant: "success",
             show: true,
-          });
+          }));
         },
         (error) => {
           console.log(error.text);
-          setFormdata({
+          setFormdata((prev) => ({
+            ...prev,
+            loading: false,
             alertmessage: `Failed to send! ${error.text}`,
             variant: "danger",
             show: true,
-          });
-          document.getElementsByClassName("co_alert")[0].scrollIntoView();
+          }));
         }
       );
   };
 
   const handleChange = (e) => {
-    setFormdata({
-      ...formData,
+    setFormdata((prev) => ({
+      ...prev,
       [e.target.name]: e.target.value,
-    });
+    }));
   };
 
   return (
-    <HelmetProvider>
-      <Container>
-        <Helmet>
-          <meta charSet="utf-8" />
-          <title>{meta.title} | Contact</title>
-          <meta name="description" content={meta.description} />
-        </Helmet>
+    <section className="contact-page">
+      <Seo title="Contact" description={contactConfig.description} />
+      
+      <div className="contact-container">
+        <FadeInUp className="contact-header">
+          <span className="section-title">Contact</span>
+          <h1>Get in Touch</h1>
+          <p className="contact-intro">{contactConfig.description}</p>
+        </FadeInUp>
 
-        <motion.div
-          initial="hidden"
-          animate="visible"
-          variants={containerVariants}
-        >
-          <Row className="mb-5 mt-3">
-            <Col lg="8">
-              <motion.h1
-                className="display-4 mb-4"
-                variants={itemVariants}
-              >
-                Contact Me
-              </motion.h1>
-              <motion.hr
-                className="t_border my-4 ml-0 text-left"
-                variants={itemVariants}
-              />
-            </Col>
-          </Row>
-
-          <Row className="sec_sp">
-            <Col lg="12">
-              <Alert
-                variant={formData.variant}
-                className={`rounded-0 co_alert ${formData.show ? "d-block" : "d-none"
-                  }`}
-                onClose={() => setFormdata({ show: false })}
-                dismissible
-              >
-                <p className="my-0">{formData.alertmessage}</p>
-              </Alert>
-            </Col>
-
-            <Col lg="5" className="mb-5">
-              <motion.div variants={itemVariants}>
-                <h3 className="color_sec py-4">Get in touch</h3>
-                <address>
-                  <strong>Email:</strong>{" "}
-                  <a href={`mailto:${contactConfig.YOUR_EMAIL}`}>
+        <div className="contact-content">
+          <FadeInUp delay={0.1} className="contact-info">
+            <div className="contact-info__card glass-card">
+              <div className="contact-info__item">
+                <span className="contact-info__emoji">📧</span>
+                <div>
+                  <span className="contact-info__label">Email</span>
+                  <a href={`mailto:${contactConfig.YOUR_EMAIL}`} className="contact-info__value">
                     {contactConfig.YOUR_EMAIL}
                   </a>
-                  <br />
-                  <br />
-                  {contactConfig.hasOwnProperty("YOUR_FONE") &&
-                    contactConfig.YOUR_FONE && (
-                      <p>
-                        <strong>Phone:</strong> {contactConfig.YOUR_FONE}
-                      </p>
-                    )}
-                </address>
-                <p>{contactConfig.description}</p>
-              </motion.div>
-            </Col>
+                </div>
+              </div>
 
-            <Col lg="7" className="d-flex align-items-center">
-              <motion.form
-                onSubmit={handleSubmit}
-                className="contact__form w-100"
-                variants={formVariants}
+              {contactConfig.YOUR_FONE && (
+                <div className="contact-info__item">
+                  <span className="contact-info__emoji">📱</span>
+                  <div>
+                    <span className="contact-info__label">Phone</span>
+                    <span className="contact-info__value">{contactConfig.YOUR_FONE}</span>
+                  </div>
+                </div>
+              )}
+
+              <div className="contact-info__item">
+                <span className="contact-info__emoji">📍</span>
+                <div>
+                  <span className="contact-info__label">Location</span>
+                  <span className="contact-info__value">Ankara, Turkey</span>
+                </div>
+              </div>
+
+              <div className="contact-info__item">
+                <span className="contact-info__emoji">🌐</span>
+                <div>
+                  <span className="contact-info__label">GitHub</span>
+                  <a href="https://github.com/murataslan1" target="_blank" rel="noopener noreferrer" className="contact-info__value">
+                    @murataslan1
+                  </a>
+                </div>
+              </div>
+            </div>
+          </FadeInUp>
+
+          <FadeInUp delay={0.2} className="contact-form-wrapper">
+            {formData.show && (
+              <motion.div 
+                className={`alert alert--${formData.variant}`}
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
               >
-                <Row>
-                  <Col lg="6" className="form-group">
-                    <motion.input
-                      className="form-control"
-                      id="name"
-                      name="name"
-                      placeholder="Name"
-                      value={formData.name || ""}
-                      type="text"
-                      required
-                      onChange={handleChange}
-                      whileFocus={{ scale: 1.02, borderColor: "#ff6b35" }}
-                    />
-                  </Col>
-                  <Col lg="6" className="form-group">
-                    <motion.input
-                      className="form-control rounded-0"
-                      id="email"
-                      name="email"
-                      placeholder="Email"
-                      type="email"
-                      value={formData.email || ""}
-                      required
-                      onChange={handleChange}
-                      whileFocus={{ scale: 1.02, borderColor: "#ff6b35" }}
-                    />
-                  </Col>
-                </Row>
-                <motion.textarea
-                  className="form-control rounded-0"
+                <p>{formData.alertmessage}</p>
+                <button 
+                  type="button" 
+                  onClick={() => setFormdata((prev) => ({ ...prev, show: false }))}
+                  className="alert__close"
+                >
+                  ×
+                </button>
+              </motion.div>
+            )}
+
+            <form onSubmit={handleSubmit} className="contact-form glass-card">
+              <div className="form-row">
+                <div className="form-group">
+                  <label htmlFor="name">Name</label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    placeholder="Your name"
+                    value={formData.name || ""}
+                    required
+                    onChange={handleChange}
+                  />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="email">Email</label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="your@email.com"
+                    value={formData.email || ""}
+                    required
+                    onChange={handleChange}
+                  />
+                </div>
+              </div>
+
+              <div className="form-group">
+                <label htmlFor="message">Message</label>
+                <textarea
                   id="message"
                   name="message"
-                  placeholder="Message"
-                  rows="5"
+                  placeholder="Your message..."
+                  rows="6"
                   value={formData.message}
                   onChange={handleChange}
                   required
-                  whileFocus={{ scale: 1.01, borderColor: "#ff6b35" }}
                 />
-                <br />
-                <Row>
-                  <Col lg="12" className="form-group">
-                    <motion.button
-                      className="btn ac_btn"
-                      type="submit"
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                    >
-                      {formData.loading ? "Sending..." : "Send"}
-                    </motion.button>
-                  </Col>
-                </Row>
-              </motion.form>
-            </Col>
-          </Row>
-        </motion.div>
-      </Container>
-      <div className={formData.loading ? "loading-bar" : "d-none"}></div>
-    </HelmetProvider>
+              </div>
+
+              <motion.button 
+                type="submit" 
+                className="ac_btn ac_btn--primary contact-submit"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                disabled={formData.loading}
+              >
+                {formData.loading ? (
+                  <>
+                    <span className="spinner"></span>
+                    Sending...
+                  </>
+                ) : (
+                  "Send Message"
+                )}
+              </motion.button>
+            </form>
+          </FadeInUp>
+        </div>
+      </div>
+
+      {formData.loading && <div className="loading-overlay"></div>}
+    </section>
   );
 };
