@@ -11,6 +11,21 @@ import {
 import { Link } from "react-router-dom";
 import Seo from "../../components/Seo";
 import { motion } from "framer-motion";
+import {
+  SiReact,
+  SiNextdotjs,
+  SiTypescript,
+  SiNodedotjs,
+  SiGo,
+  SiPython,
+  SiDocker,
+  SiKubernetes,
+  SiGit,
+  SiGithub,
+  SiFigma,
+  SiNotion,
+  SiVisualstudiocode,
+} from "react-icons/si";
 import { FadeInUp } from "../../components/Motion";
 import { Marquee, MarqueeItem } from "../../components/Marquee";
 import { BentoGrid, BentoItem } from "../../components/BentoGrid";
@@ -32,33 +47,102 @@ const techCategories = [
   {
     title: "Frontend",
     items: [
-      { icon: "⚛️", name: "React", desc: "For building fast, interactive UIs" },
-      { icon: "📱", name: "Next.js", desc: "React framework with routing & SSR" },
-      { icon: "📘", name: "TypeScript", desc: "Typed JavaScript for safer code" },
+      {
+        Icon: SiReact,
+        color: "#61DAFB",
+        name: "React",
+        desc: "For building fast, interactive UIs",
+      },
+      {
+        Icon: SiNextdotjs,
+        color: "#000000",
+        colorDark: "#F5F5F5",
+        name: "Next.js",
+        desc: "React framework with routing & SSR",
+      },
+      {
+        Icon: SiTypescript,
+        color: "#3178C6",
+        name: "TypeScript",
+        desc: "Typed JavaScript for safer code",
+      },
     ]
   },
   {
     title: "Backend",
     items: [
-      { icon: "🟢", name: "Node.js", desc: "JavaScript runtime for servers" },
-      { icon: "🐹", name: "Go", desc: "Fast compiled language for APIs" },
-      { icon: "🐍", name: "Python", desc: "Scripting & ML applications" },
+      {
+        Icon: SiNodedotjs,
+        color: "#339933",
+        name: "Node.js",
+        desc: "JavaScript runtime for servers",
+      },
+      {
+        Icon: SiGo,
+        color: "#00ADD8",
+        name: "Go",
+        desc: "Fast compiled language for APIs",
+      },
+      {
+        Icon: SiPython,
+        color: "#3776AB",
+        name: "Python",
+        desc: "Scripting & ML applications",
+      },
     ]
   },
   {
     title: "Tools & DevOps",
     items: [
-      { icon: "🐙", name: "Git & GitHub", desc: "Version control and collaboration" },
-      { icon: "🐳", name: "Docker", desc: "Containers for isolated environments" },
-      { icon: "☸️", name: "Kubernetes", desc: "Container orchestration at scale" },
+      {
+        Icon: SiGit,
+        color: "#F05032",
+        name: "Git",
+        desc: "Version control and collaboration",
+      },
+      {
+        Icon: SiGithub,
+        color: "#181717",
+        colorDark: "#F5F5F5",
+        name: "GitHub",
+        desc: "Open source collaboration",
+      },
+      {
+        Icon: SiDocker,
+        color: "#2496ED",
+        name: "Docker",
+        desc: "Containers for isolated environments",
+      },
+      {
+        Icon: SiKubernetes,
+        color: "#326CE5",
+        name: "Kubernetes",
+        desc: "Container orchestration at scale",
+      },
     ]
   },
   {
     title: "Design & Workflow",
     items: [
-      { icon: "🎨", name: "Figma", desc: "UI/UX design for developers" },
-      { icon: "📝", name: "Notion", desc: "Planning and docs in one place" },
-      { icon: "⚡", name: "VS Code", desc: "Code editor of choice" },
+      {
+        Icon: SiFigma,
+        color: "#F24E1E",
+        name: "Figma",
+        desc: "UI/UX design for developers",
+      },
+      {
+        Icon: SiNotion,
+        color: "#000000",
+        colorDark: "#F5F5F5",
+        name: "Notion",
+        desc: "Planning and docs in one place",
+      },
+      {
+        Icon: SiVisualstudiocode,
+        color: "#007ACC",
+        name: "VS Code",
+        desc: "Code editor of choice",
+      },
     ]
   }
 ];
@@ -281,7 +365,15 @@ export const Home = () => {
                     className="tech-item"
                     whileHover={{ x: 4 }}
                   >
-                    <span className="tech-item__icon">{item.icon}</span>
+                    <span
+                      className="tech-item__icon"
+                      style={{
+                        "--icon-color": item.color,
+                        "--icon-color-dark": item.colorDark || item.color,
+                      }}
+                    >
+                      <item.Icon aria-hidden="true" />
+                    </span>
                     <div className="tech-item__content">
                       <h4 className="tech-item__name">{item.name}</h4>
                       <p className="tech-item__desc">{item.desc}</p>

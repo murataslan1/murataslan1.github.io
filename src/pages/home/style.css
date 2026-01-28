@@ -292,7 +292,16 @@
   justify-content: center;
   background: var(--color-bg-2);
   border-radius: var(--radius-md);
-  font-size: 1.25rem;
+  color: var(--icon-color);
+}
+
+.tech-item__icon svg {
+  width: 22px;
+  height: 22px;
+}
+
+[data-theme="dark"] .tech-item__icon {
+  color: var(--icon-color-dark, var(--icon-color));
 }
 
 .tech-item__name {
