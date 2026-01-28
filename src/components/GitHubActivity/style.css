@@ -13,6 +13,41 @@
   margin-bottom: var(--space-2xl);
 }
 
+.github-activity__meta {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-lg);
+  align-items: center;
+  font-size: 0.75rem;
+  color: var(--color-ink-subtle);
+  margin-bottom: var(--space-xl);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.activity-refresh {
+  background: transparent;
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-full);
+  padding: 0.35rem 0.9rem;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--color-ink-muted);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.activity-refresh:hover {
+  border-color: var(--accent-blue);
+  color: var(--accent-blue);
+}
+
+.activity-refresh:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
 /* Quick Stats */
 .github-quick-stats {
   display: flex;
@@ -68,11 +103,27 @@
   margin-bottom: var(--space-xl);
 }
 
+.activity-feed__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-lg);
+}
+
 .activity-feed__title {
   font-size: 1rem;
   font-weight: 600;
   color: var(--color-ink);
-  margin: 0 0 var(--space-lg);
+  margin: 0;
+}
+
+.activity-feed__note {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--color-ink-subtle);
 }
 
 .activity-list {
@@ -139,6 +190,12 @@
 
 .activity-loading,
 .activity-empty {
+  text-align: center;
+  padding: var(--space-xl);
+  color: var(--color-ink-muted);
+}
+
+.activity-error {
   text-align: center;
   padding: var(--space-xl);
   color: var(--color-ink-muted);

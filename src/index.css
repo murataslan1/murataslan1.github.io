@@ -339,6 +339,107 @@ pre {
 }
 
 /* ==========================================
+   CASE STUDIES
+   ========================================== */
+.case-studies-intro {
+  max-width: 600px;
+  margin: 0 auto var(--space-2xl);
+  color: var(--color-ink-muted);
+  text-align: center;
+  font-size: 0.95rem;
+}
+
+.case-studies-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-lg);
+}
+
+.case-study-card {
+  padding: var(--space-xl);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.case-study-card__header {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+}
+
+.case-study-card__eyebrow {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--color-ink);
+  display: block;
+  margin-bottom: var(--space-xs);
+}
+
+.case-study-card__desc {
+  font-size: 0.9rem;
+  color: var(--color-ink-muted);
+  margin: 0;
+  max-width: 420px;
+}
+
+.case-study-card__badges {
+  display: flex;
+  gap: var(--space-xs);
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.case-study-badge {
+  font-size: 0.7rem;
+  font-weight: 500;
+  padding: 0.25rem 0.6rem;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--glass-border);
+  background: var(--color-bg-2);
+  color: var(--color-ink-subtle);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.case-study-card__list {
+  margin: 0;
+  display: grid;
+  gap: var(--space-sm);
+}
+
+.case-study-card__list div {
+  display: grid;
+  gap: 0.25rem;
+}
+
+.case-study-card__list dt {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--color-ink-subtle);
+  font-weight: 600;
+}
+
+.case-study-card__list dd {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--color-ink);
+}
+
+.case-study-card__link {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--accent-blue);
+  text-decoration: none;
+}
+
+.case-study-card__link:hover {
+  color: var(--accent-blue-light);
+}
+
+/* ==========================================
    CURSOR + SCROLLBAR
    ========================================== */
 .cursor__dot div {

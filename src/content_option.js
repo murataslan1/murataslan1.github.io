@@ -95,6 +95,26 @@ const services = [
   }
 ];
 
+const currentFocus = [
+  {
+    title: "Open Source Impact",
+    desc: "Shipping fixes and features to projects used by millions of developers."
+  },
+  {
+    title: "Cloud Native Systems",
+    desc: "Building reliable services with Go, Kubernetes, and modern infra."
+  },
+  {
+    title: "Developer Experience",
+    desc: "Improving workflows, tooling, and internal platforms."
+  }
+];
+
+const resume = {
+  url: "",
+  label: "Download CV"
+};
+
 const dataportfolio = [
   {
     img: "https://opengraph.githubassets.com/1/cortexlinux/cortex",
@@ -102,7 +122,13 @@ const dataportfolio = [
     desctiption: "Cortex Linux - Implemented Docker Permission Fixer tool (Bounty Hunt) 🚀",
     link: "https://github.com/cortexlinux/cortex/pull/460",
     tags: ["Open Source", "Bounty"],
-    stack: ["Linux", "DevOps"]
+    stack: ["Linux", "DevOps"],
+    featured: true,
+    caseStudy: {
+      problem: "Contributor setup failed due to Docker permission mismatches on Linux.",
+      contribution: "Built a permissions fixer to make local setup predictable and safe.",
+      impact: "Reduced onboarding friction for new contributors and bounty participants."
+    }
   },
   {
     img: "https://opengraph.githubassets.com/1/murataslan1/ai-agent-benchmark",
@@ -110,7 +136,13 @@ const dataportfolio = [
     desctiption: "AI Agent Benchmark - The definitive comparison of AI coding agents (Jan 2026 Data)",
     link: "https://github.com/murataslan1/ai-agent-benchmark",
     tags: ["Research", "AI"],
-    stack: ["Data", "Web"]
+    stack: ["Data", "Web"],
+    featured: true,
+    caseStudy: {
+      problem: "No transparent, reproducible way to compare coding agents.",
+      contribution: "Built a benchmark harness with repeatable tasks and scoring.",
+      impact: "Created a public reference dataset for agent performance discussions."
+    }
   },
   {
     img: "https://opengraph.githubassets.com/1/microsoft/vscode",
@@ -118,7 +150,13 @@ const dataportfolio = [
     desctiption: "VS Code - Contributed test coverage improvements to the repo (165k⭐)",
     link: "https://github.com/microsoft/vscode/pulls?q=author%3Amurataslan1",
     tags: ["Open Source", "Tooling"],
-    stack: ["TypeScript", "Developer Tools"]
+    stack: ["TypeScript", "Developer Tools"],
+    featured: true,
+    caseStudy: {
+      problem: "Regression risk in core extension workflows.",
+      contribution: "Added targeted tests and tightened coverage for key flows.",
+      impact: "Improved reliability for daily developer tooling usage."
+    }
   },
   {
     img: "https://opengraph.githubassets.com/1/mindsdb/mindsdb",
@@ -196,6 +234,8 @@ export {
   worktimeline,
   skills,
   services,
+  currentFocus,
+  resume,
   introdata,
   contactConfig,
   socialprofils,

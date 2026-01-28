@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback, useRef } from "react";
 import { GitHubCalendar } from "react-github-calendar";
 import "./style.css";
 
@@ -12,6 +12,9 @@ const githubTheme = {
 export const GitHubActivity = () => {
   const [activities, setActivities] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [errorMessage, setErrorMessage] = useState("");
+  const [lastUpdated, setLastUpdated] = useState(null);
+  const isMountedRef = useRef(true);
   const [stats, setStats] = useState({
     totalPRs: 0,
     totalCommits: 0,
@@ -19,93 +22,107 @@ export const GitHubActivity = () => {
     repos: 0
   });
 
-  useEffect(() => {
-    const fetchGitHubData = async () => {
-      try {
-        // Fetch recent events
-        const eventsRes = await fetch(
-          `https://api.github.com/users/${GITHUB_USERNAME}/events/public?per_page=30`
-        );
-        const events = await eventsRes.json();
+  const fetchGitHubData = useCallback(async () => {
+    setLoading(true);
+    setErrorMessage("");
 
-        // Fetch user stats
-        const userRes = await fetch(
-          `https://api.github.com/users/${GITHUB_USERNAME}`
-        );
-        const user = await userRes.json();
+    try {
+      const headers = { Accept: "application/vnd.github+json" };
+      const eventsRes = await fetch(
+        `https://api.github.com/users/${GITHUB_USERNAME}/events/public?per_page=100`,
+        { headers, cache: "no-store" }
+      );
+      const events = await eventsRes.json();
 
-        // Process events into readable activities
-        const processedActivities = events
-          .filter(e => ['PushEvent', 'PullRequestEvent', 'IssuesEvent', 'CreateEvent', 'WatchEvent', 'ForkEvent'].includes(e.type))
-          .slice(0, 10)
-          .map(event => {
-            const repo = event.repo.name.replace(`${GITHUB_USERNAME}/`, '');
-            const time = new Date(event.created_at);
-            const timeAgo = getTimeAgo(time);
+      if (!eventsRes.ok) {
+        throw new Error(events?.message || "GitHub events API error");
+      }
 
-            switch (event.type) {
-              case 'PushEvent':
-                const commits = event.payload.commits?.length || 0;
-                return {
-                  icon: '📝',
-                  action: `Pushed ${commits} commit${commits > 1 ? 's' : ''} to`,
-                  repo,
-                  time: timeAgo,
-                  color: 'green'
-                };
-              case 'PullRequestEvent':
-                return {
-                  icon: '🔀',
-                  action: `${event.payload.action} PR in`,
-                  repo,
-                  time: timeAgo,
-                  color: 'purple'
-                };
-              case 'IssuesEvent':
-                return {
-                  icon: '🐛',
-                  action: `${event.payload.action} issue in`,
-                  repo,
-                  time: timeAgo,
-                  color: 'orange'
-                };
-              case 'CreateEvent':
-                return {
-                  icon: '✨',
-                  action: `Created ${event.payload.ref_type} in`,
-                  repo,
-                  time: timeAgo,
-                  color: 'blue'
-                };
-              case 'WatchEvent':
-                return {
-                  icon: '⭐',
-                  action: 'Starred',
-                  repo: event.repo.name,
-                  time: timeAgo,
-                  color: 'yellow'
-                };
-              case 'ForkEvent':
-                return {
-                  icon: '🍴',
-                  action: 'Forked',
-                  repo: event.repo.name,
-                  time: timeAgo,
-                  color: 'cyan'
-                };
-              default:
-                return null;
+      const userRes = await fetch(
+        `https://api.github.com/users/${GITHUB_USERNAME}`,
+        { headers, cache: "no-store" }
+      );
+      const user = await userRes.json();
+
+      if (!userRes.ok) {
+        throw new Error(user?.message || "GitHub user API error");
+      }
+
+      const safeEvents = Array.isArray(events) ? events : [];
+      const processedActivities = safeEvents
+        .filter(e =>
+          ['PushEvent', 'PullRequestEvent', 'IssuesEvent', 'CreateEvent', 'WatchEvent', 'ForkEvent'].includes(e.type)
+        )
+        .slice(0, 10)
+        .map(event => {
+          const repo = event.repo.name.replace(`${GITHUB_USERNAME}/`, '');
+          const time = new Date(event.created_at);
+          const timeAgo = getTimeAgo(time);
+
+          switch (event.type) {
+            case 'PushEvent': {
+              const commits = event.payload.commits?.length || 0;
+              return {
+                icon: '📝',
+                action: `Pushed ${commits} commit${commits > 1 ? 's' : ''} to`,
+                repo,
+                time: timeAgo,
+                color: 'green'
+              };
             }
-          })
-          .filter(Boolean);
+            case 'PullRequestEvent':
+              return {
+                icon: '🔀',
+                action: `${event.payload.action} PR in`,
+                repo,
+                time: timeAgo,
+                color: 'purple'
+              };
+            case 'IssuesEvent':
+              return {
+                icon: '🐛',
+                action: `${event.payload.action} issue in`,
+                repo,
+                time: timeAgo,
+                color: 'orange'
+              };
+            case 'CreateEvent':
+              return {
+                icon: '✨',
+                action: `Created ${event.payload.ref_type} in`,
+                repo,
+                time: timeAgo,
+                color: 'blue'
+              };
+            case 'WatchEvent':
+              return {
+                icon: '⭐',
+                action: 'Starred',
+                repo: event.repo.name,
+                time: timeAgo,
+                color: 'yellow'
+              };
+            case 'ForkEvent':
+              return {
+                icon: '🍴',
+                action: 'Forked',
+                repo: event.repo.name,
+                time: timeAgo,
+                color: 'cyan'
+              };
+            default:
+              return null;
+          }
+        })
+        .filter(Boolean);
 
-        // Count PRs and commits from events
-        const prCount = events.filter(e => e.type === 'PullRequestEvent').length;
-        const commitCount = events
-          .filter(e => e.type === 'PushEvent')
-          .reduce((acc, e) => acc + (e.payload.commits?.length || 0), 0);
-        const issueCount = events.filter(e => e.type === 'IssuesEvent').length;
+      const prCount = safeEvents.filter(e => e.type === 'PullRequestEvent').length;
+      const commitCount = safeEvents
+        .filter(e => e.type === 'PushEvent')
+        .reduce((acc, e) => acc + (e.payload.commits?.length || 0), 0);
+      const issueCount = safeEvents.filter(e => e.type === 'IssuesEvent').length;
 
+      if (isMountedRef.current) {
         setActivities(processedActivities);
         setStats({
           totalPRs: prCount,
@@ -113,15 +130,24 @@ export const GitHubActivity = () => {
           totalIssues: issueCount,
           repos: user.public_repos || 0
         });
-        setLoading(false);
-      } catch (error) {
-        console.error('Error fetching GitHub data:', error);
+        setLastUpdated(new Date());
         setLoading(false);
       }
-    };
-
-    fetchGitHubData();
+    } catch (error) {
+      console.error('Error fetching GitHub data:', error);
+      if (isMountedRef.current) {
+        setErrorMessage(error?.message || "GitHub API error");
+        setLoading(false);
+      }
+    }
   }, []);
+
+  useEffect(() => {
+    fetchGitHubData();
+    return () => {
+      isMountedRef.current = false;
+    };
+  }, [fetchGitHubData]);
 
   const getTimeAgo = (date) => {
     const seconds = Math.floor((new Date() - date) / 1000);
@@ -158,12 +184,28 @@ export const GitHubActivity = () => {
         </div>
         <div className="quick-stat">
           <span className="quick-stat__value">{stats.totalCommits}</span>
-          <span className="quick-stat__label">Recent Commits</span>
+          <span className="quick-stat__label">Commits (last 100 events)</span>
         </div>
         <div className="quick-stat">
           <span className="quick-stat__value">{stats.totalPRs}</span>
-          <span className="quick-stat__label">Recent PRs</span>
+          <span className="quick-stat__label">PRs (last 100 events)</span>
         </div>
+      </div>
+
+      <div className="github-activity__meta">
+        <span>
+          {lastUpdated
+            ? `Last updated ${getTimeAgo(lastUpdated)}`
+            : "Updating..."}
+        </span>
+        <button
+          type="button"
+          onClick={fetchGitHubData}
+          className="activity-refresh"
+          disabled={loading}
+        >
+          Refresh
+        </button>
       </div>
 
       {/* Contribution Calendar */}
@@ -183,9 +225,18 @@ export const GitHubActivity = () => {
 
       {/* Recent Activity Feed */}
       <div className="activity-feed">
-        <h3 className="activity-feed__title">Recent Activity</h3>
+        <div className="activity-feed__header">
+          <h3 className="activity-feed__title">Recent Activity</h3>
+          <span className="activity-feed__note">Last 100 public events</span>
+        </div>
         {loading ? (
           <div className="activity-loading">Loading activities...</div>
+        ) : errorMessage ? (
+          <div className="activity-error">
+            {errorMessage.toLowerCase().includes("rate limit")
+              ? "GitHub rate limit reached. Try again later."
+              : "Unable to load recent activity right now."}
+          </div>
         ) : activities.length > 0 ? (
           <div className="activity-list">
             {activities.map((activity, idx) => (

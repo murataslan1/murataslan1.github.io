@@ -20,6 +20,11 @@
   margin-bottom: var(--space-2xl);
 }
 
+.portfolio-case-studies {
+  margin-bottom: var(--space-3xl);
+  text-align: center;
+}
+
 .portfolio-header h1 {
   margin-bottom: var(--space-md);
   color: var(--color-ink);

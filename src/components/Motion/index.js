@@ -1,5 +1,5 @@
 import React from "react";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 
 // Animation variants
 export const fadeInUp = {
@@ -86,113 +86,139 @@ export const FadeInUp = ({
   className = "", 
   delay = 0,
   ...props 
-}) => (
-  <motion.div
-    initial="hidden"
-    whileInView="visible"
-    viewport={{ once: true, margin: "-50px" }}
-    variants={{
-      hidden: fadeInUp.hidden,
-      visible: {
-        ...fadeInUp.visible,
-        transition: {
-          ...fadeInUp.visible.transition,
-          delay
-        }
-      }
-    }}
-    className={className}
-    {...props}
-  >
-    {children}
-  </motion.div>
-);
+}) => {
+  const prefersReducedMotion = useReducedMotion();
+  const Component = prefersReducedMotion ? "div" : motion.div;
+  const motionProps = prefersReducedMotion
+    ? {}
+    : {
+        initial: "hidden",
+        whileInView: "visible",
+        viewport: { once: true, margin: "-50px" },
+        variants: {
+          hidden: fadeInUp.hidden,
+          visible: {
+            ...fadeInUp.visible,
+            transition: {
+              ...fadeInUp.visible.transition,
+              delay,
+            },
+          },
+        },
+      };
+
+  return (
+    <Component className={className} {...motionProps} {...props}>
+      {children}
+    </Component>
+  );
+};
 
 export const FadeIn = ({ 
   children, 
   className = "", 
   delay = 0,
   ...props 
-}) => (
-  <motion.div
-    initial="hidden"
-    whileInView="visible"
-    viewport={{ once: true, margin: "-50px" }}
-    variants={{
-      hidden: fadeIn.hidden,
-      visible: {
-        ...fadeIn.visible,
-        transition: {
-          ...fadeIn.visible.transition,
-          delay
-        }
-      }
-    }}
-    className={className}
-    {...props}
-  >
-    {children}
-  </motion.div>
-);
+}) => {
+  const prefersReducedMotion = useReducedMotion();
+  const Component = prefersReducedMotion ? "div" : motion.div;
+  const motionProps = prefersReducedMotion
+    ? {}
+    : {
+        initial: "hidden",
+        whileInView: "visible",
+        viewport: { once: true, margin: "-50px" },
+        variants: {
+          hidden: fadeIn.hidden,
+          visible: {
+            ...fadeIn.visible,
+            transition: {
+              ...fadeIn.visible.transition,
+              delay,
+            },
+          },
+        },
+      };
+
+  return (
+    <Component className={className} {...motionProps} {...props}>
+      {children}
+    </Component>
+  );
+};
 
 export const ScaleIn = ({ 
   children, 
   className = "", 
   delay = 0,
   ...props 
-}) => (
-  <motion.div
-    initial="hidden"
-    whileInView="visible"
-    viewport={{ once: true, margin: "-50px" }}
-    variants={{
-      hidden: scaleIn.hidden,
-      visible: {
-        ...scaleIn.visible,
-        transition: {
-          ...scaleIn.visible.transition,
-          delay
-        }
-      }
-    }}
-    className={className}
-    {...props}
-  >
-    {children}
-  </motion.div>
-);
+}) => {
+  const prefersReducedMotion = useReducedMotion();
+  const Component = prefersReducedMotion ? "div" : motion.div;
+  const motionProps = prefersReducedMotion
+    ? {}
+    : {
+        initial: "hidden",
+        whileInView: "visible",
+        viewport: { once: true, margin: "-50px" },
+        variants: {
+          hidden: scaleIn.hidden,
+          visible: {
+            ...scaleIn.visible,
+            transition: {
+              ...scaleIn.visible.transition,
+              delay,
+            },
+          },
+        },
+      };
+
+  return (
+    <Component className={className} {...motionProps} {...props}>
+      {children}
+    </Component>
+  );
+};
 
 export const StaggerContainer = ({ 
   children, 
   className = "",
   fast = false,
   ...props 
-}) => (
-  <motion.div
-    initial="hidden"
-    whileInView="visible"
-    viewport={{ once: true, margin: "-50px" }}
-    variants={fast ? staggerContainerFast : staggerContainer}
-    className={className}
-    {...props}
-  >
-    {children}
-  </motion.div>
-);
+}) => {
+  const prefersReducedMotion = useReducedMotion();
+  const Component = prefersReducedMotion ? "div" : motion.div;
+  const motionProps = prefersReducedMotion
+    ? {}
+    : {
+        initial: "hidden",
+        whileInView: "visible",
+        viewport: { once: true, margin: "-50px" },
+        variants: fast ? staggerContainerFast : staggerContainer,
+      };
+
+  return (
+    <Component className={className} {...motionProps} {...props}>
+      {children}
+    </Component>
+  );
+};
 
 export const StaggerItem = ({ 
   children, 
   className = "",
   ...props 
-}) => (
-  <motion.div
-    variants={fadeInUp}
-    className={className}
-    {...props}
-  >
-    {children}
-  </motion.div>
-);
+}) => {
+  const prefersReducedMotion = useReducedMotion();
+  const Component = prefersReducedMotion ? "div" : motion.div;
+  const motionProps = prefersReducedMotion ? {} : { variants: fadeInUp };
+
+  return (
+    <Component className={className} {...motionProps} {...props}>
+      {children}
+    </Component>
+  );
+};
 
 // Hover animations for cards
 export const hoverScale = {

@@ -71,6 +71,7 @@
 }
 
 /* Skills Section */
+.focus-section,
 .skills-section,
 .progress-section,
 .experience-section,
@@ -80,12 +81,36 @@
 }
 
 .skills-section h2,
+.focus-section h2,
 .progress-section h2,
 .experience-section h2,
 .values-section h2,
 .services-section h2 {
   margin-bottom: var(--space-xl);
   color: var(--color-ink);
+}
+
+.focus-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: var(--space-lg);
+}
+
+.focus-card {
+  padding: var(--space-lg);
+  text-align: left;
+}
+
+.focus-card__title {
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0 0 var(--space-xs);
+}
+
+.focus-card__desc {
+  font-size: 0.9rem;
+  color: var(--color-ink-muted);
+  margin: 0;
 }
 
 .mt-section {

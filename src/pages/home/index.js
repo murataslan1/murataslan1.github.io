@@ -1,6 +1,13 @@
 import React from "react";
 import "./style.css";
-import { introdata, opensourceContributions, contactConfig, socialprofils } from "../../content_option";
+import {
+  introdata,
+  opensourceContributions,
+  contactConfig,
+  socialprofils,
+  dataportfolio,
+  resume,
+} from "../../content_option";
 import { Link } from "react-router-dom";
 import Seo from "../../components/Seo";
 import { motion } from "framer-motion";
@@ -62,6 +69,10 @@ const achievements = [
   { value: "$100+", label: "Bounties Earned", emoji: "🏆" },
   { value: "10+", label: "Countries Reached", emoji: "🌍" },
 ];
+
+const caseStudies = dataportfolio
+  .filter((item) => item.caseStudy)
+  .slice(0, 3);
 
 export const Home = () => {
   return (
@@ -187,6 +198,72 @@ export const Home = () => {
         </BentoGrid>
       </div>
 
+      {/* Case Studies */}
+      {caseStudies.length > 0 && (
+        <div className="case-studies-section">
+          <FadeInUp>
+            <span className="section-title">Case Studies</span>
+            <h2 className="section-heading">Selected Impact</h2>
+            <p className="case-studies-intro">
+              A few recent contributions with the problem, what I shipped, and the
+              outcome.
+            </p>
+          </FadeInUp>
+
+          <div className="case-studies-grid">
+            {caseStudies.map((project, index) => (
+              <FadeInUp
+                key={project.link || project.title}
+                delay={index * 0.1}
+                className="case-study-card glass-card"
+              >
+                <div className="case-study-card__header">
+                  <div>
+                    <span className="case-study-card__eyebrow">
+                      {project.title}
+                    </span>
+                    <p className="case-study-card__desc">
+                      {project.desctiption}
+                    </p>
+                  </div>
+                  <div className="case-study-card__badges">
+                    {(project.tags || []).slice(0, 2).map((tag) => (
+                      <span key={tag} className="case-study-badge">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                <dl className="case-study-card__list">
+                  <div>
+                    <dt>Problem</dt>
+                    <dd>{project.caseStudy.problem}</dd>
+                  </div>
+                  <div>
+                    <dt>Contribution</dt>
+                    <dd>{project.caseStudy.contribution}</dd>
+                  </div>
+                  <div>
+                    <dt>Impact</dt>
+                    <dd>{project.caseStudy.impact}</dd>
+                  </div>
+                </dl>
+
+                <a
+                  className="case-study-card__link"
+                  href={project.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  View Work →
+                </a>
+              </FadeInUp>
+            ))}
+          </div>
+        </div>
+      )}
+
       {/* What I Use Section */}
       <div className="tech-section">
         <FadeInUp>
@@ -254,10 +331,20 @@ export const Home = () => {
           <h2 className="section-heading">Let's Connect</h2>
         </FadeInUp>
 
-        <FadeInUp delay={0.1}>
+        <FadeInUp delay={0.1} className="connect-actions">
           <Link to="/contact" className="ac_btn ac_btn--primary ac_btn--lg">
             Start Project
           </Link>
+          {resume.url && (
+            <a
+              href={resume.url}
+              className="ac_btn ac_btn--ghost ac_btn--lg"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {resume.label}
+            </a>
+          )}
         </FadeInUp>
 
         <div className="connect-cards">

@@ -5,6 +5,7 @@ import {
   worktimeline,
   skills,
   services,
+  currentFocus,
 } from "../../content_option";
 import Seo from "../../components/Seo";
 import { motion } from "framer-motion";
@@ -65,6 +66,25 @@ export const About = () => {
               <span className="about-stat__label">Years Coding</span>
             </div>
           </FadeInUp>
+        </div>
+
+        {/* Current Focus */}
+        <div className="focus-section">
+          <FadeInUp>
+            <span className="section-title">Now</span>
+            <h2>Current Focus</h2>
+          </FadeInUp>
+
+          <StaggerContainer className="focus-grid">
+            {currentFocus.map((focus) => (
+              <StaggerItem key={focus.title}>
+                <motion.div className="focus-card glass-card" whileHover={{ scale: 1.02 }}>
+                  <h3 className="focus-card__title">{focus.title}</h3>
+                  <p className="focus-card__desc">{focus.desc}</p>
+                </motion.div>
+              </StaggerItem>
+            ))}
+          </StaggerContainer>
         </div>
 
         {/* Skills Section */}

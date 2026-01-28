@@ -46,6 +46,11 @@ export const Portfolio = () => {
     [activeTag, activeStack]
   );
 
+  const caseStudies = useMemo(
+    () => dataportfolio.filter((item) => item.caseStudy),
+    []
+  );
+
   return (
     <section className="portfolio-page">
       <Seo title="Portfolio" description={portfolioSummary} />
@@ -59,6 +64,67 @@ export const Portfolio = () => {
           </p>
         </FadeInUp>
 
+        {caseStudies.length > 0 && (
+          <FadeInUp delay={0.05} className="portfolio-case-studies">
+            <span className="section-title">Case Studies</span>
+            <h2>Impact Stories</h2>
+            <p className="portfolio-intro">
+              A closer look at problems, contributions, and outcomes.
+            </p>
+
+            <div className="case-studies-grid">
+              {caseStudies.map((project) => (
+                <article
+                  key={project.link || project.title}
+                  className="case-study-card glass-card"
+                >
+                  <div className="case-study-card__header">
+                    <div>
+                      <span className="case-study-card__eyebrow">
+                        {project.title}
+                      </span>
+                      <p className="case-study-card__desc">
+                        {project.desctiption}
+                      </p>
+                    </div>
+                    <div className="case-study-card__badges">
+                      {(project.tags || []).slice(0, 2).map((tag) => (
+                        <span key={tag} className="case-study-badge">
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+
+                  <dl className="case-study-card__list">
+                    <div>
+                      <dt>Problem</dt>
+                      <dd>{project.caseStudy.problem}</dd>
+                    </div>
+                    <div>
+                      <dt>Contribution</dt>
+                      <dd>{project.caseStudy.contribution}</dd>
+                    </div>
+                    <div>
+                      <dt>Impact</dt>
+                      <dd>{project.caseStudy.impact}</dd>
+                    </div>
+                  </dl>
+
+                  <a
+                    className="case-study-card__link"
+                    href={project.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    View Work →
+                  </a>
+                </article>
+              ))}
+            </div>
+          </FadeInUp>
+        )}
+
         <FadeInUp delay={0.1} className="portfolio-filters">
           <div className="filter-group">
             <span className="filter-label">Focus</span>
@@ -69,6 +135,7 @@ export const Portfolio = () => {
                   type="button"
                   className={`filter-pill ${activeTag === tag ? "is-active" : ""}`}
                   onClick={() => setActiveTag(tag)}
+                  aria-pressed={activeTag === tag}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
@@ -87,6 +154,7 @@ export const Portfolio = () => {
                   type="button"
                   className={`filter-pill ${activeStack === stack ? "is-active" : ""}`}
                   onClick={() => setActiveStack(stack)}
+                  aria-pressed={activeStack === stack}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
@@ -119,7 +187,12 @@ export const Portfolio = () => {
                   }}
                 >
                   <div className="portfolio-card__media">
-                    <img src={data.img} alt={data.desctiption} />
+                    <img
+                      src={data.img}
+                      alt={data.desctiption}
+                      loading="lazy"
+                      decoding="async"
+                    />
                     <div className="portfolio-card__overlay">
                       <a
                         href={data.link}
