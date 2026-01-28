@@ -1,4 +1,4 @@
-const logotext = "MURAT";
+const logotext = "MURAT ASLAN";
 const meta = {
   title: "Murat Aslan | Open Source Developer",
   description:
