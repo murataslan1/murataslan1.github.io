@@ -49,10 +49,37 @@ export const GitHubActivity = () => {
       }
 
       const safeEvents = Array.isArray(events) ? events : [];
-      const processedActivities = safeEvents
+      
+      // Group consecutive pushes to same repo within same hour
+      const groupedEvents = [];
+      let lastPushKey = null;
+      
+      safeEvents
         .filter(e =>
-          ['PushEvent', 'PullRequestEvent', 'IssuesEvent', 'CreateEvent', 'WatchEvent', 'ForkEvent'].includes(e.type)
+          ['PushEvent', 'PullRequestEvent', 'IssuesEvent', 'CreateEvent', 'WatchEvent', 'ForkEvent', 'IssueCommentEvent'].includes(e.type)
         )
+        .forEach(event => {
+          const eventTime = new Date(event.created_at);
+          const hourKey = `${event.type}-${event.repo.name}-${eventTime.toISOString().slice(0, 13)}`;
+          
+          if (event.type === 'PushEvent' && lastPushKey === hourKey && groupedEvents.length > 0) {
+            // Merge with previous push
+            const lastEvent = groupedEvents[groupedEvents.length - 1];
+            if (lastEvent._pushCount) {
+              lastEvent._pushCount += 1;
+            }
+          } else {
+            if (event.type === 'PushEvent') {
+              event._pushCount = 1;
+              lastPushKey = hourKey;
+            } else {
+              lastPushKey = null;
+            }
+            groupedEvents.push(event);
+          }
+        });
+      
+      const processedActivities = groupedEvents
         .slice(0, 10)
         .map(event => {
           const repo = event.repo.name.replace(`${GITHUB_USERNAME}/`, '');
@@ -61,10 +88,10 @@ export const GitHubActivity = () => {
 
           switch (event.type) {
             case 'PushEvent': {
-              const commits = event.payload.commits?.length || 0;
+              const commits = event._pushCount || 1;
               return {
                 icon: '📝',
-                action: `Pushed ${commits} commit${commits > 1 ? 's' : ''} to`,
+                action: commits > 1 ? `${commits} pushes to` : 'Pushed to',
                 repo,
                 time: timeAgo,
                 color: 'green'
@@ -73,7 +100,7 @@ export const GitHubActivity = () => {
             case 'PullRequestEvent':
               return {
                 icon: '🔀',
-                action: `${event.payload.action} PR in`,
+                action: `${event.payload.action === 'opened' ? 'Opened' : event.payload.action} PR in`,
                 repo,
                 time: timeAgo,
                 color: 'purple'
@@ -86,13 +113,21 @@ export const GitHubActivity = () => {
                 time: timeAgo,
                 color: 'orange'
               };
+            case 'IssueCommentEvent':
+              return {
+                icon: '💬',
+                action: 'Commented on',
+                repo,
+                time: timeAgo,
+                color: 'blue'
+              };
             case 'CreateEvent':
               return {
                 icon: '✨',
                 action: `Created ${event.payload.ref_type} in`,
                 repo,
                 time: timeAgo,
-                color: 'blue'
+                color: 'cyan'
               };
             case 'WatchEvent':
               return {
@@ -108,7 +143,7 @@ export const GitHubActivity = () => {
                 action: 'Forked',
                 repo: event.repo.name,
                 time: timeAgo,
-                color: 'cyan'
+                color: 'pink'
               };
             default:
               return null;
@@ -117,9 +152,10 @@ export const GitHubActivity = () => {
         .filter(Boolean);
 
       const prCount = safeEvents.filter(e => e.type === 'PullRequestEvent').length;
+      // Count commits from payload.commits array if available, otherwise count each push as 1 commit
       const commitCount = safeEvents
         .filter(e => e.type === 'PushEvent')
-        .reduce((acc, e) => acc + (e.payload.commits?.length || 0), 0);
+        .reduce((acc, e) => acc + (e.payload.commits?.length || e.payload.size || 1), 0);
       const issueCount = safeEvents.filter(e => e.type === 'IssuesEvent').length;
 
       if (isMountedRef.current) {

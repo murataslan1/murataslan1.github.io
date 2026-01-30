@@ -362,6 +362,46 @@ pre {
   gap: var(--space-lg);
 }
 
+/* Testimonial Quote */
+.case-study-card__testimonial {
+  padding: var(--space-md);
+  background: var(--color-bg-2);
+  border-radius: var(--radius-lg);
+  border-left: 3px solid var(--accent-blue);
+  margin-bottom: var(--space-sm);
+}
+
+.testimonial-quote {
+  font-size: 0.9rem;
+  font-style: italic;
+  color: var(--color-ink);
+  margin: 0 0 var(--space-sm) 0;
+  line-height: 1.5;
+}
+
+.testimonial-author {
+  display: flex;
+  gap: var(--space-xs);
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.testimonial-author__name {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--color-ink);
+}
+
+.testimonial-author__role {
+  font-size: 0.75rem;
+  color: var(--color-ink-muted);
+}
+
+.testimonial-author__role::before {
+  content: "·";
+  margin-right: var(--space-xs);
+}
+
 .case-study-card__header {
   display: flex;
   justify-content: space-between;

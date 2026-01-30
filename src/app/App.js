@@ -9,6 +9,7 @@ import { HelmetProvider } from "react-helmet-async";
 import AppRoutes from "./routes";
 import Headermain from "../header";
 import AnimatedCursor from "react-animated-cursor";
+import { FloatingNav } from "../components/FloatingNav";
 import "./App.css";
 
 function _ScrollToTop(props) {
@@ -37,6 +38,7 @@ export default function App() {
         <ScrollToTop>
           <Headermain />
           <AppRoutes />
+          <FloatingNav />
         </ScrollToTop>
       </Router>
     </HelmetProvider>

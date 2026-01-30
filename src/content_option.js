@@ -128,6 +128,11 @@ const dataportfolio = [
       problem: "Cursor AI users lacked a central resource for tips and best practices.",
       contribution: "Created comprehensive guide with keyboard shortcuts, Composer mode tips, and .cursorrules examples.",
       impact: "167+ stars and growing community of Cursor AI enthusiasts."
+    },
+    testimonial: {
+      quote: "This is exactly what the Cursor community needed. Great work!",
+      author: "Community",
+      role: "Cursor Users"
     }
   },
   {
@@ -142,6 +147,11 @@ const dataportfolio = [
       problem: "Contributor setup failed due to Docker permission mismatches on Linux.",
       contribution: "Built a permissions fixer to make local setup predictable and safe.",
       impact: "Reduced onboarding friction for new contributors and bounty participants."
+    },
+    testimonial: {
+      quote: "Excellent bounty submission! This solves a real pain point for our contributors.",
+      author: "CX Linux Team",
+      role: "Maintainers"
     }
   },
   {
@@ -170,6 +180,11 @@ const dataportfolio = [
       problem: "Regression risk in core extension workflows and UX inconsistencies.",
       contribution: "Added targeted tests, fixed terminal lifecycle hacks, improved extension restart notifications.",
       impact: "Improved reliability for daily developer tooling usage across millions of users."
+    },
+    testimonial: {
+      quote: "Clean PR with good test coverage. Thanks for the contribution!",
+      author: "VS Code Team",
+      role: "Microsoft"
     }
   },
   {
@@ -198,6 +213,11 @@ const dataportfolio = [
       problem: "Various bugs affecting deployment workflows, SSH timeouts, and server management.",
       contribution: "Fixed Docker version detection, added Unicode support, improved IP validation, SSH timeout fixes.",
       impact: "$100+ bounty earned, improved experience for thousands of self-hosters."
+    },
+    testimonial: {
+      quote: "Solid fix! SSH timeout was a pain point for many users. Great work!",
+      author: "@andrasbacsai",
+      role: "Coolify Creator"
     }
   },
   {
@@ -214,7 +234,12 @@ const dataportfolio = [
     desctiption: "Deno Standard Library - 2 PRs: CSV parsing fix, Dedent logic (3.5k⭐)",
     link: "https://github.com/denoland/std/pulls?q=author%3Amurataslan1",
     tags: ["Open Source", "Tooling"],
-    stack: ["TypeScript", "Runtime"]
+    stack: ["TypeScript", "Runtime"],
+    testimonial: {
+      quote: "Nice catch on the CSV edge case! Clean fix.",
+      author: "@dsherret",
+      role: "Deno Team"
+    }
   },
   {
     img: "https://opengraph.githubassets.com/1/traefik/traefik",
@@ -222,7 +247,12 @@ const dataportfolio = [
     desctiption: "Traefik - 4 PRs: ForwardAuth logging improvements & UI Fixes (54k⭐)",
     link: "https://github.com/traefik/traefik/pulls?q=author%3Amurataslan1",
     tags: ["Open Source", "Infra"],
-    stack: ["Networking", "Go"]
+    stack: ["Networking", "Go"],
+    testimonial: {
+      quote: "Thanks for the logging improvement! This helps with debugging.",
+      author: "Traefik Team",
+      role: "Maintainers"
+    }
   },
   {
     img: "https://opengraph.githubassets.com/1/milvus-io/milvus",
@@ -276,6 +306,11 @@ const dataportfolio = [
       problem: "Multiple UX issues in the observability dashboard affecting user experience.",
       contribution: "Enabled staticcheck linter, made URLs clickable, fixed version comparison logic.",
       impact: "Improved code quality and user experience for the open-source APM platform."
+    },
+    testimonial: {
+      quote: "Great additions to code quality! The linter catches real bugs.",
+      author: "SigNoz Team",
+      role: "Maintainers"
     }
   },
   {

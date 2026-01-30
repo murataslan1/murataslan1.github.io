@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useRef, useEffect } from "react";
 import "./style.css";
 import {
   introdata,
@@ -182,9 +182,234 @@ const achievements = [
   { value: "10+", label: "Countries Reached", emoji: "🌍" },
 ];
 
-const caseStudies = dataportfolio
-  .filter((item) => item.caseStudy)
-  .slice(0, 3);
+const caseStudies = dataportfolio.filter((item) => item.caseStudy);
+
+// Animated Number Component
+const AnimatedNumber = ({ value, duration = 2 }) => {
+  const [displayValue, setDisplayValue] = useState(0);
+  const [hasAnimated, setHasAnimated] = useState(false);
+  const ref = useRef(null);
+  
+  // Parse the value to extract number and suffix (e.g., "75+" -> 75, "+")
+  const parseValue = (val) => {
+    const str = String(val);
+    const match = str.match(/^(\$?)(\d+)(.*)$/);
+    if (match) {
+      return { prefix: match[1], number: parseInt(match[2], 10), suffix: match[3] };
+    }
+    return { prefix: '', number: 0, suffix: str };
+  };
+  
+  const { prefix, number, suffix } = parseValue(value);
+  
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !hasAnimated) {
+          setHasAnimated(true);
+          let start = 0;
+          const end = number;
+          const stepTime = Math.abs(Math.floor((duration * 1000) / end));
+          const timer = setInterval(() => {
+            start += Math.ceil(end / 50);
+            if (start >= end) {
+              setDisplayValue(end);
+              clearInterval(timer);
+            } else {
+              setDisplayValue(start);
+            }
+          }, stepTime);
+          return () => clearInterval(timer);
+        }
+      },
+      { threshold: 0.5 }
+    );
+    
+    if (ref.current) {
+      observer.observe(ref.current);
+    }
+    
+    return () => observer.disconnect();
+  }, [number, duration, hasAnimated]);
+  
+  return (
+    <span ref={ref}>
+      {prefix}{displayValue}{suffix}
+    </span>
+  );
+};
+
+// Parallax Slider Component for Case Studies
+const CaseStudiesCarousel = ({ caseStudies }) => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [direction, setDirection] = useState(0);
+  const containerRef = useRef(null);
+
+  const slideVariants = {
+    enter: (direction) => ({
+      x: direction > 0 ? 1000 : -1000,
+      opacity: 0,
+      scale: 0.8,
+    }),
+    center: {
+      zIndex: 1,
+      x: 0,
+      opacity: 1,
+      scale: 1,
+    },
+    exit: (direction) => ({
+      zIndex: 0,
+      x: direction < 0 ? 1000 : -1000,
+      opacity: 0,
+      scale: 0.8,
+    }),
+  };
+
+  const swipeConfidenceThreshold = 10000;
+  const swipePower = (offset, velocity) => {
+    return Math.abs(offset) * velocity;
+  };
+
+  const paginate = (newDirection) => {
+    setDirection(newDirection);
+    setCurrentIndex((prev) => {
+      let next = prev + newDirection;
+      if (next < 0) next = caseStudies.length - 1;
+      if (next >= caseStudies.length) next = 0;
+      return next;
+    });
+  };
+
+  // Auto-slide every 5 seconds
+  useEffect(() => {
+    const timer = setInterval(() => {
+      paginate(1);
+    }, 5000);
+    return () => clearInterval(timer);
+  }, [currentIndex]);
+
+  const project = caseStudies[currentIndex];
+
+  return (
+    <div className="case-studies-section">
+      <FadeInUp>
+        <span className="section-title">Case Studies</span>
+        <h2 className="section-heading">Selected Impact</h2>
+        <p className="case-studies-intro">
+          A few recent contributions with the problem, what I shipped, and the outcome.
+        </p>
+      </FadeInUp>
+
+      <div className="carousel-container" ref={containerRef}>
+        <motion.div
+          className="carousel-track"
+          key={currentIndex}
+          custom={direction}
+          variants={slideVariants}
+          initial="enter"
+          animate="center"
+          exit="exit"
+          transition={{
+            x: { type: "spring", stiffness: 300, damping: 30 },
+            opacity: { duration: 0.2 },
+            scale: { duration: 0.4 },
+          }}
+          drag="x"
+          dragConstraints={{ left: 0, right: 0 }}
+          dragElastic={1}
+          onDragEnd={(e, { offset, velocity }) => {
+            const swipe = swipePower(offset.x, velocity.x);
+            if (swipe < -swipeConfidenceThreshold) {
+              paginate(1);
+            } else if (swipe > swipeConfidenceThreshold) {
+              paginate(-1);
+            }
+          }}
+        >
+          <div className="case-study-card glass-card carousel-card">
+            {/* Testimonial Quote */}
+            {project.testimonial && (
+              <div className="case-study-card__testimonial">
+                <p className="testimonial-quote">"{project.testimonial.quote}"</p>
+                <div className="testimonial-author">
+                  <span className="testimonial-author__name">{project.testimonial.author}</span>
+                  <span className="testimonial-author__role">{project.testimonial.role}</span>
+                </div>
+              </div>
+            )}
+
+            <div className="case-study-card__header">
+              <div>
+                <span className="case-study-card__eyebrow">{project.title}</span>
+                <p className="case-study-card__desc">{project.desctiption}</p>
+              </div>
+              <div className="case-study-card__badges">
+                {(project.tags || []).slice(0, 2).map((tag) => (
+                  <span key={tag} className="case-study-badge">{tag}</span>
+                ))}
+              </div>
+            </div>
+
+            <dl className="case-study-card__list">
+              <div>
+                <dt>Problem</dt>
+                <dd>{project.caseStudy.problem}</dd>
+              </div>
+              <div>
+                <dt>Contribution</dt>
+                <dd>{project.caseStudy.contribution}</dd>
+              </div>
+              <div>
+                <dt>Impact</dt>
+                <dd>{project.caseStudy.impact}</dd>
+              </div>
+            </dl>
+
+            <a
+              className="case-study-card__link"
+              href={project.link}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              View Work →
+            </a>
+          </div>
+        </motion.div>
+
+        {/* Navigation Arrows */}
+        <button
+          className="carousel-nav carousel-nav--prev"
+          onClick={() => paginate(-1)}
+          aria-label="Previous"
+        >
+          ←
+        </button>
+        <button
+          className="carousel-nav carousel-nav--next"
+          onClick={() => paginate(1)}
+          aria-label="Next"
+        >
+          →
+        </button>
+
+        {/* Dots Indicator */}
+        <div className="carousel-dots">
+          {caseStudies.map((_, idx) => (
+            <button
+              key={idx}
+              className={`carousel-dot ${idx === currentIndex ? 'carousel-dot--active' : ''}`}
+              onClick={() => {
+                setDirection(idx > currentIndex ? 1 : -1);
+                setCurrentIndex(idx);
+              }}
+              aria-label={`Go to slide ${idx + 1}`}
+            />
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+};
 
 export const Home = () => {
   return (
@@ -323,68 +548,7 @@ export const Home = () => {
 
       {/* Case Studies */}
       {caseStudies.length > 0 && (
-        <div className="case-studies-section">
-          <FadeInUp>
-            <span className="section-title">Case Studies</span>
-            <h2 className="section-heading">Selected Impact</h2>
-            <p className="case-studies-intro">
-              A few recent contributions with the problem, what I shipped, and the
-              outcome.
-            </p>
-          </FadeInUp>
-
-          <div className="case-studies-grid">
-            {caseStudies.map((project, index) => (
-              <FadeInUp
-                key={project.link || project.title}
-                delay={index * 0.1}
-                className="case-study-card glass-card"
-              >
-                <div className="case-study-card__header">
-                  <div>
-                    <span className="case-study-card__eyebrow">
-                      {project.title}
-                    </span>
-                    <p className="case-study-card__desc">
-                      {project.desctiption}
-                    </p>
-                  </div>
-                  <div className="case-study-card__badges">
-                    {(project.tags || []).slice(0, 2).map((tag) => (
-                      <span key={tag} className="case-study-badge">
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-
-                <dl className="case-study-card__list">
-                  <div>
-                    <dt>Problem</dt>
-                    <dd>{project.caseStudy.problem}</dd>
-                  </div>
-                  <div>
-                    <dt>Contribution</dt>
-                    <dd>{project.caseStudy.contribution}</dd>
-                  </div>
-                  <div>
-                    <dt>Impact</dt>
-                    <dd>{project.caseStudy.impact}</dd>
-                  </div>
-                </dl>
-
-                <a
-                  className="case-study-card__link"
-                  href={project.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  View Work →
-                </a>
-              </FadeInUp>
-            ))}
-          </div>
-        </div>
+        <CaseStudiesCarousel caseStudies={caseStudies} />
       )}
 
       {/* What I Use Section */}
@@ -447,7 +611,9 @@ export const Home = () => {
             >
               <div className="achievement-card__avatar" style={{ backgroundImage: `url(${introdata.your_img_url})` }} />
               <div className="achievement-card__content">
-                <span className="achievement-card__value">{item.value}</span>
+                <span className="achievement-card__value">
+                  <AnimatedNumber value={item.value} duration={1.5} />
+                </span>
                 <span className="achievement-card__label">{item.label}</span>
               </div>
             </motion.div>
@@ -520,7 +686,7 @@ export const Home = () => {
         </div>
 
         <div className="footer-bottom">
-          <span>© 2024, Murat Aslan</span>
+          <span>© 2026, Murat Aslan</span>
           <button onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="back-to-top">
             Back to Top
           </button>
