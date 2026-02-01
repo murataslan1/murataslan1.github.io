@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect, useLayoutEffect } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import "./style.css";
 import {
   introdata,
@@ -12,6 +12,7 @@ import { Link } from "react-router-dom";
 import Seo from "../../components/Seo";
 import { motion } from "framer-motion";
 import { gsap } from "gsap";
+import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import {
   SiReact,
@@ -416,104 +417,193 @@ const CaseStudiesCarousel = ({ caseStudies }) => {
   );
 };
 
+// Scroll Progress Bar Component
+const ScrollProgress = () => {
+  const progressRef = useRef(null);
+  
+  useGSAP(() => {
+    gsap.to(progressRef.current, {
+      scaleX: 1,
+      ease: "none",
+      scrollTrigger: {
+        trigger: "body",
+        start: "top top",
+        end: "bottom bottom",
+        scrub: 0.3,
+      },
+    });
+  });
+
+  return (
+    <div 
+      ref={progressRef}
+      className="scroll-progress"
+      style={{
+        position: "fixed",
+        top: 0,
+        left: 0,
+        right: 0,
+        height: "3px",
+        background: "linear-gradient(90deg, #667eea 0%, #764ba2 50%, #f093fb 100%)",
+        transformOrigin: "left",
+        transform: "scaleX(0)",
+        zIndex: 9999,
+      }}
+    />
+  );
+};
+
 export const Home = () => {
-  const heroRef = useRef(null);
+  const containerRef = useRef(null);
   const bentoRef = useRef(null);
   const techRef = useRef(null);
   const achievementsRef = useRef(null);
 
-  // GSAP Animations
-  useLayoutEffect(() => {
-    const ctx = gsap.context(() => {
-      // Hero parallax effect
-      gsap.to(".hero__avatar", {
-        yPercent: -20,
-        ease: "none",
-        scrollTrigger: {
-          trigger: ".hero",
-          start: "top top",
-          end: "bottom top",
-          scrub: true,
-        },
-      });
+  // GSAP Animations with useGSAP hook
+  useGSAP(() => {
+    // Multi-layer Hero parallax effect
+    gsap.to(".hero__avatar", {
+      yPercent: -30,
+      scale: 0.95,
+      ease: "none",
+      scrollTrigger: {
+        trigger: ".hero",
+        start: "top top",
+        end: "bottom top",
+        scrub: true,
+      },
+    });
 
-      // Bento cards staggered animation
-      gsap.from(".bento-item", {
-        opacity: 0,
-        y: 60,
-        scale: 0.95,
-        duration: 0.8,
-        stagger: 0.1,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: ".home-bento",
-          start: "top 80%",
-          toggleActions: "play none none reverse",
-        },
-      });
+    // Hero title parallax (slower)
+    gsap.to(".hero__title", {
+      yPercent: -15,
+      opacity: 0.3,
+      ease: "none",
+      scrollTrigger: {
+        trigger: ".hero",
+        start: "top top",
+        end: "bottom top",
+        scrub: true,
+      },
+    });
 
-      // Tech categories slide in
-      gsap.from(".tech-category", {
-        opacity: 0,
-        x: -40,
-        duration: 0.6,
-        stagger: 0.15,
-        ease: "power2.out",
-        scrollTrigger: {
-          trigger: ".tech-section",
-          start: "top 75%",
-          toggleActions: "play none none reverse",
-        },
-      });
+    // Hero buttons parallax (even slower)
+    gsap.to(".hero__actions", {
+      yPercent: -8,
+      opacity: 0.5,
+      ease: "none",
+      scrollTrigger: {
+        trigger: ".hero",
+        start: "top top",
+        end: "bottom top",
+        scrub: true,
+      },
+    });
 
-      // Achievement cards pop in
-      gsap.from(".achievement-card", {
-        opacity: 0,
-        scale: 0.8,
-        y: 30,
-        duration: 0.5,
-        stagger: 0.1,
-        ease: "back.out(1.7)",
-        scrollTrigger: {
-          trigger: ".achievements-section",
-          start: "top 80%",
-          toggleActions: "play none none reverse",
-        },
-      });
-
-      // Section headings reveal
-      gsap.utils.toArray(".section-heading").forEach((heading) => {
-        gsap.from(heading, {
+    // Batch animation for Bento cards (more performant)
+    ScrollTrigger.batch(".bento-item", {
+      onEnter: (elements) => {
+        gsap.from(elements, {
           opacity: 0,
-          y: 30,
+          y: 60,
+          scale: 0.95,
           duration: 0.8,
+          stagger: 0.1,
           ease: "power3.out",
-          scrollTrigger: {
-            trigger: heading,
-            start: "top 85%",
-            toggleActions: "play none none reverse",
-          },
         });
-      });
+      },
+      start: "top 85%",
+      once: true,
+    });
 
-      // Connect section cards
-      gsap.from(".connect-card", {
+    // Batch animation for Tech items
+    ScrollTrigger.batch(".tech-item", {
+      onEnter: (elements) => {
+        gsap.from(elements, {
+          opacity: 0,
+          x: -30,
+          duration: 0.5,
+          stagger: 0.05,
+          ease: "power2.out",
+        });
+      },
+      start: "top 85%",
+      once: true,
+    });
+
+    // Tech categories slide in with stagger
+    gsap.from(".tech-category", {
+      opacity: 0,
+      x: -40,
+      duration: 0.6,
+      stagger: 0.15,
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: ".tech-section",
+        start: "top 75%",
+        toggleActions: "play none none none",
+      },
+    });
+
+    // Achievement cards with batch
+    ScrollTrigger.batch(".achievement-card", {
+      onEnter: (elements) => {
+        gsap.from(elements, {
+          opacity: 0,
+          scale: 0.8,
+          y: 30,
+          duration: 0.6,
+          stagger: 0.1,
+          ease: "back.out(1.7)",
+        });
+      },
+      start: "top 85%",
+      once: true,
+    });
+
+    // Section headings reveal with clip-path
+    gsap.utils.toArray(".section-heading").forEach((heading) => {
+      gsap.from(heading, {
         opacity: 0,
         y: 40,
-        duration: 0.6,
-        stagger: 0.2,
-        ease: "power2.out",
+        clipPath: "inset(100% 0% 0% 0%)",
+        duration: 1,
+        ease: "power4.out",
         scrollTrigger: {
-          trigger: ".connect-section",
-          start: "top 75%",
-          toggleActions: "play none none reverse",
+          trigger: heading,
+          start: "top 85%",
+          toggleActions: "play none none none",
         },
       });
+    });
 
-    }, heroRef);
+    // Connect section cards
+    gsap.from(".connect-card", {
+      opacity: 0,
+      y: 40,
+      rotateX: 15,
+      duration: 0.7,
+      stagger: 0.15,
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: ".connect-section",
+        start: "top 75%",
+        toggleActions: "play none none none",
+      },
+    });
 
-    return () => ctx.revert();
-  }, []);
+    // Marquee speed change on scroll
+    gsap.to(".marquee-track", {
+      "--marquee-speed": "15s",
+      scrollTrigger: {
+        trigger: ".marquee-section",
+        start: "top bottom",
+        end: "bottom top",
+        scrub: 1,
+      },
+    });
+
+  }, { scope: containerRef });
 
   // Magnetic button effect
   useEffect(() => {
@@ -561,7 +651,8 @@ export const Home = () => {
   }, []);
 
   return (
-    <section id="home" className="home" ref={heroRef}>
+    <section id="home" className="home" ref={containerRef}>
+      <ScrollProgress />
       <Seo description={introdata.description} />
 
       {/* Hero Section */}

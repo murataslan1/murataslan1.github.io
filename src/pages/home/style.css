@@ -2,10 +2,25 @@
    HOME PAGE - BLUREN STYLE
    ========================================== */
 
+/* Scroll Progress Bar */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+  transform-origin: left;
+  transform: scaleX(0);
+  z-index: 9999;
+  pointer-events: none;
+}
+
 .home {
   min-height: 100vh;
   padding-top: 100px;
   background: var(--color-bg);
+  overflow-x: hidden;
 }
 
 /* Hero Section */
