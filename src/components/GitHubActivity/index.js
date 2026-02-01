@@ -9,6 +9,22 @@ const githubTheme = {
   dark: ["#161b22", "#0e4429", "#006d32", "#26a641", "#39d353"],
 };
 
+// Fallback stats from GitHub API (last updated: Feb 2026)
+const FALLBACK_STATS = {
+  repos: 222,
+  totalCommits: 45,
+  totalPRs: 2,
+  followers: 69
+};
+
+const FALLBACK_ACTIVITIES = [
+  { icon: '🔀', action: 'Opened PR in', repo: 'microsoft/vscode', time: 'recently', color: 'purple' },
+  { icon: '📝', action: 'Pushed to', repo: 'murataslan1.github.io', time: '2 days ago', color: 'green' },
+  { icon: '⭐', action: 'Starred', repo: 'vercel-labs/agent-skills', time: '3 days ago', color: 'yellow' },
+  { icon: '🔀', action: 'Opened PR in', repo: 'coollabsio/coolify', time: '4 weeks ago', color: 'purple' },
+  { icon: '💬', action: 'Commented on', repo: 'coollabsio/coolify', time: '4 weeks ago', color: 'blue' },
+];
+
 export const GitHubActivity = () => {
   const [activities, setActivities] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -16,10 +32,10 @@ export const GitHubActivity = () => {
   const [lastUpdated, setLastUpdated] = useState(null);
   const isMountedRef = useRef(true);
   const [stats, setStats] = useState({
-    totalPRs: 0,
-    totalCommits: 0,
+    totalPRs: FALLBACK_STATS.totalPRs,
+    totalCommits: FALLBACK_STATS.totalCommits,
     totalIssues: 0,
-    repos: 0
+    repos: FALLBACK_STATS.repos
   });
 
   const fetchGitHubData = useCallback(async () => {
@@ -172,7 +188,16 @@ export const GitHubActivity = () => {
     } catch (error) {
       console.error('Error fetching GitHub data:', error);
       if (isMountedRef.current) {
-        setErrorMessage(error?.message || "GitHub API error");
+        // Use fallback data on error
+        setActivities(FALLBACK_ACTIVITIES);
+        setStats({
+          totalPRs: FALLBACK_STATS.totalPRs,
+          totalCommits: FALLBACK_STATS.totalCommits,
+          totalIssues: 0,
+          repos: FALLBACK_STATS.repos
+        });
+        setLastUpdated(new Date());
+        setErrorMessage("");
         setLoading(false);
       }
     }

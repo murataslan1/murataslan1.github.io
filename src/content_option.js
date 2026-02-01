@@ -2,7 +2,7 @@ const logotext = "MURAT ASLAN";
 const meta = {
   title: "Murat Aslan | Open Source Developer",
   description:
-    "Full Stack Developer & Open Source Contributor with 105+ PRs to major projects like VS Code, Coolify, SigNoz, Traefik, Milvus, and more.",
+    "Full Stack Developer & Open Source Contributor with 26+ merged PRs to major projects like VS Code, Coolify, LangChain, Traefik, Deno, and more.",
   siteUrl: "https://murataslan1.github.io/",
   image: "https://media.licdn.com/dms/image/v2/D4D03AQEtN-l5vaagwA/profile-displayphoto-shrink_400_400/B4DZX7VVchG8Ag-/0/1743678430029?e=1771459200&v=beta&t=ltnrcKA62_7n5JTiFpnq0q0zKH-ZSOxDd_TYjWeGTig",
   role: "Full Stack Developer",
@@ -13,19 +13,19 @@ const introdata = {
   title: "I'm Murat Aslan",
   animated: {
     first: "Open Source Contributor 🚀",
-    second: "105+ PRs to Major Projects",
-    third: "Microsoft | Meta | Deno | SigNoz",
+    second: "26+ Merged PRs to Major Projects",
+    third: "Microsoft | LangChain | Deno | Coolify",
     fourth: "Full Stack Developer"
   },
   description:
-    "Passionate open source contributor with 105+ pull requests to 35+ major projects including VS Code (165k⭐), Coolify (40k⭐), Traefik (54k⭐), SigNoz, Milvus, and more. Full stack developer specializing in TypeScript, Go, and Cloud Native technologies.",
+    "Passionate open source contributor with 26+ merged pull requests to major projects including VS Code (165k⭐), Coolify (40k⭐), LangChain.js, Traefik (54k⭐), Deno, Trivy, and more. Full stack developer with 222 public repos, specializing in TypeScript, Go, and Cloud Native technologies.",
   your_img_url: "https://media.licdn.com/dms/image/v2/D4D03AQEtN-l5vaagwA/profile-displayphoto-shrink_400_400/B4DZX7VVchG8Ag-/0/1743678430029?e=1771459200&v=beta&t=ltnrcKA62_7n5JTiFpnq0q0zKH-ZSOxDd_TYjWeGTig"
 };
 
 const dataabout = {
   title: "About Me",
   aboutme:
-    "I'm a passionate Full Stack Developer and Open Source enthusiast based in Ankara, Turkey. I believe in the power of open source to drive innovation and collaboration. As of January 2026, I've contributed 105+ pull requests to major projects like VS Code, SigNoz, MindsDB, Coolify, and many more. I love finding bugs, improving documentation, and adding new features to projects that millions of developers use daily."
+    "I'm a passionate Full Stack Developer and Open Source enthusiast based in Ankara, Turkey. I believe in the power of open source to drive innovation and collaboration. As of February 2026, I've contributed 26+ merged pull requests to major projects like VS Code, LangChain.js, Coolify, Deno, Traefik, Trivy, and many more. With 222 public repositories and 69 followers, I love finding bugs, improving documentation, and adding new features to projects that millions of developers use daily."
 };
 
 const worktimeline = [
@@ -81,7 +81,7 @@ const services = [
   {
     title: "Open Source Contributions",
     description:
-      "105+ PRs to major projects: VS Code (165k⭐), Coolify (40k⭐), SigNoz, Traefik (54k⭐), Milvus (32k⭐), and more."
+      "26+ merged PRs to major projects: VS Code (165k⭐), Coolify (40k⭐), LangChain.js, Traefik (54k⭐), Deno, Trivy, and more."
   },
   {
     title: "Full Stack Development",
@@ -119,7 +119,7 @@ const dataportfolio = [
   {
     img: "https://opengraph.githubassets.com/1/murataslan1/cursor-ai-tips",
     title: "Cursor AI Tips",
-    desctiption: "Cursor AI IDE tips, tricks & best practices - 167⭐ community resource",
+    desctiption: "Cursor AI IDE tips, tricks & best practices - 169⭐ community resource",
     link: "https://github.com/murataslan1/cursor-ai-tips",
     tags: ["Original", "AI"],
     stack: ["Documentation", "Developer Tools"],
@@ -127,7 +127,7 @@ const dataportfolio = [
     caseStudy: {
       problem: "Cursor AI users lacked a central resource for tips and best practices.",
       contribution: "Created comprehensive guide with keyboard shortcuts, Composer mode tips, and .cursorrules examples.",
-      impact: "167+ stars and growing community of Cursor AI enthusiasts."
+      impact: "169+ stars and growing community of Cursor AI enthusiasts."
     },
     testimonial: {
       quote: "This is exactly what the Cursor community needed. Great work!",
@@ -516,18 +516,18 @@ const socialprofils = {
 };
 
 const opensourceContributions = [
-  { project: "Coolify", stars: "40k", prs: 21, status: "✅ Merged" },
-  { project: "VS Code", stars: "165k", prs: 11, status: "✅ Merged" },
-  { project: "Milvus", stars: "32k", prs: 6, status: "🔄 Open" },
-  { project: "SigNoz", stars: "20k", prs: 5, status: "🔄 Open" },
-  { project: "Nuclei Templates", stars: "10k", prs: 5, status: "✅ Merged" },
-  { project: "CX Linux", stars: "2k", prs: 5, status: "🚀 Bounty" },
-  { project: "Traefik", stars: "54k", prs: 3, status: "✅ Merged" },
-  { project: "Draw.io", stars: "55k", prs: 3, status: "✅ Merged" },
+  { project: "Coolify", stars: "40k", prs: 8, status: "✅ Merged" },
+  { project: "VS Code", stars: "165k", prs: 3, status: "✅ Merged" },
+  { project: "Nuclei Templates", stars: "10k", prs: 4, status: "✅ Merged" },
   { project: "Croc", stars: "30k", prs: 3, status: "✅ Merged" },
-  { project: "Deno std", stars: "3.5k", prs: 2, status: "✅ Merged" },
-  { project: "FAISS", stars: "33k", prs: 2, status: "✅ Merged" },
-  { project: "MindsDB", stars: "26k", prs: 2, status: "🔄 Open" }
+  { project: "Termux", stars: "35k", prs: 2, status: "✅ Merged" },
+  { project: "LangChain.js", stars: "15k", prs: 1, status: "✅ Merged" },
+  { project: "Deno std", stars: "3.5k", prs: 1, status: "✅ Merged" },
+  { project: "Traefik", stars: "54k", prs: 1, status: "✅ Merged" },
+  { project: "Trivy", stars: "25k", prs: 1, status: "✅ Merged" },
+  { project: ".NET Aspire", stars: "4k", prs: 1, status: "✅ Merged" },
+  { project: "OpenBB", stars: "35k", prs: 1, status: "✅ Merged" },
+  { project: "CX Linux", stars: "2k", prs: 1, status: "✅ Merged" }
 ];
 
 export {

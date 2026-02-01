@@ -231,7 +231,7 @@ export const hoverGlow = {
   transition: { duration: 0.3 }
 };
 
-export default {
+const MotionExports = {
   FadeInUp,
   FadeIn,
   ScaleIn,
@@ -242,3 +242,5 @@ export default {
   scaleIn,
   staggerContainer
 };
+
+export default MotionExports;

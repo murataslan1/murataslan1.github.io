@@ -176,10 +176,10 @@ const techCategories = [
 ];
 
 const achievements = [
-  { value: "75+", label: "PRs Merged", emoji: "🚀" },
-  { value: "30+", label: "Projects", emoji: "⭐" },
+  { value: "26+", label: "PRs Merged", emoji: "🚀" },
+  { value: "222", label: "Public Repos", emoji: "⭐" },
   { value: "$100+", label: "Bounties Earned", emoji: "🏆" },
-  { value: "10+", label: "Countries Reached", emoji: "🌍" },
+  { value: "69", label: "Followers", emoji: "🌍" },
 ];
 
 const caseStudies = dataportfolio.filter((item) => item.caseStudy);
@@ -270,7 +270,7 @@ const CaseStudiesCarousel = ({ caseStudies }) => {
     return Math.abs(offset) * velocity;
   };
 
-  const paginate = (newDirection) => {
+  const paginate = React.useCallback((newDirection) => {
     setDirection(newDirection);
     setCurrentIndex((prev) => {
       let next = prev + newDirection;
@@ -278,7 +278,7 @@ const CaseStudiesCarousel = ({ caseStudies }) => {
       if (next >= caseStudies.length) next = 0;
       return next;
     });
-  };
+  }, [caseStudies.length]);
 
   // Auto-slide every 5 seconds
   useEffect(() => {
@@ -286,7 +286,7 @@ const CaseStudiesCarousel = ({ caseStudies }) => {
       paginate(1);
     }, 5000);
     return () => clearInterval(timer);
-  }, [currentIndex]);
+  }, [currentIndex, paginate]);
 
   const project = caseStudies[currentIndex];
 
