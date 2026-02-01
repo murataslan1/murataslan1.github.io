@@ -10,7 +10,7 @@ import {
 } from "../../content_option";
 import { Link } from "react-router-dom";
 import Seo from "../../components/Seo";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -661,9 +661,21 @@ export const Home = () => {
           <FadeInUp className="hero__avatar-wrapper">
             <motion.div
               className="hero__avatar"
-              style={{ backgroundImage: `url(${introdata.your_img_url})` }}
-              whileHover={{ scale: 1.05 }}
-              transition={{ duration: 0.3 }}
+              style={{ 
+                backgroundImage: `url(${introdata.your_img_url})`,
+                willChange: "transform"
+              }}
+              whileHover={{ 
+                scale: 1.08,
+                rotate: 2,
+                boxShadow: "0 20px 40px rgba(102, 126, 234, 0.3)"
+              }}
+              whileTap={{ scale: 0.95 }}
+              transition={{ 
+                type: "spring", 
+                stiffness: 300, 
+                damping: 20 
+              }}
             />
           </FadeInUp>
 
@@ -805,17 +817,30 @@ export const Home = () => {
                   <motion.div 
                     key={item.name} 
                     className="tech-item"
-                    whileHover={{ x: 4 }}
+                    style={{ willChange: "transform" }}
+                    whileHover={{ 
+                      x: 8,
+                      scale: 1.02,
+                      backgroundColor: "rgba(102, 126, 234, 0.05)"
+                    }}
+                    whileTap={{ scale: 0.98 }}
+                    transition={{
+                      type: "spring",
+                      stiffness: 400,
+                      damping: 25
+                    }}
                   >
-                    <span
+                    <motion.span
                       className="tech-item__icon"
                       style={{
                         "--icon-color": item.color,
                         "--icon-color-dark": item.colorDark || item.color,
                       }}
+                      whileHover={{ rotate: 10, scale: 1.1 }}
+                      transition={{ type: "spring", stiffness: 300 }}
                     >
                       <item.Icon aria-hidden="true" />
-                    </span>
+                    </motion.span>
                     <div className="tech-item__content">
                       <h4 className="tech-item__name">{item.name}</h4>
                       <p className="tech-item__desc">{item.desc}</p>
@@ -843,12 +868,29 @@ export const Home = () => {
             <motion.div 
               key={item.label} 
               className={`achievement-card achievement-card--${idx % 2 === 0 ? 'left' : 'right'}`}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              style={{ willChange: "transform" }}
+              initial={{ opacity: 0, y: 30, scale: 0.9 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
               viewport={{ once: true }}
-              transition={{ delay: idx * 0.1 }}
+              transition={{ 
+                type: "spring",
+                stiffness: 260,
+                damping: 20,
+                delay: idx * 0.1 
+              }}
+              whileHover={{ 
+                y: -5,
+                scale: 1.03,
+                boxShadow: "0 15px 35px rgba(102, 126, 234, 0.2)"
+              }}
+              whileTap={{ scale: 0.97 }}
             >
-              <div className="achievement-card__avatar" style={{ backgroundImage: `url(${introdata.your_img_url})` }} />
+              <motion.div 
+                className="achievement-card__avatar" 
+                style={{ backgroundImage: `url(${introdata.your_img_url})` }}
+                whileHover={{ scale: 1.1, rotate: 5 }}
+                transition={{ type: "spring", stiffness: 300 }}
+              />
               <div className="achievement-card__content">
                 <span className="achievement-card__value">
                   <AnimatedNumber value={item.value} duration={1.5} />

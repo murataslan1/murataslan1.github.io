@@ -1,20 +1,29 @@
 import React from "react";
-import { motion, useReducedMotion } from "framer-motion";
+import { motion, useReducedMotion } from "motion/react";
 
-// Animation variants
+// Spring configurations for natural motion
+export const springConfig = {
+  gentle: { type: "spring", stiffness: 120, damping: 14 },
+  snappy: { type: "spring", stiffness: 400, damping: 30 },
+  bouncy: { type: "spring", stiffness: 300, damping: 10, mass: 0.8 },
+  smooth: { type: "spring", stiffness: 100, damping: 20, mass: 1 },
+};
+
+// Animation variants with spring physics
 export const fadeInUp = {
   hidden: { 
     opacity: 0, 
     y: 30,
-    filter: "blur(10px)"
+    filter: "blur(8px)"
   },
   visible: { 
     opacity: 1, 
     y: 0,
     filter: "blur(0px)",
     transition: { 
-      duration: 0.6, 
-      ease: [0.25, 0.46, 0.45, 0.94] 
+      ...springConfig.gentle,
+      opacity: { duration: 0.4 },
+      filter: { duration: 0.4 }
     }
   }
 };
@@ -23,7 +32,7 @@ export const fadeIn = {
   hidden: { opacity: 0 },
   visible: { 
     opacity: 1,
-    transition: { duration: 0.5 }
+    transition: { duration: 0.4, ease: "easeOut" }
   }
 };
 
@@ -35,10 +44,7 @@ export const scaleIn = {
   visible: { 
     opacity: 1, 
     scale: 1,
-    transition: { 
-      duration: 0.5, 
-      ease: [0.25, 0.46, 0.45, 0.94] 
-    }
+    transition: springConfig.snappy
   }
 };
 
@@ -47,7 +53,7 @@ export const slideInLeft = {
   visible: { 
     opacity: 1, 
     x: 0,
-    transition: { duration: 0.5 }
+    transition: springConfig.gentle
   }
 };
 
@@ -56,7 +62,7 @@ export const slideInRight = {
   visible: { 
     opacity: 1, 
     x: 0,
-    transition: { duration: 0.5 }
+    transition: springConfig.gentle
   }
 };
 
@@ -64,7 +70,7 @@ export const staggerContainer = {
   hidden: {},
   visible: {
     transition: {
-      staggerChildren: 0.1,
+      staggerChildren: 0.08,
       delayChildren: 0.1
     }
   }
@@ -74,7 +80,7 @@ export const staggerContainerFast = {
   hidden: {},
   visible: {
     transition: {
-      staggerChildren: 0.05,
+      staggerChildren: 0.04,
       delayChildren: 0.05
     }
   }
@@ -220,15 +226,35 @@ export const StaggerItem = ({
   );
 };
 
-// Hover animations for cards
+// Hover animations for cards with spring physics
 export const hoverScale = {
-  scale: 1.02,
-  transition: { duration: 0.3 }
+  scale: 1.03,
+  transition: springConfig.snappy
 };
 
 export const hoverGlow = {
   boxShadow: "0 0 40px rgba(102, 126, 234, 0.3)",
-  transition: { duration: 0.3 }
+  transition: { duration: 0.2 }
+};
+
+// Tap animation
+export const tapScale = {
+  scale: 0.97,
+  transition: springConfig.snappy
+};
+
+// Gesture-based hover with lift effect
+export const hoverLift = {
+  y: -4,
+  scale: 1.02,
+  boxShadow: "0 10px 30px rgba(0, 0, 0, 0.15)",
+  transition: springConfig.gentle
+};
+
+// Magnetic pull effect
+export const magneticPull = {
+  scale: 1.05,
+  transition: springConfig.bouncy
 };
 
 const MotionExports = {
@@ -240,7 +266,13 @@ const MotionExports = {
   fadeInUp,
   fadeIn,
   scaleIn,
-  staggerContainer
+  staggerContainer,
+  springConfig,
+  hoverScale,
+  hoverGlow,
+  hoverLift,
+  tapScale,
+  magneticPull
 };
 
 export default MotionExports;

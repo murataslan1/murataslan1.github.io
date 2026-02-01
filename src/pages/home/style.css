@@ -51,6 +51,19 @@
   margin: 0 auto;
   border: 3px solid var(--color-surface);
   box-shadow: var(--shadow-soft);
+  will-change: transform;
+  cursor: pointer;
+}
+
+/* GPU acceleration for animated elements */
+.tech-item,
+.achievement-card,
+.bento-item,
+.case-study-card,
+.connect-card {
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
 }
 
 .hero__title {
