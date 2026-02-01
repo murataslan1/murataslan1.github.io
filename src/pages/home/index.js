@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, useLayoutEffect } from "react";
 import "./style.css";
 import {
   introdata,
@@ -11,6 +11,8 @@ import {
 import { Link } from "react-router-dom";
 import Seo from "../../components/Seo";
 import { motion } from "framer-motion";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import {
   SiReact,
   SiNextdotjs,
@@ -33,6 +35,9 @@ import { FadeInUp } from "../../components/Motion";
 import { Marquee, MarqueeItem } from "../../components/Marquee";
 import { BentoGrid, BentoItem } from "../../components/BentoGrid";
 import { GitHubActivity } from "../../components/GitHubActivity";
+
+// Register GSAP plugins
+gsap.registerPlugin(ScrollTrigger);
 
 const marqueeStats = [
   {
@@ -412,8 +417,151 @@ const CaseStudiesCarousel = ({ caseStudies }) => {
 };
 
 export const Home = () => {
+  const heroRef = useRef(null);
+  const bentoRef = useRef(null);
+  const techRef = useRef(null);
+  const achievementsRef = useRef(null);
+
+  // GSAP Animations
+  useLayoutEffect(() => {
+    const ctx = gsap.context(() => {
+      // Hero parallax effect
+      gsap.to(".hero__avatar", {
+        yPercent: -20,
+        ease: "none",
+        scrollTrigger: {
+          trigger: ".hero",
+          start: "top top",
+          end: "bottom top",
+          scrub: true,
+        },
+      });
+
+      // Bento cards staggered animation
+      gsap.from(".bento-item", {
+        opacity: 0,
+        y: 60,
+        scale: 0.95,
+        duration: 0.8,
+        stagger: 0.1,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: ".home-bento",
+          start: "top 80%",
+          toggleActions: "play none none reverse",
+        },
+      });
+
+      // Tech categories slide in
+      gsap.from(".tech-category", {
+        opacity: 0,
+        x: -40,
+        duration: 0.6,
+        stagger: 0.15,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: ".tech-section",
+          start: "top 75%",
+          toggleActions: "play none none reverse",
+        },
+      });
+
+      // Achievement cards pop in
+      gsap.from(".achievement-card", {
+        opacity: 0,
+        scale: 0.8,
+        y: 30,
+        duration: 0.5,
+        stagger: 0.1,
+        ease: "back.out(1.7)",
+        scrollTrigger: {
+          trigger: ".achievements-section",
+          start: "top 80%",
+          toggleActions: "play none none reverse",
+        },
+      });
+
+      // Section headings reveal
+      gsap.utils.toArray(".section-heading").forEach((heading) => {
+        gsap.from(heading, {
+          opacity: 0,
+          y: 30,
+          duration: 0.8,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: heading,
+            start: "top 85%",
+            toggleActions: "play none none reverse",
+          },
+        });
+      });
+
+      // Connect section cards
+      gsap.from(".connect-card", {
+        opacity: 0,
+        y: 40,
+        duration: 0.6,
+        stagger: 0.2,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: ".connect-section",
+          start: "top 75%",
+          toggleActions: "play none none reverse",
+        },
+      });
+
+    }, heroRef);
+
+    return () => ctx.revert();
+  }, []);
+
+  // Magnetic button effect
+  useEffect(() => {
+    const buttons = document.querySelectorAll(".ac_btn");
+    
+    const handleMouseMove = (e, btn) => {
+      const rect = btn.getBoundingClientRect();
+      const x = e.clientX - rect.left - rect.width / 2;
+      const y = e.clientY - rect.top - rect.height / 2;
+      
+      gsap.to(btn, {
+        x: x * 0.2,
+        y: y * 0.2,
+        duration: 0.3,
+        ease: "power2.out",
+      });
+    };
+
+    const handleMouseLeave = (btn) => {
+      gsap.to(btn, {
+        x: 0,
+        y: 0,
+        duration: 0.5,
+        ease: "elastic.out(1, 0.5)",
+      });
+    };
+
+    buttons.forEach((btn) => {
+      const moveHandler = (e) => handleMouseMove(e, btn);
+      const leaveHandler = () => handleMouseLeave(btn);
+      
+      btn.addEventListener("mousemove", moveHandler);
+      btn.addEventListener("mouseleave", leaveHandler);
+      
+      btn._gsapMoveHandler = moveHandler;
+      btn._gsapLeaveHandler = leaveHandler;
+    });
+
+    return () => {
+      buttons.forEach((btn) => {
+        btn.removeEventListener("mousemove", btn._gsapMoveHandler);
+        btn.removeEventListener("mouseleave", btn._gsapLeaveHandler);
+      });
+    };
+  }, []);
+
   return (
-    <section id="home" className="home">
+    <section id="home" className="home" ref={heroRef}>
       <Seo description={introdata.description} />
 
       {/* Hero Section */}
@@ -488,7 +636,7 @@ export const Home = () => {
       </div>
 
       {/* Bento Grid Section */}
-      <div className="bento-section">
+      <div className="bento-section" ref={bentoRef}>
         <FadeInUp>
           <span className="section-title">About Me</span>
           <h2>Building with passion</h2>
@@ -552,7 +700,7 @@ export const Home = () => {
       )}
 
       {/* What I Use Section */}
-      <div className="tech-section">
+      <div className="tech-section" ref={techRef}>
         <FadeInUp>
           <h2 className="section-heading">What I Use</h2>
         </FadeInUp>
@@ -593,7 +741,7 @@ export const Home = () => {
       <GitHubActivity />
 
       {/* Little Big Wins Section */}
-      <div className="achievements-section">
+      <div className="achievements-section" ref={achievementsRef}>
         <FadeInUp>
           <span className="section-label">ACHIEVEMENTS</span>
           <h2 className="section-heading">Little Big Wins</h2>
