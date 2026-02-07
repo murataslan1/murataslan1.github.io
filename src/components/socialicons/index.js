@@ -7,6 +7,7 @@ import {
   FaLinkedin,
   FaYoutube,
   FaTwitch,
+  FaMedium,
 } from "react-icons/fa";
 import { socialprofils } from "../../content_option";
 
@@ -83,6 +84,18 @@ export const Socialicons = (params) => {
               aria-label="Twitch"
             >
               <FaTwitch />
+            </a>
+          </li>
+        )}
+        {socialprofils.medium && (
+          <li>
+            <a
+              href={socialprofils.medium}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Medium"
+            >
+              <FaMedium />
             </a>
           </li>
         )}

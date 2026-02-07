@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import * as emailjs from "emailjs-com";
 import "./style.css";
-import { contactConfig } from "../../content_option";
+import { contactConfig, socialprofils } from "../../content_option";
 import Seo from "../../components/Seo";
 import { motion } from "framer-motion";
 import { FadeInUp } from "../../components/Motion";
@@ -112,7 +112,37 @@ export const ContactUs = () => {
                 <span className="contact-info__emoji">🌐</span>
                 <div>
                   <span className="contact-info__label">GitHub</span>
-                  <a href="https://github.com/murataslan1" target="_blank" rel="noopener noreferrer" className="contact-info__value">
+                  <a href={socialprofils.github} target="_blank" rel="noopener noreferrer" className="contact-info__value">
+                    @murataslan1
+                  </a>
+                </div>
+              </div>
+
+              <div className="contact-info__item">
+                <span className="contact-info__emoji">💼</span>
+                <div>
+                  <span className="contact-info__label">LinkedIn</span>
+                  <a href={socialprofils.linkedin} target="_blank" rel="noopener noreferrer" className="contact-info__value">
+                    murataslan1
+                  </a>
+                </div>
+              </div>
+
+              <div className="contact-info__item">
+                <span className="contact-info__emoji">🐦</span>
+                <div>
+                  <span className="contact-info__label">X (Twitter)</span>
+                  <a href={socialprofils.twitter} target="_blank" rel="noopener noreferrer" className="contact-info__value">
+                    @iammurataslan
+                  </a>
+                </div>
+              </div>
+
+              <div className="contact-info__item">
+                <span className="contact-info__emoji">✍️</span>
+                <div>
+                  <span className="contact-info__label">Medium</span>
+                  <a href={socialprofils.medium} target="_blank" rel="noopener noreferrer" className="contact-info__value">
                     @murataslan1
                   </a>
                 </div>

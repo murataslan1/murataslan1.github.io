@@ -512,7 +512,8 @@ const contactConfig = {
 const socialprofils = {
   github: "https://github.com/murataslan1",
   linkedin: "https://linkedin.com/in/murataslan1",
-  twitter: "https://twitter.com/iammurataslan"
+  twitter: "https://twitter.com/iammurataslan",
+  medium: "https://medium.com/@murataslan1"
 };
 
 const opensourceContributions = [
