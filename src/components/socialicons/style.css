@@ -72,6 +72,7 @@
     flex-direction: row-reverse;
     justify-content: center;
     padding: var(--space-xl) 0;
+    padding-bottom: calc(var(--space-xl) + env(safe-area-inset-bottom, 20px));
     align-items: center;
     gap: var(--space-lg);
   }

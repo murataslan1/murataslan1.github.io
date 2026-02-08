@@ -962,6 +962,7 @@ export const Home = () => {
               <a href={socialprofils.github} target="_blank" rel="noreferrer">GitHub</a>
               <a href={socialprofils.linkedin} target="_blank" rel="noreferrer">LinkedIn</a>
               <a href={socialprofils.twitter} target="_blank" rel="noreferrer">X (Twitter)</a>
+              <a href={socialprofils.medium} target="_blank" rel="noreferrer">Medium</a>
             </div>
           </div>
         </div>
