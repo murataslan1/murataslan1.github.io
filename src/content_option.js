@@ -506,7 +506,8 @@ const contactConfig = {
     "I'm always open to discussing new opportunities, open source collaborations, or just having a chat about technology. Feel free to reach out!",
   YOUR_SERVICE_ID: "service_id",
   YOUR_TEMPLATE_ID: "template_id",
-  YOUR_USER_ID: "user_id"
+  YOUR_USER_ID: "user_id",
+  GOOGLE_SHEETS_URL: ""
 };
 
 const socialprofils = {

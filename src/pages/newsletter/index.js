@@ -41,35 +41,50 @@ export const Newsletter = () => {
       message: `New newsletter subscriber: ${formData.email}`,
     };
 
-    emailjs
-      .send(
+    const promises = [];
+
+    // EmailJS notification
+    promises.push(
+      emailjs.send(
         contactConfig.YOUR_SERVICE_ID,
         contactConfig.YOUR_TEMPLATE_ID,
         templateParams,
         contactConfig.YOUR_USER_ID
       )
-      .then(
-        (result) => {
-          console.log(result.text);
-          setFormdata({
-            email: "",
-            loading: false,
-            alertmessage: "🎉 You're in! Check your inbox.",
-            variant: "success",
-            show: true,
-          });
-        },
-        (error) => {
-          console.log(error.text);
-          setFormdata((prev) => ({
-            ...prev,
-            loading: false,
-            alertmessage: `Failed to subscribe. Please try again.`,
-            variant: "danger",
-            show: true,
-          }));
-        }
+    );
+
+    // Google Sheets — save subscriber
+    if (contactConfig.GOOGLE_SHEETS_URL) {
+      promises.push(
+        fetch(contactConfig.GOOGLE_SHEETS_URL, {
+          method: "POST",
+          mode: "no-cors",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email: formData.email }),
+        })
       );
+    }
+
+    Promise.all(promises)
+      .then(() => {
+        setFormdata({
+          email: "",
+          loading: false,
+          alertmessage: "🎉 You're in! Check your inbox.",
+          variant: "success",
+          show: true,
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+        setFormdata((prev) => ({
+          ...prev,
+          loading: false,
+          alertmessage: `Failed to subscribe. Please try again.`,
+          variant: "danger",
+          show: true,
+        }));
+      });
   };
 
   const handleChange = (e) => {
