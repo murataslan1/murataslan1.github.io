@@ -7,6 +7,8 @@ import { Portfolio } from "../pages/portfolio";
 import { ContactUs } from "../pages/contact";
 import { About } from "../pages/about";
 import { Newsletter } from "../pages/newsletter";
+import { SkillsList } from "../pages/claude-code-skills";
+import { SkillDetail } from "../pages/claude-code-skills/SkillDetail";
 import { Socialicons } from "../components/socialicons";
 
 // Page wrapper component for smooth transitions
@@ -71,6 +73,16 @@ function AppRoutes() {
           <Route path="/newsletter">
             <PageWrapper>
               <Newsletter />
+            </PageWrapper>
+          </Route>
+          <Route exact path="/claude-code-skills">
+            <PageWrapper>
+              <SkillsList />
+            </PageWrapper>
+          </Route>
+          <Route path="/claude-code-skills/:id">
+            <PageWrapper>
+              <SkillDetail />
             </PageWrapper>
           </Route>
           <Route path="*">
