@@ -154,21 +154,37 @@ export const SkillsList = () => {
 
         <div className="skills-footer">
           <p>
-            Curated from{" "}
-            <a
-              href="https://github.com/ComposioHQ/awesome-claude-skills"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              awesome-claude-skills
-            </a>{" "}
-            — by{" "}
+            Curated by{" "}
             <a
               href="https://github.com/murataslan1"
               target="_blank"
               rel="noopener noreferrer"
             >
               Murat Aslan
+            </a>{" "}
+            ·{" "}
+            <a
+              href="https://github.com/murataslan1/claude-code-skills"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              GitHub Repo
+            </a>{" "}
+            ·{" "}
+            <a
+              href="https://www.linkedin.com/in/murataslan1/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              LinkedIn
+            </a>{" "}
+            ·{" "}
+            <a
+              href="https://medium.com/@murataslan1"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Medium
             </a>
           </p>
         </div>

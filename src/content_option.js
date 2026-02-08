@@ -35,14 +35,9 @@ const worktimeline = [
     date: "2025-2026"
   },
   {
-    jobtitle: "Full Stack Developer",
-    where: "Various Projects",
-    date: "2023-Present"
-  },
-  {
     jobtitle: "Software Engineer",
-    where: "Freelance",
-    date: "2021-2023"
+    where: "Various Projects",
+    date: "2019-Present"
   }
 ];
 
