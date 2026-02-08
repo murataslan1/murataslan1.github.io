@@ -26,6 +26,7 @@ const Headermain = () => {
               <Link to="/portfolio">Portfolio</Link>
               <Link to="/about">About</Link>
               <Link to="/contact">Contact</Link>
+              <Link to="/newsletter">Newsletter</Link>
             </nav>
 
             <Themetoggle />
@@ -56,6 +57,9 @@ const Headermain = () => {
                   </li>
                   <li className="menu_item">
                   <Link onClick={handleToggle} to="/contact" className="my-3"> Contact</Link>
+                  </li>
+                  <li className="menu_item">
+                  <Link onClick={handleToggle} to="/newsletter" className="my-3"> Newsletter</Link>
                   </li>
                 </ul>
               </div>

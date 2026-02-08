@@ -10,7 +10,7 @@ import {
 } from "../../content_option";
 import { Link } from "react-router-dom";
 import Seo from "../../components/Seo";
-import { motion } from "motion/react";
+import { motion } from "framer-motion";
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";

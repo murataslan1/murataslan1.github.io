@@ -6,6 +6,7 @@ import { Home } from "../pages/home";
 import { Portfolio } from "../pages/portfolio";
 import { ContactUs } from "../pages/contact";
 import { About } from "../pages/about";
+import { Newsletter } from "../pages/newsletter";
 import { Socialicons } from "../components/socialicons";
 
 // Page wrapper component for smooth transitions
@@ -65,6 +66,11 @@ function AppRoutes() {
           <Route path="/contact">
             <PageWrapper>
               <ContactUs />
+            </PageWrapper>
+          </Route>
+          <Route path="/newsletter">
+            <PageWrapper>
+              <Newsletter />
             </PageWrapper>
           </Route>
           <Route path="*">

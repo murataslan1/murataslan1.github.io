@@ -1,5 +1,5 @@
 import React from "react";
-import { motion, useReducedMotion } from "motion/react";
+import { motion, useReducedMotion } from "framer-motion";
 
 // Spring configurations for natural motion
 export const springConfig = {
