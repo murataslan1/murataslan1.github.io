@@ -2,9 +2,9 @@ const logotext = "MURAT ASLAN";
 const meta = {
   title: "Murat Aslan | Open Source Developer",
   description:
-    "Full Stack Developer & Open Source Contributor with 26+ merged PRs to major projects like VS Code, Coolify, LangChain, Traefik, Deno, and more.",
+    "Full Stack Developer & Open Source Contributor with 31+ merged PRs to major projects like VS Code, Coolify, LangChain, Traefik, Deno, and more.",
   siteUrl: "https://murataslan1.github.io/",
-  image: "https://media.licdn.com/dms/image/v2/D4D03AQEtN-l5vaagwA/profile-displayphoto-shrink_400_400/B4DZX7VVchG8Ag-/0/1743678430029?e=1771459200&v=beta&t=ltnrcKA62_7n5JTiFpnq0q0zKH-ZSOxDd_TYjWeGTig",
+  image: "https://murataslan1.github.io/profile.png",
   role: "Full Stack Developer",
   location: "Ankara, Turkey"
 };
@@ -13,19 +13,19 @@ const introdata = {
   title: "I'm Murat Aslan",
   animated: {
     first: "Open Source Contributor 🚀",
-    second: "26+ Merged PRs to Major Projects",
+    second: "31+ Merged PRs to Major Projects",
     third: "Microsoft | LangChain | Deno | Coolify",
     fourth: "Full Stack Developer"
   },
   description:
-    "Passionate open source contributor with 26+ merged pull requests to major projects including VS Code (165k⭐), Coolify (40k⭐), LangChain.js, Traefik (54k⭐), Deno, Trivy, and more. Full stack developer with 222 public repos, specializing in TypeScript, Go, and Cloud Native technologies.",
-  your_img_url: "https://media.licdn.com/dms/image/v2/D4D03AQEtN-l5vaagwA/profile-displayphoto-shrink_400_400/B4DZX7VVchG8Ag-/0/1743678430029?e=1771459200&v=beta&t=ltnrcKA62_7n5JTiFpnq0q0zKH-ZSOxDd_TYjWeGTig"
+    "Passionate open source contributor with 31+ merged pull requests to major projects including VS Code (165k⭐), Coolify (40k⭐), LangChain.js, Traefik (54k⭐), Deno, Trivy, and more. Full stack developer with 174 public repos, specializing in TypeScript, Go, and Cloud Native technologies.",
+  your_img_url: "https://github.com/murataslan1.png"
 };
 
 const dataabout = {
   title: "About Me",
   aboutme:
-    "I'm a passionate Full Stack Developer and Open Source enthusiast based in Ankara, Turkey. I believe in the power of open source to drive innovation and collaboration. As of February 2026, I've contributed 26+ merged pull requests to major projects like VS Code, LangChain.js, Coolify, Deno, Traefik, Trivy, and many more. With 222 public repositories and 69 followers, I love finding bugs, improving documentation, and adding new features to projects that millions of developers use daily."
+    "I'm a passionate Full Stack Developer and Open Source enthusiast based in Ankara, Turkey. I believe in the power of open source to drive innovation and collaboration. As of February 2026, I've contributed 31+ merged pull requests to major projects like VS Code, LangChain.js, Coolify, Deno, Traefik, Trivy, ASP.NET Core, and many more. With 174 public repositories, I love finding bugs, improving documentation, and adding new features to projects that millions of developers use daily."
 };
 
 const worktimeline = [
@@ -76,7 +76,7 @@ const services = [
   {
     title: "Open Source Contributions",
     description:
-      "26+ merged PRs to major projects: VS Code (165k⭐), Coolify (40k⭐), LangChain.js, Traefik (54k⭐), Deno, Trivy, and more."
+      "31+ merged PRs to major projects: VS Code (165k⭐), Coolify (40k⭐), LangChain.js, Traefik (54k⭐), Deno, Trivy, ASP.NET Core, and more."
   },
   {
     title: "Full Stack Development",
@@ -114,7 +114,7 @@ const dataportfolio = [
   {
     img: "https://opengraph.githubassets.com/1/murataslan1/cursor-ai-tips",
     title: "Cursor AI Tips",
-    desctiption: "Cursor AI IDE tips, tricks & best practices - 169⭐ community resource",
+    desctiption: "Cursor AI IDE tips, tricks & best practices - 179⭐ community resource",
     link: "https://github.com/murataslan1/cursor-ai-tips",
     tags: ["Original", "AI"],
     stack: ["Documentation", "Developer Tools"],
@@ -122,7 +122,7 @@ const dataportfolio = [
     caseStudy: {
       problem: "Cursor AI users lacked a central resource for tips and best practices.",
       contribution: "Created comprehensive guide with keyboard shortcuts, Composer mode tips, and .cursorrules examples.",
-      impact: "169+ stars and growing community of Cursor AI enthusiasts."
+      impact: "179+ stars and growing community of Cursor AI enthusiasts."
     },
     testimonial: {
       quote: "This is exactly what the Cursor community needed. Great work!",
@@ -152,7 +152,7 @@ const dataportfolio = [
   {
     img: "https://opengraph.githubassets.com/1/murataslan1/ai-agent-benchmark",
     title: "AI Agent Benchmark",
-    desctiption: "AI Agent Benchmark - The definitive comparison of AI coding agents (Jan 2026 Data)",
+    desctiption: "AI Agent Benchmark - The definitive comparison of AI coding agents - 14⭐",
     link: "https://github.com/murataslan1/ai-agent-benchmark",
     tags: ["Research", "AI"],
     stack: ["Data", "Web"],
@@ -164,9 +164,36 @@ const dataportfolio = [
     }
   },
   {
-    img: "https://opengraph.githubassets.com/1/microsoft/vscode",
+    img: "https://opengraph.githubassets.com/1/murataslan1/n8n-workflow-collection",
+    title: "n8n Workflow Collection",
+    desctiption: "4,300+ n8n Automation Workflows — The Largest Open-Source Collection - 5⭐",
+    link: "https://github.com/murataslan1/n8n-workflow-collection",
+    tags: ["Original", "Automation"],
+    stack: ["Python", "n8n"],
+    featured: true,
+    caseStudy: {
+      problem: "n8n users lacked a centralized, searchable collection of automation templates.",
+      contribution: "Curated and organized 4,300+ ready-to-import n8n workflow templates.",
+      impact: "Largest open-source n8n template collection, saving hours of automation setup."
+    }
+  },
+  {
+    img: "https://opengraph.githubassets.com/1/murataslan1/claude-code-skills",
+    title: "Claude Code Skills",
+    desctiption: "85+ practical Claude Code skills for AI-powered development - 2⭐",
+    link: "https://github.com/murataslan1/claude-code-skills",
+    tags: ["Original", "AI"],
+    stack: ["Claude Code", "Developer Tools"],
+    featured: true,
+    caseStudy: {
+      problem: "Claude Code users needed reusable skill templates for common workflows.",
+      contribution: "Created 85+ curated skills covering development, automation, and productivity.",
+      impact: "Featured on portfolio with dedicated showcase page at /claude-code-skills."
+    }
+  },
+  {
     title: "VS Code",
-    desctiption: "VS Code - 11 PRs: Test coverage, lifecycle fixes, UX improvements (165k⭐)",
+    desctiption: "VS Code - 20 PRs (3 merged): Lifecycle fixes, scrolling fix, UX improvements (165k⭐)",
     link: "https://github.com/microsoft/vscode/pulls?q=author%3Amurataslan1",
     tags: ["Open Source", "Tooling"],
     stack: ["TypeScript", "Developer Tools"],
@@ -185,7 +212,7 @@ const dataportfolio = [
   {
     img: "https://opengraph.githubassets.com/1/murataslan1/local-ai-coding-guide",
     title: "Local AI Coding Guide",
-    desctiption: "Comprehensive guide for running AI coding assistants locally - 13⭐",
+    desctiption: "Comprehensive guide for running AI coding assistants locally - 15⭐",
     link: "https://github.com/murataslan1/local-ai-coding-guide",
     tags: ["Original", "AI"],
     stack: ["Python", "Documentation"],
@@ -199,7 +226,7 @@ const dataportfolio = [
   {
     img: "https://opengraph.githubassets.com/1/coollabsio/coolify",
     title: "Coolify",
-    desctiption: "Coolify - 21 PRs: Docker fixes, Unicode support, SSH timeout, backup features ($100+ Bounty)",
+    desctiption: "Coolify - 24 PRs (7 merged): Docker fixes, Unicode support, SSH timeout, backup features ($100+ Bounty)",
     link: "https://github.com/coollabsio/coolify/pulls?q=author%3Amurataslan1",
     tags: ["Open Source", "DevOps"],
     stack: ["Cloud", "Docker"],
@@ -260,7 +287,7 @@ const dataportfolio = [
   {
     img: "https://opengraph.githubassets.com/1/langchain-ai/langchainjs",
     title: "LangChain.js",
-    desctiption: "LangChain.js - Contributions to the JS/TS LLM framework",
+    desctiption: "LangChain.js - Fixed DeepSeek <think> tag parsing in content streams",
     link: "https://github.com/langchain-ai/langchainjs/pulls?q=author%3Amurataslan1",
     tags: ["Open Source", "AI"],
     stack: ["TypeScript", "LLM"]
@@ -353,7 +380,7 @@ const dataportfolio = [
   {
     img: "https://opengraph.githubassets.com/1/schollz/croc",
     title: "Croc",
-    desctiption: "Croc - 3 PRs: BusyBox compatibility, progress bar for resume, Podman docs",
+    desctiption: "Croc - 4 PRs: BusyBox compatibility, progress bar for resume, Podman docs, --socks5 flag",
     link: "https://github.com/schollz/croc/pulls?q=author%3Amurataslan1",
     tags: ["Open Source", "CLI"],
     stack: ["Go", "Networking"],
@@ -469,7 +496,14 @@ const dataportfolio = [
     stack: ["TypeScript", "AI"]
   },
   {
-    img: "https://opengraph.githubassets.com/1/dotnet/aspire",
+    img: "https://opengraph.githubassets.com/1/dotnet/aspnetcore",
+    title: "ASP.NET Core",
+    desctiption: "ASP.NET Core - Fix pnpm execution without .cmd extension on Windows SpaProxy",
+    link: "https://github.com/dotnet/aspnetcore/pull/65386",
+    tags: ["Open Source", ".NET"],
+    stack: ["C#", ".NET"]
+  },
+  {
     title: "ASP.NET Aspire",
     desctiption: "ASP.NET Aspire - Fixed warning icon consistency for unresolved parameters",
     link: "https://github.com/dotnet/aspire/pulls?q=author%3Amurataslan1",
@@ -513,18 +547,19 @@ const socialprofils = {
 };
 
 const opensourceContributions = [
-  { project: "Coolify", stars: "40k", prs: 8, status: "✅ Merged" },
-  { project: "VS Code", stars: "165k", prs: 3, status: "✅ Merged" },
-  { project: "Nuclei Templates", stars: "10k", prs: 4, status: "✅ Merged" },
-  { project: "Croc", stars: "30k", prs: 3, status: "✅ Merged" },
-  { project: "Termux", stars: "35k", prs: 2, status: "✅ Merged" },
-  { project: "LangChain.js", stars: "15k", prs: 1, status: "✅ Merged" },
-  { project: "Deno std", stars: "3.5k", prs: 1, status: "✅ Merged" },
-  { project: "Traefik", stars: "54k", prs: 1, status: "✅ Merged" },
-  { project: "Trivy", stars: "25k", prs: 1, status: "✅ Merged" },
-  { project: ".NET Aspire", stars: "4k", prs: 1, status: "✅ Merged" },
-  { project: "OpenBB", stars: "35k", prs: 1, status: "✅ Merged" },
-  { project: "CX Linux", stars: "2k", prs: 1, status: "✅ Merged" }
+  { project: "Coolify", stars: "40k", prs: 24, merged: 7, status: "✅ Merged" },
+  { project: "VS Code", stars: "165k", prs: 20, merged: 3, status: "✅ Merged" },
+  { project: "Nuclei Templates", stars: "10k", prs: 4, merged: 4, status: "✅ Merged" },
+  { project: "Croc", stars: "30k", prs: 4, merged: 4, status: "✅ Merged" },
+  { project: "Termux", stars: "35k", prs: 2, merged: 2, status: "✅ Merged" },
+  { project: "LangChain.js", stars: "15k", prs: 1, merged: 1, status: "✅ Merged" },
+  { project: "Deno std", stars: "3.5k", prs: 1, merged: 1, status: "✅ Merged" },
+  { project: "Traefik", stars: "54k", prs: 1, merged: 1, status: "✅ Merged" },
+  { project: "Trivy", stars: "25k", prs: 1, merged: 1, status: "✅ Merged" },
+  { project: ".NET Aspire", stars: "4k", prs: 1, merged: 1, status: "✅ Merged" },
+  { project: "ASP.NET Core", stars: "36k", prs: 1, merged: 0, status: "🔄 Open" },
+  { project: "OpenBB", stars: "35k", prs: 1, merged: 1, status: "✅ Merged" },
+  { project: "CX Linux", stars: "2k", prs: 5, merged: 1, status: "✅ Merged" }
 ];
 
 export {
