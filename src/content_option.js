@@ -19,7 +19,7 @@ const introdata = {
   },
   description:
     "Passionate open source contributor with 31+ merged pull requests to major projects including VS Code (165k⭐), Coolify (40k⭐), LangChain.js, Traefik (54k⭐), Deno, Trivy, and more. Full stack developer with 174 public repos, specializing in TypeScript, Go, and Cloud Native technologies.",
-  your_img_url: "https://github.com/murataslan1.png"
+  your_img_url: "/profile.png"
 };
 
 const dataabout = {
