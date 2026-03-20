@@ -25,7 +25,7 @@ const introdata = {
 const dataabout = {
   title: "About Me",
   aboutme:
-    "I'm a passionate Full Stack Developer and Open Source enthusiast based in Ankara, Turkey. I believe in the power of open source to drive innovation and collaboration. As of February 2026, I've contributed 31+ merged pull requests to major projects like VS Code, LangChain.js, Coolify, Deno, Traefik, Trivy, ASP.NET Core, and many more. With 174 public repositories, I love finding bugs, improving documentation, and adding new features to projects that millions of developers use daily."
+    "I'm a passionate Full Stack Developer and Open Source enthusiast based in Ankara, Turkey. I believe in the power of open source to drive innovation and collaboration. As of March 2026, I've contributed 31+ merged pull requests to major projects like VS Code, LangChain.js, Coolify, Deno, Traefik, Trivy, ASP.NET Core, and many more. With 174 public repositories, I love finding bugs, improving documentation, and adding new features to projects that millions of developers use daily."
 };
 
 const worktimeline = [
@@ -152,7 +152,7 @@ const dataportfolio = [
   {
     img: "https://opengraph.githubassets.com/1/murataslan1/ai-agent-benchmark",
     title: "AI Agent Benchmark",
-    desctiption: "AI Agent Benchmark - The definitive comparison of AI coding agents - 14⭐",
+    desctiption: "AI Agent Benchmark - The definitive comparison of AI coding agents (Mar 2026 Data) - 14⭐",
     link: "https://github.com/murataslan1/ai-agent-benchmark",
     tags: ["Research", "AI"],
     stack: ["Data", "Web"],
@@ -279,7 +279,7 @@ const dataportfolio = [
   {
     img: "https://opengraph.githubassets.com/1/milvus-io/milvus",
     title: "Milvus",
-    desctiption: "Milvus - 6 PRs: fnmatch optimization, debug logs, Go client HNSW index support (32k⭐)",
+    desctiption: "Milvus - 7 PRs: fnmatch optimization, debug logs, Go client HNSW index support (32k⭐)",
     link: "https://github.com/milvus-io/milvus/pulls?q=author%3Amurataslan1",
     tags: ["Open Source", "Data"],
     stack: ["Databases", "Cloud"]
@@ -549,6 +549,7 @@ const socialprofils = {
 const opensourceContributions = [
   { project: "Coolify", stars: "40k", prs: 24, merged: 7, status: "✅ Merged" },
   { project: "VS Code", stars: "165k", prs: 20, merged: 3, status: "✅ Merged" },
+  { project: "Milvus", stars: "32k", prs: 7, merged: 0, status: "🔄 Open" },
   { project: "Nuclei Templates", stars: "10k", prs: 4, merged: 4, status: "✅ Merged" },
   { project: "Croc", stars: "30k", prs: 4, merged: 4, status: "✅ Merged" },
   { project: "Termux", stars: "35k", prs: 2, merged: 2, status: "✅ Merged" },
