@@ -193,7 +193,7 @@ const dataportfolio = [
   },
   {
     title: "VS Code",
-    desctiption: "VS Code - 20 PRs (5 merged): Lifecycle fixes, scrolling fix, UX improvements (165k⭐)",
+    desctiption: "VS Code - 41 PRs (5 merged): Lifecycle fixes, scrolling fix, UX improvements (165k⭐)",
     link: "https://github.com/microsoft/vscode/pulls?q=author%3Amurataslan1",
     tags: ["Open Source", "Tooling"],
     stack: ["TypeScript", "Developer Tools"],
@@ -226,7 +226,7 @@ const dataportfolio = [
   {
     img: "https://opengraph.githubassets.com/1/coollabsio/coolify",
     title: "Coolify",
-    desctiption: "Coolify - 24 PRs (7 merged): Docker fixes, Unicode support, SSH timeout, backup features ($100+ Bounty)",
+    desctiption: "Coolify - 31 PRs (7 merged): Docker fixes, Unicode support, SSH timeout, backup features ($100+ Bounty)",
     link: "https://github.com/coollabsio/coolify/pulls?q=author%3Amurataslan1",
     tags: ["Open Source", "DevOps"],
     stack: ["Cloud", "Docker"],
@@ -266,7 +266,7 @@ const dataportfolio = [
   {
     img: "https://opengraph.githubassets.com/1/traefik/traefik",
     title: "Traefik",
-    desctiption: "Traefik - 4 PRs: ForwardAuth logging improvements & UI Fixes (54k⭐)",
+    desctiption: "Traefik - 3 PRs: ForwardAuth logging improvements & UI Fixes (54k⭐)",
     link: "https://github.com/traefik/traefik/pulls?q=author%3Amurataslan1",
     tags: ["Open Source", "Infra"],
     stack: ["Networking", "Go"],
@@ -279,7 +279,7 @@ const dataportfolio = [
   {
     img: "https://opengraph.githubassets.com/1/milvus-io/milvus",
     title: "Milvus",
-    desctiption: "Milvus - 7 PRs: fnmatch optimization, debug logs, Go client HNSW index support (32k⭐)",
+    desctiption: "Milvus - 6 PRs: fnmatch optimization, debug logs, Go client HNSW index support (32k⭐)",
     link: "https://github.com/milvus-io/milvus/pulls?q=author%3Amurataslan1",
     tags: ["Open Source", "Data"],
     stack: ["Databases", "Cloud"]
@@ -547,19 +547,19 @@ const socialprofils = {
 };
 
 const opensourceContributions = [
-  { project: "Coolify", stars: "40k", prs: 24, merged: 7, status: "✅ Merged" },
-  { project: "VS Code", stars: "165k", prs: 20, merged: 5, status: "✅ 5 Merged" },
-  { project: "Milvus", stars: "32k", prs: 7, merged: 0, status: "🔄 Open" },
-  { project: "Nuclei Templates", stars: "10k", prs: 4, merged: 4, status: "✅ Merged" },
+  { project: "Coolify", stars: "40k", prs: 31, merged: 7, status: "✅ Merged" },
+  { project: "VS Code", stars: "165k", prs: 41, merged: 5, status: "✅ 5 Merged" },
+  { project: "Milvus", stars: "32k", prs: 6, merged: 0, status: "🔄 Open" },
+  { project: "Nuclei Templates", stars: "10k", prs: 5, merged: 4, status: "✅ Merged" },
   { project: "Croc", stars: "30k", prs: 4, merged: 4, status: "✅ Merged" },
   { project: "Termux", stars: "35k", prs: 2, merged: 2, status: "✅ Merged" },
   { project: "LangChain.js", stars: "15k", prs: 1, merged: 1, status: "✅ Merged" },
-  { project: "Deno std", stars: "3.5k", prs: 1, merged: 1, status: "✅ Merged" },
-  { project: "Traefik", stars: "54k", prs: 1, merged: 1, status: "✅ Merged" },
-  { project: "Trivy", stars: "25k", prs: 1, merged: 1, status: "✅ Merged" },
+  { project: "Deno std", stars: "3.5k", prs: 2, merged: 1, status: "✅ Merged" },
+  { project: "Traefik", stars: "54k", prs: 3, merged: 1, status: "✅ Merged" },
+  { project: "Trivy", stars: "25k", prs: 2, merged: 1, status: "✅ Merged" },
   { project: ".NET Aspire", stars: "4k", prs: 1, merged: 1, status: "✅ Merged" },
   { project: "ASP.NET Core", stars: "36k", prs: 1, merged: 0, status: "🔄 Open" },
-  { project: "OpenBB", stars: "35k", prs: 1, merged: 1, status: "✅ Merged" },
+  { project: "OpenBB", stars: "35k", prs: 2, merged: 1, status: "✅ Merged" },
   { project: "CX Linux", stars: "2k", prs: 5, merged: 1, status: "✅ Merged" }
 ];
 
