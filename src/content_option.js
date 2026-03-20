@@ -193,7 +193,7 @@ const dataportfolio = [
   },
   {
     title: "VS Code",
-    desctiption: "VS Code - 20 PRs (3 merged): Lifecycle fixes, scrolling fix, UX improvements (165k⭐)",
+    desctiption: "VS Code - 20 PRs (5 merged): Lifecycle fixes, scrolling fix, UX improvements (165k⭐)",
     link: "https://github.com/microsoft/vscode/pulls?q=author%3Amurataslan1",
     tags: ["Open Source", "Tooling"],
     stack: ["TypeScript", "Developer Tools"],
@@ -548,7 +548,7 @@ const socialprofils = {
 
 const opensourceContributions = [
   { project: "Coolify", stars: "40k", prs: 24, merged: 7, status: "✅ Merged" },
-  { project: "VS Code", stars: "165k", prs: 20, merged: 3, status: "✅ Merged" },
+  { project: "VS Code", stars: "165k", prs: 20, merged: 5, status: "✅ 5 Merged" },
   { project: "Milvus", stars: "32k", prs: 7, merged: 0, status: "🔄 Open" },
   { project: "Nuclei Templates", stars: "10k", prs: 4, merged: 4, status: "✅ Merged" },
   { project: "Croc", stars: "30k", prs: 4, merged: 4, status: "✅ Merged" },
