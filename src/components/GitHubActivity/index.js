@@ -11,10 +11,10 @@ const githubTheme = {
 
 // Fallback stats from GitHub API (last updated: Feb 2026)
 const FALLBACK_STATS = {
-  repos: 222,
+  repos: 234,
   totalCommits: 45,
   totalPRs: 2,
-  followers: 69
+  followers: 78
 };
 
 const FALLBACK_ACTIVITIES = [

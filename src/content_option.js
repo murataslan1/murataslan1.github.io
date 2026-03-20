@@ -2,7 +2,7 @@ const logotext = "MURAT ASLAN";
 const meta = {
   title: "Murat Aslan | Open Source Developer",
   description:
-    "Full Stack Developer & Open Source Contributor with 31+ merged PRs to major projects like VS Code, Coolify, LangChain, Traefik, Deno, and more.",
+    "Full Stack Developer & Open Source Contributor with 30+ merged PRs to major projects like VS Code, Coolify, LangChain, Traefik, Deno, and more.",
   siteUrl: "https://murataslan1.github.io/",
   image: "https://murataslan1.github.io/profile.png",
   role: "Full Stack Developer",
@@ -13,19 +13,19 @@ const introdata = {
   title: "I'm Murat Aslan",
   animated: {
     first: "Open Source Contributor 🚀",
-    second: "31+ Merged PRs to Major Projects",
+    second: "30+ Merged PRs to Major Projects",
     third: "Microsoft | LangChain | Deno | Coolify",
     fourth: "Full Stack Developer"
   },
   description:
-    "Passionate open source contributor with 31+ merged pull requests to major projects including VS Code (165k⭐), Coolify (40k⭐), LangChain.js, Traefik (54k⭐), Deno, Trivy, and more. Full stack developer with 174 public repos, specializing in TypeScript, Go, and Cloud Native technologies.",
+    "Passionate open source contributor with 30+ merged pull requests to major projects including VS Code (183k⭐), Coolify (52k⭐), LangChain.js, Traefik (62k⭐), Deno, Trivy, and more. Full stack developer with 234 public repos, specializing in TypeScript, Go, and Cloud Native technologies.",
   your_img_url: "/profile.png"
 };
 
 const dataabout = {
   title: "About Me",
   aboutme:
-    "I'm a passionate Full Stack Developer and Open Source enthusiast based in Ankara, Turkey. I believe in the power of open source to drive innovation and collaboration. As of March 2026, I've contributed 31+ merged pull requests to major projects like VS Code, LangChain.js, Coolify, Deno, Traefik, Trivy, ASP.NET Core, and many more. With 174 public repositories, I love finding bugs, improving documentation, and adding new features to projects that millions of developers use daily."
+    "I'm a passionate Full Stack Developer and Open Source enthusiast based in Ankara, Turkey. I believe in the power of open source to drive innovation and collaboration. As of March 2026, I've contributed 30+ merged pull requests to major projects like VS Code, LangChain.js, Coolify, Deno, Traefik, Trivy, ASP.NET Core, and many more. With 234 public repositories, I love finding bugs, improving documentation, and adding new features to projects that millions of developers use daily."
 };
 
 const worktimeline = [
@@ -76,7 +76,7 @@ const services = [
   {
     title: "Open Source Contributions",
     description:
-      "31+ merged PRs to major projects: VS Code (165k⭐), Coolify (40k⭐), LangChain.js, Traefik (54k⭐), Deno, Trivy, ASP.NET Core, and more."
+      "30+ merged PRs to major projects: VS Code (183k⭐), Coolify (52k⭐), LangChain.js, Traefik (62k⭐), Deno, Trivy, ASP.NET Core, and more."
   },
   {
     title: "Full Stack Development",
@@ -114,7 +114,7 @@ const dataportfolio = [
   {
     img: "https://opengraph.githubassets.com/1/murataslan1/cursor-ai-tips",
     title: "Cursor AI Tips",
-    desctiption: "Cursor AI IDE tips, tricks & best practices - 179⭐ community resource",
+    desctiption: "Cursor AI IDE tips, tricks & best practices - 211⭐ community resource",
     link: "https://github.com/murataslan1/cursor-ai-tips",
     tags: ["Original", "AI"],
     stack: ["Documentation", "Developer Tools"],
@@ -122,7 +122,7 @@ const dataportfolio = [
     caseStudy: {
       problem: "Cursor AI users lacked a central resource for tips and best practices.",
       contribution: "Created comprehensive guide with keyboard shortcuts, Composer mode tips, and .cursorrules examples.",
-      impact: "179+ stars and growing community of Cursor AI enthusiasts."
+      impact: "211+ stars and growing community of Cursor AI enthusiasts."
     },
     testimonial: {
       quote: "This is exactly what the Cursor community needed. Great work!",
@@ -152,7 +152,7 @@ const dataportfolio = [
   {
     img: "https://opengraph.githubassets.com/1/murataslan1/ai-agent-benchmark",
     title: "AI Agent Benchmark",
-    desctiption: "AI Agent Benchmark - The definitive comparison of AI coding agents (Mar 2026 Data) - 14⭐",
+    desctiption: "AI Agent Benchmark - The definitive comparison of AI coding agents (Mar 2026 Data) - 18⭐",
     link: "https://github.com/murataslan1/ai-agent-benchmark",
     tags: ["Research", "AI"],
     stack: ["Data", "Web"],
@@ -166,7 +166,7 @@ const dataportfolio = [
   {
     img: "https://opengraph.githubassets.com/1/murataslan1/n8n-workflow-collection",
     title: "n8n Workflow Collection",
-    desctiption: "4,300+ n8n Automation Workflows — The Largest Open-Source Collection - 5⭐",
+    desctiption: "4,300+ n8n Automation Workflows — The Largest Open-Source Collection - 6⭐",
     link: "https://github.com/murataslan1/n8n-workflow-collection",
     tags: ["Original", "Automation"],
     stack: ["Python", "n8n"],
@@ -193,7 +193,7 @@ const dataportfolio = [
   },
   {
     title: "VS Code",
-    desctiption: "VS Code - 41 PRs (5 merged): Lifecycle fixes, scrolling fix, UX improvements (165k⭐)",
+    desctiption: "VS Code - 41 PRs (5 merged): Lifecycle fixes, scrolling fix, UX improvements (183k⭐)",
     link: "https://github.com/microsoft/vscode/pulls?q=author%3Amurataslan1",
     tags: ["Open Source", "Tooling"],
     stack: ["TypeScript", "Developer Tools"],
@@ -212,7 +212,7 @@ const dataportfolio = [
   {
     img: "https://opengraph.githubassets.com/1/murataslan1/local-ai-coding-guide",
     title: "Local AI Coding Guide",
-    desctiption: "Comprehensive guide for running AI coding assistants locally - 15⭐",
+    desctiption: "Comprehensive guide for running AI coding assistants locally - 20⭐",
     link: "https://github.com/murataslan1/local-ai-coding-guide",
     tags: ["Original", "AI"],
     stack: ["Python", "Documentation"],
@@ -245,7 +245,7 @@ const dataportfolio = [
   {
     img: "https://opengraph.githubassets.com/1/mindsdb/mindsdb",
     title: "MindsDB",
-    desctiption: "MindsDB - Added S3 Region support for integrations (26k⭐)",
+    desctiption: "MindsDB - Added S3 Region support for integrations (39k⭐)",
     link: "https://github.com/mindsdb/mindsdb/pull/12004",
     tags: ["Open Source", "Data"],
     stack: ["Databases", "Python"]
@@ -266,7 +266,7 @@ const dataportfolio = [
   {
     img: "https://opengraph.githubassets.com/1/traefik/traefik",
     title: "Traefik",
-    desctiption: "Traefik - 3 PRs: ForwardAuth logging improvements & UI Fixes (54k⭐)",
+    desctiption: "Traefik - 3 PRs: ForwardAuth logging improvements & UI Fixes (62k⭐)",
     link: "https://github.com/traefik/traefik/pulls?q=author%3Amurataslan1",
     tags: ["Open Source", "Infra"],
     stack: ["Networking", "Go"],
@@ -279,7 +279,7 @@ const dataportfolio = [
   {
     img: "https://opengraph.githubassets.com/1/milvus-io/milvus",
     title: "Milvus",
-    desctiption: "Milvus - 6 PRs: fnmatch optimization, debug logs, Go client HNSW index support (32k⭐)",
+    desctiption: "Milvus - 6 PRs: fnmatch optimization, debug logs, Go client HNSW index support (43k⭐)",
     link: "https://github.com/milvus-io/milvus/pulls?q=author%3Amurataslan1",
     tags: ["Open Source", "Data"],
     stack: ["Databases", "Cloud"]
@@ -295,7 +295,7 @@ const dataportfolio = [
   {
     img: "https://opengraph.githubassets.com/1/facebookresearch/faiss",
     title: "FAISS",
-    desctiption: "FAISS - 2 PRs to Meta's vector similarity search library (33k⭐)",
+    desctiption: "FAISS - 2 PRs to Meta's vector similarity search library (39k⭐)",
     link: "https://github.com/facebookresearch/faiss/pulls?q=author%3Amurataslan1",
     tags: ["Open Source", "AI"],
     stack: ["C++", "Python"]
@@ -547,20 +547,29 @@ const socialprofils = {
 };
 
 const opensourceContributions = [
-  { project: "Coolify", stars: "40k", prs: 31, merged: 7, status: "✅ Merged" },
-  { project: "VS Code", stars: "165k", prs: 41, merged: 5, status: "✅ 5 Merged" },
-  { project: "Milvus", stars: "32k", prs: 6, merged: 0, status: "🔄 Open" },
-  { project: "Nuclei Templates", stars: "10k", prs: 5, merged: 4, status: "✅ Merged" },
-  { project: "Croc", stars: "30k", prs: 4, merged: 4, status: "✅ Merged" },
-  { project: "Termux", stars: "35k", prs: 2, merged: 2, status: "✅ Merged" },
-  { project: "LangChain.js", stars: "15k", prs: 1, merged: 1, status: "✅ Merged" },
+  { project: "VS Code", stars: "183k", prs: 41, merged: 5, status: "✅ 5 Merged" },
+  { project: "Coolify", stars: "52k", prs: 31, merged: 7, status: "✅ Merged" },
+  { project: "Milvus", stars: "43k", prs: 6, merged: 0, status: "🔄 Open" },
+  { project: "SigNoz", stars: "26k", prs: 5, merged: 0, status: "🔄 Open" },
+  { project: "Nuclei Templates", stars: "12k", prs: 5, merged: 4, status: "✅ Merged" },
+  { project: "CX Linux", stars: "—", prs: 5, merged: 1, status: "✅ Merged" },
+  { project: "Croc", stars: "34k", prs: 4, merged: 4, status: "✅ Merged" },
+  { project: "Traefik", stars: "62k", prs: 3, merged: 1, status: "✅ Merged" },
+  { project: "Draw.io Desktop", stars: "60k", prs: 3, merged: 0, status: "🔄 Open" },
   { project: "Deno std", stars: "3.5k", prs: 2, merged: 1, status: "✅ Merged" },
-  { project: "Traefik", stars: "54k", prs: 3, merged: 1, status: "✅ Merged" },
-  { project: "Trivy", stars: "25k", prs: 2, merged: 1, status: "✅ Merged" },
-  { project: ".NET Aspire", stars: "4k", prs: 1, merged: 1, status: "✅ Merged" },
-  { project: "ASP.NET Core", stars: "36k", prs: 1, merged: 0, status: "🔄 Open" },
-  { project: "OpenBB", stars: "35k", prs: 2, merged: 1, status: "✅ Merged" },
-  { project: "CX Linux", stars: "2k", prs: 5, merged: 1, status: "✅ Merged" }
+  { project: "Deno Runtime", stars: "106k", prs: 2, merged: 0, status: "🔄 Open" },
+  { project: "Trivy", stars: "33k", prs: 2, merged: 1, status: "✅ Merged" },
+  { project: "Termux", stars: "16k", prs: 2, merged: 2, status: "✅ Merged" },
+  { project: "OpenBB", stars: "63k", prs: 2, merged: 1, status: "✅ Merged" },
+  { project: "FAISS", stars: "39k", prs: 2, merged: 0, status: "🔄 Open" },
+  { project: "Greenbone OpenVAS", stars: "4.5k", prs: 2, merged: 0, status: "🔄 Open" },
+  { project: "JJ VCS", stars: "27k", prs: 2, merged: 0, status: "🔄 Open" },
+  { project: "VS Code MermAId", stars: "168", prs: 2, merged: 0, status: "🔄 Open" },
+  { project: "Perspective", stars: "10k", prs: 2, merged: 0, status: "🔄 Open" },
+  { project: "MindsDB", stars: "39k", prs: 2, merged: 1, status: "✅ Merged" },
+  { project: "LangChain.js", stars: "17k", prs: 1, merged: 1, status: "✅ Merged" },
+  { project: ".NET Aspire", stars: "5.5k", prs: 1, merged: 1, status: "✅ Merged" },
+  { project: "ASP.NET Core", stars: "38k", prs: 1, merged: 0, status: "🔄 Open" }
 ];
 
 export {
