@@ -53,7 +53,14 @@ const marqueeStats = [
     Icon: SiTraefikproxy,
     iconColor: "#24A1C1",
     label: "Traefik",
-    value: "62k⭐",
+    value: "54k⭐",
+    color: "green",
+  },
+  {
+    Icon: SiNodedotjs,
+    iconColor: "#339933",
+    label: "Node.js",
+    value: "112k⭐",
     color: "green",
   },
   {
@@ -64,8 +71,7 @@ const marqueeStats = [
     value: "3.5k⭐",
     color: "orange",
   },
-  { emoji: "🐧", label: "Cortex Linux", value: "Bounty", color: "pink" },
-  { emoji: "🧠", label: "MindsDB", value: "39k⭐", color: "cyan" },
+  { emoji: "🤖", label: "Vercel AI", value: "15k⭐", color: "cyan" },
   {
     Icon: SiMilvus,
     iconColor: "#00A1EA",
@@ -182,10 +188,10 @@ const techCategories = [
 ];
 
 const achievements = [
-  { value: "30+", label: "PRs Merged", emoji: "🚀" },
-  { value: "234", label: "Public Repos", emoji: "⭐" },
+  { value: "39+", label: "PRs Merged", emoji: "🚀" },
+  { value: "245", label: "Public Repos", emoji: "⭐" },
   { value: "$100+", label: "Bounties Earned", emoji: "🏆" },
-  { value: "78", label: "Followers", emoji: "🌍" },
+  { value: "85", label: "Followers", emoji: "🌍" },
 ];
 
 const caseStudies = dataportfolio.filter((item) => item.caseStudy);

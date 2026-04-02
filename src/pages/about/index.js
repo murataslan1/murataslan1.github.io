@@ -96,11 +96,11 @@ export const About = () => {
 
           <FadeInUp delay={0.2} className="about-stats">
             <div className="about-stat glass-card">
-              <span className="about-stat__value">30+</span>
+              <span className="about-stat__value">39+</span>
               <span className="about-stat__label">PRs Merged</span>
             </div>
             <div className="about-stat glass-card">
-              <span className="about-stat__value">30+</span>
+              <span className="about-stat__value">45+</span>
               <span className="about-stat__label">Projects</span>
             </div>
             <div className="about-stat glass-card">

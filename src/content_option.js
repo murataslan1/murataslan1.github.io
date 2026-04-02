@@ -2,7 +2,7 @@ const logotext = "MURAT ASLAN";
 const meta = {
   title: "Murat Aslan | Open Source Developer",
   description:
-    "Full Stack Developer & Open Source Contributor with 30+ merged PRs to major projects like VS Code, Coolify, LangChain, Traefik, Deno, and more.",
+    "Full Stack Developer & Open Source Contributor with 39+ merged PRs to major projects like VS Code, Coolify, LangChain, Traefik, Node.js, Deno, and more.",
   siteUrl: "https://murataslan1.github.io/",
   image: "https://murataslan1.github.io/profile.png",
   role: "Full Stack Developer",
@@ -13,19 +13,19 @@ const introdata = {
   title: "I'm Murat Aslan",
   animated: {
     first: "Open Source Contributor 🚀",
-    second: "30+ Merged PRs to Major Projects",
-    third: "Microsoft | LangChain | Deno | Coolify",
+    second: "39+ Merged PRs to Major Projects",
+    third: "Microsoft | Node.js | Traefik | Vercel | Coolify",
     fourth: "Full Stack Developer"
   },
   description:
-    "Passionate open source contributor with 30+ merged pull requests to major projects including VS Code (183k⭐), Coolify (52k⭐), LangChain.js, Traefik (62k⭐), Deno, Trivy, and more. Full stack developer with 234 public repos, specializing in TypeScript, Go, and Cloud Native technologies.",
+    "Passionate open source contributor with 39+ merged pull requests to major projects including VS Code (183k⭐), Coolify (52k⭐), Traefik (54k⭐), Node.js, Vercel AI SDK, LangChain.js, Deno, Trivy, and more. Full stack developer with 245 public repos, specializing in TypeScript, Go, and Cloud Native technologies.",
   your_img_url: "/profile.png"
 };
 
 const dataabout = {
   title: "About Me",
   aboutme:
-    "I'm a passionate Full Stack Developer and Open Source enthusiast based in Ankara, Turkey. I believe in the power of open source to drive innovation and collaboration. As of March 2026, I've contributed 30+ merged pull requests to major projects like VS Code, LangChain.js, Coolify, Deno, Traefik, Trivy, ASP.NET Core, and many more. With 234 public repositories, I love finding bugs, improving documentation, and adding new features to projects that millions of developers use daily."
+    "I'm a passionate Full Stack Developer and Open Source enthusiast based in Ankara, Turkey. I believe in the power of open source to drive innovation and collaboration. As of April 2026, I've contributed 39+ merged pull requests and 185+ total PRs to major projects like VS Code (41 PRs), Coolify, Node.js, Traefik, Vercel AI SDK, T3Code, LangChain.js, Deno, Trivy, and many more. With 245 public repositories, I love finding bugs, improving documentation, and adding new features to projects that millions of developers use daily."
 };
 
 const worktimeline = [
@@ -76,7 +76,7 @@ const services = [
   {
     title: "Open Source Contributions",
     description:
-      "30+ merged PRs to major projects: VS Code (183k⭐), Coolify (52k⭐), LangChain.js, Traefik (62k⭐), Deno, Trivy, ASP.NET Core, and more."
+      "39+ merged PRs across 185+ total contributions: VS Code (41 PRs), Coolify, Node.js, Traefik (54k⭐), Vercel AI SDK, T3Code, LangChain.js, Deno, and more."
   },
   {
     title: "Full Stack Development",
@@ -114,7 +114,7 @@ const dataportfolio = [
   {
     img: "https://opengraph.githubassets.com/1/murataslan1/cursor-ai-tips",
     title: "Cursor AI Tips",
-    desctiption: "Cursor AI IDE tips, tricks & best practices - 211⭐ community resource",
+    desctiption: "Cursor AI IDE tips, tricks & best practices - 219⭐ community resource",
     link: "https://github.com/murataslan1/cursor-ai-tips",
     tags: ["Original", "AI"],
     stack: ["Documentation", "Developer Tools"],
@@ -122,7 +122,7 @@ const dataportfolio = [
     caseStudy: {
       problem: "Cursor AI users lacked a central resource for tips and best practices.",
       contribution: "Created comprehensive guide with keyboard shortcuts, Composer mode tips, and .cursorrules examples.",
-      impact: "211+ stars and growing community of Cursor AI enthusiasts."
+      impact: "219+ stars and growing community of Cursor AI enthusiasts."
     },
     testimonial: {
       quote: "This is exactly what the Cursor community needed. Great work!",
@@ -152,7 +152,7 @@ const dataportfolio = [
   {
     img: "https://opengraph.githubassets.com/1/murataslan1/ai-agent-benchmark",
     title: "AI Agent Benchmark",
-    desctiption: "AI Agent Benchmark - The definitive comparison of AI coding agents (Mar 2026 Data) - 18⭐",
+    desctiption: "AI Agent Benchmark - The definitive comparison of AI coding agents (Apr 2026 Data) - 20⭐",
     link: "https://github.com/murataslan1/ai-agent-benchmark",
     tags: ["Research", "AI"],
     stack: ["Data", "Web"],
@@ -266,7 +266,7 @@ const dataportfolio = [
   {
     img: "https://opengraph.githubassets.com/1/traefik/traefik",
     title: "Traefik",
-    desctiption: "Traefik - 3 PRs: ForwardAuth logging improvements & UI Fixes (62k⭐)",
+    desctiption: "Traefik - 6 PRs (2 merged): CRD priority, Docker inspect, SameSite cookie fixes (54k⭐)",
     link: "https://github.com/traefik/traefik/pulls?q=author%3Amurataslan1",
     tags: ["Open Source", "Infra"],
     stack: ["Networking", "Go"],
@@ -287,7 +287,7 @@ const dataportfolio = [
   {
     img: "https://opengraph.githubassets.com/1/langchain-ai/langchainjs",
     title: "LangChain.js",
-    desctiption: "LangChain.js - Fixed DeepSeek <think> tag parsing in content streams",
+    desctiption: "LangChain.js - 2 PRs: DeepSeek think tag parsing + atomic write fix for LocalFileStore",
     link: "https://github.com/langchain-ai/langchainjs/pulls?q=author%3Amurataslan1",
     tags: ["Open Source", "AI"],
     stack: ["TypeScript", "LLM"]
@@ -490,7 +490,7 @@ const dataportfolio = [
   {
     img: "https://opengraph.githubassets.com/1/vercel/ai",
     title: "Vercel AI SDK",
-    desctiption: "Vercel AI SDK - Fixed gateway tool-approval-response filter",
+    desctiption: "Vercel AI SDK - 3 PRs: MCP OAuth trailing slash, error type prefix, gateway filter (15k⭐)",
     link: "https://github.com/vercel/ai/pulls?q=author%3Amurataslan1",
     tags: ["Open Source", "AI"],
     stack: ["TypeScript", "AI"]
@@ -525,6 +525,66 @@ const dataportfolio = [
     link: "https://github.com/denoland/deno/pulls?q=author%3Amurataslan1",
     tags: ["Open Source", "Runtime"],
     stack: ["Rust", "TypeScript"]
+  },
+  {
+    img: "https://opengraph.githubassets.com/1/murataslan1/ci-debugger",
+    title: "CI Debugger",
+    desctiption: "Debug GitHub Actions workflows locally with breakpoints — 45⭐",
+    link: "https://github.com/murataslan1/ci-debugger",
+    tags: ["Original", "DevOps"],
+    stack: ["Go", "CI/CD"],
+    featured: true,
+    caseStudy: {
+      problem: "Debugging GitHub Actions required blind YAML commits and waiting for CI runs.",
+      contribution: "Built a local debugger with breakpoints for GitHub Actions workflows.",
+      impact: "45+ stars, enabling developers to debug CI pipelines without pushing."
+    }
+  },
+  {
+    img: "https://opengraph.githubassets.com/1/pingdotgg/t3code",
+    title: "T3Code",
+    desctiption: "T3Code - 6 PRs: Terminal history, checkpoint skip, mobile sidebar, iOS zoom, sticky model",
+    link: "https://github.com/pingdotgg/t3code/pulls?q=author%3Amurataslan1",
+    tags: ["Open Source", "Tooling"],
+    stack: ["TypeScript", "React"],
+    featured: true,
+    caseStudy: {
+      problem: "Multiple UX issues in the AI coding environment affecting terminal and mobile.",
+      contribution: "Fixed terminal history pollution, checkpoint logic, mobile sidebar, iOS zoom, and model persistence.",
+      impact: "Improved experience across 6 PRs for desktop and mobile users."
+    }
+  },
+  {
+    img: "https://opengraph.githubassets.com/1/nodejs/node",
+    title: "Node.js",
+    desctiption: "Node.js - 2 PRs: test_runner improvements to avoid reading process state directly (112k⭐)",
+    link: "https://github.com/nodejs/node/pulls?q=author%3Amurataslan1",
+    tags: ["Open Source", "Runtime"],
+    stack: ["C++", "JavaScript"]
+  },
+  {
+    img: "https://opengraph.githubassets.com/1/openai/codex-plugin-cc",
+    title: "Codex Plugin CC",
+    desctiption: "OpenAI Codex Plugin - 2 PRs: ANSI escape stripping, broken symlink handling",
+    link: "https://github.com/openai/codex-plugin-cc/pulls?q=author%3Amurataslan1",
+    tags: ["Open Source", "AI"],
+    stack: ["TypeScript", "Developer Tools"]
+  },
+  {
+    img: "https://opengraph.githubassets.com/1/f/prompts.chat",
+    title: "prompts.chat",
+    desctiption: "prompts.chat - CLI fix: add missing full_content param to API URL (✅ Merged)",
+    link: "https://github.com/f/prompts.chat/pull/1122",
+    tags: ["Open Source", "AI"],
+    stack: ["TypeScript", "Web"]
+  },
+  {
+    img: "https://opengraph.githubassets.com/1/openclaw/openclaw",
+    title: "OpenClaw",
+    desctiption: "OpenClaw - Fixed exec approval modal closing without submitting decision",
+    link: "https://github.com/openclaw/openclaw/pulls?q=author%3Amurataslan1",
+    tags: ["Open Source", "AI"],
+    stack: ["TypeScript", "UI"]
   }
 ];
 
@@ -548,28 +608,33 @@ const socialprofils = {
 
 const opensourceContributions = [
   { project: "VS Code", stars: "183k", prs: 41, merged: 5, status: "✅ 5 Merged" },
-  { project: "Coolify", stars: "52k", prs: 31, merged: 7, status: "✅ Merged" },
-  { project: "Milvus", stars: "43k", prs: 6, merged: 0, status: "🔄 Open" },
-  { project: "SigNoz", stars: "26k", prs: 5, merged: 0, status: "🔄 Open" },
-  { project: "Nuclei Templates", stars: "12k", prs: 5, merged: 4, status: "✅ Merged" },
+  { project: "Coolify", stars: "52k", prs: 34, merged: 7, status: "✅ 7 Merged" },
+  { project: "Milvus", stars: "43k", prs: 6, status: "🔄 Open" },
+  { project: "Traefik", stars: "54k", prs: 6, merged: 2, status: "✅ 2 Merged" },
+  { project: "T3Code", stars: "8k", prs: 6, status: "🔄 Active" },
+  { project: "SigNoz", stars: "26k", prs: 5, status: "🔄 Open" },
+  { project: "Nuclei Templates", stars: "12k", prs: 5, merged: 4, status: "✅ 4 Merged" },
   { project: "CX Linux", stars: "—", prs: 5, merged: 1, status: "✅ Merged" },
-  { project: "Croc", stars: "34k", prs: 4, merged: 4, status: "✅ Merged" },
-  { project: "Traefik", stars: "62k", prs: 3, merged: 1, status: "✅ Merged" },
-  { project: "Draw.io Desktop", stars: "60k", prs: 3, merged: 0, status: "🔄 Open" },
+  { project: "Croc", stars: "34k", prs: 4, merged: 4, status: "✅ 4 Merged" },
+  { project: "Vercel AI SDK", stars: "15k", prs: 3, status: "🔄 Active" },
+  { project: "Draw.io Desktop", stars: "60k", prs: 3, status: "🔄 Open" },
+  { project: "Node.js", stars: "112k", prs: 2, status: "🔄 Review" },
+  { project: "LangChain.js", stars: "17k", prs: 2, merged: 1, status: "✅ Merged" },
+  { project: "Codex Plugin CC", stars: "—", prs: 2, status: "🔄 Active" },
   { project: "Deno std", stars: "3.5k", prs: 2, merged: 1, status: "✅ Merged" },
-  { project: "Deno Runtime", stars: "106k", prs: 2, merged: 0, status: "🔄 Open" },
+  { project: "Deno Runtime", stars: "106k", prs: 2, status: "🔄 Open" },
   { project: "Trivy", stars: "33k", prs: 2, merged: 1, status: "✅ Merged" },
-  { project: "Termux", stars: "16k", prs: 2, merged: 2, status: "✅ Merged" },
+  { project: "Termux", stars: "16k", prs: 2, merged: 2, status: "✅ 2 Merged" },
   { project: "OpenBB", stars: "63k", prs: 2, merged: 1, status: "✅ Merged" },
-  { project: "FAISS", stars: "39k", prs: 2, merged: 0, status: "🔄 Open" },
-  { project: "Greenbone OpenVAS", stars: "4.5k", prs: 2, merged: 0, status: "🔄 Open" },
-  { project: "JJ VCS", stars: "27k", prs: 2, merged: 0, status: "🔄 Open" },
-  { project: "VS Code MermAId", stars: "168", prs: 2, merged: 0, status: "🔄 Open" },
-  { project: "Perspective", stars: "10k", prs: 2, merged: 0, status: "🔄 Open" },
+  { project: "FAISS", stars: "39k", prs: 2, status: "🔄 Open" },
+  { project: "Greenbone OpenVAS", stars: "4.5k", prs: 2, status: "🔄 Open" },
+  { project: "JJ VCS", stars: "27k", prs: 2, status: "🔄 Open" },
+  { project: "VS Code MermAId", stars: "168", prs: 2, status: "🔄 Open" },
+  { project: "Perspective", stars: "10k", prs: 2, status: "🔄 Open" },
   { project: "MindsDB", stars: "39k", prs: 2, merged: 1, status: "✅ Merged" },
-  { project: "LangChain.js", stars: "17k", prs: 1, merged: 1, status: "✅ Merged" },
   { project: ".NET Aspire", stars: "5.5k", prs: 1, merged: 1, status: "✅ Merged" },
-  { project: "ASP.NET Core", stars: "38k", prs: 1, merged: 0, status: "🔄 Open" }
+  { project: "ASP.NET Core", stars: "38k", prs: 1, status: "🔄 Open" },
+  { project: "prompts.chat", stars: "—", prs: 1, merged: 1, status: "✅ Merged" }
 ];
 
 export {

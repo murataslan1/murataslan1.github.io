@@ -9,20 +9,20 @@ const githubTheme = {
   dark: ["#161b22", "#0e4429", "#006d32", "#26a641", "#39d353"],
 };
 
-// Fallback stats from GitHub API (last updated: Feb 2026)
+// Fallback stats from GitHub API (last updated: Apr 2026)
 const FALLBACK_STATS = {
-  repos: 234,
+  repos: 245,
   totalCommits: 45,
-  totalPRs: 2,
-  followers: 78
+  totalPRs: 6,
+  followers: 85
 };
 
 const FALLBACK_ACTIVITIES = [
-  { icon: '🔀', action: 'Opened PR in', repo: 'microsoft/vscode', time: 'recently', color: 'purple' },
-  { icon: '📝', action: 'Pushed to', repo: 'murataslan1.github.io', time: '2 days ago', color: 'green' },
-  { icon: '⭐', action: 'Starred', repo: 'vercel-labs/agent-skills', time: '3 days ago', color: 'yellow' },
-  { icon: '🔀', action: 'Opened PR in', repo: 'coollabsio/coolify', time: '4 weeks ago', color: 'purple' },
-  { icon: '💬', action: 'Commented on', repo: 'coollabsio/coolify', time: '4 weeks ago', color: 'blue' },
+  { icon: '💬', action: 'Commented on PR in', repo: 'langchain-ai/langchainjs', time: 'recently', color: 'blue' },
+  { icon: '💬', action: 'Commented on PR in', repo: 'vercel/ai', time: 'recently', color: 'blue' },
+  { icon: '🔀', action: 'Opened PR in', repo: 'traefik/traefik', time: '1 day ago', color: 'purple' },
+  { icon: '🔀', action: 'Merged PR in', repo: 'f/prompts.chat', time: '1 day ago', color: 'purple' },
+  { icon: '⭐', action: 'Starred', repo: 'anthropics/claude-code', time: '1 day ago', color: 'yellow' },
 ];
 
 export const GitHubActivity = () => {
