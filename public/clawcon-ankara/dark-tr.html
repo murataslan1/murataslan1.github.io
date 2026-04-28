@@ -178,6 +178,28 @@
   }
   .full-image-slide .caption .accent { color: var(--accent); font-weight: 600; }
 
+  .dual-image-slide { padding: 40px 50px 40px !important; }
+  .dual-image-slide .body {
+    justify-content: center;
+    align-items: center;
+    gap: 14px;
+  }
+  .dual-image-slide .pair {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+    width: 100%;
+  }
+  .dual-image-slide .pair img {
+    width: 100%;
+    max-height: 540px;
+    object-fit: contain;
+    border-radius: 6px;
+    border: 1px solid #333;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+    display: block;
+  }
+
   .flow {
     font-family: "SF Mono", Menlo, monospace;
     font-size: 26px;
@@ -311,6 +333,18 @@
     <img src="openclaw-pr-2.png" alt="OpenClaw PR #339 — end-to-end verification">
     <p class="caption">
       End-to-end doğrulama <span class="accent">→</span> install script'i ctx_* tool'larını gerçekten agent'a açıyor
+    </p>
+  </div>
+</section>
+
+<section class="dual-image-slide">
+  <div class="body">
+    <div class="pair">
+      <img src="openclaw-demo-1.png" alt="OpenClaw chat — context-mode tool calls in action">
+      <img src="openclaw-demo-2.png" alt="OpenClaw chat — agent uses ctx_execute end-to-end">
+    </div>
+    <p class="caption">
+      Ve canlıda çalışıyor <span class="accent">→</span> agent <code>ctx_fetch_and_index</code>, <code>ctx_execute</code> kullanıyor
     </p>
   </div>
 </section>

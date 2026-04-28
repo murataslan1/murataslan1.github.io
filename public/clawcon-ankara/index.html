@@ -289,6 +289,29 @@
     margin: 0 !important;
   }
   .full-image-slide .caption .accent-orange { font-weight: 600; }
+
+  .dual-image-slide { padding: 40px 50px 40px !important; }
+  .dual-image-slide .body {
+    justify-content: center;
+    align-items: center;
+    gap: 14px;
+  }
+  .dual-image-slide .pair {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+    width: 100%;
+    max-width: 100%;
+  }
+  .dual-image-slide .pair img {
+    width: 100%;
+    max-height: 540px;
+    object-fit: contain;
+    border-radius: 4px;
+    border: 2px solid var(--dark);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    display: block;
+  }
 </style>
 </head>
 <body>
@@ -406,6 +429,18 @@
     <img src="openclaw-pr-2.png" alt="OpenClaw PR #339 — end-to-end verification">
     <p class="caption">
       End-to-end verification <span class="accent-orange">→</span> the patched install script actually surfaces ctx_* tools to the agent
+    </p>
+  </div>
+</section>
+
+<section class="dual-image-slide">
+  <div class="body">
+    <div class="pair">
+      <img src="openclaw-demo-1.png" alt="OpenClaw chat — context-mode tool calls in action">
+      <img src="openclaw-demo-2.png" alt="OpenClaw chat — agent uses ctx_execute end-to-end">
+    </div>
+    <p class="caption">
+      And it works live <span class="accent-orange">→</span> the agent uses <code>ctx_fetch_and_index</code>, <code>ctx_execute</code>
     </p>
   </div>
 </section>
