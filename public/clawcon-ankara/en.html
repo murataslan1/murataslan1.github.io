@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Trusting Your Agents — ClawCon Ankara</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reset.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/white.css">
+<style>
+  :root {
+    --dark: #141413;
+    --light: #faf9f5;
+    --mid-gray: #b0aea5;
+    --light-gray: #e8e6dc;
+    --orange: #d97757;
+    --blue: #6a9bcc;
+    --green: #788c5d;
+  }
+
+  html, body { background: var(--light); }
+  .reveal {
+    font-family: "Lora", Georgia, serif;
+    color: var(--dark);
+    background: var(--light);
+  }
+  .reveal .backgrounds { background: var(--light); }
+
+  .reveal .slides > section {
+    display: flex !important;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    padding: 70px 80px 55px;
+    box-sizing: border-box;
+    text-align: left;
+    background: var(--light);
+  }
+  .reveal .slides > section.center {
+    justify-content: center;
+    align-items: flex-start;
+  }
+
+  .head { flex: 0 0 auto; }
+  .body { flex: 1 1 auto; display: flex; flex-direction: column; justify-content: center; }
+  .meta {
+    flex: 0 0 auto;
+    font-family: "Poppins", Arial, sans-serif;
+    font-size: 14px;
+    color: var(--mid-gray);
+    letter-spacing: 0.3px;
+  }
+
+  .reveal h1 {
+    font-family: "Poppins", Arial, sans-serif;
+    font-size: 56px;
+    font-weight: 600;
+    color: var(--dark);
+    margin: 0 0 10px;
+    letter-spacing: -1.5px;
+    line-height: 1.05;
+    text-transform: none;
+  }
+  .reveal h2 {
+    font-family: "Poppins", Arial, sans-serif;
+    font-size: 42px;
+    font-weight: 600;
+    color: var(--dark);
+    margin: 0 0 20px;
+    letter-spacing: -0.8px;
+    line-height: 1.1;
+    text-transform: none;
+  }
+  .reveal h3 {
+    font-family: "Lora", Georgia, serif;
+    font-size: 22px;
+    font-style: italic;
+    color: var(--mid-gray);
+    font-weight: 400;
+    margin: 0 0 28px;
+    text-transform: none;
+  }
+  .reveal p, .reveal li {
+    font-family: "Lora", Georgia, serif;
+    font-size: 22px;
+    line-height: 1.55;
+    color: var(--dark);
+    margin: 0 0 14px;
+  }
+  .reveal p:last-child, .reveal li:last-child { margin-bottom: 0; }
+
+  .reveal ul {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+  }
+  .reveal ul li { padding: 8px 0; position: relative; padding-left: 24px; }
+  .reveal ul li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 18px;
+    width: 12px;
+    height: 2px;
+    background: var(--orange);
+  }
+
+  .tag {
+    display: inline-block;
+    background: var(--dark);
+    color: var(--light);
+    padding: 7px 14px;
+    font-size: 12px;
+    border-radius: 2px;
+    margin-bottom: 18px;
+    font-weight: 600;
+    letter-spacing: 1.8px;
+    font-family: "Poppins", Arial, sans-serif;
+    text-transform: uppercase;
+  }
+  .tag.blue { background: var(--blue); color: var(--light); }
+  .tag.green { background: var(--green); color: var(--light); }
+  .tag.orange { background: var(--orange); color: var(--light); }
+  .tag a { color: inherit; text-decoration: none; }
+  .tag a:hover { text-decoration: underline; }
+
+  .reveal pre {
+    box-shadow: none;
+    margin: 8px 0 0;
+    width: 100%;
+  }
+  .reveal pre code {
+    font-family: "SF Mono", Menlo, "Roboto Mono", monospace;
+    font-size: 16px;
+    line-height: 1.6;
+    padding: 22px 26px;
+    border-radius: 4px;
+    background: var(--dark) !important;
+    color: var(--light) !important;
+    border-left: 4px solid var(--orange);
+  }
+  .reveal pre code .added { color: var(--green); }
+  .reveal pre code .removed { color: var(--orange); }
+  .reveal pre code .comment { color: var(--mid-gray); font-style: italic; }
+
+  code:not(pre code) {
+    font-family: "SF Mono", Menlo, "Roboto Mono", monospace;
+    background: var(--light-gray);
+    color: var(--dark);
+    padding: 2px 8px;
+    border-radius: 3px;
+    font-size: 0.92em;
+  }
+
+  .quote {
+    font-family: "Lora", Georgia, serif;
+    font-size: 42px !important;
+    line-height: 1.3;
+    color: var(--dark);
+    font-style: italic;
+    font-weight: 500;
+    margin: 0 !important;
+  }
+  .big {
+    font-family: "Poppins", Arial, sans-serif;
+    font-size: 44px !important;
+    line-height: 1.2;
+    color: var(--dark);
+    font-weight: 600;
+    margin: 0 0 28px !important;
+    letter-spacing: -0.5px;
+  }
+  .accent-orange { color: var(--orange); }
+  .accent-blue { color: var(--blue); }
+  .accent-green { color: var(--green); }
+  .arrow { color: var(--orange); margin: 0 8px; font-weight: 600; }
+
+  .timeline {
+    font-family: "Poppins", Arial, sans-serif;
+    font-size: 22px !important;
+    line-height: 2.3 !important;
+    margin: 0 !important;
+    font-weight: 500;
+  }
+  .timeline .yr {
+    color: var(--mid-gray);
+    margin-right: 14px;
+    font-weight: 400;
+  }
+
+  .byline {
+    font-family: "Poppins", Arial, sans-serif;
+    color: var(--mid-gray);
+    font-size: 18px;
+    margin-top: 44px;
+    font-weight: 400;
+  }
+  .repos {
+    color: var(--orange);
+    font-family: "Poppins", Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  .flow {
+    font-family: "Poppins", Arial, sans-serif;
+    font-size: 26px;
+    font-weight: 500;
+    line-height: 1.7;
+    color: var(--dark);
+    background: var(--light-gray);
+    padding: 26px 30px;
+    border-radius: 4px;
+    border-left: 4px solid var(--orange);
+    margin: 0 0 28px;
+  }
+  .flow .lbl {
+    color: var(--mid-gray);
+    font-size: 15px;
+    font-weight: 400;
+  }
+  .glossary {
+    font-size: 19px !important;
+    line-height: 1.55;
+    margin: 8px 0 !important;
+  }
+  .glossary b {
+    font-family: "Poppins", Arial, sans-serif;
+    color: var(--orange);
+    font-weight: 600;
+  }
+  .glossary.blue b { color: var(--blue); }
+  .glossary.green b { color: var(--green); }
+
+  .reveal .progress {
+    color: var(--orange);
+    background: var(--light-gray);
+    height: 4px;
+  }
+
+  .screenshot {
+    max-width: 100%;
+    max-height: 360px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    border-radius: 4px;
+    border: 2px solid var(--dark);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    margin: 0 auto;
+    display: block;
+  }
+  .case-with-image .body {
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+  }
+  .case-with-image .body p {
+    margin-bottom: 0;
+    text-align: center;
+    max-width: 900px;
+  }
+
+  .full-image-slide { padding: 40px 50px 40px !important; }
+  .full-image-slide .body {
+    justify-content: center;
+    align-items: center;
+    gap: 18px;
+  }
+  .full-image-slide img {
+    max-width: 100%;
+    max-height: 600px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    border-radius: 4px;
+    border: 2px solid var(--dark);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+    display: block;
+  }
+  .full-image-slide .caption {
+    font-family: "Poppins", Arial, sans-serif;
+    font-size: 16px;
+    color: var(--mid-gray);
+    text-align: center;
+    margin: 0 !important;
+  }
+  .full-image-slide .caption .accent-orange { font-weight: 600; }
+</style>
+</head>
+<body>
+<div class="reveal"><div class="slides">
+
+<section class="center">
+  <div class="head">
+    <h1>Trusting Your <span class="accent-orange">Agents</span></h1>
+    <h3>MCP, Hooks, and What OSS Taught Me</h3>
+    <p class="byline">Murat Aslan &middot; Software Engineer | OSS Contributor &middot; ClawCon Ankara</p>
+  </div>
+  <div class="meta">github.com/murataslan1</div>
+</section>
+
+<section class="center">
+  <div class="body">
+    <p class="quote">
+      "Your agent says <span class="accent-orange">Done</span>.<br>
+      Did it actually do anything?"
+    </p>
+  </div>
+  <div class="meta">3 cases. Each time I thought it worked.</div>
+</section>
+
+<section>
+  <div class="head">
+    <h2>30-Second Glossary</h2>
+  </div>
+  <div class="body">
+    <div class="flow">
+      Agent <span class="arrow">→</span> Hook <span class="arrow">→</span> MCP Server <span class="arrow">→</span> Result<br>
+      <span class="lbl">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(gate)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(external tool)</span>
+    </div>
+    <p class="glossary"><b>Hook</b> — your script that runs before/after every tool call. Allow, block, log, inject context.</p>
+    <p class="glossary blue"><b>MCP</b> — the protocol agents use to talk to external tools. <code>ctx_search</code>, <code>read_file</code>, etc. come from here.</p>
+    <p class="glossary green"><b>WSL</b> — on Windows, hooks and MCP servers run inside a Linux environment. That's where your bash scripts live.</p>
+  </div>
+  <div class="meta">Break any of these three, and you get the next 3 cases →</div>
+</section>
+
+<section>
+  <div class="head">
+    <span class="tag"><a href="https://github.com/openai/codex/issues/16685" target="_blank" rel="noopener">Case 1 &middot; openai/codex#16685</a></span>
+    <h2>Silent Cancel</h2>
+  </div>
+  <div class="body">
+    <p>Codex's exec mode was closing every MCP tool call with "user cancelled".</p>
+    <p>No error on screen. The tool never ran.</p>
+    <pre><code>[exec] calling tool: ctx_search
+[exec] user cancelled MCP tool call
+<span class="comment"># the user cancelled nothing.</span></code></pre>
+  </div>
+  <div class="meta">Filed upstream → confirmed by maintainers</div>
+</section>
+
+<section class="full-image-slide">
+  <div class="body">
+    <img src="codex-issue.png" alt="GitHub issue openai/codex#16685">
+    <p class="caption">
+      Filed an issue <span class="accent-orange">→</span> OpenAI maintainer confirmed it, regression label added
+    </p>
+  </div>
+</section>
+
+<section>
+  <div class="head">
+    <span class="tag blue"><a href="https://github.com/vercel/ai/pull/14019" target="_blank" rel="noopener">Case 2 &middot; vercel/ai#14019</a></span>
+    <h2>The Lying Error</h2>
+  </div>
+  <div class="body">
+    <p>In the Vercel AI SDK, tool exception types (<code>TypeError</code>, <code>RangeError</code>) were stripped before reaching the model.</p>
+    <p>Model sees "<code>API crashed</code>" — was that a failure or a normal string return? It can't tell.</p>
+    <pre><code><span class="removed">- error.message      // "API crashed"</span>
+<span class="added">+ error.toString()    // "TypeError: API crashed"</span></code></pre>
+  </div>
+  <div class="meta">One word of difference. Worlds apart for an agent.</div>
+</section>
+
+<section class="full-image-slide">
+  <div class="body">
+    <img src="vercel-pr.png" alt="Vercel AI PR #14019 merged">
+    <p class="caption">
+      Merged by Vercel AI maintainers <span class="accent-orange">→</span> added a follow-up test case, listed as contributor
+    </p>
+  </div>
+</section>
+
+<section>
+  <div class="head">
+    <span class="tag green"><a href="https://github.com/mksglu/context-mode/pull/339" target="_blank" rel="noopener">Case 3 &middot; mksglu/context-mode#339</a></span>
+    <h2>The Ghost Tool</h2>
+  </div>
+  <div class="body">
+    <p>context-mode (an OpenClaw feature) wasn't registering the MCP sidecar on install.</p>
+    <p><code>ctx_*</code> tools never reached the agent.</p>
+    <pre><code>install() {
+<span class="added">+ register_mcp_sidecar()</span>
+  link_binaries()
+}</code></pre>
+  </div>
+  <div class="meta">This is your community's repo.</div>
+</section>
+
+<section class="full-image-slide">
+  <div class="body">
+    <img src="openclaw-pr.png" alt="OpenClaw context-mode PR #339 merged">
+    <p class="caption">
+      Merged by the OpenClaw maintainer (mksglu) <span class="accent-orange">→</span> this is your community's repo
+    </p>
+  </div>
+</section>
+
+<section class="center">
+  <div class="body">
+    <p class="big">
+      All three times the screen<br>
+      said <span class="accent-orange">"it worked"</span>.
+    </p>
+    <p>Don't trust the screen. Read the logs.</p>
+  </div>
+</section>
+
+<section>
+  <div class="head">
+    <h2>Why I Caught Them</h2>
+    <p>Because I was sending PRs while using the tools.</p>
+  </div>
+  <div class="body">
+    <p class="timeline">
+      <span class="yr">2025</span> Deno <span class="arrow">→</span> first big OSS merge<br>
+      <span class="yr">2026</span> VS Code <span class="arrow">→</span> LangChain <span class="arrow">→</span> Traefik<br>
+      <span class="yr">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> Coolify <span class="arrow">→</span> Vercel AI <span class="arrow">→</span> context-mode <span class="lbl" style="color:var(--mid-gray);font-size:16px;">(openclaw feature)</span>
+    </p>
+  </div>
+  <div class="meta">
+    Once a maintainer knows your name, your next issue gets a reply in 5 minutes.
+  </div>
+</section>
+
+<section>
+  <div class="head">
+    <h2>Three Steps</h2>
+  </div>
+  <div class="body">
+    <ul>
+      <li>Watch the repo of the tool you actually use</li>
+      <li>Your first PR can be a one-line docs fix — it opens the door</li>
+      <li>Attach a repro repo to your issue, the maintainer remembers</li>
+    </ul>
+    <p style="margin-top: 36px;">
+      You're already inside the OpenClaw community.<br>
+      <span class="accent-orange">That's half the work. The other half: the <code>issues</code> tab.</span>
+    </p>
+  </div>
+  <div class="meta repos">github.com/murataslan1 &middot; context-mode (openclaw feature) &middot; vercel/ai</div>
+</section>
+
+</div></div>
+
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+<script>
+  Reveal.initialize({
+    hash: true,
+    transition: 'fade',
+    controls: false,
+    progress: true,
+    width: 1280,
+    height: 800,
+    margin: 0
+  });
+</script>
+</body>
+</html>
