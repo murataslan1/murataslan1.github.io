@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="tr">
 <head>
 <meta charset="utf-8">
-<title>Trusting Your Agents — ClawCon Ankara</title>
+<title>Agent'lara Güvenmek — ClawCon Ankara</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -235,6 +235,7 @@
   .glossary.blue b { color: var(--blue); }
   .glossary.green b { color: var(--green); }
 
+  /* progress bar */
   .reveal .progress {
     color: var(--orange);
     background: var(--light-gray);
@@ -296,8 +297,8 @@
 
 <section class="center">
   <div class="head">
-    <h1>Trusting Your <span class="accent-orange">Agents</span></h1>
-    <h3>MCP, Hooks, and What OSS Taught Me</h3>
+    <h1>Agent'lara <span class="accent-orange">Güvenmek</span></h1>
+    <h3>MCP, Hook'lar ve OSS'in Bana Öğrettikleri</h3>
     <p class="byline">Murat Aslan &middot; Software Engineer | OSS Contributor &middot; ClawCon Ankara</p>
   </div>
   <div class="meta">github.com/murataslan1</div>
@@ -306,97 +307,97 @@
 <section class="center">
   <div class="body">
     <p class="quote">
-      "Your agent says <span class="accent-orange">Done</span>.<br>
-      Did it actually do anything?"
+      "Agent'ınız <span class="accent-orange">'Done'</span> diyor.<br>
+      Gerçekten yaptı mı?"
     </p>
   </div>
-  <div class="meta">3 cases. Each time I thought it worked.</div>
+  <div class="meta">3 vaka. Hepsinde "yaptı" sandım.</div>
 </section>
 
 <section>
   <div class="head">
-    <h2>30-Second Glossary</h2>
+    <h2>30 Saniyede Sözlük</h2>
   </div>
   <div class="body">
     <div class="flow">
-      Agent <span class="arrow">→</span> Hook <span class="arrow">→</span> MCP Server <span class="arrow">→</span> Result<br>
-      <span class="lbl">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(gate)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(external tool)</span>
+      Agent <span class="arrow">→</span> Hook <span class="arrow">→</span> MCP Server <span class="arrow">→</span> Sonuç<br>
+      <span class="lbl">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(kapı)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(dış araç)</span>
     </div>
-    <p class="glossary"><b>Hook</b> — your script that runs before/after every tool call. Allow, block, log, inject context.</p>
-    <p class="glossary blue"><b>MCP</b> — the protocol agents use to talk to external tools. <code>ctx_search</code>, <code>read_file</code>, etc. come from here.</p>
-    <p class="glossary green"><b>WSL</b> — on Windows, hooks and MCP servers run inside a Linux environment. That's where your bash scripts live.</p>
+    <p class="glossary"><b>Hook</b> — agent tool çağırmadan önce/sonra çalışan senin scriptin. İzin ver, engelle, log'la, bağlam ekle.</p>
+    <p class="glossary blue"><b>MCP</b> — agent'ın dış araçlarla konuştuğu protokol. <code>ctx_search</code>, <code>read_file</code> gibi tool'lar buradan gelir.</p>
+    <p class="glossary green"><b>WSL</b> — Windows'ta hook ve MCP server'lar Linux ortamında çalışır. Bash script'in Windows'ta yaşadığı yer.</p>
   </div>
-  <div class="meta">Break any of these three, and you get the next 3 cases →</div>
+  <div class="meta">Bu üçü kırılınca 3 vaka çıkıyor →</div>
 </section>
 
 <section>
   <div class="head">
-    <span class="tag"><a href="https://github.com/openai/codex/issues/16685" target="_blank" rel="noopener">Case 1 &middot; openai/codex#16685</a></span>
-    <h2>Silent Cancel</h2>
+    <span class="tag"><a href="https://github.com/openai/codex/issues/16685" target="_blank" rel="noopener">Vaka 1 &middot; openai/codex#16685</a></span>
+    <h2>Sessiz İptal</h2>
   </div>
   <div class="body">
-    <p>Codex's exec mode was closing every MCP tool call with "user cancelled".</p>
-    <p>No error on screen. The tool never ran.</p>
+    <p>Codex exec mode'da MCP tool çağrıları "user cancelled" diye kapanıyordu.</p>
+    <p>Ekranda hata yok. Tool hiç çalışmadı.</p>
     <pre><code>[exec] calling tool: ctx_search
 [exec] user cancelled MCP tool call
-<span class="comment"># the user cancelled nothing.</span></code></pre>
+<span class="comment"># kullanıcı bir şey iptal etmedi.</span></code></pre>
   </div>
-  <div class="meta">Filed upstream → confirmed by maintainers</div>
+  <div class="meta">Açtığım issue → upstream'de doğrulandı</div>
 </section>
 
 <section class="full-image-slide">
   <div class="body">
     <img src="codex-issue.png" alt="GitHub issue openai/codex#16685">
     <p class="caption">
-      Filed an issue <span class="accent-orange">→</span> OpenAI maintainer confirmed it, regression label added
+      Issue açtım <span class="accent-orange">→</span> OpenAI maintainer doğruladı, regression label'ı eklendi
     </p>
   </div>
 </section>
 
 <section>
   <div class="head">
-    <span class="tag blue"><a href="https://github.com/vercel/ai/pull/14019" target="_blank" rel="noopener">Case 2 &middot; vercel/ai#14019</a></span>
-    <h2>The Lying Error</h2>
+    <span class="tag blue"><a href="https://github.com/vercel/ai/pull/14019" target="_blank" rel="noopener">Vaka 2 &middot; vercel/ai#14019</a></span>
+    <h2>Yalan Hata</h2>
   </div>
   <div class="body">
-    <p>In the Vercel AI SDK, tool exception types (<code>TypeError</code>, <code>RangeError</code>) were stripped before reaching the model.</p>
-    <p>Model sees "<code>API crashed</code>" — was that a failure or a normal string return? It can't tell.</p>
+    <p>Vercel AI SDK'da tool exception'larının tipi (<code>TypeError</code>, <code>RangeError</code>) silinip model'e gidiyordu.</p>
+    <p>Model "<code>API crashed</code>" görüyor — failure mı, normal string return mü? Anlayamıyor.</p>
     <pre><code><span class="removed">- error.message      // "API crashed"</span>
 <span class="added">+ error.toString()    // "TypeError: API crashed"</span></code></pre>
   </div>
-  <div class="meta">One word of difference. Worlds apart for an agent.</div>
+  <div class="meta">Bir kelime fark. Agent için yer ile gök.</div>
 </section>
 
 <section class="full-image-slide">
   <div class="body">
     <img src="vercel-pr.png" alt="Vercel AI PR #14019 merged">
     <p class="caption">
-      Merged by Vercel AI maintainers <span class="accent-orange">→</span> added a follow-up test case, listed as contributor
+      Vercel AI maintainer'ları merge etti <span class="accent-orange">→</span> ek test case eklendi, contributor olarak listelendim
     </p>
   </div>
 </section>
 
 <section>
   <div class="head">
-    <span class="tag green"><a href="https://github.com/mksglu/context-mode/pull/339" target="_blank" rel="noopener">Case 3 &middot; mksglu/context-mode#339</a></span>
-    <h2>The Ghost Tool</h2>
+    <span class="tag green"><a href="https://github.com/mksglu/context-mode/pull/339" target="_blank" rel="noopener">Vaka 3 &middot; mksglu/context-mode#339</a></span>
+    <h2>Hayalet Tool</h2>
   </div>
   <div class="body">
-    <p>context-mode (an OpenClaw feature) wasn't registering the MCP sidecar on install.</p>
-    <p><code>ctx_*</code> tools never reached the agent.</p>
+    <p>context-mode (OpenClaw'ın feature'ı) kurulumunda MCP sidecar register edilmiyordu.</p>
+    <p><code>ctx_*</code> tool'ları agent'a hiç ulaşmıyordu.</p>
     <pre><code>install() {
 <span class="added">+ register_mcp_sidecar()</span>
   link_binaries()
 }</code></pre>
   </div>
-  <div class="meta">This is your community's repo.</div>
+  <div class="meta">Bu sizin community'nizin repo'su.</div>
 </section>
 
 <section class="full-image-slide">
   <div class="body">
     <img src="openclaw-pr.png" alt="OpenClaw context-mode PR #339 merged">
     <p class="caption">
-      Merged by the OpenClaw maintainer (mksglu) <span class="accent-orange">→</span> this is your community's repo
+      OpenClaw maintainer (mksglu) merge etti <span class="accent-orange">→</span> bu sizin community'nizin repo'su
     </p>
   </div>
 </section>
@@ -404,43 +405,43 @@
 <section class="center">
   <div class="body">
     <p class="big">
-      All three times the screen<br>
-      said <span class="accent-orange">"it worked"</span>.
+      Üçünde de ekran<br>
+      <span class="accent-orange">"çalıştı"</span> diyordu.
     </p>
-    <p>Don't trust the screen. Read the logs.</p>
+    <p>Log'a bakmadan inanmayın.</p>
   </div>
 </section>
 
 <section>
   <div class="head">
-    <h2>Why I Caught Them</h2>
-    <p>Because I was sending PRs while using the tools.</p>
+    <h2>Niye Ben Buldum?</h2>
+    <p>Çünkü kullanırken PR yolluyordum.</p>
   </div>
   <div class="body">
     <p class="timeline">
-      <span class="yr">2025</span> Deno <span class="arrow">→</span> first big OSS merge<br>
+      <span class="yr">2025</span> Deno <span class="arrow">→</span> ilk büyük OSS merge<br>
       <span class="yr">2026</span> VS Code <span class="arrow">→</span> LangChain <span class="arrow">→</span> Traefik<br>
       <span class="yr">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> Coolify <span class="arrow">→</span> Vercel AI <span class="arrow">→</span> context-mode <span class="lbl" style="color:var(--mid-gray);font-size:16px;">(openclaw feature)</span>
     </p>
   </div>
   <div class="meta">
-    Once a maintainer knows your name, your next issue gets a reply in 5 minutes.
+    Maintainer adınızı bir kez öğrendikten sonra ikinci issue'ya cevap 5 dakikada geliyor.
   </div>
 </section>
 
 <section>
   <div class="head">
-    <h2>Three Steps</h2>
+    <h2>Pratik 3 Adım</h2>
   </div>
   <div class="body">
     <ul>
-      <li>Watch the repo of the tool you actually use</li>
-      <li>Your first PR can be a one-line docs fix — it opens the door</li>
-      <li>Attach a repro repo to your issue, the maintainer remembers</li>
+      <li>Kullandığın aracın repo'sunu <em>watch</em>'la</li>
+      <li>İlk PR'ın tek satır docs fix olabilir — kapı açar</li>
+      <li>Issue açarken repro repo'su koy, maintainer hatırlar</li>
     </ul>
     <p style="margin-top: 36px;">
-      You're already inside the OpenClaw community.<br>
-      <span class="accent-orange">That's half the work. The other half: the <code>issues</code> tab.</span>
+      Burada zaten OpenClaw community'sindesiniz.<br>
+      <span class="accent-orange">Yarısı tamam. Diğer yarısı: <code>issues</code> sekmesi.</span>
     </p>
   </div>
   <div class="meta repos">github.com/murataslan1 &middot; context-mode (openclaw feature) &middot; vercel/ai</div>
