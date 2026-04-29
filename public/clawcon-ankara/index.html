@@ -241,6 +241,74 @@
     height: 4px;
   }
 
+  .splash-slide {
+    display: flex !important;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 30px !important;
+    gap: 22px;
+  }
+  .splash-slide .splash-img {
+    max-width: 100%;
+    max-height: 640px;
+    width: auto; height: auto;
+    border-radius: 8px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+    display: block;
+  }
+  .splash-slide .splash-caption {
+    font-family: "Poppins", Arial, sans-serif;
+    font-size: 28px;
+    font-weight: 600;
+    color: var(--orange);
+    letter-spacing: 0.5px;
+    margin: 0 !important;
+    text-align: center;
+  }
+
+  .thanks-slide .body {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 14px;
+  }
+  .thanks-slide h1 {
+    font-size: 96px;
+    margin: 0 0 4px;
+    text-align: center;
+    width: 100%;
+  }
+  .thanks-slide .sub {
+    font-family: "Lora", Georgia, serif;
+    font-size: 26px;
+    font-style: italic;
+    color: var(--dark);
+    margin: 0 0 24px;
+    text-align: center;
+  }
+  .thanks-slide .qr {
+    width: 320px;
+    height: 320px;
+    border-radius: 8px;
+    border: 3px solid var(--dark);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+    background: white;
+    padding: 12px;
+    box-sizing: border-box;
+    display: block;
+    margin: 0 auto;
+  }
+  .thanks-slide .qr-link {
+    font-family: "SF Mono", Menlo, monospace;
+    font-size: 24px;
+    color: var(--orange);
+    margin-top: 14px !important;
+    text-align: center;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+  }
+
   .screenshot {
     max-width: 100%;
     max-height: 360px;
@@ -316,6 +384,11 @@
 </head>
 <body>
 <div class="reveal"><div class="slides">
+
+<section class="splash-slide">
+  <img src="claw-ankara.jpg" alt="ClawCon Ankara — Ankara skyline with a giant lobster on the city walls" class="splash-img">
+  <p class="splash-caption">ClawCon Ankara 🦞</p>
+</section>
 
 <section class="center">
   <div class="head">
@@ -419,7 +492,7 @@
   <div class="body">
     <img src="openclaw-pr.png" alt="OpenClaw context-mode PR #339 merged">
     <p class="caption">
-      Merged by the OpenClaw maintainer (mksglu) <span class="accent-orange">→</span> this is your community's repo
+      Merged by the context-mode maintainer (mksglu) <span class="accent-orange">→</span> this is your community's repo
     </p>
   </div>
 </section>
@@ -488,6 +561,15 @@
     </p>
   </div>
   <div class="meta repos">github.com/murataslan1 &middot; context-mode (openclaw feature) &middot; vercel/ai</div>
+</section>
+
+<section class="thanks-slide">
+  <div class="body">
+    <h1><span class="accent-orange">Thank You.</span></h1>
+    <p class="sub">For joining ClawCon Ankara 🦞 and listening.</p>
+    <img src="murataslan.png" alt="QR code to linktr.ee/murataslan" class="qr">
+  </div>
+  <div class="meta">github.com/murataslan1</div>
 </section>
 
 </div></div>
