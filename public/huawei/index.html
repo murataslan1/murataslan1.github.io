@@ -288,32 +288,47 @@
   .link-list a:hover { color: var(--orange); border-color: var(--orange); }
 
   .tweet-card { max-width: 100%; min-width: 0; }
-  .tweet-card blockquote.twitter-tweet {
-    margin: 0 !important;
-    max-width: 100% !important;
-  }
-  .tweet-fallback {
+  .tweet-card a.tweet-img {
+    display: block;
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px -20px rgba(0,0,0,0.25);
     background: var(--light-gray);
-    border-left: 4px solid var(--blue);
-    padding: 1.5rem 1.8rem;
-    border-radius: 4px;
-    font-family: 'Lora', Georgia, serif;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
   }
-  .tweet-fallback .handle {
+  .tweet-card a.tweet-img:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 24px 48px -18px rgba(0,0,0,0.3);
+  }
+  .tweet-card img {
+    width: 100%;
+    height: auto;
+    display: block;
+    background: var(--light-gray);
+  }
+  .tweet-footer {
+    margin-top: 0.7rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
     font-family: 'Poppins', sans-serif;
     font-size: 0.85rem;
-    color: var(--mid-gray);
-    margin-bottom: 0.6rem;
-    display: block;
+    flex-wrap: wrap;
   }
-  .tweet-fallback .handle strong { color: var(--dark); }
-  .tweet-fallback p { font-size: 1rem; line-height: 1.5; }
-  .tweet-fallback .stats {
-    margin-top: 0.8rem;
-    font-family: var(--mono);
-    font-size: 0.85rem;
+  .tweet-footer .handle { color: var(--mid-gray); }
+  .tweet-footer .handle strong { color: var(--dark); font-weight: 500; }
+  .tweet-footer .stat {
     color: var(--blue);
+    font-family: var(--mono);
+    font-size: 0.82rem;
   }
+  .tweet-footer a.view-link {
+    color: var(--mid-gray);
+    text-decoration: none;
+    font-size: 0.8rem;
+  }
+  .tweet-footer a.view-link:hover { color: var(--orange); }
   .video-wrap {
     position: relative;
     padding-top: 56.25%;
@@ -628,18 +643,22 @@ ctx_execute(<span class="s">"javascript"</span>, `
     <h2>Don't take my word for it.</h2>
     <div class="two-col tight" style="margin-top:1.5rem; align-items:start;">
       <div class="tweet-card">
-        <blockquote class="twitter-tweet tweet-fallback" data-theme="light" data-conversation="none" data-dnt="true" data-cards="hidden">
-          <span class="handle"><strong>Okan Sarıırmak</strong> · @okansariirmak · May 9, 2026</span>
-          <p lang="en" dir="ltr">Context Mode seriously saved me today.<br><br>In a long, messy coding session that ran for more than an hour, it kept the conversation clean and cut the context from 13.6 MB to 578 KB.<br><br>- 3.4M tokens saved<br>- 95.9% reduction<br>- ~$51 saved<br>- Persistent memory preserved<br><br>This is exactly…</p>
-          <a href="https://twitter.com/okansariirmak/status/2052935750908273151?ref_src=twsrc%5Etfw">View on X</a>
-        </blockquote>
+        <a class="tweet-img" href="https://twitter.com/okansariirmak/status/2052935750908273151" target="_blank" rel="noopener">
+          <img src="https://pbs.twimg.com/media/HH18p12WcAEk-OO.png" alt="Okan Sarıırmak's context-mode stats: 13.6 MB → 578 KB, 3.4M tokens saved, 95.9% reduction, ~$51 saved" referrerpolicy="no-referrer" loading="lazy" />
+        </a>
+        <div class="tweet-footer">
+          <span class="handle"><strong>@okansariirmak</strong> · May 9, 2026</span>
+          <span class="stat">95.9% · $51 saved</span>
+        </div>
       </div>
       <div class="tweet-card">
-        <blockquote class="twitter-tweet tweet-fallback" data-theme="light" data-conversation="none" data-dnt="true" data-cards="hidden">
-          <span class="handle"><strong>Okan Sarıırmak</strong> · @okansariirmak · May 9, 2026</span>
-          <p lang="en" dir="ltr">You are welcome, I think I am the one who needs to thank you lol.<br><br>This saved me a fortune in one day.</p>
-          <a href="https://twitter.com/okansariirmak/status/2053057980514390035?ref_src=twsrc%5Etfw">View on X</a>
-        </blockquote>
+        <a class="tweet-img" href="https://twitter.com/okansariirmak/status/2053057980514390035" target="_blank" rel="noopener">
+          <img src="https://pbs.twimg.com/media/HH3tNF_WUAEvqZp.png" alt="Okan Sarıırmak follow-up: This saved me a fortune in one day" referrerpolicy="no-referrer" loading="lazy" />
+        </a>
+        <div class="tweet-footer">
+          <span class="handle"><strong>@okansariirmak</strong> · May 9, 2026</span>
+          <a class="view-link" href="https://twitter.com/okansariirmak/status/2053057980514390035" target="_blank" rel="noopener">view on X →</a>
+        </div>
       </div>
     </div>
     <p style="margin-top:1.5rem; opacity:0.55; font-size:0.9rem; font-family:'Poppins',sans-serif;">One developer. One day. $51 in API costs avoided.</p>
@@ -653,11 +672,13 @@ ctx_execute(<span class="s">"javascript"</span>, `
     <h2>80 hours. <span class="accent-orange">$487 saved.</span></h2>
     <div class="two-col tight" style="margin-top:1.5rem; align-items:start;">
       <div class="tweet-card">
-        <blockquote class="twitter-tweet tweet-fallback" data-theme="light" data-conversation="none" data-dnt="true" data-cards="hidden">
-          <span class="handle"><strong>Mert Köseoğlu — Context Mode</strong> · @mksglu · May 2, 2026</span>
-          <p lang="en" dir="ltr">80 hours of AI pair programming. Here's what context-mode saved me.<br><br>→ $487.20 in API costs. Opus pricing. Real money, not estimates.<br>→ 22.3 hours of re-explaining context after compaction. Time I got back to ship.<br>→ 268 sessions resumed from memory. The agent never asked…</p>
-          <a href="https://twitter.com/mksglu/status/2050566958219776250?ref_src=twsrc%5Etfw">View on X</a>
-        </blockquote>
+        <a class="tweet-img" href="https://twitter.com/mksglu/status/2050566958219776250" target="_blank" rel="noopener">
+          <img src="https://pbs.twimg.com/media/HHUTwSrXEAAWYDb.jpg" alt="Mert Köseoğlu's 80-hour context-mode stats: $487.20 saved, 22.3 hours saved, 268 sessions resumed" referrerpolicy="no-referrer" loading="lazy" />
+        </a>
+        <div class="tweet-footer">
+          <span class="handle"><strong>@mksglu</strong> · Mert Köseoğlu · May 2, 2026</span>
+          <span class="stat">$487.20 · 22.3 hrs · 268 sessions</span>
+        </div>
       </div>
       <div>
         <div class="video-wrap">
@@ -755,9 +776,6 @@ ctx stats</pre>
     slides[current].classList.add('active');
     progress.style.width = ((current + 1) / slides.length * 100) + '%';
     history.replaceState(null, '', '#' + (current + 1));
-    if (window.twttr && window.twttr.widgets) {
-      window.twttr.widgets.load(slides[current]);
-    }
   }
 
   document.addEventListener('keydown', (e) => {
@@ -796,8 +814,6 @@ ctx stats</pre>
   if (hash > 1 && hash <= slides.length) show(hash - 1);
   else progress.style.width = (1 / slides.length * 100) + '%';
 </script>
-
-<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 </body>
 </html>
