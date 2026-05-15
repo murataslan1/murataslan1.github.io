@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Context Engineering — HSD Türkiye · Murat Aslan</title>
+<meta name="description" content="Context-mode and the end of token limits — HSD Türkiye YouTube broadcast">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --dark: #141413;
+    --light: #faf9f5;
+    --mid-gray: #b0aea5;
+    --light-gray: #e8e6dc;
+    --orange: #d97757;
+    --blue: #6a9bcc;
+    --green: #788c5d;
+    --mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    height: 100%;
+    background: var(--light);
+    color: var(--dark);
+    font-family: 'Lora', Georgia, serif;
+    overflow: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3, h4 { font-family: 'Poppins', Arial, sans-serif; font-weight: 600; line-height: 1.15; letter-spacing: -0.01em; }
+  h1 { font-size: clamp(2.5rem, 5.5vw, 4.5rem); }
+  h2 { font-size: clamp(1.8rem, 3.8vw, 3rem); margin-bottom: 1.5rem; }
+  h3 { font-size: clamp(1.2rem, 2.2vw, 1.8rem); margin-bottom: 1rem; }
+  p, li { font-size: clamp(1.05rem, 1.5vw, 1.4rem); line-height: 1.55; }
+  code, .mono { font-family: var(--mono); font-size: 0.92em; }
+
+  .deck { position: relative; width: 100vw; height: 100vh; }
+  .slide {
+    position: absolute; inset: 0;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    padding: clamp(2rem, 6vw, 6rem) clamp(2rem, 8vw, 8rem);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  .slide.active { display: flex; opacity: 1; }
+  .slide-num {
+    position: absolute;
+    bottom: 1.5rem; right: 2rem;
+    font-family: var(--mono);
+    color: var(--mid-gray);
+    font-size: 0.85rem;
+  }
+  .brand-bar {
+    position: absolute;
+    top: 1.5rem; left: 2rem;
+    display: flex; align-items: center; gap: 0.8rem;
+    color: var(--mid-gray);
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .brand-bar .dot { width: 8px; height: 8px; background: var(--orange); border-radius: 50%; }
+
+  .title-slide { justify-content: center; text-align: left; }
+  .title-slide .eyebrow {
+    font-family: 'Poppins', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    font-size: 0.9rem;
+    color: var(--orange);
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+  }
+  .title-slide h1 { margin-bottom: 1rem; }
+  .title-slide .lede {
+    font-size: clamp(1.2rem, 2vw, 1.6rem);
+    color: var(--dark);
+    opacity: 0.7;
+    max-width: 70ch;
+    margin-bottom: 2.5rem;
+  }
+  .title-slide .meta {
+    display: flex; gap: 2rem; flex-wrap: wrap;
+    font-family: var(--mono);
+    font-size: 0.95rem;
+    color: var(--mid-gray);
+  }
+  .title-slide .meta span strong { color: var(--dark); font-weight: 600; }
+
+  .eyebrow-small {
+    font-family: 'Poppins', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    font-size: 0.78rem;
+    color: var(--orange);
+    margin-bottom: 0.8rem;
+    font-weight: 500;
+  }
+
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+  .two-col.tight { gap: 2.5rem; }
+
+  ul.clean { list-style: none; }
+  ul.clean li {
+    padding: 0.6rem 0;
+    border-bottom: 1px solid var(--light-gray);
+    display: flex; gap: 1rem;
+    align-items: baseline;
+  }
+  ul.clean li:last-child { border-bottom: none; }
+  ul.clean .marker {
+    font-family: var(--mono);
+    color: var(--orange);
+    font-size: 0.9rem;
+    min-width: 2rem;
+  }
+
+  .card {
+    background: var(--light-gray);
+    padding: 2rem;
+    border-radius: 4px;
+    border-left: 4px solid var(--orange);
+  }
+  .card.blue { border-left-color: var(--blue); }
+  .card.green { border-left-color: var(--green); }
+  .card h3 { margin-bottom: 0.6rem; color: var(--dark); }
+
+  .stat-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+  .stat .num {
+    font-family: 'Poppins', sans-serif;
+    font-size: clamp(2.2rem, 5vw, 4rem);
+    font-weight: 600;
+    color: var(--orange);
+    line-height: 1;
+  }
+  .stat .label {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--mid-gray);
+    margin-top: 0.6rem;
+  }
+
+  .quote-slide { text-align: left; }
+  .quote-slide blockquote {
+    font-family: 'Lora', Georgia, serif;
+    font-style: italic;
+    font-size: clamp(1.6rem, 3.2vw, 2.6rem);
+    line-height: 1.35;
+    color: var(--dark);
+    border-left: 4px solid var(--orange);
+    padding-left: 2rem;
+    max-width: 28ch;
+  }
+  .quote-slide .attrib {
+    font-family: 'Poppins', sans-serif;
+    color: var(--mid-gray);
+    font-size: 0.9rem;
+    margin-top: 1.5rem;
+    margin-left: calc(4px + 2rem);
+    letter-spacing: 0.04em;
+  }
+
+  .compare {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    margin-top: 2rem;
+    border: 1px solid var(--light-gray);
+  }
+  .compare > div {
+    padding: 2rem;
+  }
+  .compare .before { background: var(--light-gray); }
+  .compare .after { background: var(--dark); color: var(--light); }
+  .compare h4 {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-bottom: 1rem;
+    font-weight: 500;
+  }
+  .compare .before h4 { color: var(--mid-gray); }
+  .compare .after h4 { color: var(--orange); }
+  .compare .big {
+    font-family: 'Poppins', sans-serif;
+    font-size: 2.2rem;
+    font-weight: 600;
+    line-height: 1.1;
+  }
+  .compare .desc { margin-top: 1rem; opacity: 0.85; font-size: 1rem; }
+
+  .arch {
+    font-family: var(--mono);
+    background: var(--dark);
+    color: var(--light);
+    padding: 2.5rem;
+    border-radius: 4px;
+    font-size: clamp(0.85rem, 1.1vw, 1rem);
+    line-height: 1.7;
+    white-space: pre;
+    overflow-x: auto;
+  }
+  .arch .accent { color: var(--orange); }
+  .arch .accent-blue { color: var(--blue); }
+  .arch .accent-green { color: var(--green); }
+
+  pre.code-block {
+    background: var(--dark);
+    color: var(--light);
+    padding: 1.5rem 2rem;
+    border-radius: 4px;
+    font-family: var(--mono);
+    font-size: clamp(0.85rem, 1.1vw, 1rem);
+    line-height: 1.6;
+    overflow-x: auto;
+    margin: 1rem 0;
+  }
+  pre.code-block .c { color: var(--mid-gray); }
+  pre.code-block .k { color: var(--orange); }
+  pre.code-block .s { color: var(--green); }
+
+  .bigtext {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: clamp(2.5rem, 6vw, 5rem);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    max-width: 22ch;
+  }
+  .bigtext .hl { color: var(--orange); }
+  .bigtext .hl-blue { color: var(--blue); }
+  .bigtext .hl-green { color: var(--green); }
+
+  .progress-bar {
+    position: fixed;
+    bottom: 0; left: 0;
+    height: 3px;
+    background: var(--orange);
+    width: 0%;
+    transition: width 0.3s ease;
+    z-index: 100;
+  }
+  .nav-hint {
+    position: fixed;
+    bottom: 1.5rem; left: 2rem;
+    font-family: var(--mono);
+    color: var(--mid-gray);
+    font-size: 0.8rem;
+    opacity: 0.6;
+  }
+
+  .demo-screen {
+    background: var(--dark);
+    color: var(--light);
+    border-radius: 8px;
+    padding: 2rem;
+    font-family: var(--mono);
+    box-shadow: 0 30px 60px -20px rgba(0,0,0,0.3);
+  }
+  .demo-screen .prompt::before {
+    content: "$ ";
+    color: var(--green);
+  }
+  .demo-screen .out { color: var(--mid-gray); margin: 0.4rem 0 1.2rem; padding-left: 1.4rem; }
+  .demo-screen .hl { color: var(--orange); }
+
+  .link-list { display: flex; flex-direction: column; gap: 0.6rem; margin-top: 1.5rem; }
+  .link-list a {
+    color: var(--dark);
+    text-decoration: none;
+    font-family: var(--mono);
+    font-size: 1rem;
+    border-bottom: 1px solid var(--mid-gray);
+    padding-bottom: 0.3rem;
+    width: fit-content;
+  }
+  .link-list a:hover { color: var(--orange); border-color: var(--orange); }
+
+  .accent-orange { color: var(--orange); }
+  .accent-blue { color: var(--blue); }
+  .accent-green { color: var(--green); }
+
+  @media (max-width: 768px) {
+    .two-col, .compare { grid-template-columns: 1fr; gap: 1.5rem; }
+    .stat-grid { grid-template-columns: repeat(2, 1fr); }
+    .slide { padding: 3rem 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="deck" id="deck">
+
+  <!-- 01 - Title -->
+  <section class="slide title-slide active">
+    <div class="brand-bar"><span class="dot"></span>HSD Türkiye · May 15, 2026</div>
+    <div class="eyebrow">Context Engineering</div>
+    <h1>The page after prompt.</h1>
+    <p class="lede">Inside Context-mode — the 14,758-star project, its architecture, and what comes next for AI coding.</p>
+    <div class="meta">
+      <span><strong>Murat Aslan</strong></span>
+      <span>30 min + Q&amp;A</span>
+      <span>YouTube Live</span>
+    </div>
+    <div class="slide-num">01</div>
+  </section>
+
+  <!-- 02 - Who am I -->
+  <section class="slide">
+    <div class="brand-bar"><span class="dot"></span>Intro</div>
+    <div class="two-col">
+      <div>
+        <div class="eyebrow-small">Who I Am</div>
+        <h2>Open source<br>engineer.</h2>
+      </div>
+      <div>
+        <ul class="clean">
+          <li><span class="marker">→</span><span>Contributor to VS Code, Deno, Bun</span></li>
+          <li><span class="marker">→</span><span>Active in the Claude Skills community</span></li>
+          <li><span class="marker">→</span><span>Context-mode maintainer (<span class="accent-orange">14.7k★</span>)</span></li>
+          <li><span class="marker">→</span><span>ClawCon Ankara &amp; İstanbul speaker</span></li>
+          <li><span class="marker">→</span><span>KamuYZ — Turkish AI community</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="slide-num">02</div>
+  </section>
+
+  <!-- 03 - Roadmap -->
+  <section class="slide">
+    <div class="brand-bar"><span class="dot"></span>Agenda</div>
+    <div class="eyebrow-small">Tonight</div>
+    <h2>Five stops.</h2>
+    <ul class="clean" style="margin-top:1.5rem;">
+      <li><span class="marker">01</span><span>The token wall — why modern repos don't fit any AI</span></li>
+      <li><span class="marker">02</span><span>From prompt engineering to context engineering</span></li>
+      <li><span class="marker">03</span><span>Context Virtualization — the new paradigm</span></li>
+      <li><span class="marker">04</span><span>Live demo: Claude Code · Copilot · Codex</span></li>
+      <li><span class="marker">05</span><span>Open source — where do you start?</span></li>
+    </ul>
+    <div class="slide-num">03</div>
+  </section>
+
+  <!-- 04 - Problem -->
+  <section class="slide quote-slide">
+    <div class="brand-bar"><span class="dot"></span>The Problem</div>
+    <div class="eyebrow-small">Token Wall</div>
+    <blockquote>Even a single microservice no longer fits into the context window.</blockquote>
+    <div class="attrib">One million tokens of input. Two hundred thousand of window. The math doesn't add up.</div>
+    <div class="slide-num">04</div>
+  </section>
+
+  <!-- 05 - Four sources of bloat -->
+  <section class="slide">
+    <div class="brand-bar"><span class="dot"></span>Anatomy</div>
+    <div class="eyebrow-small">Where Context Bloat Comes From</div>
+    <h2>Four sources.</h2>
+    <div class="two-col tight" style="margin-top:1.5rem;">
+      <div class="card">
+        <h3>Raw tool output</h3>
+        <p><code>npm test</code>, <code>cat</code>, <code>grep</code> — 50K lines dumped into context in one shot.</p>
+      </div>
+      <div class="card blue">
+        <h3>Session discontinuity</h3>
+        <p>After compact, the model forgets everything. You re-explain — or accept wrong decisions.</p>
+      </div>
+      <div class="card green">
+        <h3>Wrong division of labor</h3>
+        <p>The LLM reads files and counts. That's a code job, not a language job.</p>
+      </div>
+      <div class="card">
+        <h3>Prose enforcement</h3>
+        <p>Aggressive brevity prompts have been shown to degrade reasoning benchmarks.</p>
+      </div>
+    </div>
+    <div class="slide-num">05</div>
+  </section>
+
+  <!-- 06 - Thesis -->
+  <section class="slide">
+    <div class="brand-bar"><span class="dot"></span>Thesis</div>
+    <div class="bigtext">
+      Model quality is fixed.<br>
+      <span class="hl">Context quality</span><br>
+      is the variable.
+    </div>
+    <p style="margin-top:2.5rem; max-width:55ch; opacity:0.7;">The winner is not whoever picks the best model — it's whoever manages context best.</p>
+    <div class="slide-num">06</div>
+  </section>
+
+  <!-- 07 - Virtual Memory analogy -->
+  <section class="slide">
+    <div class="brand-bar"><span class="dot"></span>Paradigm</div>
+    <div class="eyebrow-small">Context Virtualization</div>
+    <h2>Borrowed from operating systems.</h2>
+    <div class="two-col" style="margin-top:1.5rem;">
+      <div>
+        <p style="margin-bottom:1.5rem;">Virtual memory: when RAM runs out, the OS pages to disk and pulls it back on demand.</p>
+        <p>Context-mode does the same — for LLM context.</p>
+      </div>
+      <div>
+        <ul class="clean">
+          <li><span class="marker">RAM</span><span>LLM context window</span></li>
+          <li><span class="marker">Disk</span><span>SQLite + FTS5 sandbox</span></li>
+          <li><span class="marker">Fault</span><span><code>ctx_search</code> call</span></li>
+          <li><span class="marker">Page</span><span>Only the relevant 50 lines</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="slide-num">07</div>
+  </section>
+
+  <!-- 08 - Architecture -->
+  <section class="slide">
+    <div class="brand-bar"><span class="dot"></span>Architecture</div>
+    <div class="eyebrow-small">How It Works</div>
+    <h2>Three parts. One flow.</h2>
+    <div class="arch" style="margin-top:1rem;">     <span class="accent">LLM</span>           <span class="accent-blue">MCP</span>            <span class="accent-green">Sandbox</span>
+   ┌─────────┐    ┌──────────┐     ┌─────────────┐
+   │ Claude  │◀──▶│ context- │◀───▶│  SQLite +   │
+   │ Copilot │    │   mode   │     │    FTS5     │
+   │ Gemini  │    │  server  │     │   (BM25)    │
+   └─────────┘    └──────────┘     └─────────────┘
+                       │
+                       ▼
+                ┌──────────────┐
+                │ shell · web  │
+                │  fs · APIs   │
+                └──────────────┘</div>
+    <p style="margin-top:1.5rem; opacity:0.7; max-width:65ch;">Command output never reaches the LLM directly. The LLM asks "what are you looking for?" and gets back only the relevant slice.</p>
+    <div class="slide-num">08</div>
+  </section>
+
+  <!-- 09 - Four pillars -->
+  <section class="slide">
+    <div class="brand-bar"><span class="dot"></span>Solution</div>
+    <div class="eyebrow-small">Context-mode Solves Four Sides</div>
+    <div class="two-col tight" style="margin-top:1rem;">
+      <div class="card">
+        <h3>01 · Context Saving</h3>
+        <p>315 KB becomes 5.4 KB. 98% reduction. Sandboxed tools keep raw data out of the window.</p>
+      </div>
+      <div class="card blue">
+        <h3>02 · Session Continuity</h3>
+        <p>Every edit, git op, and error lands in SQLite. After compact, BM25 brings back what's relevant.</p>
+      </div>
+      <div class="card green">
+        <h3>03 · Think in Code</h3>
+        <p>Don't read 50 files to count — write a script and return only the result. 47×Read = 700KB → 1×ctx_execute = 3.6KB.</p>
+      </div>
+      <div class="card">
+        <h3>04 · Prose Freedom</h3>
+        <p>Routes data, not voice. Brevity prompts won't quietly tank your model's reasoning.</p>
+      </div>
+    </div>
+    <div class="slide-num">09</div>
+  </section>
+
+  <!-- 10 - Comparison -->
+  <section class="slide">
+    <div class="brand-bar"><span class="dot"></span>Measurement</div>
+    <div class="eyebrow-small">Real-World Scenario</div>
+    <h2><code>npm test</code> — 50,000 lines of output.</h2>
+    <div class="compare">
+      <div class="before">
+        <h4>Raw output via Bash</h4>
+        <div class="big">315 KB</div>
+        <div class="desc">Context window fills up. Model gets compacted before it answers "which test failed?"</div>
+      </div>
+      <div class="after">
+        <h4>With Context-mode</h4>
+        <div class="big">5.4 KB <span class="accent-orange">· 98%</span></div>
+        <div class="desc">Sandbox indexes it. Model only sees results from <code>ctx_search("FAIL")</code>.</div>
+      </div>
+    </div>
+    <p style="margin-top:1.5rem; opacity:0.7;">Run <code>ctx stats</code> in any session and measure the savings on your own machine.</p>
+    <div class="slide-num">10</div>
+  </section>
+
+  <!-- 11 - Think in Code -->
+  <section class="slide">
+    <div class="brand-bar"><span class="dot"></span>Paradigm</div>
+    <div class="eyebrow-small">Think in Code</div>
+    <h2>The LLM is not a data processor. <span class="accent-orange">It's a code generator.</span></h2>
+<pre class="code-block"><span class="c">// Before: 47 × Read() = 700 KB of context</span>
+<span class="c">// After:  1 × ctx_execute() = 3.6 KB</span>
+
+ctx_execute(<span class="s">"javascript"</span>, `
+  <span class="k">const</span> files = fs.readdirSync(<span class="s">'src'</span>)
+    .filter(f => f.endsWith(<span class="s">'.ts'</span>));
+  files.forEach(f => console.log(
+    f + <span class="s">': '</span> + fs.readFileSync(<span class="s">'src/'</span>+f).split(<span class="s">'\n'</span>).length
+  ));
+`);</pre>
+    <p style="margin-top:1rem; opacity:0.7;">Don't read the file — <em>program</em> the analysis. Put only the answer in context.</p>
+    <div class="slide-num">11</div>
+  </section>
+
+  <!-- 12 - Demo -->
+  <section class="slide">
+    <div class="brand-bar"><span class="dot"></span>Live Demo</div>
+    <div class="eyebrow-small">Switching to the Terminal · Claude Code · Copilot · Codex</div>
+    <h2>Three platforms. One runtime.</h2>
+    <div class="two-col" style="margin-top:1.5rem;">
+      <div>
+        <ul class="clean">
+          <li><span class="marker">1</span><span>Empty terminal, <code>ctx stats</code> → zero</span></li>
+          <li><span class="marker">2</span><span>Clone a large open-source repo</span></li>
+          <li><span class="marker">3</span><span>Claude Code: "what does the test layout look like?"</span></li>
+          <li><span class="marker">4</span><span>Specific question via <code>ctx_search</code></span></li>
+          <li><span class="marker">5</span><span><code>ctx stats</code> again → savings live</span></li>
+        </ul>
+      </div>
+      <div class="demo-screen">
+        <div class="prompt">ctx stats</div>
+        <div class="out"><span class="hl">$2.41</span> saved this session<br><span class="hl">94.3%</span> efficient</div>
+        <div class="prompt">ctx_search "test failures"</div>
+        <div class="out">3 results · 1.2 KB returned</div>
+      </div>
+    </div>
+    <div class="slide-num">12</div>
+  </section>
+
+  <!-- 13 - 15 platforms -->
+  <section class="slide">
+    <div class="brand-bar"><span class="dot"></span>Ecosystem</div>
+    <div class="eyebrow-small">One MCP Server</div>
+    <h2>Fifteen platforms. No vendor lock-in.</h2>
+    <div class="two-col" style="margin-top:1.5rem;">
+      <div>
+        <ul class="clean">
+          <li><span class="marker">→</span><span><strong>Claude Code</strong> · plugin marketplace</span></li>
+          <li><span class="marker">→</span><span><strong>Gemini CLI</strong> · hooks included</span></li>
+          <li><span class="marker">→</span><span><strong>VS Code Copilot</strong> · MCP + hooks</span></li>
+          <li><span class="marker">→</span><span><strong>JetBrains Copilot</strong></span></li>
+          <li><span class="marker">→</span><span><strong>Cursor, Codex, Windsurf...</strong></span></li>
+        </ul>
+      </div>
+      <div>
+        <p style="font-size:1.1rem; opacity:0.85;">Thanks to MCP as a standard, every major AI client is supported. Install once, works everywhere.</p>
+        <p style="margin-top:1rem; opacity:0.7; font-size:1rem;">A new client appears — the runtime doesn't change, only the hook does.</p>
+      </div>
+    </div>
+    <div class="slide-num">13</div>
+  </section>
+
+  <!-- 14 - Numbers -->
+  <section class="slide">
+    <div class="brand-bar"><span class="dot"></span>Community</div>
+    <div class="eyebrow-small">In Eighteen Months</div>
+    <h2>The numbers keep growing.</h2>
+    <div class="stat-grid">
+      <div class="stat"><div class="num">14.7k</div><div class="label">GitHub Stars</div></div>
+      <div class="stat"><div class="num">1.0k</div><div class="label">Forks</div></div>
+      <div class="stat"><div class="num">15</div><div class="label">Platforms</div></div>
+      <div class="stat"><div class="num">98%</div><div class="label">Context Saving</div></div>
+    </div>
+    <p style="margin-top:2.5rem; opacity:0.7; max-width:55ch;">A year and a half ago this only ran on my laptop. Today tens of thousands of developers use it daily.</p>
+    <div class="slide-num">14</div>
+  </section>
+
+  <!-- 15 - The Agentic Stack -->
+  <section class="slide">
+    <div class="brand-bar"><span class="dot"></span>Manifesto</div>
+    <div class="eyebrow-small">Companion Article</div>
+    <h2>The Agentic Coding Stack.</h2>
+    <p style="font-size:1.2rem; max-width:60ch; margin-top:0.5rem; opacity:0.85;"><em>7 tools, 5 layers, and the missing link nobody has built yet</em> — a layer-by-layer map of agentic coding and why context engineering is the missing link.</p>
+    <div class="link-list">
+      <a href="https://medium.com/dev-genius/the-agentic-coding-stack-7-tools-5-layers-and-the-missing-link-nobody-has-built-yet-de264b260db3" target="_blank" rel="noopener">medium.com/dev-genius/the-agentic-coding-stack</a>
+    </div>
+    <div class="slide-num">15</div>
+  </section>
+
+  <!-- 16 - Open source path -->
+  <section class="slide">
+    <div class="brand-bar"><span class="dot"></span>Contribution</div>
+    <div class="eyebrow-small">The Open Source Path</div>
+    <h2>Communication before code.</h2>
+    <ul class="clean" style="margin-top:1rem;">
+      <li><span class="marker">01</span><span>Use it first — actually use it, find a bug</span></li>
+      <li><span class="marker">02</span><span>Reproduce — build a minimal example</span></li>
+      <li><span class="marker">03</span><span>Discuss — open an issue, wait for maintainer signal</span></li>
+      <li><span class="marker">04</span><span>Implement — small, focused PR</span></li>
+      <li><span class="marker">05</span><span>Iterate — don't get defensive on review</span></li>
+    </ul>
+    <p style="margin-top:1.5rem; opacity:0.7; max-width:60ch;">My first VS Code PR sat for two weeks. I bumped it politely. Today: 12+ merged contributions.</p>
+    <div class="slide-num">16</div>
+  </section>
+
+  <!-- 17 - Quickstart -->
+  <section class="slide">
+    <div class="brand-bar"><span class="dot"></span>Get Started</div>
+    <div class="eyebrow-small">Five-Minute Install</div>
+    <h2>Try it tonight.</h2>
+<pre class="code-block"><span class="c"># Claude Code (plugin marketplace)</span>
+/plugin marketplace add mksglu/context-mode
+/plugin install context-mode@context-mode
+
+<span class="c"># Verify</span>
+/context-mode:ctx-doctor
+
+<span class="c"># Track the savings</span>
+ctx stats</pre>
+    <p style="margin-top:1rem; opacity:0.7;">Install guides for Gemini CLI, VS Code Copilot, JetBrains: <code>github.com/mksglu/context-mode</code></p>
+    <div class="slide-num">17</div>
+  </section>
+
+  <!-- 18 - Closing -->
+  <section class="slide">
+    <div class="brand-bar"><span class="dot"></span>Closing</div>
+    <div class="bigtext">
+      Global open source<br>
+      <span class="hl">ships from Turkey.</span>
+    </div>
+    <p style="margin-top:2rem; max-width:55ch; opacity:0.7;">14,758 stars is the proof. The next one could be yours.</p>
+    <div class="link-list">
+      <a href="https://github.com/mksglu/context-mode" target="_blank" rel="noopener">github.com/mksglu/context-mode</a>
+      <a href="https://context-mode.com" target="_blank" rel="noopener">context-mode.com</a>
+      <a href="https://github.com/murataslan1" target="_blank" rel="noopener">github.com/murataslan1</a>
+    </div>
+    <div class="slide-num">18</div>
+  </section>
+
+  <!-- 19 - Q&A -->
+  <section class="slide" style="justify-content:center; align-items:center; text-align:center;">
+    <div class="bigtext" style="text-align:center;">Questions?</div>
+    <p style="margin-top:2rem; opacity:0.6; font-family:'Poppins'; letter-spacing:0.08em; text-transform:uppercase; font-size:0.9rem;">YouTube comments · Discord · LinkedIn</p>
+    <div class="slide-num">19</div>
+  </section>
+
+</div>
+
+<div class="progress-bar" id="progress"></div>
+<div class="nav-hint">← → or space to navigate · F for fullscreen</div>
+
+<script>
+  const slides = document.querySelectorAll('.slide');
+  const progress = document.getElementById('progress');
+  let current = 0;
+
+  function show(i) {
+    if (i < 0 || i >= slides.length) return;
+    slides[current].classList.remove('active');
+    current = i;
+    slides[current].classList.add('active');
+    progress.style.width = ((current + 1) / slides.length * 100) + '%';
+    history.replaceState(null, '', '#' + (current + 1));
+  }
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') {
+      e.preventDefault();
+      show(current + 1);
+    } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
+      e.preventDefault();
+      show(current - 1);
+    } else if (e.key === 'Home') {
+      show(0);
+    } else if (e.key === 'End') {
+      show(slides.length - 1);
+    } else if (e.key === 'f' || e.key === 'F') {
+      if (!document.fullscreenElement) document.documentElement.requestFullscreen();
+      else document.exitFullscreen();
+    }
+  });
+
+  document.addEventListener('click', (e) => {
+    if (e.target.closest('a')) return;
+    const x = e.clientX;
+    const w = window.innerWidth;
+    if (x > w / 2) show(current + 1);
+    else show(current - 1);
+  });
+
+  let touchStartX = 0;
+  document.addEventListener('touchstart', (e) => { touchStartX = e.changedTouches[0].screenX; });
+  document.addEventListener('touchend', (e) => {
+    const delta = e.changedTouches[0].screenX - touchStartX;
+    if (Math.abs(delta) > 50) show(current + (delta < 0 ? 1 : -1));
+  });
+
+  const hash = parseInt(location.hash.replace('#', '')) || 1;
+  if (hash > 1 && hash <= slides.length) show(hash - 1);
+  else progress.style.width = (1 / slides.length * 100) + '%';
+</script>
+
+</body>
+</html>
