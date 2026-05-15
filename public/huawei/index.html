@@ -287,6 +287,57 @@
   }
   .link-list a:hover { color: var(--orange); border-color: var(--orange); }
 
+  .tweet-card { max-width: 100%; min-width: 0; }
+  .tweet-card blockquote.twitter-tweet {
+    margin: 0 !important;
+    max-width: 100% !important;
+  }
+  .tweet-fallback {
+    background: var(--light-gray);
+    border-left: 4px solid var(--blue);
+    padding: 1.5rem 1.8rem;
+    border-radius: 4px;
+    font-family: 'Lora', Georgia, serif;
+  }
+  .tweet-fallback .handle {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.85rem;
+    color: var(--mid-gray);
+    margin-bottom: 0.6rem;
+    display: block;
+  }
+  .tweet-fallback .handle strong { color: var(--dark); }
+  .tweet-fallback p { font-size: 1rem; line-height: 1.5; }
+  .tweet-fallback .stats {
+    margin-top: 0.8rem;
+    font-family: var(--mono);
+    font-size: 0.85rem;
+    color: var(--blue);
+  }
+  .video-wrap {
+    position: relative;
+    padding-top: 56.25%;
+    height: 0;
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px -15px rgba(0,0,0,0.25);
+    background: var(--dark);
+  }
+  .video-wrap iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+  .video-caption {
+    margin-top: 0.8rem;
+    font-size: 0.95rem;
+    opacity: 0.75;
+    font-family: 'Poppins', sans-serif;
+  }
+  .video-caption strong { color: var(--orange); }
+
   .accent-orange { color: var(--orange); }
   .accent-blue { color: var(--blue); }
   .accent-green { color: var(--green); }
@@ -566,11 +617,59 @@ ctx_execute(<span class="s">"javascript"</span>, `
       <div class="stat"><div class="num">15</div><div class="label">Platforms</div></div>
       <div class="stat"><div class="num">98%</div><div class="label">Context Saving</div></div>
     </div>
-    <p style="margin-top:2.5rem; opacity:0.7; max-width:55ch;">A year and a half ago this only ran on my laptop. Today tens of thousands of developers use it daily.</p>
+    <p style="margin-top:2.5rem; opacity:0.7; max-width:55ch;">A year and a half ago this only ran on a single laptop. Today tens of thousands of developers use it daily.</p>
     <div class="slide-num">14</div>
   </section>
 
-  <!-- 15 - The Agentic Stack -->
+  <!-- 15 - Social proof: Community -->
+  <section class="slide">
+    <div class="brand-bar"><span class="dot"></span>Community</div>
+    <div class="eyebrow-small">Real Receipts</div>
+    <h2>Don't take my word for it.</h2>
+    <div class="two-col tight" style="margin-top:1.5rem; align-items:start;">
+      <div class="tweet-card">
+        <blockquote class="twitter-tweet tweet-fallback" data-theme="light" data-conversation="none" data-dnt="true" data-cards="hidden">
+          <span class="handle"><strong>Okan Sarıırmak</strong> · @okansariirmak · May 9, 2026</span>
+          <p lang="en" dir="ltr">Context Mode seriously saved me today.<br><br>In a long, messy coding session that ran for more than an hour, it kept the conversation clean and cut the context from 13.6 MB to 578 KB.<br><br>- 3.4M tokens saved<br>- 95.9% reduction<br>- ~$51 saved<br>- Persistent memory preserved<br><br>This is exactly…</p>
+          <a href="https://twitter.com/okansariirmak/status/2052935750908273151?ref_src=twsrc%5Etfw">View on X</a>
+        </blockquote>
+      </div>
+      <div class="tweet-card">
+        <blockquote class="twitter-tweet tweet-fallback" data-theme="light" data-conversation="none" data-dnt="true" data-cards="hidden">
+          <span class="handle"><strong>Okan Sarıırmak</strong> · @okansariirmak · May 9, 2026</span>
+          <p lang="en" dir="ltr">You are welcome, I think I am the one who needs to thank you lol.<br><br>This saved me a fortune in one day.</p>
+          <a href="https://twitter.com/okansariirmak/status/2053057980514390035?ref_src=twsrc%5Etfw">View on X</a>
+        </blockquote>
+      </div>
+    </div>
+    <p style="margin-top:1.5rem; opacity:0.55; font-size:0.9rem; font-family:'Poppins',sans-serif;">One developer. One day. $51 in API costs avoided.</p>
+    <div class="slide-num">15</div>
+  </section>
+
+  <!-- 16 - Maintainer + YouTube -->
+  <section class="slide">
+    <div class="brand-bar"><span class="dot"></span>Authority</div>
+    <div class="eyebrow-small">The Maintainer's Own Numbers · Featured on YouTube</div>
+    <h2>80 hours. <span class="accent-orange">$487 saved.</span></h2>
+    <div class="two-col tight" style="margin-top:1.5rem; align-items:start;">
+      <div class="tweet-card">
+        <blockquote class="twitter-tweet tweet-fallback" data-theme="light" data-conversation="none" data-dnt="true" data-cards="hidden">
+          <span class="handle"><strong>Mert Köseoğlu — Context Mode</strong> · @mksglu · May 2, 2026</span>
+          <p lang="en" dir="ltr">80 hours of AI pair programming. Here's what context-mode saved me.<br><br>→ $487.20 in API costs. Opus pricing. Real money, not estimates.<br>→ 22.3 hours of re-explaining context after compaction. Time I got back to ship.<br>→ 268 sessions resumed from memory. The agent never asked…</p>
+          <a href="https://twitter.com/mksglu/status/2050566958219776250?ref_src=twsrc%5Etfw">View on X</a>
+        </blockquote>
+      </div>
+      <div>
+        <div class="video-wrap">
+          <iframe src="https://www.youtube-nocookie.com/embed/eRS3CmvrOvA?start=486&rel=0" title="Featured in 'I Tried 100+ Claude Code Skills' by Nate Herk — at 8:06" allow="accelerometer; clipboard-write; encrypted-media; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        <p class="video-caption">Featured at <strong>8:06</strong> in Nate Herk's <em>"I Tried 100+ Claude Code Skills. These 6 Are The Best."</em></p>
+      </div>
+    </div>
+    <div class="slide-num">16</div>
+  </section>
+
+  <!-- 17 - The Agentic Stack -->
   <section class="slide">
     <div class="brand-bar"><span class="dot"></span>Manifesto</div>
     <div class="eyebrow-small">Companion Article</div>
@@ -579,10 +678,10 @@ ctx_execute(<span class="s">"javascript"</span>, `
     <div class="link-list">
       <a href="https://medium.com/dev-genius/the-agentic-coding-stack-7-tools-5-layers-and-the-missing-link-nobody-has-built-yet-de264b260db3" target="_blank" rel="noopener">medium.com/dev-genius/the-agentic-coding-stack</a>
     </div>
-    <div class="slide-num">15</div>
+    <div class="slide-num">17</div>
   </section>
 
-  <!-- 16 - Open source path -->
+  <!-- 18 - Open source path -->
   <section class="slide">
     <div class="brand-bar"><span class="dot"></span>Contribution</div>
     <div class="eyebrow-small">The Open Source Path</div>
@@ -595,10 +694,10 @@ ctx_execute(<span class="s">"javascript"</span>, `
       <li><span class="marker">05</span><span>Iterate — don't get defensive on review</span></li>
     </ul>
     <p style="margin-top:1.5rem; opacity:0.7; max-width:60ch;">My first VS Code PR sat for two weeks. I bumped it politely. Today: 12+ merged contributions.</p>
-    <div class="slide-num">16</div>
+    <div class="slide-num">18</div>
   </section>
 
-  <!-- 17 - Quickstart -->
+  <!-- 19 - Quickstart -->
   <section class="slide">
     <div class="brand-bar"><span class="dot"></span>Get Started</div>
     <div class="eyebrow-small">Five-Minute Install</div>
@@ -613,10 +712,10 @@ ctx_execute(<span class="s">"javascript"</span>, `
 <span class="c"># Track the savings</span>
 ctx stats</pre>
     <p style="margin-top:1rem; opacity:0.7;">Install guides for Gemini CLI, VS Code Copilot, JetBrains: <code>github.com/mksglu/context-mode</code></p>
-    <div class="slide-num">17</div>
+    <div class="slide-num">19</div>
   </section>
 
-  <!-- 18 - Closing -->
+  <!-- 20 - Closing -->
   <section class="slide">
     <div class="brand-bar"><span class="dot"></span>Closing</div>
     <div class="bigtext">
@@ -629,14 +728,14 @@ ctx stats</pre>
       <a href="https://context-mode.com" target="_blank" rel="noopener">context-mode.com</a>
       <a href="https://github.com/murataslan1" target="_blank" rel="noopener">github.com/murataslan1</a>
     </div>
-    <div class="slide-num">18</div>
+    <div class="slide-num">20</div>
   </section>
 
-  <!-- 19 - Q&A -->
+  <!-- 21 - Q&A -->
   <section class="slide" style="justify-content:center; align-items:center; text-align:center;">
     <div class="bigtext" style="text-align:center;">Questions?</div>
     <p style="margin-top:2rem; opacity:0.6; font-family:'Poppins'; letter-spacing:0.08em; text-transform:uppercase; font-size:0.9rem;">YouTube comments · Discord · LinkedIn</p>
-    <div class="slide-num">19</div>
+    <div class="slide-num">21</div>
   </section>
 
 </div>
@@ -656,6 +755,9 @@ ctx stats</pre>
     slides[current].classList.add('active');
     progress.style.width = ((current + 1) / slides.length * 100) + '%';
     history.replaceState(null, '', '#' + (current + 1));
+    if (window.twttr && window.twttr.widgets) {
+      window.twttr.widgets.load(slides[current]);
+    }
   }
 
   document.addEventListener('keydown', (e) => {
@@ -694,6 +796,8 @@ ctx stats</pre>
   if (hash > 1 && hash <= slides.length) show(hash - 1);
   else progress.style.width = (1 / slides.length * 100) + '%';
 </script>
+
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 </body>
 </html>
