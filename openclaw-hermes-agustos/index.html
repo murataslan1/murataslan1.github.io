@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1920, initial-scale=1.0">
+<title>KamuKOD Atölye 210 — İlk Oturum</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Space+Mono:wght@400;700&family=Caveat:wght@600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0D0D0D; --text: rgba(255,255,255,0.92);
+    --text-secondary: rgba(255,255,255,0.5); --text-muted: rgba(255,255,255,0.18);
+    --accent: #D4856A; --green: #00E676; --purple: #8B5CF6; --red: #ff3b3b;
+    --blue: rgba(100,140,255,1); --yellow: #FFD600; --cyan: #06b6d4;
+    --hermes-orange: #f59e0b;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Outfit',system-ui,sans-serif;background:var(--bg);color:var(--text);overflow:hidden;width:100vw;height:100vh}
+  body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;background-image:radial-gradient(circle,rgba(255,255,255,.1) 1px,transparent 1px);background-size:32px 32px}
+  body::after{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;background:radial-gradient(ellipse at center,transparent 20%,rgba(13,13,13,.7) 50%,rgb(13,13,13) 75%)}
+
+  .slide{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:0;transform:scale(.97);transition:opacity .45s ease,transform .45s ease;pointer-events:none;padding:80px 120px;z-index:0}
+  .slide.active{opacity:1;transform:scale(1);pointer-events:auto;z-index:1}
+  .content{max-width:1440px;width:100%;position:relative;z-index:1}
+
+  .label{font-family:'Space Mono',monospace;font-size:13px;text-transform:uppercase;letter-spacing:.3em;color:var(--text-secondary);margin-bottom:16px}
+  .h1{font-size:112px;font-weight:900;letter-spacing:-.025em;line-height:1.05}
+  .h2{font-size:72px;font-weight:700;letter-spacing:-.015em;line-height:1.1}
+  .h3{font-size:48px;font-weight:600;line-height:1.15}
+  .sub{font-size:26px;color:var(--text-secondary);line-height:1.4;font-weight:300}
+  .mono{font-family:'Space Mono',monospace}
+  .caveat{font-family:'Caveat',cursive;font-size:42px;color:var(--accent)}
+  .accent{color:var(--accent)} .green{color:var(--green)} .red{color:var(--red)}
+  .purple{color:var(--purple)} .blue{color:var(--blue)} .yellow{color:var(--yellow)}
+  .cyan{color:var(--cyan)} .hermes{color:var(--hermes-orange)}
+  .strike{text-decoration:line-through;color:var(--text-muted)}
+  .em-bar{width:120px;height:3px;background:var(--accent);margin:24px 0;border-radius:2px}
+  .center{text-align:center}
+  .grid{display:grid;gap:24px}.g2{grid-template-columns:1fr 1fr}.g3{grid-template-columns:1fr 1fr 1fr}.g4{grid-template-columns:1fr 1fr 1fr 1fr}
+  .card{background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.06);border-radius:20px;padding:36px}
+  .card-accent{border-color:rgba(212,133,106,.15);background:rgba(212,133,106,.04)}
+  .card-green{border-color:rgba(0,230,118,.15);background:rgba(0,230,118,.04)}
+  .card-red{border-color:rgba(255,59,59,.15);background:rgba(255,59,59,.04)}
+  .card-orange{border-color:rgba(245,158,11,.15);background:rgba(245,158,11,.04)}
+  .card-cyan{border-color:rgba(6,182,212,.15);background:rgba(6,182,212,.04)}
+
+  .three-key{display:flex;gap:80px;justify-content:center;align-items:center;margin:60px 0}
+  .three-key span{font-size:96px;font-weight:900;letter-spacing:-.02em}
+  .layer{display:flex;align-items:center;gap:24px;padding:18px 0;border-bottom:1px solid rgba(255,255,255,.06)}
+  .layer-num{font-family:'Space Mono',monospace;font-size:48px;color:var(--accent);min-width:80px}
+  .layer-name{font-size:28px;font-weight:600}.layer-desc{font-size:17px;color:var(--text-secondary)}
+  .flow{display:flex;align-items:center;gap:20px;justify-content:center}
+  .flow-card{flex:1;max-width:300px;border-top:3px solid var(--accent);border-radius:0 0 16px 16px;text-align:center;padding:28px 20px}
+  .flow-arrow{font-size:32px;color:var(--accent)}
+  .compare-l{border-top:3px solid var(--red)}.compare-r{border-top:3px solid var(--green)}
+  .quote{font-size:48px;font-style:italic;line-height:1.3;max-width:900px;text-align:center}
+  .quote-auth{font-size:16px;color:var(--text-secondary);text-transform:uppercase;letter-spacing:.2em;margin-top:24px;font-family:'Space Mono',monospace}
+  .tags{display:flex;gap:14px;flex-wrap:wrap;justify-content:center}
+  .tag{font-family:'Space Mono',monospace;font-size:14px;border:1px solid rgba(255,255,255,.15);border-radius:100px;padding:10px 24px;color:var(--text-secondary)}
+  .big-num{font-family:'Space Mono',monospace;font-size:140px;font-weight:700;line-height:1}
+  .stat{text-align:center}.stat .val{font-family:'Space Mono',monospace;font-size:64px;font-weight:700}.stat .lbl{font-size:16px;color:var(--text-secondary);margin-top:8px;text-transform:uppercase;letter-spacing:.12em}
+
+  .nav{position:fixed;bottom:40px;left:50%;transform:translateX(-50%);z-index:100;display:flex;gap:8px;align-items:center;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:16px;padding:8px 16px;backdrop-filter:blur(20px)}
+  .nav button{background:none;border:none;color:var(--text-secondary);font-size:14px;cursor:pointer;padding:6px 12px;border-radius:8px;font-family:'Space Mono',monospace;transition:all .2s}
+  .nav button:hover{background:rgba(255,255,255,.06);color:var(--text)}
+  .nav .counter{font-family:'Space Mono',monospace;font-size:13px;color:var(--text-muted);min-width:55px;text-align:center}
+  .progress{position:fixed;bottom:0;left:0;right:0;height:2px;z-index:100;background:rgba(255,255,255,.04)}
+  .progress-bar{height:100%;background:var(--accent);box-shadow:0 0 12px var(--accent);transition:width .4s ease}
+  .marker{position:fixed;bottom:40px;left:40px;z-index:100;font-family:'Space Mono',monospace;font-size:13px;text-transform:uppercase;letter-spacing:.25em;color:var(--text-muted)}
+  .click-zone{position:fixed;top:0;bottom:0;width:25%;z-index:50;cursor:pointer}
+  .click-zone.left{left:0}.click-zone.right{right:0}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+  .live{animation:pulse 2s infinite;display:inline-block;width:10px;height:10px;background:var(--green);border-radius:50%;margin-right:10px;vertical-align:middle}
+
+  /* branding */
+  .brand-logo{position:fixed;top:36px;right:36px;z-index:100;display:flex;align-items:center;gap:10px}
+  .brand-logo svg{width:48px;height:48px;opacity:.6}
+  .brand-badge{position:fixed;top:44px;left:120px;z-index:99;font-family:'Space Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:.35em;color:var(--text-muted);border:1px solid rgba(255,255,255,.08);border-radius:8px;padding:6px 14px}
+
+  .logo-row{display:flex;gap:32px;align-items:center;justify-content:center;margin:40px 0}
+  .logo-box{text-align:center}
+  .logo-box svg{width:80px;height:80px;margin-bottom:12px}
+
+  /* simple explanation */
+  .big-icon{font-size:120px;line-height:1;margin-bottom:20px}
+  .step-num{width:80px;height:80px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:36px;font-weight:900;margin:0 auto 20px}
+  .step-num.cyan{background:rgba(6,182,212,.15);color:var(--cyan)}
+  .step-num.orange{background:rgba(245,158,11,.15);color:var(--hermes-orange)}
+  .step-num.green{background:rgba(0,230,118,.15);color:var(--green)}
+</style>
+</head>
+<body>
+
+<div class="click-zone left" id="pz"></div><div class="click-zone right" id="nz"></div>
+
+<!-- BRANDING -->
+<div class="brand-logo">
+  <svg viewBox="0 0 200 200"><path d="M 108 18 L 72 108 L 96 108 L 80 182 L 140 86 L 112 86 L 132 18 Z" fill="#D4856A"/></svg>
+  <div style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.25em;color:var(--text-muted);text-transform:uppercase">Atölye 210</div>
+</div>
+<div class="brand-badge">KamuKOD ATÖLYE 210</div>
+
+<div class="marker">KamuKOD</div>
+<div class="progress"><div class="progress-bar" id="pbar"></div></div>
+<div class="nav">
+  <button id="pb">← geri</button><span class="counter" id="ct">1 / 29</span><button id="nb">ileri →</button><button id="fb">⛶</button>
+</div>
+
+<!-- 1: COVER -->
+<div class="slide active" data-slide="1">
+  <div class="content center">
+    <div class="label"><span class="live"></span>İLK OTURUM · ÜCRETSİZ · HERKESE AÇIK</div>
+    <h1 class="h1">Atölye <span class="accent">210</span></h1>
+    <div class="em-bar" style="margin:32px auto"></div>
+    <p class="sub" style="font-size:36px">OpenClaw + Hermes ile<br>kendi otonom YZ ajanını kur.</p>
+    <div class="logo-row">
+      <div class="logo-box">
+        <svg viewBox="0 0 100 100"><rect x="10" y="20" width="80" height="60" rx="8" fill="none" stroke="#06b6d4" stroke-width="3"/><circle cx="50" cy="45" r="12" fill="#06b6d4"/><line x1="50" y1="57" x2="50" y2="75" stroke="#06b6d4" stroke-width="3"/></svg>
+        <p class="mono cyan" style="font-size:14px">OpenClaw</p>
+      </div>
+      <div style="font-size:48px;color:var(--text-muted)">+</div>
+      <div class="logo-box">
+        <svg viewBox="0 0 100 100"><polygon points="50,8 92,35 92,75 50,100 8,75 8,35" fill="none" stroke="#f59e0b" stroke-width="3"/><circle cx="50" cy="50" r="18" fill="none" stroke="#f59e0b" stroke-width="2"/><circle cx="50" cy="50" r="6" fill="#f59e0b"/></svg>
+        <p class="mono hermes" style="font-size:14px">Hermes</p>
+      </div>
+    </div>
+    <p style="margin-top:20px;font-size:16px;color:var(--text-muted)">4 oturum · 8 saat · Pazartesi 20:30 · Çevrimiçi</p>
+  </div>
+</div>
+
+<!-- 2: SIFIRDAN BAŞLIYORUZ -->
+<div class="slide" data-slide="2">
+  <div class="content center">
+    <div class="label">Merak etme</div>
+    <h2 class="h2" style="margin-bottom:48px"><span class="green">Sıfırdan</span> başlıyoruz</h2>
+    <div class="grid g3" style="gap:24px;max-width:1100px;margin:0 auto">
+      <div class="card card-green">
+        <div class="step-num green">?</div>
+        <p class="h3" style="font-size:28px;margin-bottom:8px">Hiç bilmiyorsan</p>
+        <p class="sub" style="font-size:18px">"Terminal nedir?" diye sorabilirsin. Anlatırız. Kimse yargılamaz.</p>
+      </div>
+      <div class="card card-green">
+        <div class="step-num green">~</div>
+        <p class="h3" style="font-size:28px;margin-bottom:8px">Biraz biliyorsan</p>
+        <p class="sub" style="font-size:18px">Temel komutları biliyorsun. Süper, direkt kuruluma geçeriz.</p>
+      </div>
+      <div class="card card-green">
+        <div class="step-num green">✓</div>
+        <p class="h3" style="font-size:28px;margin-bottom:8px">İyi biliyorsan</p>
+        <p class="sub" style="font-size:18px">Mimariden güvenliğe derinleşiriz. Soru-cevap'ta zorlayabilirsin.</p>
+      </div>
+    </div>
+    <p class="sub" style="margin-top:40px;font-size:22px">Her seviyeye uygun. <span class="accent">Kimse geride kalmaz.</span></p>
+  </div>
+</div>
+
+<!-- 3: PROBLEM - herkesin anladığı -->
+<div class="slide" data-slide="3">
+  <div class="content">
+    <div class="label">Düşün</div>
+    <h2 class="h2" style="margin-bottom:40px">Her gün <span class="red">aynı şeyi</span><br>tekrar tekrar mı yapıyorsun?</h2>
+    <div class="grid g2" style="gap:20px">
+      <div class="card card-red">
+        <p class="sub" style="font-size:22px;color:var(--text)">📧 Mailleri tek tek okuyup sınıflandırmak</p>
+      </div>
+      <div class="card card-red">
+        <p class="sub" style="font-size:22px;color:var(--text)">📊 Raporları açıp anomali aramak</p>
+      </div>
+      <div class="card card-red">
+        <p class="sub" style="font-size:22px;color:var(--text)">📋 Excel'de veri girişi yapmak</p>
+      </div>
+      <div class="card card-red">
+        <p class="sub" style="font-size:22px;color:var(--text)">📅 Takvimde toplantıları tek tek düzenlemek</p>
+      </div>
+    </div>
+    <p class="center sub" style="margin-top:32px;font-size:24px">Bunların hepsini <span class="accent">bir bilgisayar programına</span> devredebilirsin.</p>
+  </div>
+</div>
+
+<!-- 4: BASİT ANLATIM -->
+<div class="slide" data-slide="4">
+  <div class="content center">
+    <div class="label">Basitçe</div>
+    <h2 class="h2" style="margin-bottom:32px">Yapay zeka ajanı<br><span class="accent">nedir?</span></h2>
+    <div class="card card-accent" style="max-width:850px;margin:0 auto 40px;text-align:left">
+      <p class="h3" style="font-size:34px;font-weight:400;line-height:1.5">
+        Bilgisayarında çalışan,<br>
+        senin verdiğin işleri <span class="accent">kendi kendine</span> yapan,<br>
+        yaptıkça <span class="green">öğrenen</span> bir yardımcı.
+      </p>
+    </div>
+    <div class="grid g3" style="gap:20px">
+      <div class="card"><p class="mono" style="font-size:14px;color:var(--accent)">ÖRNEK 1</p><p class="sub" style="font-size:20px">"Sabah maillerimi özetle,<br>sadece acilleri bildir"</p></div>
+      <div class="card"><p class="mono" style="font-size:14px;color:var(--accent)">ÖRNEK 2</p><p class="sub" style="font-size:20px">"Bu 50 sayfalık raporu oku,<br>riskli maddeleri işaretle"</p></div>
+      <div class="card"><p class="mono" style="font-size:14px;color:var(--accent)">ÖRNEK 3</p><p class="sub" style="font-size:20px">"Yarınki toplantıdan önce<br>hazırlık notu çıkar"</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- 5: CHATBOT vs AJAN -->
+<div class="slide" data-slide="5">
+  <div class="content">
+    <div class="label">Fark</div>
+    <h2 class="h2" style="margin-bottom:36px"><span class="red">Chatbot</span> ile <span class="green">ajan</span><br>aynı şey <span class="red strike">değil</span></h2>
+    <div class="grid g2" style="gap:20px">
+      <div class="card compare-l">
+        <p class="mono" style="font-size:18px;color:var(--red);margin-bottom:16px">Chatbot (ChatGPT gibi)</p>
+        <p style="font-size:22px;color:var(--text-muted)">↳ Sen sorarsın, cevap verir</p>
+        <p style="font-size:22px;color:var(--text-muted)">↳ Her seferinde sıfırdan anlatırsın</p>
+        <p style="font-size:22px;color:var(--text-muted)">↳ Sadece konuşur, iş yapmaz</p>
+        <p style="font-size:22px;color:var(--text-muted)">↳ Sen uyurken çalışmaz</p>
+      </div>
+      <div class="card compare-r">
+        <p class="mono" style="font-size:18px;color:var(--green);margin-bottom:16px">Otonom Ajan (OpenClaw + Hermes)</p>
+        <p style="font-size:22px">↳ Sen hedef verirsin, o yapar</p>
+        <p style="font-size:22px">↳ Seni hatırlar, öğrenir</p>
+        <p style="font-size:22px">↳ Mail atar, dosya okur, veri çeker</p>
+        <p style="font-size:22px">↳ 7/24 çalışır, sen uyurken bile</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 6: GÜNLÜK HAYATTAN -->
+<div class="slide" data-slide="6">
+  <div class="content center">
+    <div class="label">Günlük hayat</div>
+    <h2 class="h2" style="margin-bottom:40px">Şöyle <span class="accent">düşün</span></h2>
+    <div class="flow">
+      <div class="card flow-card"><p class="mono" style="font-size:12px;color:var(--accent);margin-bottom:12px">SEN</p><p class="h3" style="font-size:26px;font-weight:500">"Maillerimi kontrol et"</p><p class="sub" style="font-size:16px">Telegram'dan<br>yazdın</p></div>
+      <div class="flow-arrow">→</div>
+      <div class="card flow-card"><p class="mono" style="font-size:12px;color:var(--cyan);margin-bottom:12px">AJAN</p><p class="h3" style="font-size:26px;font-weight:500">47 mail okudu</p><p class="sub" style="font-size:16px">Gmail'e bağlandı<br>hepsini taradı</p></div>
+      <div class="flow-arrow">→</div>
+      <div class="card flow-card"><p class="mono" style="font-size:12px;color:var(--green);margin-bottom:12px">SONUÇ</p><p class="h3" style="font-size:26px;font-weight:500">"3'ü acil"</p><p class="sub" style="font-size:16px">Sana Telegram'dan<br>sadece acilleri yazdı</p></div>
+    </div>
+    <p class="sub" style="margin-top:48px;font-size:20px">Sen daha kahveni bitirmeden, ajan işini bitirdi.</p>
+  </div>
+</div>
+
+<!-- 7: ARAÇLAR -->
+<div class="slide" data-slide="7">
+  <div class="content center">
+    <div class="label">Araçlar</div>
+    <div class="three-key">
+      <span>OpenClaw</span><span class="accent">+</span><span>Hermes</span><span class="accent">+</span><span class="green">VPS</span>
+    </div>
+    <div class="grid g3" style="margin-top:60px;gap:24px">
+      <div class="card card-cyan">
+        <svg viewBox="0 0 80 40" style="width:80px;margin:0 auto 16px;display:block"><rect x="10" y="8" width="60" height="24" rx="4" fill="none" stroke="#06b6d4" stroke-width="2"/><circle cx="40" cy="20" r="6" fill="#06b6d4"/><line x1="40" y1="26" x2="40" y2="32" stroke="#06b6d4" stroke-width="2"/></svg>
+        <p class="mono cyan" style="font-size:16px;margin-bottom:12px">OpenClaw</p>
+        <p class="sub" style="font-size:18px">İletişim geçidi<br>Telegram · Discord · WhatsApp<br>Slack · Email · CLI</p>
+      </div>
+      <div class="card card-orange">
+        <svg viewBox="0 0 80 40" style="width:80px;margin:0 auto 16px;display:block"><polygon points="40,2 62,14 62,34 40,44 18,34 18,14" fill="none" stroke="#f59e0b" stroke-width="2"/><circle cx="40" cy="22" r="8" fill="none" stroke="#f59e0b" stroke-width="1.5"/><circle cx="40" cy="22" r="3" fill="#f59e0b"/></svg>
+        <p class="mono hermes" style="font-size:16px;margin-bottom:12px">Hermes</p>
+        <p class="sub" style="font-size:18px">Otonom beyin<br>40+ araç · Hafıza<br>Self-evolve · Paralel ajan</p>
+      </div>
+      <div class="card card-green">
+        <svg viewBox="0 0 80 40" style="width:80px;margin:0 auto 16px;display:block"><rect x="20" y="4" width="40" height="34" rx="3" fill="none" stroke="#00E676" stroke-width="2"/><rect x="26" y="10" width="28" height="4" rx="1" fill="#00E676" opacity=".5"/><rect x="26" y="18" width="28" height="4" rx="1" fill="#00E676" opacity=".3"/><rect x="26" y="26" width="18" height="4" rx="1" fill="#00E676" opacity=".3"/></svg>
+        <p class="mono green" style="font-size:16px;margin-bottom:12px">VPS</p>
+        <p class="sub" style="font-size:18px">Senin sunucun<br>Veri dışarı çıkmaz<br>$5/ay · 7/24 çalışır</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 8: ARCHITECTURE -->
+<div class="slide" data-slide="8">
+  <div class="content">
+    <div class="label">Mimari</div>
+    <h2 class="h2" style="margin-bottom:40px">Adım adım <span class="accent">nasıl çalışır?</span></h2>
+    <div class="layer" style="border-top:1px solid rgba(255,255,255,.06)">
+      <div class="layer-num">1</div><div><div class="layer-name">Sen Telegram'dan yazıyorsun</div><div class="layer-desc">"Bu haftaki raporları oku, riskli olanları işaretle"</div></div>
+    </div>
+    <div class="layer"><div class="layer-num">2</div><div><div class="layer-name"><span class="cyan">OpenClaw</span> mesajı alıyor, güvenlik kontrolü yapıyor</div><div class="layer-desc">"Bu komut yetkim dahilinde mi? Sahibi gerçekten sen misin?"</div></div></div>
+    <div class="layer"><div class="layer-num">3</div><div><div class="layer-name"><span class="hermes">Hermes</span> işi anlıyor, planlıyor, yapıyor</div><div class="layer-desc">Raporları bulur → okur → analiz eder → risk skoru çıkarır</div></div></div>
+    <div class="layer"><div class="layer-num">4</div><div><div class="layer-name"><span class="green">Hafızaya</span> kaydediyor, öğreniyor</div><div class="layer-desc">Bir sonraki sefer aynı tür raporu daha hızlı analiz eder</div></div></div>
+    <div class="layer"><div class="layer-num accent" style="font-size:20px">→</div><div><div class="layer-name"><span class="green">Cevap</span> Telegram'da</div><div class="layer-desc">"3 rapor riskli. İşte detaylar." — 5 saniye sürdü.</div></div></div>
+  </div>
+</div>
+
+<!-- 9: GÜVENLİK -->
+<div class="slide" data-slide="9">
+  <div class="content">
+    <div class="label">Güvenlik</div>
+    <h2 class="h2" style="margin-bottom:32px">Verin <span class="green">sende</span> kalır</h2>
+    <div class="grid g2" style="gap:20px">
+      <div class="card card-green"><p class="h3" style="font-size:28px;margin-bottom:12px">🔒 Senin sunucunda</p><p class="sub" style="font-size:18px">VPS senin. Veri senin. Hiçbir şey KamuKOD'a ya da başkasına gitmez.</p></div>
+      <div class="card card-green"><p class="h3" style="font-size:28px;margin-bottom:12px">🛡️ İzole çalışır</p><p class="sub" style="font-size:18px">Ajan kendi güvenli alanında çalışır. Dosyalarına yanlışlıkla erişemez.</p></div>
+      <div class="card card-green"><p class="h3" style="font-size:28px;margin-bottom:12px">✅ Senden onay ister</p><p class="sub" style="font-size:18px">Kritik işlemler (dosya silme, mail gönderme) senden onay almadan yapmaz.</p></div>
+      <div class="card card-green"><p class="h3" style="font-size:28px;margin-bottom:12px">🇹🇷 İnternetsiz bile çalışır</p><p class="sub" style="font-size:18px">Ollama ile yerel modeller. Tamamen offline. Savunma sanayi için ideal.</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- 10: VAKA -->
+<div class="slide" data-slide="10">
+  <div class="content">
+    <div class="label">Gerçek vaka</div>
+    <h2 class="h2" style="margin-bottom:32px">Bilgi güvenliği firması</h2>
+    <div class="grid g2" style="gap:20px;margin-bottom:32px">
+      <div class="card compare-l">
+        <p class="mono" style="font-size:16px;color:var(--red);margin-bottom:8px">ÖNCE</p>
+        <p class="big-num" style="font-size:90px;color:var(--red)">200+</p>
+        <p class="sub" style="font-size:20px">rapor. Tek uzman. Her raporu okuyor. Saatler sürüyor. Gece 23:45'te hala çalışıyor.</p>
+      </div>
+      <div class="card compare-r">
+        <p class="mono" style="font-size:16px;color:var(--green);margin-bottom:8px">SONRA</p>
+        <p class="big-num" style="font-size:90px;color:var(--green)">15s</p>
+        <p class="sub" style="font-size:20px">haftada kazanıldı. Ajan okuyor, analiz ediyor. Uzman sadece aksiyon alınacak maddelere bakıyor.</p>
+      </div>
+    </div>
+    <p class="center sub" style="font-size:18px">4 hafta · OpenClaw + Hermes · Sıfırdan production'a.</p>
+  </div>
+</div>
+
+<!-- 11: DAHA FAZLA VAKA -->
+<div class="slide" data-slide="11">
+  <div class="content">
+    <div class="label">Kullanım alanları</div>
+    <h2 class="h2" style="margin-bottom:28px">Başka <span class="accent">neler</span> yapılıyor?</h2>
+    <div class="grid g3" style="gap:16px">
+      <div class="card card-accent"><p class="mono" style="font-size:13px;color:var(--accent);margin-bottom:8px">VAKA 02</p><p class="h3" style="font-size:24px;margin-bottom:6px">Mail Asistanı</p><p class="sub" style="font-size:16px">47 mail → 3'ü "bakmalısın" dedi. Doğruydu.</p></div>
+      <div class="card card-accent"><p class="mono" style="font-size:13px;color:var(--accent);margin-bottom:8px">VAKA 03</p><p class="h3" style="font-size:24px;margin-bottom:6px">Takvim Ajanı</p><p class="sub" style="font-size:16px">Toplantıları sıralıyor. Haftada 5 saat kazandırıyor.</p></div>
+      <div class="card card-accent"><p class="mono" style="font-size:13px;color:var(--accent);margin-bottom:8px">VAKA 04</p><p class="h3" style="font-size:24px;margin-bottom:6px">Jira Asistanı</p><p class="sub" style="font-size:16px">3 saatte 12 ticket kapatan ajan. Manuel takip bitti.</p></div>
+      <div class="card card-accent"><p class="mono" style="font-size:13px;color:var(--accent);margin-bottom:8px">VAKA 05</p><p class="h3" style="font-size:24px;margin-bottom:6px">Stok Takibi</p><p class="sub" style="font-size:16px">Eşik altı tespit → tedarikçiye otomatik mail.</p></div>
+      <div class="card card-accent"><p class="mono" style="font-size:13px;color:var(--accent);margin-bottom:8px">VAKA 06</p><p class="h3" style="font-size:24px;margin-bottom:6px">Mevzuat Takip</p><p class="sub" style="font-size:16px">Resmi Gazete'yi tarar, sektöre özel değişiklikleri özetler.</p></div>
+      <div class="card card-accent"><p class="mono" style="font-size:13px;color:var(--accent);margin-bottom:8px">VAKA 07</p><p class="h3" style="font-size:24px;margin-bottom:6px">SOC Analisti</p><p class="sub" style="font-size:16px">Log/alert okur, false positive'ları eler, tehditleri işaretler.</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- 12: KOBİ -->
+<div class="slide" data-slide="12">
+  <div class="content">
+    <div class="label">KOBİ'ler için</div>
+    <h2 class="h2" style="margin-bottom:24px">İşletmene özel<br><span class="accent">ajan</span> kurabilirsin</h2>
+    <div class="grid g3" style="gap:20px">
+      <div class="card card-accent">
+        <p class="h3" style="font-size:24px;margin-bottom:8px">🧾 Muhasebe</p>
+        <p class="sub" style="font-size:18px">Fatura okur, e-Fatura'ya işler, mükerrer kaydı yakalar. Haftada 10 saat.</p>
+      </div>
+      <div class="card card-accent">
+        <p class="h3" style="font-size:24px;margin-bottom:8px">⚖️ Hukuk</p>
+        <p class="sub" style="font-size:18px">Sözleşme inceler, riskli maddeleri işaretler, içtihat tarar. Dosya başına 2 saat.</p>
+      </div>
+      <div class="card card-accent">
+        <p class="h3" style="font-size:24px;margin-bottom:8px">🏠 Emlak</p>
+        <p class="sub" style="font-size:18px">İlanları platformlara dağıtır, WhatsApp'tan müşteri sorularına 7/24 cevap verir.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 13: BUGÜN -->
+<div class="slide" data-slide="13">
+  <div class="content center">
+    <div class="label"><span class="live"></span>Canlı kurulum</div>
+    <h2 class="h2" style="margin-bottom:48px">Bu akşam <span class="accent">beraber</span> kuruyoruz</h2>
+    <div class="flow">
+      <div class="card flow-card" style="border-top-color:var(--green)"><p class="mono" style="font-size:14px;color:var(--green);margin-bottom:16px">ADIM 1</p><p class="h3" style="font-size:30px">VPS</p><p class="sub" style="font-size:16px">Hostinger'da<br>15 dakika · $5/ay</p></div>
+      <div class="flow-arrow">→</div>
+      <div class="card flow-card" style="border-top-color:var(--cyan)"><p class="mono" style="font-size:14px;color:var(--cyan);margin-bottom:16px">ADIM 2</p><p class="h3" style="font-size:30px">OpenClaw</p><p class="sub" style="font-size:16px">Tek komutla<br>~5 dakika</p></div>
+      <div class="flow-arrow">→</div>
+      <div class="card flow-card" style="border-top-color:var(--hermes-orange)"><p class="mono" style="font-size:14px;color:var(--hermes-orange);margin-bottom:16px">ADIM 3</p><p class="h3 green" style="font-size:30px">Çalışıyor!</p><p class="sub" style="font-size:16px">Telegram'dan<br>komut → cevap</p></div>
+    </div>
+    <p style="margin-top:40px;color:var(--text-muted);font-size:16px">VPS'in yoksa da ekrandan takip et, daha sonra kur.</p>
+  </div>
+</div>
+
+<!-- 14: 4 OTURUM -->
+<div class="slide" data-slide="14">
+  <div class="content">
+    <div class="label">Yol haritası</div>
+    <h2 class="h2" style="margin-bottom:36px">4 oturumda <span class="accent">yolculuk</span></h2>
+    <div class="grid g4" style="gap:14px">
+      <div class="card card-green">
+        <div style="font-family:'Space Mono',monospace;font-size:56px;font-weight:700;color:var(--green);margin-bottom:8px">1</div>
+        <p class="mono green" style="font-size:13px">BUGÜN</p>
+        <p class="h3" style="font-size:22px;margin:6px 0">Kurulum</p>
+        <p class="sub" style="font-size:15px">VPS · OpenClaw<br>İlk ajan · Telegram</p>
+      </div>
+      <div class="card">
+        <div style="font-family:'Space Mono',monospace;font-size:56px;font-weight:700;color:var(--text-muted);margin-bottom:8px">2</div>
+        <p class="h3" style="font-size:22px;margin:6px 0">Kimlik & Beceri</p>
+        <p class="sub" style="font-size:15px">Ajana kişilik<br>WhatsApp · Skill</p>
+      </div>
+      <div class="card">
+        <div style="font-family:'Space Mono',monospace;font-size:56px;font-weight:700;color:var(--text-muted);margin-bottom:8px">3</div>
+        <p class="h3" style="font-size:22px;margin:6px 0">Entegrasyon</p>
+        <p class="sub" style="font-size:15px">Google Workspace<br>Gmail · Drive · Takvim</p>
+      </div>
+      <div class="card">
+        <div style="font-family:'Space Mono',monospace;font-size:56px;font-weight:700;color:var(--text-muted);margin-bottom:8px">4</div>
+        <p class="h3" style="font-size:22px;margin:6px 0">Self-Evolution</p>
+        <p class="sub" style="font-size:15px">Kendi kendine öğrenir<br>Güvenlik · Production</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 15: CANLI VERİ -->
+<div class="slide" data-slide="15">
+  <div class="content center">
+    <div class="label">Canlı demo verisi</div>
+    <h2 class="h2" style="margin-bottom:16px">Ajanın çektiği <span class="accent">gerçek</span> veri</h2>
+    <p class="sub" style="margin-bottom:36px;font-size:20px">Apify + TradingView + Hermes — 10 Ağustos 2026, BIST</p>
+    <div class="grid g4" style="gap:16px">
+      <div class="card card-green stat"><div class="val green">358₺</div><div class="lbl">ASELSAN · +%1.4 · yıllık +%99</div></div>
+      <div class="card stat"><div class="val" style="color:var(--red)">127₺</div><div class="lbl">GARANTİ · yıllık -%14</div></div>
+      <div class="card stat"><div class="val" style="color:var(--red)">305₺</div><div class="lbl">THY · aylık -%9.7</div></div>
+      <div class="card stat"><div class="val hermes">67₺</div><div class="lbl">AKBANK · RSI:46</div></div>
+    </div>
+    <p class="sub" style="margin-top:32px;font-size:18px">Bu veriyi ajan 5 saniyede çekti, analiz etti, Telegram'dan gönderdi.</p>
+  </div>
+</div>
+
+<!-- 16: PAZAR BOŞLUĞU -->
+<div class="slide" data-slide="16">
+  <div class="content center">
+    <div class="label">Fırsat</div>
+    <div style="font-size:56px;font-weight:800;line-height:1.15;max-width:900px;margin:0 auto">
+      <p>Türkiye'de <span class="accent">Türkçe</span><br>OpenClaw + Hermes eğitimi<br>veren <span class="green">tek</span> yer burası.</p>
+    </div>
+    <div class="em-bar" style="margin:32px auto"></div>
+    <div class="grid g4" style="gap:16px;max-width:900px;margin:0 auto">
+      <div class="stat"><div class="val red">0</div><div class="lbl">YouTube Türkçe</div></div>
+      <div class="stat"><div class="val red">0</div><div class="lbl">Google sonuç</div></div>
+      <div class="stat"><div class="val red">0</div><div class="lbl">Udemy kurs</div></div>
+      <div class="stat"><div class="val red">0</div><div class="lbl">Meta reklam</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- 17: RAKİP FİYAT -->
+<div class="slide" data-slide="17">
+  <div class="content">
+    <div class="label">Pazar</div>
+    <h2 class="h2" style="margin-bottom:16px">Piyasada bu eğitim<br><span class="red">58.000 TL</span></h2>
+    <p class="sub" style="margin-bottom:28px;font-size:20px">NobleProg: OpenClaw 29.025₺ + Hermes 29.025₺. Ayrı paketler. İngilizce. Video.</p>
+    <div class="grid g2" style="gap:16px;margin-bottom:28px">
+      <div class="card compare-l"><p class="mono" style="font-size:15px;color:var(--red)">NobleProg</p><p class="sub" style="font-size:17px;margin-top:8px">21 saat · İngilizce · Kendi kendine · ~58.000₺</p></div>
+      <div class="card compare-r"><p class="mono" style="font-size:15px;color:var(--green)">KamuKOD</p><p class="sub" style="font-size:17px;margin-top:8px">8 saat · Türkçe · Canlı mentör · WhatsApp destek</p></div>
+    </div>
+    <p class="center mono accent" style="font-size:28px">Dernek fiyatıyla</p>
+  </div>
+</div>
+
+<!-- 18: RAKİPLER -->
+<div class="slide" data-slide="18">
+  <div class="content">
+    <div class="label">Rakipler</div>
+    <h2 class="h2" style="margin-bottom:28px">Onlar ne <span class="accent">yapıyor?</span></h2>
+    <div class="grid g4" style="gap:14px;margin-bottom:28px">
+      <div class="card"><p class="mono" style="font-size:13px;color:var(--accent)">NetworkChuck</p><p class="sub" style="font-size:15px;margin-top:6px">YouTube → abonelik<br>İngilizce · Video<br>$30-50/ay</p></div>
+      <div class="card"><p class="mono" style="font-size:13px;color:var(--accent)">Udemy</p><p class="sub" style="font-size:15px;margin-top:6px">Kitle pazarı<br>İngilizce · Solo<br>$15-100</p></div>
+      <div class="card"><p class="mono" style="font-size:13px;color:var(--accent)">NobleProg</p><p class="sub" style="font-size:15px;margin-top:6px">Kurumsal B2B<br>Sınıf içi · Pahalı<br>~29.000₺/ders</p></div>
+      <div class="card card-green"><p class="mono" style="font-size:13px;color:var(--green)">KamuKOD</p><p class="sub" style="font-size:15px;margin-top:6px">Türkçe · Canlı<br>OpenClaw+Hermes<br>Dernek fiyatı</p></div>
+    </div>
+    <p class="center sub" style="font-size:19px">Hepsi İngilizce. Hepsi pahalı. <span class="accent">Hepsinde yalnızsın.</span></p>
+  </div>
+</div>
+
+<!-- 19: SONUÇ -->
+<div class="slide" data-slide="19">
+  <div class="content center">
+    <div class="label">Kazanım</div>
+    <h2 class="h2" style="margin-bottom:40px">4 hafta sonunda<br><span class="accent">neyin olacak?</span></h2>
+    <div class="grid g2" style="gap:16px;max-width:1000px;margin:0 auto">
+      <div class="card card-green stat"><div class="val green">✓</div><div class="lbl">VPS'inde çalışan ajan</div></div>
+      <div class="card card-green stat"><div class="val green">✓</div><div class="lbl">Telegram · WhatsApp · Email</div></div>
+      <div class="card card-green stat"><div class="val green">✓</div><div class="lbl">Google Workspace</div></div>
+      <div class="card card-green stat"><div class="val green">✓</div><div class="lbl">Kendi kendine öğrenir</div></div>
+      <div class="card card-green stat"><div class="val green">✓</div><div class="lbl">Güvenli, production</div></div>
+      <div class="card card-green stat"><div class="val green">✓</div><div class="lbl">Portföyüne demo</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- 20: KİMLER -->
+<div class="slide" data-slide="20">
+  <div class="content center">
+    <div class="label">Kimler?</div>
+    <h2 class="h2" style="margin-bottom:36px"><span class="accent">Kod bilmene</span><br>gerek yok.</h2>
+    <div class="tags" style="max-width:900px;margin:0 auto">
+      <span class="tag">Yazılımcılar</span>
+      <span class="tag green" style="border-color:rgba(0,230,118,.3)">BT Yöneticileri</span>
+      <span class="tag accent" style="border-color:rgba(212,133,106,.3)">Girişimciler</span>
+      <span class="tag">Veri Analistleri</span>
+      <span class="tag purple" style="border-color:rgba(139,92,246,.3)">Siber Güvenlik</span>
+      <span class="tag">Proje Yöneticileri</span>
+      <span class="tag green" style="border-color:rgba(0,230,118,.3)">Muhasebeciler</span>
+      <span class="tag accent" style="border-color:rgba(212,133,106,.3)">Avukatlar</span>
+      <span class="tag">Freelancer'lar</span>
+      <span class="tag purple" style="border-color:rgba(139,92,246,.3)">Öğrenciler</span>
+      <span class="tag green" style="border-color:rgba(0,230,118,.3)">Emlakçılar</span>
+      <span class="tag accent" style="border-color:rgba(212,133,106,.3)">Meraklılar</span>
+    </div>
+    <p class="sub" style="margin-top:40px;font-size:20px">Komut satırına yazı yazabiliyorsan yeter. Her şeyi Türkçe anlatıyoruz.</p>
+  </div>
+</div>
+
+<!-- 21: QUOTE -->
+<div class="slide" data-slide="21">
+  <div class="content center">
+    <div class="quote" style="margin:0 auto">
+      <p>"YZ ajanı kurmayı bilmek<br>5 yıl içinde <span class="accent">Excel bilmek</span><br>kadar temel olacak."</p>
+    </div>
+    <div class="em-bar" style="margin:40px auto"></div>
+    <div class="big-stat-row">
+      <div class="stat"><div class="val accent">455+</div><div class="lbl">Türkiye'de AI pozisyonu açan şirket</div></div>
+      <div class="stat"><div class="val green">385K</div><div class="lbl">GitHub ★ OpenClaw</div></div>
+      <div class="stat"><div class="val purple">165K</div><div class="lbl">GitHub ★ Hermes</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- 22: NE GEREKİR -->
+<div class="slide" data-slide="22">
+  <div class="content">
+    <div class="label">Gereksinimler</div>
+    <h2 class="h2" style="margin-bottom:32px"><span class="accent">Neye</span> ihtiyacın var?</h2>
+    <div class="grid g2" style="gap:20px">
+      <div class="card card-green">
+        <p class="h3" style="font-size:26px;margin-bottom:12px">✅ Biraz merak</p>
+        <p class="sub" style="font-size:18px">"Bu iş nasıl oluyor?" diye sorman yeterli.</p>
+      </div>
+      <div class="card card-green">
+        <p class="h3" style="font-size:26px;margin-bottom:12px">✅ Bir bilgisayar</p>
+        <p class="sub" style="font-size:18px">Mac, Windows, Linux fark etmez. Terminal açabiliyorsan tamam.</p>
+      </div>
+      <div class="card card-green">
+        <p class="h3" style="font-size:26px;margin-bottom:12px">✅ Hostinger hesabı (opsiyonel)</p>
+        <p class="sub" style="font-size:18px">$5/ay VPS. Yoksa da bugünlük ekrandan takip et, sonra alırsın.</p>
+      </div>
+      <div class="card card-green">
+        <p class="h3" style="font-size:26px;margin-bottom:12px">❌ Kod bilmek şart değil</p>
+        <p class="sub" style="font-size:18px">Tüm komutları biz veriyoruz. Kopyala-yapıştır + anlatım.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 23: 2. OTURUM DETAY -->
+<div class="slide" data-slide="23">
+  <div class="content">
+    <div class="label">Gelecek hafta</div>
+    <h2 class="h2" style="margin-bottom:32px">Oturum 2'de <span class="accent">neler var?</span></h2>
+    <div class="grid g2" style="gap:20px">
+      <div class="card card-accent">
+        <p class="mono" style="font-size:14px;color:var(--accent);margin-bottom:12px">BÖLÜM 1</p>
+        <p class="h3" style="font-size:26px;margin-bottom:8px">Ajana kimlik kazandır</p>
+        <p class="sub" style="font-size:18px">İsim, kişilik, konuşma tarzı. "Asistan" değil, "ekip arkadaşı" gibi davransın.</p>
+      </div>
+      <div class="card card-accent">
+        <p class="mono" style="font-size:14px;color:var(--accent);margin-bottom:12px">BÖLÜM 2</p>
+        <p class="h3" style="font-size:26px;margin-bottom:8px">WhatsApp entegrasyonu</p>
+        <p class="sub" style="font-size:18px">Telegram yetmez. WhatsApp'tan da komut al, cevap ver. Cepte taşı.</p>
+      </div>
+      <div class="card card-accent">
+        <p class="mono" style="font-size:14px;color:var(--accent);margin-bottom:12px">BÖLÜM 3</p>
+        <p class="h3" style="font-size:26px;margin-bottom:8px">Skill ekleme</p>
+        <p class="sub" style="font-size:18px">Hazır skill'leri keşfet. 40+ araç. Ajanına yeni yetenekler kazandır.</p>
+      </div>
+      <div class="card card-accent">
+        <p class="mono" style="font-size:14px;color:var(--accent);margin-bottom:12px">BÖLÜM 4</p>
+        <p class="h3" style="font-size:26px;margin-bottom:8px">Çok kanallı yapı</p>
+        <p class="sub" style="font-size:18px">Aynı ajan Telegram + WhatsApp + Email'den yönetilsin. Hepsi tek kaynaktan.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 24: 3. OTURUM DETAY -->
+<div class="slide" data-slide="24">
+  <div class="content">
+    <div class="label">2 hafta sonra</div>
+    <h2 class="h2" style="margin-bottom:32px">Oturum 3'te <span class="accent">neler var?</span></h2>
+    <div class="layer" style="border-top:1px solid rgba(255,255,255,.06)">
+      <div class="layer-num" style="color:var(--blue)">G</div>
+      <div><div class="layer-name">Gmail entegrasyonu</div><div class="layer-desc">Ajan maillerini okusun, özetlesin, önem sırasına göre sıralasın, taslak oluştursun.</div></div>
+    </div>
+    <div class="layer">
+      <div class="layer-num" style="color:var(--green)">D</div>
+      <div><div class="layer-name">Drive bağlantısı</div><div class="layer-desc">Dosyalarına erişsin, yeni dosya oluştursun, klasörleri yönetsin.</div></div>
+    </div>
+    <div class="layer">
+      <div class="layer-num" style="color:var(--purple)">C</div>
+      <div><div class="layer-name">Calendar otomasyonu</div><div class="layer-desc">Toplantıları planlasın, davetleri değerlendirsin, müsaitlik kontrol etsin.</div></div>
+    </div>
+    <div class="layer">
+      <div class="layer-num accent">⏰</div>
+      <div><div class="layer-name">Cron zamanlama</div><div class="layer-desc">"Her sabah 8'de mail özeti gönder", "Cuma 17'de haftalık rapor hazırla" — otomatik.</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- 25: 4. OTURUM DETAY -->
+<div class="slide" data-slide="25">
+  <div class="content">
+    <div class="label">3 hafta sonra</div>
+    <h2 class="h2" style="margin-bottom:32px">Oturum 4'te <span class="accent">final</span></h2>
+    <div class="grid g3" style="gap:20px">
+      <div class="card card-orange">
+        <svg viewBox="0 0 80 60" style="width:80px;margin:0 auto 16px;display:block"><polygon points="40,4 62,18 62,42 40,56 18,42 18,18" fill="none" stroke="#f59e0b" stroke-width="2"/><circle cx="40" cy="28" r="6" fill="#f59e0b" opacity=".4"/></svg>
+        <p class="h3 hermes" style="font-size:24px;margin-bottom:8px">Self-Evolution</p>
+        <p class="sub" style="font-size:16px">Ajan kendi kendine yeni skill yazsın. Bugün çözemediğini yarın çözsün. Sürekli gelişsin.</p>
+      </div>
+      <div class="card card-green">
+        <svg viewBox="0 0 80 60" style="width:80px;margin:0 auto 16px;display:block"><rect x="20" y="8" width="40" height="44" rx="6" fill="none" stroke="#00E676" stroke-width="2"/><path d="M30 30 L38 38 L50 22" fill="none" stroke="#00E676" stroke-width="3"/></svg>
+        <p class="h3 green" style="font-size:24px;margin-bottom:8px">Güvenlik</p>
+        <p class="sub" style="font-size:16px">Sandbox, izolasyon, yetkilendirme. Ajanın neye erişip erişemeyeceğini sen belirle.</p>
+      </div>
+      <div class="card card-accent">
+        <svg viewBox="0 0 80 60" style="width:80px;margin:0 auto 16px;display:block"><circle cx="40" cy="30" r="22" fill="none" stroke="#D4856A" stroke-width="2"/><line x1="40" y1="10" x2="40" y2="30" stroke="#D4856A" stroke-width="2"/><line x1="40" y1="30" x2="52" y2="42" stroke="#D4856A" stroke-width="2"/></svg>
+        <p class="h3 accent" style="font-size:24px;margin-bottom:8px">Production</p>
+        <p class="sub" style="font-size:16px">Monitoring, log yönetimi, hata ayıklama. Ajanın 7/24 sağlıklı çalışmasını sağla.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 26: TOPLULUK -->
+<div class="slide" data-slide="26">
+  <div class="content center">
+    <div class="label">Yalnız değilsin</div>
+    <h2 class="h2" style="margin-bottom:32px"><span class="accent">Topluluk</span> avantajı</h2>
+    <div class="grid g3" style="gap:20px;max-width:1000px;margin:0 auto">
+      <div class="card card-green">
+        <p class="h3" style="font-size:26px;margin-bottom:12px">📱 WhatsApp grubu</p>
+        <p class="sub" style="font-size:18px">Takıldın mı? Gruba yaz. 15 kişi + mentör. Cevap 5 dakikada gelir.</p>
+      </div>
+      <div class="card card-green">
+        <p class="h3" style="font-size:26px;margin-bottom:12px">📹 Oturum kayıtları</p>
+        <p class="sub" style="font-size:18px">Kaçırdın mı? Kayıt var. Süresiz erişim. İstediğin zaman tekrar izle.</p>
+      </div>
+      <div class="card card-green">
+        <p class="h3" style="font-size:26px;margin-bottom:12px">📂 Açık kaynak repo</p>
+        <p class="sub" style="font-size:18px">Tüm kodlar, skill'ler, konfigürasyonlar GitHub'da. Kamuya açık. Herkes faydalansın.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 27: BU AKŞAM SONRASI -->
+<div class="slide" data-slide="27">
+  <div class="content center">
+    <div class="label">Bu akşamdan sonra</div>
+    <h2 class="h2" style="margin-bottom:32px"><span class="accent">Ne</span> olacak?</h2>
+    <div class="card card-accent" style="max-width:850px;margin:0 auto 40px;text-align:left">
+      <div class="layer" style="border-top:none"><div class="layer-num" style="font-size:24px">🌙</div><div><div class="layer-name">Bu gece</div><div class="layer-desc">WhatsApp grubuna kayıt linki düşer. Kaydolanlar 2. oturuma hazırlanır.</div></div></div>
+      <div class="layer"><div class="layer-num" style="font-size:24px">📅</div><div><div class="layer-name">Hafta içi</div><div class="layer-desc">Gruba hazırlık materyalleri gelir. VPS almayanlar için rehber. Kurulum kontrol listesi.</div></div></div>
+      <div class="layer"><div class="layer-num" style="font-size:24px">📌</div><div><div class="layer-name">Önümüzdeki Pazartesi</div><div class="layer-desc">Oturum 2. Herkes VPS'ini kurmuş, OpenClaw'u çalıştırmış olarak gelir. Devam.</div></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- 28: NEDEN ŞİMDİ -->
+<div class="slide" data-slide="28">
+  <div class="content center">
+    <div class="label">Neden şimdi?</div>
+    <div class="quote" style="margin:0 auto">
+      <p>"YZ ajanı kurmayı bilmek<br>5 yıl içinde <span class="accent">Excel bilmek</span><br>kadar temel olacak."</p>
+    </div>
+    <div class="em-bar" style="margin:40px auto"></div>
+    <div class="big-stat-row">
+      <div class="stat"><div class="val accent">455+</div><div class="lbl">Türkiye'de AI pozisyonu açan şirket</div></div>
+      <div class="stat"><div class="val green">385K</div><div class="lbl">GitHub ★ OpenClaw</div></div>
+      <div class="stat"><div class="val hermes">165K</div><div class="lbl">GitHub ★ Hermes</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- 29: CTA -->
+<div class="slide" data-slide="29">
+  <div class="content center">
+    <div class="label">Harekete geç</div>
+    <h2 class="h2" style="margin-bottom:16px">Hadi <span class="accent">başlayalım</span></h2>
+    <div class="em-bar" style="margin:28px auto"></div>
+    <p class="sub" style="font-size:24px;margin-bottom:8px">Önümüzdeki 3 oturum: WhatsApp · Google · Self-evolution.</p>
+    <p class="sub" style="font-size:24px;margin-bottom:36px">Kaydını hemen oluştur, 2. oturumda görüşelim.</p>
+    <p class="mono accent" style="font-size:24px;margin-bottom:6px">kayıt: kamukod.lovable.app/atolye/210</p>
+    <p class="mono" style="font-size:14px;color:var(--text-muted);margin-bottom:4px">2. Oturum — önümüzdeki Pazartesi 20:30</p>
+    <p class="mono" style="font-size:14px;color:var(--text-muted)">WhatsApp grubu her zaman açık. Sorun olursa yaz.</p>
+  </div>
+</div>
+
+<script>
+  const s=document.querySelectorAll('.slide'),t=s.length;let i=0;
+  function g(n){s.forEach((x,j)=>x.classList.toggle('active',j===n));document.getElementById('ct').textContent=(n+1)+' / '+t;document.getElementById('pbar').style.width=((n+1)/t*100)+'%';document.querySelector('.marker').textContent='KamuKOD · '+(n+1);i=n}
+  function n(){if(i<t-1)g(i+1)}function p(){if(i>0)g(i-1)}
+  document.getElementById('nb').addEventListener('click',n);document.getElementById('pb').addEventListener('click',p);document.getElementById('nz').addEventListener('click',n);document.getElementById('pz').addEventListener('click',p)
+  document.getElementById('fb').addEventListener('click',()=>{document.fullscreenElement?document.exitFullscreen():document.documentElement.requestFullscreen()})
+  document.addEventListener('keydown',e=>{
+    if(e.key==='ArrowRight'||e.key===' '||e.key==='Enter'){e.preventDefault();n()}
+    if(e.key==='ArrowLeft'||e.key==='Backspace'){e.preventDefault();p()}
+    if(e.key==='f'||e.key==='F'){e.preventDefault();document.fullscreenElement?document.exitFullscreen():document.documentElement.requestFullscreen()}
+    if(e.key==='Home'){e.preventDefault();g(0)}if(e.key==='End'){e.preventDefault();g(t-1)}
+    if(e.key==='Escape'){if(document.fullscreenElement)document.exitFullscreen()}
+  })
+  function jh(){const n=parseInt(location.hash.replace('#',''))||0;if(n>=1&&n<=t)g(n-1)}
+  window.addEventListener('hashchange',jh);if(location.hash)jh();g(0)
+</script>
+</body>
+</html>
