@@ -18,15 +18,15 @@
   body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;background-image:radial-gradient(circle,rgba(255,255,255,.1) 1px,transparent 1px);background-size:32px 32px}
   body::after{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;background:radial-gradient(ellipse at center,transparent 20%,rgba(13,13,13,.7) 50%,rgb(13,13,13) 75%)}
 
-  .slide{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:0;transform:scale(.97);transition:opacity .45s ease,transform .45s ease;pointer-events:none;padding:80px 120px;z-index:0}
+  .slide{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:0;transform:scale(.97);transition:opacity .45s ease,transform .45s ease;pointer-events:none;padding:60px 100px;z-index:0}
   .slide.active{opacity:1;transform:scale(1);pointer-events:auto;z-index:1}
   .content{max-width:1440px;width:100%;position:relative;z-index:1}
 
   .label{font-family:'Space Mono',monospace;font-size:13px;text-transform:uppercase;letter-spacing:.3em;color:var(--text-secondary);margin-bottom:16px}
-  .h1{font-size:112px;font-weight:900;letter-spacing:-.025em;line-height:1.05}
-  .h2{font-size:72px;font-weight:700;letter-spacing:-.015em;line-height:1.1}
-  .h3{font-size:48px;font-weight:600;line-height:1.15}
-  .sub{font-size:26px;color:var(--text-secondary);line-height:1.4;font-weight:300}
+  .h1{font-size:96px;font-weight:900;letter-spacing:-.025em;line-height:1.05}
+  .h2{font-size:62px;font-weight:700;letter-spacing:-.015em;line-height:1.1}
+  .h3{font-size:42px;font-weight:600;line-height:1.15}
+  .sub{font-size:24px;color:var(--text-secondary);line-height:1.4;font-weight:300}
   .mono{font-family:'Space Mono',monospace}
   .caveat{font-family:'Caveat',cursive;font-size:42px;color:var(--accent)}
   .accent{color:var(--accent)} .green{color:var(--green)} .red{color:var(--red)}
@@ -36,15 +36,15 @@
   .em-bar{width:120px;height:3px;background:var(--accent);margin:24px 0;border-radius:2px}
   .center{text-align:center}
   .grid{display:grid;gap:24px}.g2{grid-template-columns:1fr 1fr}.g3{grid-template-columns:1fr 1fr 1fr}.g4{grid-template-columns:1fr 1fr 1fr 1fr}
-  .card{background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.06);border-radius:20px;padding:36px}
+  .card{background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.06);border-radius:16px;padding:24px}
   .card-accent{border-color:rgba(212,133,106,.15);background:rgba(212,133,106,.04)}
   .card-green{border-color:rgba(0,230,118,.15);background:rgba(0,230,118,.04)}
   .card-red{border-color:rgba(255,59,59,.15);background:rgba(255,59,59,.04)}
   .card-orange{border-color:rgba(245,158,11,.15);background:rgba(245,158,11,.04)}
   .card-cyan{border-color:rgba(6,182,212,.15);background:rgba(6,182,212,.04)}
 
-  .three-key{display:flex;gap:80px;justify-content:center;align-items:center;margin:60px 0}
-  .three-key span{font-size:96px;font-weight:900;letter-spacing:-.02em}
+  .three-key{display:flex;gap:50px;justify-content:center;align-items:center;margin:40px 0}
+  .three-key span{font-size:72px;font-weight:900;letter-spacing:-.02em}
   .layer{display:flex;align-items:center;gap:24px;padding:18px 0;border-bottom:1px solid rgba(255,255,255,.06)}
   .layer-num{font-family:'Space Mono',monospace;font-size:48px;color:var(--accent);min-width:80px}
   .layer-name{font-size:28px;font-weight:600}.layer-desc{font-size:17px;color:var(--text-secondary)}
@@ -317,14 +317,14 @@
 <div class="slide" data-slide="11">
   <div class="content">
     <div class="label">Kullanım alanları</div>
-    <h2 class="h2" style="margin-bottom:28px">Başka <span class="accent">neler</span> yapılıyor?</h2>
-    <div class="grid g3" style="gap:16px">
-      <div class="card card-accent"><p class="mono" style="font-size:13px;color:var(--accent);margin-bottom:8px">VAKA 02</p><p class="h3" style="font-size:24px;margin-bottom:6px">Mail Asistanı</p><p class="sub" style="font-size:16px">47 mail → 3'ü "bakmalısın" dedi. Doğruydu.</p></div>
-      <div class="card card-accent"><p class="mono" style="font-size:13px;color:var(--accent);margin-bottom:8px">VAKA 03</p><p class="h3" style="font-size:24px;margin-bottom:6px">Takvim Ajanı</p><p class="sub" style="font-size:16px">Toplantıları sıralıyor. Haftada 5 saat kazandırıyor.</p></div>
-      <div class="card card-accent"><p class="mono" style="font-size:13px;color:var(--accent);margin-bottom:8px">VAKA 04</p><p class="h3" style="font-size:24px;margin-bottom:6px">Jira Asistanı</p><p class="sub" style="font-size:16px">3 saatte 12 ticket kapatan ajan. Manuel takip bitti.</p></div>
-      <div class="card card-accent"><p class="mono" style="font-size:13px;color:var(--accent);margin-bottom:8px">VAKA 05</p><p class="h3" style="font-size:24px;margin-bottom:6px">Stok Takibi</p><p class="sub" style="font-size:16px">Eşik altı tespit → tedarikçiye otomatik mail.</p></div>
-      <div class="card card-accent"><p class="mono" style="font-size:13px;color:var(--accent);margin-bottom:8px">VAKA 06</p><p class="h3" style="font-size:24px;margin-bottom:6px">Mevzuat Takip</p><p class="sub" style="font-size:16px">Resmi Gazete'yi tarar, sektöre özel değişiklikleri özetler.</p></div>
-      <div class="card card-accent"><p class="mono" style="font-size:13px;color:var(--accent);margin-bottom:8px">VAKA 07</p><p class="h3" style="font-size:24px;margin-bottom:6px">SOC Analisti</p><p class="sub" style="font-size:16px">Log/alert okur, false positive'ları eler, tehditleri işaretler.</p></div>
+    <h2 class="h2" style="margin-bottom:20px;font-size:48px">Başka <span class="accent">neler</span> yapılıyor?</h2>
+    <div class="grid g3" style="gap:12px">
+      <div class="card card-accent" style="padding:18px"><p class="mono" style="font-size:11px;color:var(--accent);margin-bottom:4px">VAKA 02</p><p class="h3" style="font-size:20px;margin-bottom:4px">Mail Asistanı</p><p class="sub" style="font-size:14px">47 mail → 3'ü "bakmalısın" dedi.</p></div>
+      <div class="card card-accent" style="padding:18px"><p class="mono" style="font-size:11px;color:var(--accent);margin-bottom:4px">VAKA 03</p><p class="h3" style="font-size:20px;margin-bottom:4px">Takvim Ajanı</p><p class="sub" style="font-size:14px">Haftada 5 saat kazandırıyor.</p></div>
+      <div class="card card-accent" style="padding:18px"><p class="mono" style="font-size:11px;color:var(--accent);margin-bottom:4px">VAKA 04</p><p class="h3" style="font-size:20px;margin-bottom:4px">Jira Asistanı</p><p class="sub" style="font-size:14px">3 saatte 12 ticket kapatan ajan.</p></div>
+      <div class="card card-accent" style="padding:18px"><p class="mono" style="font-size:11px;color:var(--accent);margin-bottom:4px">VAKA 05</p><p class="h3" style="font-size:20px;margin-bottom:4px">Stok Takibi</p><p class="sub" style="font-size:14px">Eşik altı → tedarikçiye mail.</p></div>
+      <div class="card card-accent" style="padding:18px"><p class="mono" style="font-size:11px;color:var(--accent);margin-bottom:4px">VAKA 06</p><p class="h3" style="font-size:20px;margin-bottom:4px">Mevzuat Takip</p><p class="sub" style="font-size:14px">Resmi Gazete'yi tarar, özetler.</p></div>
+      <div class="card card-accent" style="padding:18px"><p class="mono" style="font-size:11px;color:var(--accent);margin-bottom:4px">VAKA 07</p><p class="h3" style="font-size:20px;margin-bottom:4px">SOC Analisti</p><p class="sub" style="font-size:14px">Log okur, tehditleri işaretler.</p></div>
     </div>
   </div>
 </div>
@@ -464,14 +464,14 @@
 <div class="slide" data-slide="19">
   <div class="content center">
     <div class="label">Kazanım</div>
-    <h2 class="h2" style="margin-bottom:40px">4 hafta sonunda<br><span class="accent">neyin olacak?</span></h2>
-    <div class="grid g2" style="gap:16px;max-width:1000px;margin:0 auto">
-      <div class="card card-green stat"><div class="val green">✓</div><div class="lbl">VPS'inde çalışan ajan</div></div>
-      <div class="card card-green stat"><div class="val green">✓</div><div class="lbl">Telegram · WhatsApp · Email</div></div>
-      <div class="card card-green stat"><div class="val green">✓</div><div class="lbl">Google Workspace</div></div>
-      <div class="card card-green stat"><div class="val green">✓</div><div class="lbl">Kendi kendine öğrenir</div></div>
-      <div class="card card-green stat"><div class="val green">✓</div><div class="lbl">Güvenli, production</div></div>
-      <div class="card card-green stat"><div class="val green">✓</div><div class="lbl">Portföyüne demo</div></div>
+    <h2 class="h2" style="margin-bottom:28px;font-size:52px">4 hafta sonunda<br><span class="accent">neyin olacak?</span></h2>
+    <div class="grid g3" style="gap:14px;max-width:1100px;margin:0 auto">
+      <div class="card card-green stat" style="padding:18px"><div class="val green" style="font-size:40px">✓</div><div class="lbl" style="font-size:13px">VPS'inde çalışan ajan</div></div>
+      <div class="card card-green stat" style="padding:18px"><div class="val green" style="font-size:40px">✓</div><div class="lbl" style="font-size:13px">Telegram · WhatsApp · Email</div></div>
+      <div class="card card-green stat" style="padding:18px"><div class="val green" style="font-size:40px">✓</div><div class="lbl" style="font-size:13px">Google Workspace</div></div>
+      <div class="card card-green stat" style="padding:18px"><div class="val green" style="font-size:40px">✓</div><div class="lbl" style="font-size:13px">Kendi kendine öğrenir</div></div>
+      <div class="card card-green stat" style="padding:18px"><div class="val green" style="font-size:40px">✓</div><div class="lbl" style="font-size:13px">Güvenli, production</div></div>
+      <div class="card card-green stat" style="padding:18px"><div class="val green" style="font-size:40px">✓</div><div class="lbl" style="font-size:13px">Portföyüne demo</div></div>
     </div>
   </div>
 </div>
@@ -674,13 +674,14 @@
 <div class="slide" data-slide="29">
   <div class="content center">
     <div class="label">Harekete geç</div>
-    <h2 class="h2" style="margin-bottom:16px">Hadi <span class="accent">başlayalım</span></h2>
-    <div class="em-bar" style="margin:28px auto"></div>
-    <p class="sub" style="font-size:24px;margin-bottom:8px">Önümüzdeki 3 oturum: WhatsApp · Google · Self-evolution.</p>
-    <p class="sub" style="font-size:24px;margin-bottom:36px">Kaydını hemen oluştur, 2. oturumda görüşelim.</p>
-    <p class="mono accent" style="font-size:24px;margin-bottom:6px">kayıt: kamukod.lovable.app/atolye/210</p>
-    <p class="mono" style="font-size:14px;color:var(--text-muted);margin-bottom:4px">2. Oturum — önümüzdeki Pazartesi 20:30</p>
-    <p class="mono" style="font-size:14px;color:var(--text-muted)">WhatsApp grubu her zaman açık. Sorun olursa yaz.</p>
+    <h2 class="h2" style="margin-bottom:12px">Şimdi <span class="accent">karar</span> ver</h2>
+    <div class="em-bar" style="margin:24px auto"></div>
+    <p class="sub" style="font-size:22px;margin-bottom:8px">Önümüzdeki 3 oturum: WhatsApp · Google · Self-evolution</p>
+    <p class="sub" style="font-size:20px;margin-bottom:8px;color:var(--text)">Bu akşam kaydolmazsan yarın <span class="red">aynı fiyat</span> olmayabilir.</p>
+    <p class="sub" style="font-size:20px;margin-bottom:28px">Her Pazartesi 20:30. <span class="green">Hemen başla</span>, 1 ay sonra kendi ajanını yönetiyor ol.</p>
+    <p class="mono accent" style="font-size:22px;margin-bottom:6px">kayıt: kamukod.lovable.app/atolye/210</p>
+    <p class="mono" style="font-size:13px;color:var(--text-muted);margin-bottom:4px">2. Oturum — önümüzdeki Pazartesi 20:30</p>
+    <p class="mono" style="font-size:13px;color:var(--text-muted)">WhatsApp grubu her zaman açık. Sorun olursa yaz.</p>
   </div>
 </div>
 
