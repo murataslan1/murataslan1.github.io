@@ -194,12 +194,21 @@ h2.big {
 .two-col { display:grid; grid-template-columns: 1fr 1fr; gap: 3vw; margin-top: 30px; }
 .two-col .item .h { font-size: clamp(20px, 2vw, 28px); font-weight:700; margin-bottom:10px; }
 .two-col .item .d { font-size: clamp(15px, 1.6vw, 20px); color: var(--text-secondary); line-height:1.45; }
+.lang-btn {
+  position:fixed; top:28px; right:96px; z-index:4;
+  font-family:'Space Mono', monospace; font-size:12px; letter-spacing:2px;
+  color: var(--text-secondary); text-decoration:none;
+  border: 1px solid rgba(255,255,255,0.3); border-radius: 999px;
+  padding: 8px 16px; transition: border-color .2s, color .2s;
+}
+.lang-btn:hover { border-color: var(--accent); color: var(--accent); }
 </style>
 </head>
 <body>
 <div class="deck">
 
   <svg class="logo-tr" viewBox="0 0 200 200"><path d="M 108 18 L 72 108 L 96 108 L 80 182 L 140 86 L 112 86 L 132 18 Z" fill="#D4856A"/></svg>
+  <a class="lang-btn" href="index.en.html">EN &#8594;</a>
   <div class="marker">Masa 1 / Muhendislik</div>
   <div class="counter" id="counter">1 / 20</div>
   <div class="progress" id="progress" style="width:5%"></div>
