@@ -168,6 +168,32 @@ h2.big {
   font-family:'Space Mono', monospace; font-size: 11px; letter-spacing: 2px;
   color: rgba(255,255,255,0.15); z-index:3; text-transform: uppercase;
 }
+.big-num { font-size: clamp(120px, 22vw, 260px); font-weight: 900; line-height: 0.9; color: rgba(255,255,255,0.08); position:absolute; right:6vw; top:4vh; }
+.tip {
+  margin-top: 34px; padding: 20px 24px;
+  border-left: 4px solid var(--accent);
+  background: rgba(212,133,106,0.08);
+  font-size: clamp(17px, 1.9vw, 23px);
+  color: var(--text-secondary);
+  line-height: 1.45;
+  max-width: 34em;
+}
+.tip strong { color: var(--text); }
+.examples { margin-top: 30px; }
+.examples .row {
+  display:flex; gap: 14px; align-items:flex-start;
+  margin-bottom: 14px; font-size: clamp(16px, 1.8vw, 22px); line-height:1.4;
+}
+.examples .row .badge {
+  font-family:'Space Mono',monospace; font-size:12px; letter-spacing:2px;
+  padding: 4px 10px; border-radius: 4px; white-space: nowrap; margin-top:2px;
+}
+.badge.ok { background: rgba(0,230,118,0.15); color: var(--green); }
+.badge.bad { background: rgba(255,59,59,0.15); color: var(--red); }
+.badge.q { background: rgba(139,92,246,0.15); color: var(--purple); }
+.two-col { display:grid; grid-template-columns: 1fr 1fr; gap: 3vw; margin-top: 30px; }
+.two-col .item .h { font-size: clamp(20px, 2vw, 28px); font-weight:700; margin-bottom:10px; }
+.two-col .item .d { font-size: clamp(15px, 1.6vw, 20px); color: var(--text-secondary); line-height:1.45; }
 </style>
 </head>
 <body>
@@ -175,9 +201,9 @@ h2.big {
 
   <svg class="logo-tr" viewBox="0 0 200 200"><path d="M 108 18 L 72 108 L 96 108 L 80 182 L 140 86 L 112 86 L 132 18 Z" fill="#D4856A"/></svg>
   <div class="marker">Masa 1 / Muhendislik</div>
-  <div class="counter" id="counter">1 / 12</div>
-  <div class="progress" id="progress" style="width:8.33%"></div>
-  <div class="hint">ok tuslari + F tam ekran</div>
+  <div class="counter" id="counter">1 / 20</div>
+  <div class="progress" id="progress" style="width:5%"></div>
+  <div class="hint">ok tuslari + F tam ekran + mobilde kaydir</div>
 
   <div class="slide active" data-slide="1">
     <label class="lbl">TeknoPolitika Bulusmasi - 15 Agustos 2026 - Ankara</label>
@@ -187,62 +213,157 @@ h2.big {
   </div>
 
   <div class="slide" data-slide="2">
+    <div class="big-num">01</div>
     <label class="lbl">Problem</label>
     <h2 class="big">Modeli aciklamak <span style="color:var(--red)">&ne;</span> sorunu gorunur kilmak</h2>
     <div class="sub">Muhendisler "nasil calisiyor" anlatir. Karar vericinin ihtiyaci "neden onemli, ne ters gidebilir". Bu iki dil arasindaki bosluk, politikanin oldugu yer.</div>
-    <div class="emphasis-bar"></div>
+    <div class="tip"><strong>Ornek:</strong> "Model 70 milyar parametreli" cumlesi dogru ama karar verdirmiyor. "Kucuk dillerde dogruluk %12 dusuyor" cumlesi bir karari etkiler.</div>
   </div>
 
   <div class="slide" data-slide="3">
+    <div class="big-num">02</div>
     <label class="lbl">Sorun Nerede</label>
     <h2 class="big">Jargon <span class="italic">duvari</span></h2>
     <div class="sub">"Modelin bias'i var, training datasinda class imbalance mevcut." Bu cumle muhendise acik, burokratla konusuldugunda duvar.</div>
-    <div class="pills"><span class="pill">bias</span><span class="pill">fine-tuning</span><span class="pill">latent space</span><span class="pill">overfitting</span><span class="pill accent">anlasilmiyor</span></div>
+    <div class="pills"><span class="pill">bias</span><span class="pill">fine-tuning</span><span class="pill">latent space</span><span class="pill">overfitting</span><span class="pill">attention</span><span class="pill accent">anlasilmiyor</span></div>
+    <div class="tip">Jargon tek basina kotu degil. Sorun: <strong>karsidakinin dili bilmedigini bilmeden</strong> konusmak.</div>
   </div>
 
   <div class="slide" data-slide="4">
+    <div class="big-num">03</div>
     <label class="lbl">Masanin Sorusu</label>
     <h2 class="big">Bir muhendis "modelin bias'i var" dediginde, bunu bir burokrata nasil <span class="italic">anlatir?</span></h2>
     <div class="sub">Hangi analoji yeter, hangisi yaniltir? Bu masanin odak sorusu.</div>
-    <div class="emphasis-bar"></div>
+    <div class="tip">Burokratin gercek sorusu: "Bu benim kararimi nasil degistiriyor?" Cevap bu soruya iniyorsa ceviri basarili.</div>
   </div>
 
   <div class="slide" data-slide="5">
-    <label class="lbl">Cevap Cercivesi</label>
-    <h2 class="big">Uc kural</h2>
-    <div class="row3"><div class="kw">DURDUR</div><div class="kw">SOR</div><div class="kw">YUCELE</div></div>
+    <div class="big-num">04</div>
+    <label class="lbl">Ornek Ceviri</label>
+    <h2 class="big">"Bias" iki dilde</h2>
+    <div class="split">
+      <div class="col bad"><div class="t">Basarisiz</div><div class="d">"Modelin bias'i var, cunku training datasinda underrepresented gruplar icin class imbalance sorunu mevcut."</div></div>
+      <div class="col ok"><div class="t">Basarili</div><div class="d">"Yapay zeka gecmis verilerden ogrenir. O verilerde bazi gruplar az temsil ediliyorsa, sistem o gruplar icin daha sik hata yapar."</div></div>
+    </div>
+    <div class="tip"><strong>Fark:</strong> solda kavram aciklanmis, sagda <strong>sonuc gorunur kilinmis</strong>.</div>
   </div>
 
   <div class="slide" data-slide="6">
-    <label class="lbl">Masanin Kurallari</label>
-    <h2 class="big">Tartismanin sinirlari</h2>
-    <div class="cards">
-      <div class="card"><div class="n">01</div><div class="h">Jargon durdurulur</div><div class="d">"Bunu muhendis olmayan biri anlayacak sekilde aciklar misin?"</div></div>
-      <div class="card"><div class="n">02</div><div class="h">Monolog yok</div><div class="d">2+ dakika tek kisi konusursa top diger tarafa atilir.</div></div>
-      <div class="card"><div class="n">03</div><div class="h">Aptal soru yuce</div><div class="d">Naif sorular cogu zaman boslugun tam ortasinda durur.</div></div>
-    </div>
+    <div class="big-num">05</div>
+    <label class="lbl">Cevap Cercivesi</label>
+    <h2 class="big">Uc kural</h2>
+    <div class="row3"><div class="kw">DURDUR</div><div class="kw">SOR</div><div class="kw">YUCELE</div></div>
+    <div class="tip">Her kuralin tek amaci var: <strong>cevirinin kirildigi ani yakalamak</strong>.</div>
   </div>
 
   <div class="slide" data-slide="7">
-    <label class="lbl">Sizin Araciniz</label>
-    <h2 class="big">Ceviriyi yuruten sensin</h2>
-    <div class="split">
-      <div class="col ok"><div class="t">SORU 1 - "So what?"</div><div class="d">"Bunun ne gibi bir sonucu var?" Teknik iddiayi karar katmanina ceker. Cevabi yoksa masaya ait degil.</div></div>
-      <div class="col accent"><div class="t">SORU 2 - "Aciklar misin?"</div><div class="d">"Bu terimi muhendis olmayan biri anlayacak sekilde aciklar misin?" Jargonu aninda durdurur.</div></div>
+    <div class="big-num">06</div>
+    <label class="lbl">Kural 1</label>
+    <h2 class="big">Jargon cikarsa <span class="italic">durdur</span></h2>
+    <div class="sub">Bir terim duyuldugunda kolaylastirici araya girer.</div>
+    <div class="tip">"Burayi uc cumlede, muhendislik gecmisi olmayan biri anlayacak sekilde tekrar eder misin?"</div>
+    <div class="examples">
+      <div class="row"><span class="badge bad">DURDUR</span> "Transformer mimarisi attention mekanizmasiyla..."</div>
+      <div class="row"><span class="badge ok">COZUM</span> "Model metnin tamamini ayni anda okuyup kilit kelimelere odaklaniyor."</div>
     </div>
   </div>
 
   <div class="slide" data-slide="8">
+    <div class="big-num">07</div>
+    <label class="lbl">Kural 2</label>
+    <h2 class="big">Monolog <span class="italic">yok</span></h2>
+    <div class="sub">2+ dakika tek kisi konusursa, top diger tarafa atilir.</div>
+    <div class="tip">Amac herkesin dilinden boslugu olcmek. Tek ses, tek dil demek - masanin amaci kaciriliyor.</div>
+    <div class="examples">
+      <div class="row"><span class="badge bad">MONOLOG</span> 5 dakika kesintisiz teknik anlatim</div>
+      <div class="row"><span class="badge ok">MANEVRA</span> "Peki [diger kisi], sen bu konuda ne dusunuyorsun?"</div>
+    </div>
+  </div>
+
+  <div class="slide" data-slide="9">
+    <div class="big-num">08</div>
+    <label class="lbl">Kural 3</label>
+    <h2 class="big">Aptal soruyu <span class="italic">yucelt</span></h2>
+    <div class="sub">Naif sorular cogu zaman disiplinler arasi boslugun tam ortasinda durur.</div>
+    <div class="tip">"Aptal" soru yok. Cevap veremeyen soru, boslugun haritasidir.</div>
+    <div class="examples">
+      <div class="row"><span class="badge q">SORU</span> "Peki model 'biliyor' mu, yoksa 'tahmin' mi ediyor?"</div>
+      <div class="row"><span class="badge ok">DEGER</span> Bu soru, "bilgi" ve "tahmin" arasindaki temel ayrimi ortaya cikarir.</div>
+    </div>
+  </div>
+
+  <div class="slide" data-slide="10">
+    <div class="big-num">09</div>
+    <label class="lbl">Sizin Araciniz</label>
+    <h2 class="big">Ceviriyi <span class="italic">yuruten</span> sensin</h2>
+    <div class="split">
+      <div class="col ok"><div class="t">SORU 1 - "So what?"</div><div class="d">"Bunun ne gibi bir sonucu var?" Teknik iddiayi karar katmanina ceker.</div></div>
+      <div class="col accent"><div class="t">SORU 2 - "Aciklar misin?"</div><div class="d">"Bu terimi muhendis olmayan biri anlayacak sekilde aciklar misin?" Jargonu aninda durdurur.</div></div>
+    </div>
+    <div class="tip">Bu iki soruyu kullanmak icin uzman olmana gerek yok. Sadece <strong>merak</strong> yeterli.</div>
+  </div>
+
+  <div class="slide" data-slide="11">
+    <div class="big-num">10</div>
+    <label class="lbl">Arac 1</label>
+    <h2 class="big">"So what?" <span class="italic">testi</span></h2>
+    <div class="sub">Her teknik iddiaya sorulur. Cevabi yoksa iddia masaya ait degil.</div>
+    <div class="examples">
+      <div class="row"><span class="badge bad">ATILIR</span> "Model 70B parametreli." → Ne yani? Hiçbir karari etkilemiyor.</div>
+      <div class="row"><span class="badge ok">KALIR</span> "Kucuk dillerde dogruluk %12 dusuyor." → Turkce konusan vatandas daha kotu hizmet alacak. Bir esitlik sorunu.</div>
+      <div class="row"><span class="badge ok">KALIR</span> "Sistem 2 haftada bir guncelleniyor." → v1 icin yazilan yasa, yayinlanmadan eskiyor.</div>
+    </div>
+  </div>
+
+  <div class="slide" data-slide="12">
+    <div class="big-num">11</div>
+    <label class="lbl">Arac 2</label>
+    <h2 class="big">"Aciklar <span class="italic">misin?</span>"</h2>
+    <div class="sub">Jargon duydugunda cekinmeden sor. Bu masada tam da bunun icin buradasin.</div>
+    <div class="tip">"Bu terimi muhendislik gecmisi olmayan biri anlayacak sekilde uc cumlede tekrar eder misin?"</div>
+    <div class="examples">
+      <div class="row"><span class="badge q">JARGON</span> "Fine-tuning"</div>
+      <div class="row"><span class="badge ok">CEVIRI</span> "Genel kultur sahibi birini spesifik bir alanda egitmek."</div>
+    </div>
+  </div>
+
+  <div class="slide" data-slide="13">
+    <div class="big-num">12</div>
+    <label class="lbl">Neden Bu Iki Soru?</label>
+    <h2 class="big">Iki soru, tek amac</h2>
+    <div class="two-col">
+      <div class="item"><div class="h" style="color:var(--green)">"So what?"</div><div class="d">Anlamayi degil, <strong>eylemi</strong> hedefler. Teknik iddiayi karara baglar. Bos iddialari eler.</div></div>
+      <div class="item"><div class="h" style="color:var(--purple)">"Aciklar misin?"</div><div class="d">Anlamayi <strong>talep</strong> eder. Jargonun duvar olmasini engeller. Karsi tarafa dilini sadelestirme sorumlulugu verir.</div></div>
+    </div>
+    <div class="tip">Biri <strong>neye yarar</strong>, digeri <strong>ne demek</strong> diye sorar. Ikisi birlikte ceviriyi tamamlar.</div>
+  </div>
+
+  <div class="slide" data-slide="14">
+    <div class="big-num">13</div>
+    <label class="lbl">Analoji Testi</label>
+    <h2 class="big">Analojiye <span class="italic">guvenme</span>, test et</h2>
+    <div class="sub">Her analoji uc testten gecmeli.</div>
+    <div class="examples">
+      <div class="row"><span class="badge q">TEST 1</span> Iki takip sorusuna dayaniyor mu? "Yapay zeka ogrenci gibi" → "Reddedebilir mi? Yanildigini bilir mi?"</div>
+      <div class="row"><span class="badge q">TEST 2</span> Onemli karmasikligi gizliyor mu? "AI elektrik gibi" → elektrik karar vermez, AI verir.</div>
+      <div class="row"><span class="badge q">TEST 3</span> Hedef kitleye ise yariyor mu? "Gradient descent vadi arayisi gibi" → burokrat icin degil.</div>
+    </div>
+  </div>
+
+  <div class="slide" data-slide="15">
+    <div class="big-num">14</div>
     <label class="lbl">Kapanis Ciktilari</label>
-    <h2 class="big">Masadan uc cikti</h2>
+    <h2 class="big">Masadan <span class="italic">uc</span> cikti</h2>
     <div class="cards">
       <div class="card"><div class="n">1</div><div class="h">Tikanan kavram</div><div class="d">Ceviri nerede koptu? Hangi terim hangi bariyere takildi?</div></div>
       <div class="card"><div class="n">2</div><div class="h">Ise yarayan analoji</div><div class="d">Hangi benzetme gercekten calisti? Not ediyoruz.</div></div>
       <div class="card"><div class="n">3</div><div class="h">Cevaplanamayan soru</div><div class="d">Disiplinler arasi boslugun en somut kaniti.</div></div>
     </div>
+    <div class="tip">Bu ciktilari <strong>gorunur bir yere</strong> yaziyoruz. Sonraki bulusmanin haritasi olacak.</div>
   </div>
 
-  <div class="slide" data-slide="9">
+  <div class="slide" data-slide="16">
+    <div class="big-num">15</div>
     <label class="lbl">Masa Akisi</label>
     <h2 class="big">60 dakikalik yol</h2>
     <div class="flow">
@@ -254,26 +375,43 @@ h2.big {
     </div>
   </div>
 
-  <div class="slide" data-slide="10">
-    <label class="lbl">Ornek Ceviri</label>
-    <h2 class="big">"Bias" iki dilde</h2>
-    <div class="split">
-      <div class="col bad"><div class="t">Basarisiz</div><div class="d">"Modelin bias'i var, cunku training datasinda underrepresented gruplar icin class imbalance sorunu mevcut."</div></div>
-      <div class="col ok"><div class="t">Basarili</div><div class="d">"Yapay zeka gecmis verilerden ogrenir. O verilerde bazi gruplar az temsil ediliyorsa, sistem o gruplar icin daha sik hata yapar."</div></div>
+  <div class="slide" data-slide="17">
+    <div class="big-num">16</div>
+    <label class="lbl">Sizin Icin</label>
+    <h2 class="big">Hazirlik <span class="italic">gerekmez</span></h2>
+    <div class="sub">Ama gelmeden iki soruyu dusunmek masayi zenginlestirir.</div>
+    <div class="examples">
+      <div class="row"><span class="badge q">SORU</span> Kendi alanindan, baska alana hic anlatamadigin bir kavram ne?</div>
+      <div class="row"><span class="badge q">SORU</span> Baska bir disipline sormak istedigin ama hic soramadigin soru ne?</div>
     </div>
+    <div class="tip">Cevabin yoksa sorun degil. <strong>Boslugun kendisi</strong> masanin ham maddesi.</div>
   </div>
 
-  <div class="slide" data-slide="11">
+  <div class="slide" data-slide="18">
+    <div class="big-num">17</div>
     <label class="lbl">Neden Acik Kaynak</label>
     <h2 class="big">Bu sorun bir etkinligin <span class="italic">buyuk</span> degil</h2>
     <div class="sub">Strateji, soru kartlari, jargon sozlugu, katilimci rehberi ve arastirma notlari - hepsi acik. Baska masalar, baska sehirler kullansin diye.</div>
+    <div class="tip">Jargon sorunu Turkiye'ye ozgu degil. Acik kaynak yapmak, cozumu <strong>cogaltir</strong>.</div>
+  </div>
+
+  <div class="slide" data-slide="19">
+    <div class="big-num">18</div>
+    <label class="lbl">Repoda Ne Var</label>
+    <h2 class="big">Kullanmaya <span class="italic">hazir</span></h2>
+    <div class="two-col">
+      <div class="item"><div class="h">Katilimci icin</div><div class="d">5 dakikalik rehber, gor sel cerc eve, 7 soru karti, jargon sozlugu.</div></div>
+      <div class="item"><div class="h">Kolaylastirici icin</div><div class="d">Strateji, mudahale kartlari, analoji testleri, arastirma notlari.</div></div>
+    </div>
     <a class="cta-link" href="https://github.com/murataslan1/bridging-tech-policy" target="_blank">github.com/murataslan1/bridging-tech-policy</a>
   </div>
 
-  <div class="slide" data-slide="12">
+  <div class="slide" data-slide="20">
+    <label class="lbl">Kapanis</label>
     <div class="quote">"Bu masada klasik networking yok. Gercek bir sorunu masanin ortasina koyuyoruz, tanisma tartismadan doguyor."
       <span class="attr">TeknoPolitika Bulusmasi - Masa 1</span>
     </div>
+    <div class="tip">Masada bir jargon, bir soru, bir de <strong>cevaplayamadigimiz soru</strong> birakalim.</div>
     <a class="cta-link" href="https://luma.com/kdyb73vf" target="_blank">Kayit: luma.com/kdyb73vf</a>
   </div>
 
