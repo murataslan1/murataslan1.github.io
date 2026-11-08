@@ -15,12 +15,11 @@ export const subscribe = async (email, source) => {
   });
   const data = await res.json().catch(() => ({}));
   if (!res.ok || !data.ok) throw new Error(data.error || `HTTP ${res.status}`);
-  return data.status === "exists" ? "exists" : "saved";
+  return "saved";
 };
 
 export const subscribeMessages = {
   saved: "You're on the list. The next issue lands in your inbox.",
-  exists: "You're already on the list. See you in the next issue.",
   mailto: "Your email app just opened. Hit send and you're on the list.",
   error: "Something went wrong. Please try again.",
 };
