@@ -2,7 +2,7 @@ const logotext = "MURAT ASLAN";
 const meta = {
   title: "Murat Aslan | Open Source Developer",
   description:
-    "Full Stack Developer & Open Source Contributor with 39+ merged PRs to major projects like VS Code, Coolify, LangChain, Traefik, Node.js, Deno, and more.",
+    "Full Stack Developer & Open Source Contributor with 50+ merged PRs and 200+ pull requests to major projects like VS Code, Coolify, Traefik, OpenClaw, context-mode, LangChain, Node.js, Deno, and more.",
   siteUrl: "https://murataslan1.github.io/",
   image: "https://murataslan1.github.io/profile.png",
   role: "Full Stack Developer",
@@ -13,19 +13,19 @@ const introdata = {
   title: "I'm Murat Aslan",
   animated: {
     first: "Open Source Contributor 🚀",
-    second: "39+ Merged PRs to Major Projects",
+    second: "50+ Merged PRs to Major Projects",
     third: "Microsoft | Node.js | Traefik | Vercel | Coolify",
     fourth: "Full Stack Developer"
   },
   description:
-    "Passionate open source contributor with 39+ merged pull requests to major projects including VS Code (183k⭐), Coolify (52k⭐), Traefik (54k⭐), Node.js, Vercel AI SDK, LangChain.js, Deno, Trivy, and more. Full stack developer with 245 public repos, specializing in TypeScript, Go, and Cloud Native technologies.",
+    "Passionate open source contributor with 50+ merged pull requests to major projects including VS Code (195k⭐), Coolify (66k⭐), Traefik (65k⭐), context-mode (34k⭐), Node.js, Vercel AI SDK, LangChain.js, Deno, Trivy, and more. Full stack developer with 258 public repos, specializing in TypeScript, Go, and Cloud Native technologies.",
   your_img_url: "/profile.png"
 };
 
 const dataabout = {
   title: "About Me",
   aboutme:
-    "I'm a passionate Full Stack Developer and Open Source enthusiast based in Ankara, Turkey. I believe in the power of open source to drive innovation and collaboration. As of April 2026, I've contributed 39+ merged pull requests and 185+ total PRs to major projects like VS Code (41 PRs), Coolify, Node.js, Traefik, Vercel AI SDK, T3Code, LangChain.js, Deno, Trivy, and many more. With 245 public repositories, I love finding bugs, improving documentation, and adding new features to projects that millions of developers use daily."
+    "I'm a passionate Full Stack Developer and Open Source enthusiast based in Ankara, Turkey. I believe in the power of open source to drive innovation and collaboration. As of November 2026, I've opened 200+ pull requests (50+ merged) to projects like VS Code (41 PRs), Coolify (34 PRs), context-mode (10 PRs), Traefik, Node.js, Vercel AI SDK, T3Code, LangChain.js, Deno, Trivy, and many more. With 258 public repositories, I love finding bugs, improving documentation, and adding new features to projects that millions of developers use daily."
 };
 
 const worktimeline = [
@@ -76,7 +76,7 @@ const services = [
   {
     title: "Open Source Contributions",
     description:
-      "39+ merged PRs across 185+ total contributions: VS Code (41 PRs), Coolify, Node.js, Traefik (54k⭐), Vercel AI SDK, T3Code, LangChain.js, Deno, and more."
+      "50+ merged PRs across 200+ total contributions: VS Code (41 PRs), Coolify (34 PRs), context-mode, Traefik (65k⭐), Node.js, Vercel AI SDK, T3Code, LangChain.js, Deno, and more."
   },
   {
     title: "Full Stack Development",
@@ -114,7 +114,7 @@ const dataportfolio = [
   {
     img: "https://opengraph.githubassets.com/1/murataslan1/cursor-ai-tips",
     title: "Cursor AI Tips",
-    desctiption: "Cursor AI IDE tips, tricks & best practices - 219⭐ community resource",
+    desctiption: "Cursor AI IDE tips, tricks & best practices - 245⭐ community resource",
     link: "https://github.com/murataslan1/cursor-ai-tips",
     tags: ["Original", "AI"],
     stack: ["Documentation", "Developer Tools"],
@@ -122,7 +122,7 @@ const dataportfolio = [
     caseStudy: {
       problem: "Cursor AI users lacked a central resource for tips and best practices.",
       contribution: "Created comprehensive guide with keyboard shortcuts, Composer mode tips, and .cursorrules examples.",
-      impact: "219+ stars and growing community of Cursor AI enthusiasts."
+      impact: "245+ stars and growing community of Cursor AI enthusiasts."
     },
     testimonial: {
       quote: "This is exactly what the Cursor community needed. Great work!",
@@ -152,7 +152,7 @@ const dataportfolio = [
   {
     img: "https://opengraph.githubassets.com/1/murataslan1/ai-agent-benchmark",
     title: "AI Agent Benchmark",
-    desctiption: "AI Agent Benchmark - The definitive comparison of AI coding agents (Apr 2026 Data) - 20⭐",
+    desctiption: "AI Agent Benchmark - The definitive comparison of AI coding agents (Apr 2026 Data) - 29⭐",
     link: "https://github.com/murataslan1/ai-agent-benchmark",
     tags: ["Research", "AI"],
     stack: ["Data", "Web"],
@@ -166,7 +166,7 @@ const dataportfolio = [
   {
     img: "https://opengraph.githubassets.com/1/murataslan1/n8n-workflow-collection",
     title: "n8n Workflow Collection",
-    desctiption: "4,300+ n8n Automation Workflows — The Largest Open-Source Collection - 6⭐",
+    desctiption: "4,300+ n8n Automation Workflows — The Largest Open-Source Collection - 10⭐",
     link: "https://github.com/murataslan1/n8n-workflow-collection",
     tags: ["Original", "Automation"],
     stack: ["Python", "n8n"],
@@ -193,7 +193,7 @@ const dataportfolio = [
   },
   {
     title: "VS Code",
-    desctiption: "VS Code - 41 PRs (5 merged): Lifecycle fixes, scrolling fix, UX improvements (183k⭐)",
+    desctiption: "VS Code - 41 PRs (5 merged): Lifecycle fixes, scrolling fix, UX improvements (195k⭐)",
     link: "https://github.com/microsoft/vscode/pulls?q=author%3Amurataslan1",
     tags: ["Open Source", "Tooling"],
     stack: ["TypeScript", "Developer Tools"],
@@ -212,7 +212,7 @@ const dataportfolio = [
   {
     img: "https://opengraph.githubassets.com/1/murataslan1/local-ai-coding-guide",
     title: "Local AI Coding Guide",
-    desctiption: "Comprehensive guide for running AI coding assistants locally - 20⭐",
+    desctiption: "Comprehensive guide for running AI coding assistants locally - 31⭐",
     link: "https://github.com/murataslan1/local-ai-coding-guide",
     tags: ["Original", "AI"],
     stack: ["Python", "Documentation"],
@@ -226,7 +226,7 @@ const dataportfolio = [
   {
     img: "https://opengraph.githubassets.com/1/coollabsio/coolify",
     title: "Coolify",
-    desctiption: "Coolify - 31 PRs (7 merged): Docker fixes, Unicode support, SSH timeout, backup features ($100+ Bounty)",
+    desctiption: "Coolify - 34 PRs (7 merged): Docker fixes, Unicode support, SSH timeout, backup features ($100+ Bounty)",
     link: "https://github.com/coollabsio/coolify/pulls?q=author%3Amurataslan1",
     tags: ["Open Source", "DevOps"],
     stack: ["Cloud", "Docker"],
@@ -245,7 +245,7 @@ const dataportfolio = [
   {
     img: "https://opengraph.githubassets.com/1/mindsdb/mindsdb",
     title: "MindsDB",
-    desctiption: "MindsDB - Added S3 Region support for integrations (39k⭐)",
+    desctiption: "MindsDB - Added S3 Region support for integrations (40k⭐)",
     link: "https://github.com/mindsdb/mindsdb/pull/12004",
     tags: ["Open Source", "Data"],
     stack: ["Databases", "Python"]
@@ -253,7 +253,7 @@ const dataportfolio = [
   {
     img: "https://opengraph.githubassets.com/1/denoland/std",
     title: "Deno Standard Library",
-    desctiption: "Deno Standard Library - 2 PRs: CSV parsing fix, Dedent logic (3.5k⭐)",
+    desctiption: "Deno Standard Library - 2 PRs: CSV parsing fix, Dedent logic (3.6k⭐)",
     link: "https://github.com/denoland/std/pulls?q=author%3Amurataslan1",
     tags: ["Open Source", "Tooling"],
     stack: ["TypeScript", "Runtime"],
@@ -266,7 +266,7 @@ const dataportfolio = [
   {
     img: "https://opengraph.githubassets.com/1/traefik/traefik",
     title: "Traefik",
-    desctiption: "Traefik - 6 PRs (2 merged): CRD priority, Docker inspect, SameSite cookie fixes (54k⭐)",
+    desctiption: "Traefik - 6 PRs (3 merged): SameSite cookie, server weight display, ForwardAuth log level (65k⭐)",
     link: "https://github.com/traefik/traefik/pulls?q=author%3Amurataslan1",
     tags: ["Open Source", "Infra"],
     stack: ["Networking", "Go"],
@@ -279,7 +279,7 @@ const dataportfolio = [
   {
     img: "https://opengraph.githubassets.com/1/milvus-io/milvus",
     title: "Milvus",
-    desctiption: "Milvus - 6 PRs: fnmatch optimization, debug logs, Go client HNSW index support (43k⭐)",
+    desctiption: "Milvus - 6 PRs: fnmatch optimization, debug logs, Go client HNSW index support (47k⭐)",
     link: "https://github.com/milvus-io/milvus/pulls?q=author%3Amurataslan1",
     tags: ["Open Source", "Data"],
     stack: ["Databases", "Cloud"]
@@ -295,7 +295,7 @@ const dataportfolio = [
   {
     img: "https://opengraph.githubassets.com/1/facebookresearch/faiss",
     title: "FAISS",
-    desctiption: "FAISS - 2 PRs to Meta's vector similarity search library (39k⭐)",
+    desctiption: "FAISS - 2 PRs to Meta's vector similarity search library (41k⭐)",
     link: "https://github.com/facebookresearch/faiss/pulls?q=author%3Amurataslan1",
     tags: ["Open Source", "AI"],
     stack: ["C++", "Python"]
@@ -366,7 +366,7 @@ const dataportfolio = [
   {
     img: "https://opengraph.githubassets.com/1/jgraph/drawio-desktop",
     title: "Draw.io Desktop",
-    desctiption: "Draw.io Desktop - 3 PRs: Update dialog, autoupdate caching, Ubuntu dock icon fix",
+    desctiption: "Draw.io Desktop - 3 PRs (1 merged): Update dialog, autoupdate caching, Ubuntu dock icon fix",
     link: "https://github.com/jgraph/drawio-desktop/pulls?q=author%3Amurataslan1",
     tags: ["Open Source", "Tooling"],
     stack: ["Electron", "JavaScript"],
@@ -490,7 +490,7 @@ const dataportfolio = [
   {
     img: "https://opengraph.githubassets.com/1/vercel/ai",
     title: "Vercel AI SDK",
-    desctiption: "Vercel AI SDK - 3 PRs: MCP OAuth trailing slash, error type prefix, gateway filter (15k⭐)",
+    desctiption: "Vercel AI SDK - 3 PRs: MCP OAuth trailing slash, error type prefix, gateway filter (28k⭐) - 1 merged",
     link: "https://github.com/vercel/ai/pulls?q=author%3Amurataslan1",
     tags: ["Open Source", "AI"],
     stack: ["TypeScript", "AI"]
@@ -529,7 +529,7 @@ const dataportfolio = [
   {
     img: "https://opengraph.githubassets.com/1/murataslan1/ci-debugger",
     title: "CI Debugger",
-    desctiption: "Debug GitHub Actions workflows locally with breakpoints — 45⭐",
+    desctiption: "Debug GitHub Actions workflows locally with breakpoints — 46⭐",
     link: "https://github.com/murataslan1/ci-debugger",
     tags: ["Original", "DevOps"],
     stack: ["Go", "CI/CD"],
@@ -537,13 +537,13 @@ const dataportfolio = [
     caseStudy: {
       problem: "Debugging GitHub Actions required blind YAML commits and waiting for CI runs.",
       contribution: "Built a local debugger with breakpoints for GitHub Actions workflows.",
-      impact: "45+ stars, enabling developers to debug CI pipelines without pushing."
+      impact: "46+ stars, enabling developers to debug CI pipelines without pushing."
     }
   },
   {
     img: "https://opengraph.githubassets.com/1/pingdotgg/t3code",
     title: "T3Code",
-    desctiption: "T3Code - 6 PRs: Terminal history, checkpoint skip, mobile sidebar, iOS zoom, sticky model",
+    desctiption: "T3Code - 6 PRs (1 merged): Terminal history, checkpoint skip, mobile sidebar, iOS zoom, sticky model",
     link: "https://github.com/pingdotgg/t3code/pulls?q=author%3Amurataslan1",
     tags: ["Open Source", "Tooling"],
     stack: ["TypeScript", "React"],
@@ -557,7 +557,7 @@ const dataportfolio = [
   {
     img: "https://opengraph.githubassets.com/1/nodejs/node",
     title: "Node.js",
-    desctiption: "Node.js - 2 PRs: test_runner improvements to avoid reading process state directly (112k⭐)",
+    desctiption: "Node.js - 2 PRs: test_runner improvements to avoid reading process state directly (123k⭐)",
     link: "https://github.com/nodejs/node/pulls?q=author%3Amurataslan1",
     tags: ["Open Source", "Runtime"],
     stack: ["C++", "JavaScript"]
@@ -577,6 +577,14 @@ const dataportfolio = [
     link: "https://github.com/f/prompts.chat/pull/1122",
     tags: ["Open Source", "AI"],
     stack: ["TypeScript", "Web"]
+  },
+  {
+    img: "https://opengraph.githubassets.com/1/mksglu/context-mode",
+    title: "context-mode",
+    desctiption: "context-mode - 10 PRs (1 merged): OpenClaw MCP sidecar registration, Claude Desktop & JetBrains Copilot adapters (34k⭐)",
+    link: "https://github.com/mksglu/context-mode/pulls?q=author%3Amurataslan1",
+    tags: ["Open Source", "AI"],
+    stack: ["TypeScript", "MCP"]
   },
   {
     img: "https://opengraph.githubassets.com/1/openclaw/openclaw",
@@ -607,34 +615,159 @@ const socialprofils = {
 };
 
 const opensourceContributions = [
-  { project: "VS Code", stars: "183k", prs: 41, merged: 5, status: "✅ 5 Merged" },
-  { project: "Coolify", stars: "52k", prs: 34, merged: 7, status: "✅ 7 Merged" },
-  { project: "Milvus", stars: "43k", prs: 6, status: "🔄 Open" },
-  { project: "Traefik", stars: "54k", prs: 6, merged: 2, status: "✅ 2 Merged" },
-  { project: "T3Code", stars: "8k", prs: 6, status: "🔄 Active" },
-  { project: "SigNoz", stars: "26k", prs: 5, status: "🔄 Open" },
-  { project: "Nuclei Templates", stars: "12k", prs: 5, merged: 4, status: "✅ 4 Merged" },
+  { project: "VS Code", stars: "195k", prs: 41, merged: 5, status: "✅ 5 Merged" },
+  { project: "Coolify", stars: "66k", prs: 34, merged: 7, status: "✅ 7 Merged" },
+  { project: "context-mode", stars: "34k", prs: 10, merged: 1, status: "✅ Merged" },
+  { project: "Milvus", stars: "47k", prs: 6, status: "🔄 Open" },
+  { project: "Traefik", stars: "65k", prs: 6, merged: 3, status: "✅ 3 Merged" },
+  { project: "T3Code", stars: "52k", prs: 6, merged: 1, status: "✅ Merged" },
+  { project: "SigNoz", stars: "33k", prs: 5, status: "🔄 Open" },
+  { project: "Nuclei Templates", stars: "13k", prs: 5, merged: 4, status: "✅ 4 Merged" },
   { project: "CX Linux", stars: "—", prs: 5, merged: 1, status: "✅ Merged" },
-  { project: "Croc", stars: "34k", prs: 4, merged: 4, status: "✅ 4 Merged" },
-  { project: "Vercel AI SDK", stars: "15k", prs: 3, status: "🔄 Active" },
-  { project: "Draw.io Desktop", stars: "60k", prs: 3, status: "🔄 Open" },
-  { project: "Node.js", stars: "112k", prs: 2, status: "🔄 Review" },
-  { project: "LangChain.js", stars: "17k", prs: 2, merged: 1, status: "✅ Merged" },
-  { project: "Codex Plugin CC", stars: "—", prs: 2, status: "🔄 Active" },
-  { project: "Deno std", stars: "3.5k", prs: 2, merged: 1, status: "✅ Merged" },
-  { project: "Deno Runtime", stars: "106k", prs: 2, status: "🔄 Open" },
-  { project: "Trivy", stars: "33k", prs: 2, merged: 1, status: "✅ Merged" },
-  { project: "Termux", stars: "16k", prs: 2, merged: 2, status: "✅ 2 Merged" },
-  { project: "OpenBB", stars: "63k", prs: 2, merged: 1, status: "✅ Merged" },
-  { project: "FAISS", stars: "39k", prs: 2, status: "🔄 Open" },
-  { project: "Greenbone OpenVAS", stars: "4.5k", prs: 2, status: "🔄 Open" },
-  { project: "JJ VCS", stars: "27k", prs: 2, status: "🔄 Open" },
-  { project: "VS Code MermAId", stars: "168", prs: 2, status: "🔄 Open" },
-  { project: "Perspective", stars: "10k", prs: 2, status: "🔄 Open" },
-  { project: "MindsDB", stars: "39k", prs: 2, merged: 1, status: "✅ Merged" },
-  { project: ".NET Aspire", stars: "5.5k", prs: 1, merged: 1, status: "✅ Merged" },
-  { project: "ASP.NET Core", stars: "38k", prs: 1, status: "🔄 Open" },
-  { project: "prompts.chat", stars: "—", prs: 1, merged: 1, status: "✅ Merged" }
+  { project: "Croc", stars: "41k", prs: 4, merged: 4, status: "✅ 4 Merged" },
+  { project: "Vercel AI SDK", stars: "28k", prs: 3, merged: 1, status: "✅ Merged" },
+  { project: "Draw.io Desktop", stars: "64k", prs: 3, merged: 1, status: "✅ Merged" },
+  { project: "Node.js", stars: "123k", prs: 2, status: "🔄 Review" },
+  { project: "LangChain.js", stars: "18k", prs: 2, merged: 1, status: "✅ Merged" },
+  { project: "Codex Plugin CC", stars: "35k", prs: 2, status: "🔄 Active" },
+  { project: "Deno std", stars: "3.6k", prs: 2, merged: 1, status: "✅ Merged" },
+  { project: "Deno Runtime", stars: "109k", prs: 2, status: "🔄 Open" },
+  { project: "Trivy", stars: "39k", prs: 2, merged: 1, status: "✅ Merged" },
+  { project: "Termux", stars: "17k", prs: 2, merged: 2, status: "✅ 2 Merged" },
+  { project: "OpenBB", stars: "75k", prs: 2, merged: 1, status: "✅ Merged" },
+  { project: "FAISS", stars: "41k", prs: 2, status: "🔄 Open" },
+  { project: "Greenbone OpenVAS", stars: "4.9k", prs: 2, status: "🔄 Open" },
+  { project: "JJ VCS", stars: "32k", prs: 2, status: "🔄 Open" },
+  { project: "VS Code MermAId", stars: "187", prs: 2, status: "🔄 Open" },
+  { project: "Perspective", stars: "11k", prs: 2, status: "🔄 Open" },
+  { project: "MindsDB", stars: "40k", prs: 2, merged: 1, status: "✅ Merged" },
+  { project: ".NET Aspire", stars: "6.4k", prs: 1, merged: 1, status: "✅ Merged" },
+  { project: "ASP.NET Core", stars: "39k", prs: 1, status: "🔄 Open" },
+  { project: "prompts.chat", stars: "177k", prs: 1, merged: 1, status: "✅ Merged" },
+  { project: "OpenClaw", stars: "394k", prs: 1, status: "🔄 Submitted" }
+];
+
+const communityStats = [
+  { value: "605K", label: "LinkedIn impressions in 28 days" },
+  { value: "91%", label: "Reach from outside my network" }
+];
+
+const communityTalks = [
+  {
+    title: "Context Engineering: The page after prompt",
+    event: "HSD Türkiye (Huawei Student Developers)",
+    date: "May 15, 2026",
+    place: "",
+    link: "/huawei/",
+    topics: ["Context engineering", "Claude Skills", "context-mode"]
+  },
+  {
+    title: "Trusting Your Agents: MCP, Hooks, and What OSS Taught Me",
+    event: "ClawCon Ankara",
+    date: "2026",
+    place: "Ankara",
+    link: "/clawcon-ankara/",
+    topics: ["MCP", "Agent hooks", "Open source"]
+  },
+  {
+    title: "Trusting Your Agents: MCP, Hooks, and What OSS Taught Me",
+    event: "ClawCon İstanbul",
+    date: "2026",
+    place: "İstanbul",
+    link: "/clawcon-istanbul/",
+    topics: ["MCP", "Agent hooks", "Open source"]
+  },
+  {
+    title: "Atölye 210: First session, free and open to everyone",
+    event: "KamuKOD",
+    date: "August 2026",
+    place: "Ankara",
+    link: "/openclaw-hermes-agustos/",
+    topics: ["OpenClaw", "Hermes", "Self-hosted agents"]
+  },
+  {
+    title: "Masa 1: Making technology understandable for everyone",
+    event: "TeknoPolitika Buluşması",
+    date: "August 15, 2026",
+    place: "Ankara",
+    link: "/teknopolitika-masa1/",
+    topics: ["Tech policy", "Public speaking", "Community"]
+  }
+];
+
+const communityPosts = [
+  {
+    event: "Devin Meetup Ankara",
+    host: "Cognition · BuilderMare",
+    date: "Nov 8, 2026",
+    role: "Builder session",
+    img: "/img/community/devin-meetup-1.jpg",
+    imgAlt: "Group photo of builders at Devin Meetup Ankara",
+    quote:
+      "The smartest model inside Devin AI does not write your code. It tells a cheaper one what to write.",
+    takeaway:
+      "After the talk we closed the slides and opened our laptops. Real projects, real mistakes, real fixes.",
+    engagement: { likes: 7, comments: 0, reposts: 0 },
+    linkedin:
+      "https://www.linkedin.com/posts/murataslan1_the-smartest-model-inside-devin-ai-does-not-activity-7525268262104936448-pDVm",
+    x: "https://x.com/iammurataslan/status/2119506607373426727"
+  },
+  {
+    event: "FIL Network #6: AI, From Intelligence to Impact",
+    host: "Future Innovation Leaders · Bilkent TEKMER",
+    date: "Nov 6, 2026",
+    role: "Attendee · past co-organizer",
+    img: "/img/community/fil-network-0.jpg",
+    imgAlt: "Attendees of FIL Network #6 at Bilkent TEKMER",
+    quote:
+      "Access to tools is no longer the main advantage. Seeing the right problem, asking the right question, and moving fast is.",
+    takeaway:
+      "We have organized similar Build and Sell sessions before. People leave with something they can use, not just notes.",
+    engagement: { likes: 24, comments: 0, reposts: 3 },
+    linkedin:
+      "https://www.linkedin.com/posts/murataslan1_most-ai-events-talk-about-the-future-this-ugcPost-7524541755430637568-szmh"
+  },
+  {
+    event: "E-Ticaret Sohbetleri",
+    host: "CoZone · ODTÜ Teknokent",
+    date: "Nov 4, 2026",
+    role: "Attendee",
+    img: "/img/community/eticaret-4.jpg",
+    imgAlt: "Speaker on stage at E-Ticaret Sohbetleri, CoZone ODTÜ Teknokent",
+    quote:
+      "Revenue looks good on a dashboard. Margin is what's left after fees, shipping, returns and ads.",
+    takeaway:
+      "A local business doesn't have to stay local anymore. Ankara already makes things; the gap is getting them in front of buyers.",
+    engagement: { likes: 41, comments: 0, reposts: 4 },
+    linkedin:
+      "https://www.linkedin.com/posts/murataslan1_ecommerce-eticaret-ankara-ugcPost-7518403958395084802-1DR6"
+  },
+  {
+    event: "DevFest'26 Ankara",
+    host: "GDG Ankara · GDG Cloud Ankara · GDG on Campus METU",
+    date: "Nov 1, 2026",
+    role: "Attendee",
+    img: "/img/community/devfest-1.jpg",
+    imgAlt: "Murat with community members at the DevFest Ankara photo wall",
+    quote: "First they asked who it's for. Then they asked if it's even a who.",
+    takeaway:
+      "The talks gave me ideas. The people in between gave me reasons to actually try them.",
+    engagement: { likes: 101, comments: 8, reposts: 5 },
+    linkedin:
+      "https://www.linkedin.com/posts/murataslan1_first-they-asked-who-its-for-then-they-ugcPost-7522656794511532034-9CGc",
+    x: "https://x.com/iammurataslan/status/2116918537940050332"
+  }
+];
+
+const communities = [
+  "GDG Ankara",
+  "GDG Cloud Ankara",
+  "KamuYZ",
+  "KamuKOD",
+  "ClawCon",
+  "HSD Türkiye",
+  "Future Innovation Leaders",
+  "BuilderMare"
 ];
 
 export {
@@ -650,5 +783,9 @@ export {
   contactConfig,
   socialprofils,
   logotext,
-  opensourceContributions
+  opensourceContributions,
+  communityStats,
+  communityTalks,
+  communityPosts,
+  communities
 };
