@@ -7,6 +7,7 @@ import {
   communityStats,
   communityTalks,
   communityPosts,
+  communityMoreNotes,
   communities,
   contactConfig,
   fdePrinciples,
@@ -176,7 +177,11 @@ export const Community = () => {
                 <article className="post-card glass-card">
                   <div className="post-card__media">
                     <img src={post.img} alt={post.imgAlt} loading="lazy" />
-                    <span className="post-card__role">{post.role}</span>
+                    <span
+                      className={`post-card__role${post.role === "Speaker" ? " post-card__role--speaker" : ""}`}
+                    >
+                      {post.role}
+                    </span>
                   </div>
                   <div className="post-card__body">
                     <span className="post-card__meta">
@@ -197,14 +202,18 @@ export const Community = () => {
                       {post.takeaway}
                     </p>
                     <div className="post-card__footer">
-                      <span
-                        className="post-card__engagement"
-                        aria-label={`${post.engagement.likes} reactions, ${post.engagement.comments} comments, ${post.engagement.reposts} reposts on LinkedIn`}
-                      >
-                        <span><FaHeart aria-hidden="true" /> {post.engagement.likes}</span>
-                        <span><FaComment aria-hidden="true" /> {post.engagement.comments}</span>
-                        <span><FaRetweet aria-hidden="true" /> {post.engagement.reposts}</span>
-                      </span>
+                      {post.engagement ? (
+                        <span
+                          className="post-card__engagement"
+                          aria-label={`${post.engagement.likes} reactions, ${post.engagement.comments} comments, ${post.engagement.reposts} reposts on LinkedIn`}
+                        >
+                          <span><FaHeart aria-hidden="true" /> {post.engagement.likes}</span>
+                          <span><FaComment aria-hidden="true" /> {post.engagement.comments}</span>
+                          <span><FaRetweet aria-hidden="true" /> {post.engagement.reposts}</span>
+                        </span>
+                      ) : (
+                        <span />
+                      )}
                       <span className="post-card__links">
                         <ExternalLink
                           href={post.linkedin}
@@ -227,6 +236,28 @@ export const Community = () => {
               </FadeInUp>
             ))}
           </div>
+
+          <FadeInUp className="more-notes">
+            <h3 className="more-notes__title">More rooms I was in</h3>
+            <ul className="more-notes__list">
+              {communityMoreNotes.map((note) => (
+                <li key={note.linkedin} className="more-notes__item">
+                  <div>
+                    <span className="more-notes__event">{note.event}</span>
+                    <span className="more-notes__date">{note.date}</span>
+                    <p className="more-notes__line">{note.line}</p>
+                  </div>
+                  <ExternalLink
+                    href={note.linkedin}
+                    className="more-notes__link"
+                    label={`Read the ${note.event} post on LinkedIn`}
+                  >
+                    <FaLinkedin aria-hidden="true" /> Read
+                  </ExternalLink>
+                </li>
+              ))}
+            </ul>
+          </FadeInUp>
         </div>
 
         <div className="community-section">
