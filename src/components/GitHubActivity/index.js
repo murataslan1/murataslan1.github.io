@@ -9,12 +9,12 @@ const githubTheme = {
   dark: ["#161b22", "#0e4429", "#006d32", "#26a641", "#39d353"],
 };
 
-// Fallback stats from GitHub API (last updated: Apr 2026)
+// Fallback stats from GitHub API (last updated: Nov 2026)
 const FALLBACK_STATS = {
-  repos: 245,
+  repos: 258,
   totalCommits: 45,
   totalPRs: 6,
-  followers: 85
+  followers: 115
 };
 
 const FALLBACK_ACTIVITIES = [

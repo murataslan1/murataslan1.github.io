@@ -45,22 +45,22 @@ const marqueeStats = [
     Icon: SiVisualstudiocode,
     iconColor: "#007ACC",
     label: "VS Code",
-    value: "183k⭐",
+    value: "195k⭐",
     color: "blue",
   },
-  { emoji: "☁️", label: "Coolify", value: "52k⭐", color: "purple" },
+  { emoji: "☁️", label: "Coolify", value: "66k⭐", color: "purple" },
   {
     Icon: SiTraefikproxy,
     iconColor: "#24A1C1",
     label: "Traefik",
-    value: "54k⭐",
+    value: "65k⭐",
     color: "green",
   },
   {
     Icon: SiNodedotjs,
     iconColor: "#339933",
     label: "Node.js",
-    value: "112k⭐",
+    value: "123k⭐",
     color: "green",
   },
   {
@@ -68,18 +68,18 @@ const marqueeStats = [
     iconColor: "#000000",
     iconColorDark: "#F5F5F5",
     label: "Deno",
-    value: "3.5k⭐",
+    value: "3.6k⭐",
     color: "orange",
   },
-  { emoji: "🤖", label: "Vercel AI", value: "15k⭐", color: "cyan" },
+  { emoji: "🤖", label: "Vercel AI", value: "28k⭐", color: "cyan" },
   {
     Icon: SiMilvus,
     iconColor: "#00A1EA",
     label: "Milvus",
-    value: "43k⭐",
+    value: "47k⭐",
     color: "blue",
   },
-  { emoji: "🔥", label: "FAISS", value: "39k⭐", color: "orange" },
+  { emoji: "🔥", label: "FAISS", value: "41k⭐", color: "orange" },
 ];
 
 // Tech Stack organized by category
@@ -188,10 +188,10 @@ const techCategories = [
 ];
 
 const achievements = [
-  { value: "39+", label: "PRs Merged", emoji: "🚀" },
-  { value: "245", label: "Public Repos", emoji: "⭐" },
+  { value: "50+", label: "PRs Merged", emoji: "🚀" },
+  { value: "258", label: "Public Repos", emoji: "⭐" },
   { value: "$100+", label: "Bounties Earned", emoji: "🏆" },
-  { value: "85", label: "Followers", emoji: "🌍" },
+  { value: "115", label: "Followers", emoji: "🌍" },
 ];
 
 const caseStudies = dataportfolio.filter((item) => item.caseStudy);

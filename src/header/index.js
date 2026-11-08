@@ -25,6 +25,7 @@ const Headermain = () => {
             <nav className="site__nav">
               <Link to="/portfolio">Portfolio</Link>
               <Link to="/about">About</Link>
+              <Link to="/community">Community</Link>
               <Link to="/contact">Contact</Link>
               <Link to="/newsletter">Newsletter</Link>
             </nav>
@@ -54,6 +55,9 @@ const Headermain = () => {
                   </li>
                   <li className="menu_item">
                   <Link onClick={handleToggle} to="/about" className="my-3">About</Link>
+                  </li>
+                  <li className="menu_item">
+                  <Link onClick={handleToggle} to="/community" className="my-3">Community</Link>
                   </li>
                   <li className="menu_item">
                   <Link onClick={handleToggle} to="/contact" className="my-3"> Contact</Link>

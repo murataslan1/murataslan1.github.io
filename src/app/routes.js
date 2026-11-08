@@ -6,6 +6,7 @@ import { Home } from "../pages/home";
 import { Portfolio } from "../pages/portfolio";
 import { ContactUs } from "../pages/contact";
 import { About } from "../pages/about";
+import { Community } from "../pages/community";
 import { Newsletter } from "../pages/newsletter";
 import { SkillsList } from "../pages/claude-code-skills";
 import { SkillDetail } from "../pages/claude-code-skills/SkillDetail";
@@ -58,6 +59,11 @@ function AppRoutes() {
           <Route path="/about">
             <PageWrapper>
               <About />
+            </PageWrapper>
+          </Route>
+          <Route path="/community">
+            <PageWrapper>
+              <Community />
             </PageWrapper>
           </Route>
           <Route path="/portfolio">
