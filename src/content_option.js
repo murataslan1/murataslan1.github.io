@@ -629,7 +629,7 @@ const contactConfig = {
   YOUR_SERVICE_ID: "service_id",
   YOUR_TEMPLATE_ID: "template_id",
   YOUR_USER_ID: "user_id",
-  NEWSLETTER_URL: ""
+  NEWSLETTER_URL: "https://newsletter-subscribe.murataslan562001.workers.dev"
 };
 
 const socialprofils = {
