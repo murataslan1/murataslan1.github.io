@@ -629,7 +629,7 @@ const contactConfig = {
   YOUR_SERVICE_ID: "service_id",
   YOUR_TEMPLATE_ID: "template_id",
   YOUR_USER_ID: "user_id",
-  GOOGLE_SHEETS_URL: ""
+  NEWSLETTER_URL: ""
 };
 
 const socialprofils = {
