@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Masa 1 - Tekniği Herkes İçin Anlaşılır Hale Getirmek</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Space+Mono:wght@400;700&family=Caveat:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0D0D0D;
+  --text: rgba(255,255,255,0.92);
+  --text-secondary: rgba(255,255,255,0.5);
+  --text-muted: rgba(255,255,255,0.22);
+  --accent: #D4856A;
+  --green: #00E676;
+  --purple: #8B5CF6;
+  --red: #ff3b3b;
+  --blue: rgba(100,140,255,1);
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+html, body { height:100%; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Outfit', sans-serif;
+  overflow: hidden;
+}
+body::before {
+  content:'';
+  position:fixed; inset:0;
+  background-image: radial-gradient(circle, rgba(255,255,255,0.15) 1.2px, transparent 1.2px);
+  background-size: 28px 28px;
+  z-index:0;
+  pointer-events:none;
+}
+body::after {
+  content:'';
+  position:fixed; inset:0;
+  background: radial-gradient(ellipse at center, transparent 20%, rgba(13,13,13,0.7) 50%, rgb(13,13,13) 75%);
+  z-index:0;
+  pointer-events:none;
+}
+.deck { position:relative; z-index:1; height:100%; }
+.slide {
+  display:none;
+  height:100%;
+  padding: 6vh 8vw;
+  flex-direction:column;
+  justify-content:center;
+  position:relative;
+  overflow-y:auto;
+  -webkit-overflow-scrolling: touch;
+}
+.slide.active { display:flex; animation: fadeIn .4s ease; }
+@keyframes fadeIn { from{opacity:0; transform:translateY(12px);} to{opacity:1; transform:none;} }
+.logo-tr { position:fixed; top:28px; right:32px; width:44px; height:44px; z-index:3; }
+.marker {
+  position:fixed; bottom:26px; left:32px;
+  font-family:'Space Mono', monospace;
+  font-size:13px; letter-spacing:3px; text-transform:uppercase;
+  color: var(--text-muted); z-index:3;
+}
+.counter {
+  position:fixed; bottom:26px; right:32px;
+  font-family:'Space Mono', monospace;
+  font-size:13px; color: var(--text-muted); z-index:3;
+}
+.progress {
+  position:fixed; top:0; left:0; height:2px;
+  background: var(--accent);
+  box-shadow: 0 0 8px var(--accent);
+  z-index:3;
+  transition: width .3s ease;
+}
+label.lbl {
+  font-family:'Space Mono', monospace;
+  font-size:13px; letter-spacing:5px; text-transform:uppercase;
+  color: var(--text-secondary);
+  margin-bottom: 18px;
+}
+h1.big {
+  font-size: clamp(48px, 8vw, 112px);
+  font-weight: 800;
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+  max-width: 15em;
+}
+h2.big {
+  font-size: clamp(44px, 6.5vw, 92px);
+  font-weight: 800;
+  line-height: 1.04;
+  letter-spacing: -0.02em;
+  max-width: 18em;
+}
+.sub {
+  font-size: clamp(20px, 2.6vw, 30px);
+  font-weight: 300;
+  color: var(--text-secondary);
+  line-height: 1.35;
+  margin-top: 20px;
+  max-width: 32em;
+}
+.italic { font-style: italic; color: var(--accent); }
+.emphasis-bar {
+  width: 72px; height: 6px;
+  background: var(--accent);
+  margin-top: 28px;
+}
+.row3 {
+  display:flex; gap: 80px; align-items:center; justify-content:center;
+  margin-top: 40px; flex-wrap: wrap;
+}
+.row3 .kw { font-size: clamp(48px, 7vw, 96px); font-weight: 900; line-height:1; }
+.row3 .kw:nth-child(2) { color: var(--accent); }
+.split { display:grid; grid-template-columns: 1fr 1fr; gap: 5vw; margin-top: 36px; }
+.split .col .t { font-size: clamp(22px, 2.4vw, 32px); font-weight:700; margin-bottom:14px; }
+.split .col .d { font-size: clamp(16px, 1.8vw, 22px); color: var(--text-secondary); line-height:1.45; }
+.split .col.ok .t { color: var(--green); }
+.split .col.bad .t { color: var(--red); }
+.cards { display:flex; gap: 2vw; margin-top: 36px; }
+.card {
+  flex:1; border-top: 3px solid var(--accent);
+  padding: 24px 4px 8px;
+}
+.card .n { font-family:'Space Mono',monospace; font-size:13px; color: var(--text-muted); letter-spacing:3px; }
+.card .h { font-size: clamp(22px, 2.4vw, 32px); font-weight:700; margin:10px 0 8px; }
+.card .d { font-size: clamp(15px, 1.6vw, 20px); color: var(--text-secondary); line-height:1.4; }
+.flow { display:flex; align-items:center; gap: 2vw; margin-top: 40px; flex-wrap:wrap; }
+.flow .step {
+  flex:1; min-width: 180px;
+  border-top: 3px solid var(--accent);
+  padding-top: 18px;
+}
+.flow .step .h { font-size: clamp(20px, 2vw, 28px); font-weight:700; }
+.flow .step .d { font-size: clamp(15px, 1.6vw, 20px); color: var(--text-secondary); margin-top:6px; line-height:1.4; }
+.flow .arr { font-size: clamp(28px, 3vw, 40px); color: var(--accent); }
+.quote {
+  font-size: clamp(34px, 4.5vw, 64px);
+  font-style: italic;
+  font-weight: 300;
+  line-height: 1.2;
+  max-width: 20em;
+}
+.quote .attr {
+  display:block; margin-top: 28px;
+  font-family:'Space Mono', monospace; font-size:14px; letter-spacing:4px;
+  text-transform:uppercase; font-style:normal; color: var(--text-secondary);
+}
+.pills { display:flex; gap: 14px; flex-wrap:wrap; margin-top: 40px; }
+.pill {
+  font-family:'Space Mono', monospace; font-size:14px;
+  padding: 10px 18px;
+  border: 1px solid rgba(255,255,255,0.3);
+  border-radius: 999px;
+  color: var(--text-secondary);
+}
+.pill.accent { border-color: var(--accent); color: var(--accent); }
+.cta-link {
+  display:inline-block; margin-top: 30px;
+  font-family:'Space Mono', monospace; font-size:16px;
+  color: var(--accent); border-bottom: 2px solid var(--accent);
+  padding-bottom: 4px; text-decoration: none;
+}
+.hint {
+  position: fixed; bottom: 26px; left: 50%; transform: translateX(-50%);
+  font-family:'Space Mono', monospace; font-size: 11px; letter-spacing: 2px;
+  color: rgba(255,255,255,0.15); z-index:3; text-transform: uppercase;
+}
+.big-num { font-size: clamp(120px, 22vw, 260px); font-weight: 900; line-height: 0.9; color: rgba(255,255,255,0.08); position:absolute; right:6vw; top:4vh; }
+.tip {
+  margin-top: 34px; padding: 20px 24px;
+  border-left: 4px solid var(--accent);
+  background: rgba(212,133,106,0.08);
+  font-size: clamp(17px, 1.9vw, 23px);
+  color: var(--text-secondary);
+  line-height: 1.45;
+  max-width: 34em;
+}
+.tip strong { color: var(--text); }
+.examples { margin-top: 30px; }
+.examples .row {
+  display:flex; gap: 14px; align-items:flex-start;
+  margin-bottom: 14px; font-size: clamp(16px, 1.8vw, 22px); line-height:1.4;
+}
+.examples .row .badge {
+  font-family:'Space Mono',monospace; font-size:12px; letter-spacing:2px;
+  padding: 4px 10px; border-radius: 4px; white-space: nowrap; margin-top:2px;
+}
+.badge.ok { background: rgba(0,230,118,0.15); color: var(--green); }
+.badge.bad { background: rgba(255,59,59,0.15); color: var(--red); }
+.badge.q { background: rgba(139,92,246,0.15); color: var(--purple); }
+.two-col { display:grid; grid-template-columns: 1fr 1fr; gap: 3vw; margin-top: 30px; }
+.two-col .item .h { font-size: clamp(20px, 2vw, 28px); font-weight:700; margin-bottom:10px; }
+.two-col .item .d { font-size: clamp(15px, 1.6vw, 20px); color: var(--text-secondary); line-height:1.45; }
+.lang-btn {
+  position:fixed; top:28px; right:96px; z-index:4;
+  font-family:'Space Mono', monospace; font-size:12px; letter-spacing:2px;
+  color: var(--text-secondary); text-decoration:none;
+  border: 1px solid rgba(255,255,255,0.3); border-radius: 999px;
+  padding: 8px 16px; transition: border-color .2s, color .2s;
+}
+.lang-btn:hover { border-color: var(--accent); color: var(--accent); }
+</style>
+</head>
+<body>
+<div class="deck">
+
+  <svg class="logo-tr" viewBox="0 0 200 200"><path d="M 108 18 L 72 108 L 96 108 L 80 182 L 140 86 L 112 86 L 132 18 Z" fill="#D4856A"/></svg>
+  <a class="lang-btn" href="index.en.html">EN &#8594;</a>
+  <div class="marker">Masa 1 / Muhendislik</div>
+  <div class="counter" id="counter">1 / 20</div>
+  <div class="progress" id="progress" style="width:5%"></div>
+  <div class="hint">ok tuslari + F tam ekran + mobilde kaydir</div>
+
+  <div class="slide active" data-slide="1">
+    <label class="lbl">TeknoPolitika Bulusmasi - 15 Agustos 2026 - Ankara</label>
+    <h1 class="big">Teknigi Herkes Icin <span class="italic">Anlasilir</span> Hale Getirmek</h1>
+    <div class="sub">Masa 1 - Muhendislik. Klasik networking degil; masanin merkezinde tartisma var, tanisma tartismadan doguyor.</div>
+    <div class="emphasis-bar"></div>
+  </div>
+
+  <div class="slide" data-slide="2">
+    <div class="big-num">01</div>
+    <label class="lbl">Problem</label>
+    <h2 class="big">Modeli aciklamak <span style="color:var(--red)">&ne;</span> sorunu gorunur kilmak</h2>
+    <div class="sub">Muhendisler "nasil calisiyor" anlatir. Karar vericinin ihtiyaci "neden onemli, ne ters gidebilir". Bu iki dil arasindaki bosluk, politikanin oldugu yer.</div>
+    <div class="tip"><strong>Ornek:</strong> "Model 70 milyar parametreli" cumlesi dogru ama karar verdirmiyor. "Kucuk dillerde dogruluk %12 dusuyor" cumlesi bir karari etkiler.</div>
+  </div>
+
+  <div class="slide" data-slide="3">
+    <div class="big-num">02</div>
+    <label class="lbl">Sorun Nerede</label>
+    <h2 class="big">Jargon <span class="italic">duvari</span></h2>
+    <div class="sub">"Modelin bias'i var, training datasinda class imbalance mevcut." Bu cumle muhendise acik, burokratla konusuldugunda duvar.</div>
+    <div class="pills"><span class="pill">bias</span><span class="pill">fine-tuning</span><span class="pill">latent space</span><span class="pill">overfitting</span><span class="pill">attention</span><span class="pill accent">anlasilmiyor</span></div>
+    <div class="tip">Jargon tek basina kotu degil. Sorun: <strong>karsidakinin dili bilmedigini bilmeden</strong> konusmak.</div>
+  </div>
+
+  <div class="slide" data-slide="4">
+    <div class="big-num">03</div>
+    <label class="lbl">Masanin Sorusu</label>
+    <h2 class="big">Bir muhendis "modelin bias'i var" dediginde, bunu bir burokrata nasil <span class="italic">anlatir?</span></h2>
+    <div class="sub">Hangi analoji yeter, hangisi yaniltir? Bu masanin odak sorusu.</div>
+    <div class="tip">Burokratin gercek sorusu: "Bu benim kararimi nasil degistiriyor?" Cevap bu soruya iniyorsa ceviri basarili.</div>
+  </div>
+
+  <div class="slide" data-slide="5">
+    <div class="big-num">04</div>
+    <label class="lbl">Ornek Ceviri</label>
+    <h2 class="big">"Bias" iki dilde</h2>
+    <div class="split">
+      <div class="col bad"><div class="t">Basarisiz</div><div class="d">"Modelin bias'i var, cunku training datasinda underrepresented gruplar icin class imbalance sorunu mevcut."</div></div>
+      <div class="col ok"><div class="t">Basarili</div><div class="d">"Yapay zeka gecmis verilerden ogrenir. O verilerde bazi gruplar az temsil ediliyorsa, sistem o gruplar icin daha sik hata yapar."</div></div>
+    </div>
+    <div class="tip"><strong>Fark:</strong> solda kavram aciklanmis, sagda <strong>sonuc gorunur kilinmis</strong>.</div>
+  </div>
+
+  <div class="slide" data-slide="6">
+    <div class="big-num">05</div>
+    <label class="lbl">Cevap Cercivesi</label>
+    <h2 class="big">Uc kural</h2>
+    <div class="row3"><div class="kw">DURDUR</div><div class="kw">SOR</div><div class="kw">YUCELE</div></div>
+    <div class="tip">Her kuralin tek amaci var: <strong>cevirinin kirildigi ani yakalamak</strong>.</div>
+  </div>
+
+  <div class="slide" data-slide="7">
+    <div class="big-num">06</div>
+    <label class="lbl">Kural 1</label>
+    <h2 class="big">Jargon cikarsa <span class="italic">durdur</span></h2>
+    <div class="sub">Bir terim duyuldugunda kolaylastirici araya girer.</div>
+    <div class="tip">"Burayi uc cumlede, muhendislik gecmisi olmayan biri anlayacak sekilde tekrar eder misin?"</div>
+    <div class="examples">
+      <div class="row"><span class="badge bad">DURDUR</span> "Transformer mimarisi attention mekanizmasiyla..."</div>
+      <div class="row"><span class="badge ok">COZUM</span> "Model metnin tamamini ayni anda okuyup kilit kelimelere odaklaniyor."</div>
+    </div>
+  </div>
+
+  <div class="slide" data-slide="8">
+    <div class="big-num">07</div>
+    <label class="lbl">Kural 2</label>
+    <h2 class="big">Monolog <span class="italic">yok</span></h2>
+    <div class="sub">2+ dakika tek kisi konusursa, top diger tarafa atilir.</div>
+    <div class="tip">Amac herkesin dilinden boslugu olcmek. Tek ses, tek dil demek - masanin amaci kaciriliyor.</div>
+    <div class="examples">
+      <div class="row"><span class="badge bad">MONOLOG</span> 5 dakika kesintisiz teknik anlatim</div>
+      <div class="row"><span class="badge ok">MANEVRA</span> "Peki [diger kisi], sen bu konuda ne dusunuyorsun?"</div>
+    </div>
+  </div>
+
+  <div class="slide" data-slide="9">
+    <div class="big-num">08</div>
+    <label class="lbl">Kural 3</label>
+    <h2 class="big">Aptal soruyu <span class="italic">yucelt</span></h2>
+    <div class="sub">Naif sorular cogu zaman disiplinler arasi boslugun tam ortasinda durur.</div>
+    <div class="tip">"Aptal" soru yok. Cevap veremeyen soru, boslugun haritasidir.</div>
+    <div class="examples">
+      <div class="row"><span class="badge q">SORU</span> "Peki model 'biliyor' mu, yoksa 'tahmin' mi ediyor?"</div>
+      <div class="row"><span class="badge ok">DEGER</span> Bu soru, "bilgi" ve "tahmin" arasindaki temel ayrimi ortaya cikarir.</div>
+    </div>
+  </div>
+
+  <div class="slide" data-slide="10">
+    <div class="big-num">09</div>
+    <label class="lbl">Sizin Araciniz</label>
+    <h2 class="big">Ceviriyi <span class="italic">yuruten</span> sensin</h2>
+    <div class="split">
+      <div class="col ok"><div class="t">SORU 1 - "So what?"</div><div class="d">"Bunun ne gibi bir sonucu var?" Teknik iddiayi karar katmanina ceker.</div></div>
+      <div class="col accent"><div class="t">SORU 2 - "Aciklar misin?"</div><div class="d">"Bu terimi muhendis olmayan biri anlayacak sekilde aciklar misin?" Jargonu aninda durdurur.</div></div>
+    </div>
+    <div class="tip">Bu iki soruyu kullanmak icin uzman olmana gerek yok. Sadece <strong>merak</strong> yeterli.</div>
+  </div>
+
+  <div class="slide" data-slide="11">
+    <div class="big-num">10</div>
+    <label class="lbl">Arac 1</label>
+    <h2 class="big">"So what?" <span class="italic">testi</span></h2>
+    <div class="sub">Her teknik iddiaya sorulur. Cevabi yoksa iddia masaya ait degil.</div>
+    <div class="examples">
+      <div class="row"><span class="badge bad">ATILIR</span> "Model 70B parametreli." → Ne yani? Hiçbir karari etkilemiyor.</div>
+      <div class="row"><span class="badge ok">KALIR</span> "Kucuk dillerde dogruluk %12 dusuyor." → Turkce konusan vatandas daha kotu hizmet alacak. Bir esitlik sorunu.</div>
+      <div class="row"><span class="badge ok">KALIR</span> "Sistem 2 haftada bir guncelleniyor." → v1 icin yazilan yasa, yayinlanmadan eskiyor.</div>
+    </div>
+  </div>
+
+  <div class="slide" data-slide="12">
+    <div class="big-num">11</div>
+    <label class="lbl">Arac 2</label>
+    <h2 class="big">"Aciklar <span class="italic">misin?</span>"</h2>
+    <div class="sub">Jargon duydugunda cekinmeden sor. Bu masada tam da bunun icin buradasin.</div>
+    <div class="tip">"Bu terimi muhendislik gecmisi olmayan biri anlayacak sekilde uc cumlede tekrar eder misin?"</div>
+    <div class="examples">
+      <div class="row"><span class="badge q">JARGON</span> "Fine-tuning"</div>
+      <div class="row"><span class="badge ok">CEVIRI</span> "Genel kultur sahibi birini spesifik bir alanda egitmek."</div>
+    </div>
+  </div>
+
+  <div class="slide" data-slide="13">
+    <div class="big-num">12</div>
+    <label class="lbl">Neden Bu Iki Soru?</label>
+    <h2 class="big">Iki soru, tek amac</h2>
+    <div class="two-col">
+      <div class="item"><div class="h" style="color:var(--green)">"So what?"</div><div class="d">Anlamayi degil, <strong>eylemi</strong> hedefler. Teknik iddiayi karara baglar. Bos iddialari eler.</div></div>
+      <div class="item"><div class="h" style="color:var(--purple)">"Aciklar misin?"</div><div class="d">Anlamayi <strong>talep</strong> eder. Jargonun duvar olmasini engeller. Karsi tarafa dilini sadelestirme sorumlulugu verir.</div></div>
+    </div>
+    <div class="tip">Biri <strong>neye yarar</strong>, digeri <strong>ne demek</strong> diye sorar. Ikisi birlikte ceviriyi tamamlar.</div>
+  </div>
+
+  <div class="slide" data-slide="14">
+    <div class="big-num">13</div>
+    <label class="lbl">Analoji Testi</label>
+    <h2 class="big">Analojiye <span class="italic">guvenme</span>, test et</h2>
+    <div class="sub">Her analoji uc testten gecmeli.</div>
+    <div class="examples">
+      <div class="row"><span class="badge q">TEST 1</span> Iki takip sorusuna dayaniyor mu? "Yapay zeka ogrenci gibi" → "Reddedebilir mi? Yanildigini bilir mi?"</div>
+      <div class="row"><span class="badge q">TEST 2</span> Onemli karmasikligi gizliyor mu? "AI elektrik gibi" → elektrik karar vermez, AI verir.</div>
+      <div class="row"><span class="badge q">TEST 3</span> Hedef kitleye ise yariyor mu? "Gradient descent vadi arayisi gibi" → burokrat icin degil.</div>
+    </div>
+  </div>
+
+  <div class="slide" data-slide="15">
+    <div class="big-num">14</div>
+    <label class="lbl">Kapanis Ciktilari</label>
+    <h2 class="big">Masadan <span class="italic">uc</span> cikti</h2>
+    <div class="cards">
+      <div class="card"><div class="n">1</div><div class="h">Tikanan kavram</div><div class="d">Ceviri nerede koptu? Hangi terim hangi bariyere takildi?</div></div>
+      <div class="card"><div class="n">2</div><div class="h">Ise yarayan analoji</div><div class="d">Hangi benzetme gercekten calisti? Not ediyoruz.</div></div>
+      <div class="card"><div class="n">3</div><div class="h">Cevaplanamayan soru</div><div class="d">Disiplinler arasi boslugun en somut kaniti.</div></div>
+    </div>
+    <div class="tip">Bu ciktilari <strong>gorunur bir yere</strong> yaziyoruz. Sonraki bulusmanin haritasi olacak.</div>
+  </div>
+
+  <div class="slide" data-slide="16">
+    <div class="big-num">15</div>
+    <label class="lbl">Masa Akisi</label>
+    <h2 class="big">60 dakikalik yol</h2>
+    <div class="flow">
+      <div class="step"><div class="h">Isinma</div><div class="d">Meslegini teknik terim kullanmadan anlat. 1 dk / kisi.</div></div>
+      <div class="arr">&rarr;</div>
+      <div class="step"><div class="h">Kartlar</div><div class="d">6 soru kartindan. Her kart bir ceviri pratigi.</div></div>
+      <div class="arr">&rarr;</div>
+      <div class="step"><div class="h">Kapanis</div><div class="d">3 ciktiyi gorunur bir yere yaz. Masa biter.</div></div>
+    </div>
+  </div>
+
+  <div class="slide" data-slide="17">
+    <div class="big-num">16</div>
+    <label class="lbl">Sizin Icin</label>
+    <h2 class="big">Hazirlik <span class="italic">gerekmez</span></h2>
+    <div class="sub">Ama gelmeden iki soruyu dusunmek masayi zenginlestirir.</div>
+    <div class="examples">
+      <div class="row"><span class="badge q">SORU</span> Kendi alanindan, baska alana hic anlatamadigin bir kavram ne?</div>
+      <div class="row"><span class="badge q">SORU</span> Baska bir disipline sormak istedigin ama hic soramadigin soru ne?</div>
+    </div>
+    <div class="tip">Cevabin yoksa sorun degil. <strong>Boslugun kendisi</strong> masanin ham maddesi.</div>
+  </div>
+
+  <div class="slide" data-slide="18">
+    <div class="big-num">17</div>
+    <label class="lbl">Neden Acik Kaynak</label>
+    <h2 class="big">Bu sorun bir etkinligin <span class="italic">buyuk</span> degil</h2>
+    <div class="sub">Strateji, soru kartlari, jargon sozlugu, katilimci rehberi ve arastirma notlari - hepsi acik. Baska masalar, baska sehirler kullansin diye.</div>
+    <div class="tip">Jargon sorunu Turkiye'ye ozgu degil. Acik kaynak yapmak, cozumu <strong>cogaltir</strong>.</div>
+  </div>
+
+  <div class="slide" data-slide="19">
+    <div class="big-num">18</div>
+    <label class="lbl">Repoda Ne Var</label>
+    <h2 class="big">Kullanmaya <span class="italic">hazir</span></h2>
+    <div class="two-col">
+      <div class="item"><div class="h">Katilimci icin</div><div class="d">5 dakikalik rehber, gor sel cerc eve, 7 soru karti, jargon sozlugu.</div></div>
+      <div class="item"><div class="h">Kolaylastirici icin</div><div class="d">Strateji, mudahale kartlari, analoji testleri, arastirma notlari.</div></div>
+    </div>
+    <a class="cta-link" href="https://github.com/murataslan1/bridging-tech-policy" target="_blank">github.com/murataslan1/bridging-tech-policy</a>
+  </div>
+
+  <div class="slide" data-slide="20">
+    <label class="lbl">Kapanis</label>
+    <div class="quote">"Bu masada klasik networking yok. Gercek bir sorunu masanin ortasina koyuyoruz, tanisma tartismadan doguyor."
+      <span class="attr">TeknoPolitika Bulusmasi - Masa 1</span>
+    </div>
+    <div class="tip">Masada bir jargon, bir soru, bir de <strong>cevaplayamadigimiz soru</strong> birakalim.</div>
+    <a class="cta-link" href="https://luma.com/kdyb73vf" target="_blank">Kayit: luma.com/kdyb73vf</a>
+  </div>
+
+</div>
+
+<script>
+(function(){
+  var slides = Array.prototype.slice.call(document.querySelectorAll('.slide'));
+  var total = slides.length;
+  var idx = 0;
+  var counter = document.getElementById('counter');
+  var progress = document.getElementById('progress');
+
+  function goTo(i) {
+    idx = Math.max(0, Math.min(total - 1, i));
+    slides.forEach(function(s, n){ s.classList.toggle('active', n === idx); });
+    counter.textContent = (idx + 1) + ' / ' + total;
+    progress.style.width = ((idx + 1) / total * 100) + '%';
+    if (history.replaceState) history.replaceState(null, '', '#' + (idx + 1));
+  }
+  function jumpFromHash() {
+    var n = parseInt(location.hash.replace('#',''), 10);
+    if (n >= 1 && n <= total) goTo(n - 1);
+  }
+  window.addEventListener('keydown', function(e){
+    if (['ArrowRight','Space','Enter'].indexOf(e.key) !== -1) { e.preventDefault(); goTo(idx + 1); }
+    else if (['ArrowLeft','Backspace'].indexOf(e.key) !== -1) { e.preventDefault(); goTo(idx - 1); }
+    else if (e.key === 'Home') goTo(0);
+    else if (e.key === 'End') goTo(total - 1);
+    else if (e.key.toLowerCase() === 'f') { if (document.fullscreenElement) document.exitFullscreen(); else document.documentElement.requestFullscreen(); }
+  });
+  var touchStart = null;
+  window.addEventListener('touchstart', function(e){
+    touchStart = { x: e.touches[0].clientX, y: e.touches[0].clientY };
+  }, { passive: true });
+  window.addEventListener('touchmove', function(e){
+    if (!touchStart) return;
+    var y = e.touches[0].clientY;
+    var slide = slides[idx];
+    var canScrollUp = slide.scrollTop > 0;           // yukari kaydirilabilir
+    var canScrollDown = slide.scrollTop + slide.clientHeight < slide.scrollHeight - 1; // asagi
+    var goingUp = y < touchStart.y;                  // parmak yukari = asagi scroll
+    var goingDown = y > touchStart.y;                // parmak asagi = yukari scroll
+    // Slide kendi icinde scroll edilebiliyorsa native scroll'a izin ver
+    if ((goingUp && canScrollDown) || (goingDown && canScrollUp)) return;
+    // Uc noktasindaysa yatay/dikey swipe ile slide degistir
+    var dx = e.touches[0].clientX - touchStart.x;
+    var dy = e.touches[0].clientY - touchStart.y;
+    if (Math.abs(dy) > Math.abs(dx) && Math.abs(dy) > 40) {
+      e.preventDefault();
+    }
+  }, { passive: false });
+  window.addEventListener('touchend', function(e){
+    if (!touchStart) return;
+    var dx = e.changedTouches[0].clientX - touchStart.x;
+    var dy = e.changedTouches[0].clientY - touchStart.y;
+    var slide = slides[idx];
+    var atTop = slide.scrollTop <= 0;
+    var atBottom = slide.scrollTop + slide.clientHeight >= slide.scrollHeight - 1;
+    if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) {
+      goTo(idx + (dx < 0 ? 1 : -1));                  // yatay swipe
+    } else if (Math.abs(dy) > 50 && Math.abs(dy) > Math.abs(dx)) {
+      if (dy < 0 && atBottom) goTo(idx + 1);          // asagi scroll ucu -> sonraki
+      else if (dy > 0 && atTop) goTo(idx - 1);        // yukari scroll ucu -> onceki
+    }
+    touchStart = null;
+  });
+  window.addEventListener('hashchange', jumpFromHash);
+  if (location.hash) jumpFromHash();
+})();
+</script>
+</body>
+</html>

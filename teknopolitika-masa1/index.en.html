@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Table 1 - Making the Technical Understood by Everyone</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Space+Mono:wght@400;700&family=Caveat:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0D0D0D;
+  --text: rgba(255,255,255,0.92);
+  --text-secondary: rgba(255,255,255,0.5);
+  --text-muted: rgba(255,255,255,0.22);
+  --accent: #D4856A;
+  --green: #00E676;
+  --purple: #8B5CF6;
+  --red: #ff3b3b;
+  --blue: rgba(100,140,255,1);
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+html, body { height:100%; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Outfit', sans-serif;
+  overflow: hidden;
+}
+body::before {
+  content:'';
+  position:fixed; inset:0;
+  background-image: radial-gradient(circle, rgba(255,255,255,0.15) 1.2px, transparent 1.2px);
+  background-size: 28px 28px;
+  z-index:0;
+  pointer-events:none;
+}
+body::after {
+  content:'';
+  position:fixed; inset:0;
+  background: radial-gradient(ellipse at center, transparent 20%, rgba(13,13,13,0.7) 50%, rgb(13,13,13) 75%);
+  z-index:0;
+  pointer-events:none;
+}
+.deck { position:relative; z-index:1; height:100%; }
+.slide {
+  display:none;
+  height:100%;
+  padding: 6vh 8vw;
+  flex-direction:column;
+  justify-content:center;
+  position:relative;
+  overflow-y:auto;
+  -webkit-overflow-scrolling: touch;
+}
+.slide.active { display:flex; animation: fadeIn .4s ease; }
+@keyframes fadeIn { from{opacity:0; transform:translateY(12px);} to{opacity:1; transform:none;} }
+.logo-tr { position:fixed; top:28px; right:32px; width:44px; height:44px; z-index:3; }
+.lang-btn {
+  position:fixed; top:28px; right:96px; z-index:4;
+  font-family:'Space Mono', monospace; font-size:12px; letter-spacing:2px;
+  color: var(--text-secondary); text-decoration:none;
+  border: 1px solid rgba(255,255,255,0.3); border-radius: 999px;
+  padding: 8px 16px; transition: border-color .2s, color .2s;
+}
+.lang-btn:hover { border-color: var(--accent); color: var(--accent); }
+.marker {
+  position:fixed; bottom:26px; left:32px;
+  font-family:'Space Mono', monospace;
+  font-size:13px; letter-spacing:3px; text-transform:uppercase;
+  color: var(--text-muted); z-index:3;
+}
+.counter {
+  position:fixed; bottom:26px; right:32px;
+  font-family:'Space Mono', monospace;
+  font-size:13px; color: var(--text-muted); z-index:3;
+}
+.progress {
+  position:fixed; top:0; left:0; height:2px;
+  background: var(--accent);
+  box-shadow: 0 0 8px var(--accent);
+  z-index:3;
+  transition: width .3s ease;
+}
+label.lbl {
+  font-family:'Space Mono', monospace;
+  font-size:13px; letter-spacing:5px; text-transform:uppercase;
+  color: var(--text-secondary);
+  margin-bottom: 18px;
+}
+h1.big {
+  font-size: clamp(48px, 8vw, 112px);
+  font-weight: 800;
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+  max-width: 15em;
+}
+h2.big {
+  font-size: clamp(44px, 6.5vw, 92px);
+  font-weight: 800;
+  line-height: 1.04;
+  letter-spacing: -0.02em;
+  max-width: 18em;
+}
+.sub {
+  font-size: clamp(20px, 2.6vw, 30px);
+  font-weight: 300;
+  color: var(--text-secondary);
+  line-height: 1.35;
+  margin-top: 20px;
+  max-width: 32em;
+}
+.italic { font-style: italic; color: var(--accent); }
+.emphasis-bar {
+  width: 72px; height: 6px;
+  background: var(--accent);
+  margin-top: 28px;
+}
+.row3 {
+  display:flex; gap: 80px; align-items:center; justify-content:center;
+  margin-top: 40px; flex-wrap: wrap;
+}
+.row3 .kw { font-size: clamp(48px, 7vw, 96px); font-weight: 900; line-height:1; }
+.row3 .kw:nth-child(2) { color: var(--accent); }
+.split { display:grid; grid-template-columns: 1fr 1fr; gap: 5vw; margin-top: 36px; }
+.split .col .t { font-size: clamp(22px, 2.4vw, 32px); font-weight:700; margin-bottom:14px; }
+.split .col .d { font-size: clamp(16px, 1.8vw, 22px); color: var(--text-secondary); line-height:1.45; }
+.split .col.ok .t { color: var(--green); }
+.split .col.bad .t { color: var(--red); }
+.cards { display:flex; gap: 2vw; margin-top: 36px; }
+.card {
+  flex:1; border-top: 3px solid var(--accent);
+  padding: 24px 4px 8px;
+}
+.card .n { font-family:'Space Mono',monospace; font-size:13px; color: var(--text-muted); letter-spacing:3px; }
+.card .h { font-size: clamp(22px, 2.4vw, 32px); font-weight:700; margin:10px 0 8px; }
+.card .d { font-size: clamp(15px, 1.6vw, 20px); color: var(--text-secondary); line-height:1.4; }
+.flow { display:flex; align-items:center; gap: 2vw; margin-top: 40px; flex-wrap:wrap; }
+.flow .step {
+  flex:1; min-width: 180px;
+  border-top: 3px solid var(--accent);
+  padding-top: 18px;
+}
+.flow .step .h { font-size: clamp(20px, 2vw, 28px); font-weight:700; }
+.flow .step .d { font-size: clamp(15px, 1.6vw, 20px); color: var(--text-secondary); margin-top:6px; line-height:1.4; }
+.flow .arr { font-size: clamp(28px, 3vw, 40px); color: var(--accent); }
+.quote {
+  font-size: clamp(34px, 4.5vw, 64px);
+  font-style: italic;
+  font-weight: 300;
+  line-height: 1.2;
+  max-width: 20em;
+}
+.quote .attr {
+  display:block; margin-top: 28px;
+  font-family:'Space Mono', monospace; font-size:14px; letter-spacing:4px;
+  text-transform:uppercase; font-style:normal; color: var(--text-secondary);
+}
+.pills { display:flex; gap: 14px; flex-wrap:wrap; margin-top: 40px; }
+.pill {
+  font-family:'Space Mono', monospace; font-size:14px;
+  padding: 10px 18px;
+  border: 1px solid rgba(255,255,255,0.3);
+  border-radius: 999px;
+  color: var(--text-secondary);
+}
+.pill.accent { border-color: var(--accent); color: var(--accent); }
+.cta-link {
+  display:inline-block; margin-top: 30px;
+  font-family:'Space Mono', monospace; font-size:16px;
+  color: var(--accent); border-bottom: 2px solid var(--accent);
+  padding-bottom: 4px; text-decoration: none;
+}
+.hint {
+  position: fixed; bottom: 26px; left: 50%; transform: translateX(-50%);
+  font-family:'Space Mono', monospace; font-size: 11px; letter-spacing: 2px;
+  color: rgba(255,255,255,0.15); z-index:3; text-transform: uppercase;
+}
+.big-num { font-size: clamp(120px, 22vw, 260px); font-weight: 900; line-height: 0.9; color: rgba(255,255,255,0.08); position:absolute; right:6vw; top:4vh; }
+.tip {
+  margin-top: 34px; padding: 20px 24px;
+  border-left: 4px solid var(--accent);
+  background: rgba(212,133,106,0.08);
+  font-size: clamp(17px, 1.9vw, 23px);
+  color: var(--text-secondary);
+  line-height: 1.45;
+  max-width: 34em;
+}
+.tip strong { color: var(--text); }
+.examples { margin-top: 30px; }
+.examples .row {
+  display:flex; gap: 14px; align-items:flex-start;
+  margin-bottom: 14px; font-size: clamp(16px, 1.8vw, 22px); line-height:1.4;
+}
+.examples .row .badge {
+  font-family:'Space Mono',monospace; font-size:12px; letter-spacing:2px;
+  padding: 4px 10px; border-radius: 4px; white-space: nowrap; margin-top:2px;
+}
+.badge.ok { background: rgba(0,230,118,0.15); color: var(--green); }
+.badge.bad { background: rgba(255,59,59,0.15); color: var(--red); }
+.badge.q { background: rgba(139,92,246,0.15); color: var(--purple); }
+.two-col { display:grid; grid-template-columns: 1fr 1fr; gap: 3vw; margin-top: 30px; }
+.two-col .item .h { font-size: clamp(20px, 2vw, 28px); font-weight:700; margin-bottom:10px; }
+.two-col .item .d { font-size: clamp(15px, 1.6vw, 20px); color: var(--text-secondary); line-height:1.45; }
+</style>
+</head>
+<body>
+<div class="deck">
+
+  <svg class="logo-tr" viewBox="0 0 200 200"><path d="M 108 18 L 72 108 L 96 108 L 80 182 L 140 86 L 112 86 L 132 18 Z" fill="#D4856A"/></svg>
+  <a class="lang-btn" href="index.html">TR &#8594;</a>
+  <div class="marker">Table 1 / Engineering</div>
+  <div class="counter" id="counter">1 / 20</div>
+  <div class="progress" id="progress" style="width:5%"></div>
+  <div class="hint">arrow keys + F fullscreen + swipe on mobile</div>
+
+  <div class="slide active" data-slide="1">
+    <label class="lbl">TeknoPolitika Gathering - Aug 15, 2026 - Ankara</label>
+    <h1 class="big">Making the Technical <span class="italic">Understood</span> by Everyone</h1>
+    <div class="sub">Table 1 - Engineering. Not classic networking; the argument is at the center, introductions emerge from it.</div>
+    <div class="emphasis-bar"></div>
+  </div>
+
+  <div class="slide" data-slide="2">
+    <div class="big-num">01</div>
+    <label class="lbl">The Problem</label>
+    <h2 class="big">Explaining the model <span style="color:var(--red)">&ne;</span> making the problem visible</h2>
+    <div class="sub">Engineers explain "how it works." Decision-makers need "why it matters, what could go wrong." The gap between these two languages is where policy dies.</div>
+    <div class="tip"><strong>Example:</strong> "The model has 70 billion parameters" is true but decides nothing. "Accuracy drops 12% on low-resource languages" changes a decision.</div>
+  </div>
+
+  <div class="slide" data-slide="3">
+    <div class="big-num">02</div>
+    <label class="lbl">Where the Problem Is</label>
+    <h2 class="big">The jargon <span class="italic">wall</span></h2>
+    <div class="sub">"The model has bias because there's class imbalance for underrepresented groups in the training data." Clear to an engineer, a wall to a bureaucrat.</div>
+    <div class="pills"><span class="pill">bias</span><span class="pill">fine-tuning</span><span class="pill">latent space</span><span class="pill">overfitting</span><span class="pill">attention</span><span class="pill accent">not understood</span></div>
+    <div class="tip">Jargon is not bad by itself. The problem: <strong>speaking without knowing the other side doesn't know the language</strong>.</div>
+  </div>
+
+  <div class="slide" data-slide="4">
+    <div class="big-num">03</div>
+    <label class="lbl">The Table's Question</label>
+    <h2 class="big">When an engineer says "the model has bias," how does one <span class="italic">explain it</span> to a bureaucrat?</h2>
+    <div class="sub">Which analogy is enough, which one misleads? This is the table's focus question.</div>
+    <div class="tip">The bureaucrat's real question: "How does this change my decision?" If the answer reaches that question, the translation worked.</div>
+  </div>
+
+  <div class="slide" data-slide="5">
+    <div class="big-num">04</div>
+    <label class="lbl">A Sample Translation</label>
+    <h2 class="big">"Bias" in two languages</h2>
+    <div class="split">
+      <div class="col bad"><div class="t">Failed</div><div class="d">"The model has bias because there is a class imbalance for underrepresented groups in the training data."</div></div>
+      <div class="col ok"><div class="t">Worked</div><div class="d">"AI learns from past data. If some groups were underrepresented in that data, the system makes more mistakes for them."</div></div>
+    </div>
+    <div class="tip"><strong>Difference:</strong> the left explains a concept, the right <strong>makes the consequence visible</strong>.</div>
+  </div>
+
+  <div class="slide" data-slide="6">
+    <div class="big-num">05</div>
+    <label class="lbl">The Framework</label>
+    <h2 class="big">Three rules</h2>
+    <div class="row3"><div class="kw">STOP</div><div class="kw">ASK</div><div class="kw">ELEVATE</div></div>
+    <div class="tip">Each rule has one goal: <strong>catch the moment translation breaks</strong>.</div>
+  </div>
+
+  <div class="slide" data-slide="7">
+    <div class="big-num">06</div>
+    <label class="lbl">Rule 1</label>
+    <h2 class="big">Jargon appears, <span class="italic">stop</span></h2>
+    <div class="sub">When a term is used, the facilitator steps in.</div>
+    <div class="tip">"Could you restate that in three sentences so someone without an engineering background could understand?"</div>
+    <div class="examples">
+      <div class="row"><span class="badge bad">STOP</span> "With its attention mechanism, the transformer architecture..."</div>
+      <div class="row"><span class="badge ok">FIX</span> "The model reads the whole text at once and focuses on the key words."</div>
+    </div>
+  </div>
+
+  <div class="slide" data-slide="8">
+    <div class="big-num">07</div>
+    <label class="lbl">Rule 2</label>
+    <h2 class="big">No <span class="italic">monologues</span></h2>
+    <div class="sub">If one person talks for 2+ minutes, the floor goes to someone else.</div>
+    <div class="tip">The goal is to measure the gap from everyone's language. One voice, one language means missing the table's purpose.</div>
+    <div class="examples">
+      <div class="row"><span class="badge bad">MONOLOGUE</span> 5 minutes of uninterrupted technical talk</div>
+      <div class="row"><span class="badge ok">MOVE</span> "And [other person], how does this look from your field?"</div>
+    </div>
+  </div>
+
+  <div class="slide" data-slide="9">
+    <div class="big-num">08</div>
+    <label class="lbl">Rule 3</label>
+    <h2 class="big">Elevate the <span class="italic">naive question</span></h2>
+    <div class="sub">Naive questions often sit exactly at the center of the interdisciplinary gap.</div>
+    <div class="tip">There is no "dumb" question. A question no one can answer is a map of the gap.</div>
+    <div class="examples">
+      <div class="row"><span class="badge q">QUESTION</span> "Wait, does the model 'know' things, or does it 'predict'?"</div>
+      <div class="row"><span class="badge ok">VALUE</span> This question exposes the core difference between "knowledge" and "prediction."</div>
+    </div>
+  </div>
+
+  <div class="slide" data-slide="10">
+    <div class="big-num">09</div>
+    <label class="lbl">Your Tool</label>
+    <h2 class="big">You <span class="italic">drive</span> the translation</h2>
+    <div class="split">
+      <div class="col ok"><div class="t">QUESTION 1 - "So what?"</div><div class="d">"What consequences does this have?" Pulls the technical claim up to the decision layer.</div></div>
+      <div class="col accent"><div class="t">QUESTION 2 - "Could you explain?"</div><div class="d">"Could you explain this so someone without an engineering background understands?" Stops jargon on the spot.</div></div>
+    </div>
+    <div class="tip">You don't need to be an expert to use these two questions. Just <strong>curiosity</strong>.</div>
+  </div>
+
+  <div class="slide" data-slide="11">
+    <div class="big-num">10</div>
+    <label class="lbl">Tool 1</label>
+    <h2 class="big">The "So what?" <span class="italic">test</span></h2>
+    <div class="sub">Asked after every technical claim. If there's no answer, the claim doesn't belong at the table.</div>
+    <div class="examples">
+      <div class="row"><span class="badge bad">CUT</span> "The model has 70B parameters." → So what? It changes no decision.</div>
+      <div class="row"><span class="badge ok">KEEP</span> "Accuracy drops 12% on low-resource languages." → Turkish-speaking citizens get worse service. An equity problem.</div>
+      <div class="row"><span class="badge ok">KEEP</span> "The system updates every two weeks." → A law written for v1 may be obsolete before it's published.</div>
+    </div>
+  </div>
+
+  <div class="slide" data-slide="12">
+    <div class="big-num">11</div>
+    <label class="lbl">Tool 2</label>
+    <h2 class="big">"Could you <span class="italic">explain?</span>"</h2>
+    <div class="sub">When you hear jargon, ask without hesitation. That's exactly why you're at this table.</div>
+    <div class="tip">"Could you restate that term in three sentences so someone without an engineering background could understand?"</div>
+    <div class="examples">
+      <div class="row"><span class="badge q">JARGON</span> "Fine-tuning"</div>
+      <div class="row"><span class="badge ok">TRANSLATION</span> "Taking someone with general knowledge and training them in one specific field."</div>
+    </div>
+  </div>
+
+  <div class="slide" data-slide="13">
+    <div class="big-num">12</div>
+    <label class="lbl">Why These Two Questions?</label>
+    <h2 class="big">Two questions, one goal</h2>
+    <div class="two-col">
+      <div class="item"><div class="h" style="color:var(--green)">"So what?"</div><div class="d">Aims for <strong>action</strong>, not understanding. Connects the claim to a decision. Filters empty claims.</div></div>
+      <div class="item"><div class="h" style="color:var(--purple)">"Could you explain?"</div><div class="d"><strong>Demands</strong> understanding. Stops jargon from becoming a wall. Gives the speaker the responsibility to simplify.</div></div>
+    </div>
+    <div class="tip">One asks <strong>what it's for</strong>, the other <strong>what it means</strong>. Together they complete the translation.</div>
+  </div>
+
+  <div class="slide" data-slide="14">
+    <div class="big-num">13</div>
+    <label class="lbl">The Analogy Test</label>
+    <h2 class="big">Don't <span class="italic">trust</span> analogies, test them</h2>
+    <div class="sub">Every analogy must pass three tests.</div>
+    <div class="examples">
+      <div class="row"><span class="badge q">TEST 1</span> Does it survive two follow-up questions? "AI is like a student" → "Can it refuse? Does it know when it's wrong?"</div>
+      <div class="row"><span class="badge q">TEST 2</span> Does it hide important complexity? "AI is like electricity" → electricity doesn't make decisions, AI does.</div>
+      <div class="row"><span class="badge q">TEST 3</span> Does it work for this audience? "Gradient descent is like searching a valley" → not for a bureaucrat.</div>
+    </div>
+  </div>
+
+  <div class="slide" data-slide="15">
+    <div class="big-num">14</div>
+    <label class="lbl">Closing Outputs</label>
+    <h2 class="big"><span class="italic">Three</span> outputs from the table</h2>
+    <div class="cards">
+      <div class="card"><div class="n">1</div><div class="h">The stuck concept</div><div class="d">Where did the translation break? Which term hit which barrier?</div></div>
+      <div class="card"><div class="n">2</div><div class="h">The analogy that worked</div><div class="d">Which comparison actually worked? We're writing it down.</div></div>
+      <div class="card"><div class="n">3</div><div class="h">The unanswerable question</div><div class="d">The most concrete evidence of the interdisciplinary gap.</div></div>
+    </div>
+    <div class="tip">We write these <strong>where everyone can see them</strong>. They'll be the map for the next gathering.</div>
+  </div>
+
+  <div class="slide" data-slide="16">
+    <div class="big-num">15</div>
+    <label class="lbl">Table Flow</label>
+    <h2 class="big">A 60-minute path</h2>
+    <div class="flow">
+      <div class="step"><div class="h">Warm-up</div><div class="d">Describe your profession without technical terms. 1 min each.</div></div>
+      <div class="arr">&rarr;</div>
+      <div class="step"><div class="h">Cards</div><div class="d">6 question cards. Each card is one translation practice.</div></div>
+      <div class="arr">&rarr;</div>
+      <div class="step"><div class="h">Closing</div><div class="d">Write the 3 outputs where everyone can see. Table done.</div></div>
+    </div>
+  </div>
+
+  <div class="slide" data-slide="17">
+    <div class="big-num">16</div>
+    <label class="lbl">For You</label>
+    <h2 class="big">No <span class="italic">prep</span> required</h2>
+    <div class="sub">But thinking about two questions before you arrive enriches the table.</div>
+    <div class="examples">
+      <div class="row"><span class="badge q">QUESTION</span> A concept from your field you could never explain to someone outside it?</div>
+      <div class="row"><span class="badge q">QUESTION</span> A question you've always wanted to ask another discipline but never could?</div>
+    </div>
+    <div class="tip">No answer? That's fine. <strong>The gap itself</strong> is the table's raw material.</div>
+  </div>
+
+  <div class="slide" data-slide="18">
+    <div class="big-num">17</div>
+    <label class="lbl">Why Open Source</label>
+    <h2 class="big">This problem is bigger than one <span class="italic">event</span></h2>
+    <div class="sub">Strategy, question cards, jargon dictionary, participant guide, research notes - all open. So other tables, other cities can reuse it.</div>
+    <div class="tip">The jargon problem isn't unique to Turkey. Making it open source <strong>multiplies the solution</strong>.</div>
+  </div>
+
+  <div class="slide" data-slide="19">
+    <div class="big-num">18</div>
+    <label class="lbl">What's in the Repo</label>
+    <h2 class="big">Ready to <span class="italic">use</span></h2>
+    <div class="two-col">
+      <div class="item"><div class="h">For participants</div><div class="d">5-minute guide, visual framework, 7 question cards, jargon dictionary.</div></div>
+      <div class="item"><div class="h">For facilitators</div><div class="d">Strategy, intervention cards, analogy tests, research notes.</div></div>
+    </div>
+    <a class="cta-link" href="https://github.com/murataslan1/bridging-tech-policy" target="_blank">github.com/murataslan1/bridging-tech-policy</a>
+  </div>
+
+  <div class="slide" data-slide="20">
+    <label class="lbl">Closing</label>
+    <div class="quote">"There is no classic networking at this table. We put a real problem at the center, and introductions emerge from the argument."
+      <span class="attr">TeknoPolitika Gathering - Table 1</span>
+    </div>
+    <div class="tip">Let's leave the table with one jargon, one question, and one <strong>question we couldn't answer</strong>.</div>
+    <a class="cta-link" href="https://luma.com/kdyb73vf" target="_blank">Join: luma.com/kdyb73vf</a>
+  </div>
+
+</div>
+
+<script>
+(function(){
+  var slides = Array.prototype.slice.call(document.querySelectorAll('.slide'));
+  var total = slides.length;
+  var idx = 0;
+  var counter = document.getElementById('counter');
+  var progress = document.getElementById('progress');
+
+  function goTo(i) {
+    idx = Math.max(0, Math.min(total - 1, i));
+    slides.forEach(function(s, n){ s.classList.toggle('active', n === idx); });
+    counter.textContent = (idx + 1) + ' / ' + total;
+    progress.style.width = ((idx + 1) / total * 100) + '%';
+    if (history.replaceState) history.replaceState(null, '', '#' + (idx + 1));
+  }
+  function jumpFromHash() {
+    var n = parseInt(location.hash.replace('#',''), 10);
+    if (n >= 1 && n <= total) goTo(n - 1);
+  }
+  window.addEventListener('keydown', function(e){
+    if (['ArrowRight','Space','Enter'].indexOf(e.key) !== -1) { e.preventDefault(); goTo(idx + 1); }
+    else if (['ArrowLeft','Backspace'].indexOf(e.key) !== -1) { e.preventDefault(); goTo(idx - 1); }
+    else if (e.key === 'Home') goTo(0);
+    else if (e.key === 'End') goTo(total - 1);
+    else if (e.key.toLowerCase() === 'f') { if (document.fullscreenElement) document.exitFullscreen(); else document.documentElement.requestFullscreen(); }
+  });
+  var touchStart = null;
+  window.addEventListener('touchstart', function(e){
+    touchStart = { x: e.touches[0].clientX, y: e.touches[0].clientY };
+  }, { passive: true });
+  window.addEventListener('touchmove', function(e){
+    if (!touchStart) return;
+    var y = e.touches[0].clientY;
+    var slide = slides[idx];
+    var canScrollUp = slide.scrollTop > 0;
+    var canScrollDown = slide.scrollTop + slide.clientHeight < slide.scrollHeight - 1;
+    var goingUp = y < touchStart.y;
+    var goingDown = y > touchStart.y;
+    if ((goingUp && canScrollDown) || (goingDown && canScrollUp)) return;
+    var dx = e.touches[0].clientX - touchStart.x;
+    var dy = e.touches[0].clientY - touchStart.y;
+    if (Math.abs(dy) > Math.abs(dx) && Math.abs(dy) > 40) {
+      e.preventDefault();
+    }
+  }, { passive: false });
+  window.addEventListener('touchend', function(e){
+    if (!touchStart) return;
+    var dx = e.changedTouches[0].clientX - touchStart.x;
+    var dy = e.changedTouches[0].clientY - touchStart.y;
+    var slide = slides[idx];
+    var atTop = slide.scrollTop <= 0;
+    var atBottom = slide.scrollTop + slide.clientHeight >= slide.scrollHeight - 1;
+    if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) {
+      goTo(idx + (dx < 0 ? 1 : -1));
+    } else if (Math.abs(dy) > 50 && Math.abs(dy) > Math.abs(dx)) {
+      if (dy < 0 && atBottom) goTo(idx + 1);
+      else if (dy > 0 && atTop) goTo(idx - 1);
+    }
+    touchStart = null;
+  });
+  window.addEventListener('hashchange', jumpFromHash);
+  if (location.hash) jumpFromHash();
+})();
+</script>
+</body>
+</html>
