@@ -34,13 +34,13 @@ export const Newsletter = () => {
     setFormdata((prev) => ({ ...prev, loading: true, show: false }));
     try {
       const result = await subscribe(formData.email.trim(), "newsletter");
-      setFormdata({
-        email: "",
+      setFormdata((prev) => ({
+        email: result === "mailto" ? prev.email : "",
         loading: false,
         alertmessage: subscribeMessages[result],
         variant: "success",
         show: true,
-      });
+      }));
     } catch (error) {
       setFormdata((prev) => ({
         ...prev,

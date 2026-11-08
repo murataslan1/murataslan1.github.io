@@ -12,8 +12,9 @@ export const NewsletterSignup = ({ source }) => {
     e.preventDefault();
     setStatus("loading");
     try {
-      setStatus(await subscribe(email.trim(), source));
-      setEmail("");
+      const result = await subscribe(email.trim(), source);
+      setStatus(result);
+      if (result !== "mailto") setEmail("");
     } catch (err) {
       setStatus("error");
     }
