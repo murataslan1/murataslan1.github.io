@@ -599,6 +599,7 @@ const dataportfolio = [
 const contactConfig = {
   YOUR_EMAIL: "murataslan0.tr@gmail.com",
   YOUR_FONE: "",
+  CALENDLY_URL: "https://calendly.com/murataslan562001/30min",
   description:
     "I'm always open to discussing new opportunities, open source collaborations, or just having a chat about technology. Feel free to reach out!",
   YOUR_SERVICE_ID: "service_id",
@@ -695,6 +696,29 @@ const communityTalks = [
   }
 ];
 
+const fdePrinciples = [
+  {
+    title: "Get on a call",
+    body: "30 minutes, no pitch. You tell me what's slowing your team down; I ask until I understand the real constraint.",
+    proof: "Free 30-min call"
+  },
+  {
+    title: "See the problem where it lives",
+    body: "I sit with the people who have the problem, in their tools and their code, not in a slide deck about it.",
+    proof: "4 community events in 8 days"
+  },
+  {
+    title: "Solve it first",
+    body: "A working fix or prototype on the real problem, before any plan or proposal. If it doesn't help, we stop there.",
+    proof: "50+ merged PRs in open source"
+  },
+  {
+    title: "Then build and scale",
+    body: "Only once the value is proven do we set up the rest: the product, the process, the scope and the terms.",
+    proof: "Value first, everything else after"
+  }
+];
+
 const communityPosts = [
   {
     event: "Devin Meetup Ankara",
@@ -705,6 +729,8 @@ const communityPosts = [
     imgAlt: "Group photo of builders at Devin Meetup Ankara",
     quote:
       "The smartest model inside Devin AI does not write your code. It tells a cheaper one what to write.",
+    fieldNote:
+      "Your value moves away from writing every line. It moves toward slicing the work well and judging what comes back.",
     takeaway:
       "After the talk we closed the slides and opened our laptops. Real projects, real mistakes, real fixes.",
     engagement: { likes: 7, comments: 0, reposts: 0 },
@@ -721,6 +747,8 @@ const communityPosts = [
     imgAlt: "Attendees of FIL Network #6 at Bilkent TEKMER",
     quote:
       "Access to tools is no longer the main advantage. Seeing the right problem, asking the right question, and moving fast is.",
+    fieldNote:
+      "The panel went from research to product, from security to robotics. The common thread: real value, not hype.",
     takeaway:
       "We have organized similar Build and Sell sessions before. People leave with something they can use, not just notes.",
     engagement: { likes: 24, comments: 0, reposts: 3 },
@@ -736,6 +764,8 @@ const communityPosts = [
     imgAlt: "Speaker on stage at E-Ticaret Sohbetleri, CoZone ODTÜ Teknokent",
     quote:
       "Revenue looks good on a dashboard. Margin is what's left after fees, shipping, returns and ads.",
+    fieldNote:
+      "Checkout isn't a back-office detail. It's where sales are won or lost.",
     takeaway:
       "A local business doesn't have to stay local anymore. Ankara already makes things; the gap is getting them in front of buyers.",
     engagement: { likes: 41, comments: 0, reposts: 4 },
@@ -750,6 +780,8 @@ const communityPosts = [
     img: "/img/community/devfest-1.jpg",
     imgAlt: "Murat with community members at the DevFest Ankara photo wall",
     quote: "First they asked who it's for. Then they asked if it's even a who.",
+    fieldNote:
+      "Give production agents hard permission limits instead of polite instructions. Someone still gets paged at 3am.",
     takeaway:
       "The talks gave me ideas. The people in between gave me reasons to actually try them.",
     engagement: { likes: 101, comments: 8, reposts: 5 },
@@ -787,5 +819,6 @@ export {
   communityStats,
   communityTalks,
   communityPosts,
-  communities
+  communities,
+  fdePrinciples
 };

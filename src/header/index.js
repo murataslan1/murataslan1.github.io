@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./style.css";
 import { VscGrabber, VscClose } from "react-icons/vsc";
 import { Link } from "react-router-dom";
-import { logotext, socialprofils } from "../content_option";
+import { logotext, socialprofils, contactConfig } from "../content_option";
 import Themetoggle from "../components/themetoggle";
 
 const Headermain = () => {
@@ -28,6 +28,14 @@ const Headermain = () => {
               <Link to="/community">Community</Link>
               <Link to="/contact">Contact</Link>
               <Link to="/newsletter">Newsletter</Link>
+              <a
+                href={contactConfig.CALENDLY_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="site__nav-cta"
+              >
+                Book a call
+              </a>
             </nav>
 
             <Themetoggle />
@@ -64,6 +72,9 @@ const Headermain = () => {
                   </li>
                   <li className="menu_item">
                   <Link onClick={handleToggle} to="/newsletter" className="my-3"> Newsletter</Link>
+                  </li>
+                  <li className="menu_item">
+                  <a href={contactConfig.CALENDLY_URL} target="_blank" rel="noopener noreferrer" className="my-3">Book a call</a>
                   </li>
                 </ul>
               </div>

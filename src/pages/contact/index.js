@@ -90,6 +90,18 @@ export const ContactUs = () => {
                 </div>
               </div>
 
+              {contactConfig.CALENDLY_URL && (
+                <div className="contact-info__item">
+                  <span className="contact-info__emoji">📅</span>
+                  <div>
+                    <span className="contact-info__label">Book a call</span>
+                    <a href={contactConfig.CALENDLY_URL} target="_blank" rel="noopener noreferrer" className="contact-info__value">
+                      30-min call on Calendly
+                    </a>
+                  </div>
+                </div>
+              )}
+
               {contactConfig.YOUR_FONE && (
                 <div className="contact-info__item">
                   <span className="contact-info__emoji">📱</span>

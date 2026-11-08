@@ -111,6 +111,60 @@
   gap: var(--space-lg);
 }
 
+.fde-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: var(--space-lg);
+}
+
+.fde-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  height: 100%;
+  padding: var(--space-lg);
+}
+
+.fde-card__index {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--accent-blue);
+}
+
+.fde-card__title {
+  font-size: 1.05rem;
+  line-height: 1.35;
+  margin: 0;
+}
+
+.fde-card__body {
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: var(--color-ink-muted);
+  margin: 0;
+}
+
+.fde-card__proof {
+  margin-top: auto;
+  padding-top: var(--space-xs);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--color-ink);
+}
+
+.fde-cta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-md, 1rem);
+  margin-top: var(--space-xl);
+}
+
+.fde-cta__note {
+  font-size: 0.9rem;
+  color: var(--color-ink-muted);
+}
+
 .talk-card {
   display: flex;
   flex-direction: column;
@@ -234,11 +288,22 @@
   color: var(--color-ink);
 }
 
-.post-card__takeaway {
+.post-card__note {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
   font-size: 0.95rem;
   color: var(--color-ink-muted);
   line-height: 1.6;
   margin: 0;
+}
+
+.post-card__label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--accent-blue);
 }
 
 .post-card__footer {

@@ -12,7 +12,7 @@
   background: var(--color-surface);
   border: 1px solid var(--glass-border);
   border-radius: var(--radius-full);
-  width: auto;
+  width: max-content;
   max-width: calc(100% - 2rem);
   box-shadow: var(--shadow-lift);
 }
@@ -70,6 +70,23 @@
 
 .site__nav a:hover::after {
   transform: scaleX(1);
+}
+
+.site__nav a.site__nav-cta {
+  padding: 0.4rem 0.9rem;
+  border-radius: 999px;
+  background: var(--accent-blue);
+  color: #fff;
+  white-space: nowrap;
+}
+
+.site__nav a.site__nav-cta::after {
+  display: none;
+}
+
+.site__nav a.site__nav-cta:hover {
+  color: #fff;
+  opacity: 0.9;
 }
 
 .menu__button {
