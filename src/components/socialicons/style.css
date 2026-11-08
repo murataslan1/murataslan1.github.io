@@ -1,0 +1,94 @@
+/* ==========================================
+   SOCIAL ICONS
+   ========================================== */
+
+.stick_follow_icon {
+  top: 50%;
+  left: 24px;
+  width: 28px;
+  position: fixed;
+  transform: translateY(-50%);
+  z-index: 300;
+}
+
+.stick_follow_icon ul {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.stick_follow_icon ul li a {
+  display: inline-flex;
+  width: 38px;
+  height: 38px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  border: 1px solid var(--color-line);
+  color: var(--color-ink-subtle);
+  transition: all var(--transition-base);
+  background: var(--color-surface);
+  box-shadow: 0 6px 20px rgba(17, 17, 17, 0.08);
+}
+
+.stick_follow_icon ul li a:hover {
+  color: var(--color-accent);
+  border-color: var(--color-accent);
+  transform: translateY(-2px);
+}
+
+.stick_follow_icon p {
+  position: relative;
+  color: var(--color-ink-subtle);
+  font-size: 0.6rem;
+  font-family: var(--font-mono);
+  font-weight: 500;
+  line-height: 1.2;
+  white-space: nowrap;
+  transform: rotate(-90deg);
+  transform-origin: center;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  margin-top: var(--space-lg);
+  margin-left: -1.4rem;
+}
+
+.stick_follow_icon p::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: -40px;
+  width: 32px;
+  height: 1px;
+  background: var(--color-line);
+}
+
+@media only screen and (max-width: 991px) {
+  .stick_follow_icon {
+    width: 100%;
+    position: static;
+    transform: none;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+    padding: var(--space-xl) 0;
+    padding-bottom: calc(var(--space-xl) + env(safe-area-inset-bottom, 20px));
+    align-items: center;
+    gap: var(--space-lg);
+  }
+
+  .stick_follow_icon p {
+    transform: none;
+    margin: 0;
+    font-size: 0.68rem;
+  }
+
+  .stick_follow_icon p::after {
+    display: none;
+  }
+
+  .stick_follow_icon ul {
+    flex-direction: row;
+    gap: var(--space-sm);
+  }
+}

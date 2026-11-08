@@ -1,0 +1,27 @@
+/* ==========================================
+   THEME TOGGLE
+   ========================================== */
+
+.theme_toggle {
+  margin-left: 1rem;
+  background: transparent;
+  border: 1px solid var(--color-line);
+  border-radius: 999px;
+  padding: 0.35rem 0.6rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-ink);
+  cursor: pointer;
+  transition: all var(--transition-base);
+}
+
+.theme_toggle:hover {
+  border-color: var(--color-ink);
+  color: var(--color-accent);
+}
+
+.theme_toggle svg {
+  width: 1.3em;
+  height: 1.3em;
+}
