@@ -1,0 +1,61 @@
+.glass-card {
+  background: var(--color-surface);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  transition: all var(--transition-base);
+  box-shadow: var(--shadow-lift);
+}
+
+.glass-card:hover {
+  border-color: var(--glass-border-hover);
+  box-shadow: var(--shadow-soft);
+}
+
+.glass-card--glow:hover {
+  box-shadow: var(--shadow-glow);
+}
+
+.glass-card--link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+.glass-card__arrow {
+  font-size: 1.25rem;
+  opacity: 0;
+  transform: translateX(-10px);
+  transition: all var(--transition-base);
+  color: var(--accent-blue);
+}
+
+.glass-card--link:hover .glass-card__arrow {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Card sizes */
+.glass-card--sm {
+  padding: var(--space-md);
+  border-radius: var(--radius-md);
+}
+
+.glass-card--lg {
+  padding: var(--space-xl);
+  border-radius: var(--radius-xl);
+}
+
+/* Card with gradient border */
+.glass-card--gradient {
+  position: relative;
+  background: var(--color-surface);
+  border: 1px solid var(--accent-blue);
+}
+
+.glass-card--gradient::before {
+  display: none;
+}

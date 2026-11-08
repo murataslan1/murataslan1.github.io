@@ -1,0 +1,45 @@
+/* ==========================================
+   APP LAYOUT + PAGE TRANSITIONS
+   ========================================== */
+
+.s_c {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+@media only screen and (max-width: 991px) {
+  .s_c {
+    padding-top: 40px;
+  }
+}
+
+.container,
+.container-fluid {
+  padding-left: clamp(1.25rem, 4vw, 3rem);
+  padding-right: clamp(1.25rem, 4vw, 3rem);
+}
+
+@media (min-width: 1200px) {
+  .container {
+    max-width: var(--page-max);
+  }
+}
+
+section {
+  scroll-margin-top: 90px;
+}
+
+hr {
+  border: none;
+  height: 1px;
+  background: linear-gradient(90deg, var(--color-line), transparent);
+  margin: var(--space-lg) 0;
+}
+
+.t_border {
+  border: none !important;
+  height: 1px;
+  background: linear-gradient(90deg, var(--color-line), transparent);
+}
