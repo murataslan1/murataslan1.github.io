@@ -143,23 +143,27 @@
 
 .nl-alert p {
   margin: 0;
-  color: var(--color-ink);
+  color: inherit;
+  font-weight: 500;
 }
 
 .nl-alert--success {
   background: #dcfce7;
   border: 1px solid #86efac;
+  color: #14532d;
 }
 
 .nl-alert--danger {
   background: #fee2e2;
   border: 1px solid #fca5a5;
+  color: #7f1d1d;
 }
 
 .nl-alert__close {
   background: none;
   border: none;
-  color: var(--color-ink-muted);
+  color: inherit;
+  opacity: 0.7;
   font-size: 1.2rem;
   cursor: pointer;
   padding: 0;
