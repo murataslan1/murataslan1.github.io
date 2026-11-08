@@ -723,3 +723,14 @@
     text-align: center;
   }
 }
+
+.hero__proof {
+  margin: var(--space-md) 0 0;
+  font-size: 0.85rem;
+  color: var(--color-ink-muted);
+  text-align: center;
+}
+
+.connect-section .book-call {
+  margin: 0 auto var(--space-2xl);
+}

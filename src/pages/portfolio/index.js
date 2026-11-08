@@ -4,6 +4,7 @@ import { dataportfolio } from "../../content_option";
 import Seo from "../../components/Seo";
 import { motion, AnimatePresence } from "framer-motion";
 import { FadeInUp } from "../../components/Motion";
+import { BookCallCTA } from "../../components/BookCallCTA";
 
 const buildFilterList = (items, key) => {
   const values = items
@@ -224,6 +225,11 @@ export const Portfolio = () => {
             <p>No projects match this filter yet.</p>
           </FadeInUp>
         )}
+
+        <BookCallCTA
+          title="Want this kind of fix on your codebase?"
+          secondary={{ to: "/community", label: "See my talks" }}
+        />
       </div>
     </section>
   );

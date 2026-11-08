@@ -238,3 +238,10 @@ a.contact-info__value:hover {
     padding: var(--space-xl);
   }
 }
+
+.contact-book {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: var(--space-lg);
+}

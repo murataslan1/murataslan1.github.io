@@ -20,6 +20,7 @@ import {
   SiPostgresql,
 } from "react-icons/si";
 import { FadeInUp, StaggerContainer, StaggerItem } from "../../components/Motion";
+import { BookCallCTA } from "../../components/BookCallCTA";
 
 const hardSkills = [
   {
@@ -74,10 +75,11 @@ const softSkills = [
 ];
 
 const values = [
+  { emoji: "🎯", title: "Value first", desc: "A working fix before any proposal" },
+  { emoji: "🔍", title: "See it where it lives", desc: "In your tools, not in a slide deck" },
   { emoji: "✨", title: "Simplicity", desc: "Clarity over complexity" },
-  { emoji: "⚡", title: "Efficiency", desc: "Fast, but never rushed" },
   { emoji: "♿", title: "Accessibility", desc: "Built for real people" },
-  { emoji: "🎯", title: "Quality", desc: "Code that lasts" },
+  { emoji: "🧱", title: "Quality", desc: "Code that lasts" },
 ];
 
 export const About = () => {
@@ -90,7 +92,7 @@ export const About = () => {
         <div className="about-hero">
           <FadeInUp className="about-hero__content">
             <span className="section-title">About Me</span>
-            <h1>I build fast, functional, and elegant experiences</h1>
+            <h1>I find the real problem and fix it first</h1>
             <p className="about-hero__desc">{dataabout.aboutme}</p>
           </FadeInUp>
 
@@ -269,6 +271,8 @@ export const About = () => {
             ))}
           </StaggerContainer>
         </div>
+
+        <BookCallCTA secondary={{ to: "/portfolio", label: "See my work" }} />
       </div>
     </section>
   );
