@@ -11,6 +11,7 @@ import {
   communityPosts,
 } from "../../content_option";
 import { BookCallCTA } from "../../components/BookCallCTA";
+import { NewsletterSignup } from "../../components/NewsletterSignup";
 import { Link } from "react-router-dom";
 import Seo from "../../components/Seo";
 import { motion } from "framer-motion";
@@ -948,6 +949,8 @@ export const Home = () => {
             </a>
           </div>
         </div>
+
+        <NewsletterSignup source="home" />
       </div>
 
       {/* Footer */}
