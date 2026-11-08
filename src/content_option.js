@@ -2,7 +2,7 @@ const logotext = "MURAT ASLAN";
 const meta = {
   title: "Murat Aslan | Open Source Developer",
   description:
-    "Full Stack Developer & Open Source Contributor with 50+ merged PRs and 200+ pull requests to major projects like VS Code, Coolify, Traefik, OpenClaw, context-mode, LangChain, Node.js, Deno, and more.",
+    "Open source contributor and community speaker in Ankara. 50+ merged PRs to VS Code, Coolify, Traefik, Node.js and more. I get on a call, find the real problem and ship a working fix first. Book a free 30-min call.",
   siteUrl: "https://murataslan1.github.io/",
   image: "https://murataslan1.github.io/profile.png",
   role: "Full Stack Developer",
@@ -25,10 +25,15 @@ const introdata = {
 const dataabout = {
   title: "About Me",
   aboutme:
-    "I'm a passionate Full Stack Developer and Open Source enthusiast based in Ankara, Turkey. I believe in the power of open source to drive innovation and collaboration. As of November 2026, I've opened 200+ pull requests (50+ merged) to projects like VS Code (41 PRs), Coolify (34 PRs), context-mode (10 PRs), Traefik, Node.js, Vercel AI SDK, T3Code, LangChain.js, Deno, Trivy, and many more. With 258 public repositories, I love finding bugs, improving documentation, and adding new features to projects that millions of developers use daily."
+    "I'm a full stack developer and open source contributor in Ankara. Open source taught me how I work: use the tool, find where it actually breaks, fix it, get the fix merged. That's 200+ pull requests (50+ merged) to VS Code, Coolify, Traefik, Node.js, Vercel AI SDK, LangChain.js, Deno and more. In 2026 I spoke at ClawCon Ankara, the Claude Community meetup and HSD Türkiye. With teams I work the same way: a 30-minute call, the real problem solved first, then building and scaling."
 };
 
 const worktimeline = [
+  {
+    jobtitle: "Speaker & Community Builder",
+    where: "ClawCon Ankara, Claude Community, HSD Türkiye, Ankara AI & developer communities",
+    date: "2026"
+  },
   {
     jobtitle: "Open Source Contributor",
     where: "VS Code, Cortex, Coolify",
@@ -74,6 +79,11 @@ const skills = [
 
 const services = [
   {
+    title: "Forward-Deployed Problem Solving",
+    description:
+      "A 30-minute call to understand what's slowing your team down, a working fix or prototype on the real problem, and only then the plan, the product and the terms."
+  },
+  {
     title: "Open Source Contributions",
     description:
       "50+ merged PRs across 200+ total contributions: VS Code (41 PRs), Coolify (34 PRs), context-mode, Traefik (65k⭐), Node.js, Vercel AI SDK, T3Code, LangChain.js, Deno, and more."
@@ -104,6 +114,20 @@ const currentFocus = [
     desc: "Improving workflows, tooling, and internal platforms."
   }
 ];
+
+const callCta = {
+  eyebrow: "Value first",
+  title: "Got a problem worth 30 minutes?",
+  body:
+    "Tell me what's slowing your team down. I'll ask until I understand the real constraint, then show you a working fix before we talk about anything else.",
+  proof: [
+    "50+ merged PRs: VS Code, Coolify, Traefik, Node.js",
+    "Speaker: ClawCon Ankara, Claude Community, HSD Türkiye",
+    "In 13+ community rooms in 2026"
+  ],
+  button: "Book a free 30-min call",
+  note: "Step 1 takes 30 minutes and costs nothing. If I can't help, you'll still leave with a clearer problem."
+};
 
 const resume = {
   url: "",
@@ -601,11 +625,11 @@ const contactConfig = {
   YOUR_FONE: "",
   CALENDLY_URL: "https://calendly.com/murataslan562001/30min",
   description:
-    "I'm always open to discussing new opportunities, open source collaborations, or just having a chat about technology. Feel free to reach out!",
+    "The fastest way to work with me is a free 30-minute call: tell me what's slowing your team down, and if I can help, I'll show you with a working fix before we talk about anything else. Prefer writing? Email works too.",
   YOUR_SERVICE_ID: "service_id",
   YOUR_TEMPLATE_ID: "template_id",
   YOUR_USER_ID: "user_id",
-  GOOGLE_SHEETS_URL: ""
+  NEWSLETTER_URL: ""
 };
 
 const socialprofils = {
@@ -995,6 +1019,7 @@ export {
   services,
   currentFocus,
   resume,
+  callCta,
   introdata,
   contactConfig,
   socialprofils,

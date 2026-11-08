@@ -15,6 +15,7 @@ import {
 } from "../../content_option";
 import Seo from "../../components/Seo";
 import { FadeInUp, StaggerContainer, StaggerItem } from "../../components/Motion";
+import { NewsletterSignup } from "../../components/NewsletterSignup";
 
 const stats = [
   { value: String(communityTalks.length), label: "Community talks given" },
@@ -273,6 +274,8 @@ export const Community = () => {
             </ul>
           </FadeInUp>
         </div>
+
+        <NewsletterSignup source="community" />
 
         <FadeInUp className="community-cta glass-card">
           <h2>See you at the next one.</h2>

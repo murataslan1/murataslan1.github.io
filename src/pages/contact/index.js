@@ -5,6 +5,7 @@ import { contactConfig, socialprofils } from "../../content_option";
 import Seo from "../../components/Seo";
 import { motion } from "framer-motion";
 import { FadeInUp } from "../../components/Motion";
+import { FaRegCalendarAlt } from "react-icons/fa";
 
 export const ContactUs = () => {
   const [formData, setFormdata] = useState({
@@ -75,21 +76,21 @@ export const ContactUs = () => {
           <span className="section-title">Contact</span>
           <h1>Get in Touch</h1>
           <p className="contact-intro">{contactConfig.description}</p>
+          {contactConfig.CALENDLY_URL && (
+            <a
+              href={contactConfig.CALENDLY_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="ac_btn ac_btn--primary contact-book"
+            >
+              <FaRegCalendarAlt aria-hidden="true" /> Book a free 30-min call
+            </a>
+          )}
         </FadeInUp>
 
         <div className="contact-content">
           <FadeInUp delay={0.1} className="contact-info">
             <div className="contact-info__card glass-card">
-              <div className="contact-info__item">
-                <span className="contact-info__emoji">📧</span>
-                <div>
-                  <span className="contact-info__label">Email</span>
-                  <a href={`mailto:${contactConfig.YOUR_EMAIL}`} className="contact-info__value">
-                    {contactConfig.YOUR_EMAIL}
-                  </a>
-                </div>
-              </div>
-
               {contactConfig.CALENDLY_URL && (
                 <div className="contact-info__item">
                   <span className="contact-info__emoji">📅</span>
@@ -101,6 +102,16 @@ export const ContactUs = () => {
                   </div>
                 </div>
               )}
+
+              <div className="contact-info__item">
+                <span className="contact-info__emoji">📧</span>
+                <div>
+                  <span className="contact-info__label">Email</span>
+                  <a href={`mailto:${contactConfig.YOUR_EMAIL}`} className="contact-info__value">
+                    {contactConfig.YOUR_EMAIL}
+                  </a>
+                </div>
+              </div>
 
               {contactConfig.YOUR_FONE && (
                 <div className="contact-info__item">

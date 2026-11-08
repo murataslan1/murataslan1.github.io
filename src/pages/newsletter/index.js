@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-import * as emailjs from "emailjs-com";
 import "./style.css";
-import { contactConfig } from "../../content_option";
+import { subscribe, subscribeMessages } from "../../lib/subscribe";
 import Seo from "../../components/Seo";
 import { motion } from "framer-motion";
 import { FadeInUp } from "../../components/Motion";
@@ -30,61 +29,27 @@ export const Newsletter = () => {
     variant: "",
   });
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setFormdata((prev) => ({ ...prev, loading: true, show: false }));
-
-    const templateParams = {
-      from_name: formData.email,
-      user_name: "Newsletter Subscriber",
-      to_name: contactConfig.YOUR_EMAIL,
-      message: `New newsletter subscriber: ${formData.email}`,
-    };
-
-    const promises = [];
-
-    // EmailJS notification
-    promises.push(
-      emailjs.send(
-        contactConfig.YOUR_SERVICE_ID,
-        contactConfig.YOUR_TEMPLATE_ID,
-        templateParams,
-        contactConfig.YOUR_USER_ID
-      )
-    );
-
-    // Google Sheets — save subscriber
-    if (contactConfig.GOOGLE_SHEETS_URL) {
-      promises.push(
-        fetch(contactConfig.GOOGLE_SHEETS_URL, {
-          method: "POST",
-          mode: "no-cors",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ email: formData.email }),
-        })
-      );
+    try {
+      const result = await subscribe(formData.email.trim(), "newsletter");
+      setFormdata((prev) => ({
+        email: result === "mailto" ? prev.email : "",
+        loading: false,
+        alertmessage: subscribeMessages[result],
+        variant: "success",
+        show: true,
+      }));
+    } catch (error) {
+      setFormdata((prev) => ({
+        ...prev,
+        loading: false,
+        alertmessage: subscribeMessages.error,
+        variant: "danger",
+        show: true,
+      }));
     }
-
-    Promise.all(promises)
-      .then(() => {
-        setFormdata({
-          email: "",
-          loading: false,
-          alertmessage: "🎉 You're in! Check your inbox.",
-          variant: "success",
-          show: true,
-        });
-      })
-      .catch((error) => {
-        console.log(error);
-        setFormdata((prev) => ({
-          ...prev,
-          loading: false,
-          alertmessage: `Failed to subscribe. Please try again.`,
-          variant: "danger",
-          show: true,
-        }));
-      });
   };
 
   const handleChange = (e) => {

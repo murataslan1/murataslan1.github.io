@@ -7,7 +7,11 @@ import {
   socialprofils,
   dataportfolio,
   resume,
+  communityTalks,
+  communityPosts,
 } from "../../content_option";
+import { BookCallCTA } from "../../components/BookCallCTA";
+import { NewsletterSignup } from "../../components/NewsletterSignup";
 import { Link } from "react-router-dom";
 import Seo from "../../components/Seo";
 import { motion } from "framer-motion";
@@ -190,8 +194,8 @@ const techCategories = [
 const achievements = [
   { value: "50+", label: "PRs Merged", emoji: "🚀" },
   { value: "258", label: "Public Repos", emoji: "⭐" },
-  { value: "$100+", label: "Bounties Earned", emoji: "🏆" },
-  { value: "115", label: "Followers", emoji: "🌍" },
+  { value: String(communityTalks.length), label: "Talks Given", emoji: "🎤" },
+  { value: `${communityPosts.length}+`, label: "Community Events in 2026", emoji: "🤝" },
 ];
 
 const caseStudies = dataportfolio.filter((item) => item.caseStudy);
@@ -701,6 +705,12 @@ export const Home = () => {
               Get in Touch
             </Link>
           </FadeInUp>
+
+          <FadeInUp delay={0.4}>
+            <p className="hero__proof">
+              50+ merged PRs · Speaker at ClawCon & Claude Community · Ankara
+            </p>
+          </FadeInUp>
         </div>
       </div>
 
@@ -748,7 +758,7 @@ export const Home = () => {
       <div className="bento-section" ref={bentoRef}>
         <FadeInUp>
           <span className="section-title">About Me</span>
-          <h2>Building with passion</h2>
+          <h2>Value first, then scale</h2>
         </FadeInUp>
 
         <BentoGrid columns={4} className="home-bento">
@@ -793,7 +803,7 @@ export const Home = () => {
 
           <BentoItem className="bento-whatido">
             <span className="bento-pill">What I Do</span>
-            <h3>Focused on fast builds, clean code, and smart design</h3>
+            <h3>I get on a call, find the real problem, and ship a working fix first</h3>
           </BentoItem>
 
           <BentoItem className="bento-learning">
@@ -910,15 +920,9 @@ export const Home = () => {
 
       {/* Let's Connect Section */}
       <div className="connect-section">
-        <FadeInUp>
-          <span className="section-label">GET IN TOUCH</span>
-          <h2 className="section-heading">Let's Connect</h2>
-        </FadeInUp>
+        <BookCallCTA secondary={{ to: "/community", label: "See where I've been" }} />
 
         <FadeInUp delay={0.1} className="connect-actions">
-          <Link to="/contact" className="ac_btn ac_btn--primary ac_btn--lg">
-            Start Project
-          </Link>
           {resume.url && (
             <a
               href={resume.url}
@@ -945,6 +949,8 @@ export const Home = () => {
             </a>
           </div>
         </div>
+
+        <NewsletterSignup source="home" />
       </div>
 
       {/* Footer */}
@@ -952,7 +958,7 @@ export const Home = () => {
         <div className="footer-grid">
           <div className="footer-about">
             <h4>Hi, I'm Murat.</h4>
-            <p>I press buttons and<br/>interfaces happen</p>
+            <p>I press buttons and<br/>open source happens</p>
             <div className="footer-avatar" style={{ backgroundImage: `url(${introdata.your_img_url})` }} />
           </div>
 
@@ -962,6 +968,8 @@ export const Home = () => {
               <Link to="/">Home</Link>
               <Link to="/portfolio">Works</Link>
               <Link to="/about">About</Link>
+              <Link to="/community">Community</Link>
+              <a href={contactConfig.CALENDLY_URL} target="_blank" rel="noopener noreferrer">Book a call</a>
             </div>
             <div className="footer-col">
               <h5>Follow</h5>
