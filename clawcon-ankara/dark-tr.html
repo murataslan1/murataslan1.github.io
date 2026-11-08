@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<title>Agent'lara Güvenmek — ClawCon Ankara</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reset.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/black.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/highlight/monokai.css">
+<style>
+  :root {
+    --accent: #ffb347;
+    --muted: #888;
+    --bg: #0d0d0d;
+    --code-bg: #1a1a1a;
+  }
+
+  .reveal {
+    font-family: -apple-system, "Segoe UI", system-ui, sans-serif;
+  }
+
+  /* every slide is a 3-row flex grid: header / body / meta */
+  .reveal .slides > section {
+    display: flex !important;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    padding: 60px 70px 50px;
+    box-sizing: border-box;
+    text-align: left;
+  }
+
+  .reveal .slides > section.center {
+    justify-content: center;
+    align-items: flex-start;
+  }
+
+  .head { flex: 0 0 auto; }
+  .body { flex: 1 1 auto; display: flex; flex-direction: column; justify-content: center; }
+  .meta { flex: 0 0 auto; font-family: "SF Mono", Menlo, monospace; font-size: 14px; color: var(--muted); }
+
+  .reveal h1 {
+    font-size: 56px;
+    color: var(--accent);
+    margin: 0 0 8px;
+    letter-spacing: -1px;
+    line-height: 1.1;
+  }
+  .reveal h2 {
+    font-size: 42px;
+    color: var(--accent);
+    margin: 0 0 18px;
+    letter-spacing: -0.5px;
+    line-height: 1.15;
+  }
+  .reveal h3 {
+    font-size: 22px;
+    color: var(--muted);
+    font-weight: 400;
+    margin: 0 0 24px;
+  }
+  .reveal p, .reveal li {
+    font-size: 22px;
+    line-height: 1.45;
+    margin: 0 0 12px;
+  }
+  .reveal p:last-child, .reveal li:last-child { margin-bottom: 0; }
+
+  .reveal ul {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+  }
+  .reveal ul li { padding: 6px 0; }
+  .reveal ul li::before { content: "→ "; color: var(--accent); }
+
+  .tag {
+    display: inline-block;
+    background: var(--code-bg);
+    color: var(--accent);
+    padding: 6px 12px;
+    font-size: 13px;
+    border-radius: 3px;
+    margin-bottom: 14px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    font-family: "SF Mono", Menlo, monospace;
+  }
+  .tag a { color: inherit; text-decoration: none; }
+  .tag a:hover { text-decoration: underline; }
+
+  .reveal pre {
+    box-shadow: none;
+    margin: 0;
+    width: 100%;
+  }
+  .reveal pre code {
+    font-size: 15px;
+    line-height: 1.5;
+    padding: 18px 22px;
+    border-radius: 6px;
+    max-height: none;
+    background: var(--code-bg) !important;
+  }
+
+  .quote {
+    font-size: 38px !important;
+    line-height: 1.35;
+    color: white;
+    font-style: italic;
+    margin: 0 !important;
+  }
+  .big {
+    font-size: 40px !important;
+    line-height: 1.25;
+    color: white;
+    font-weight: 500;
+    margin: 0 0 24px !important;
+  }
+  .accent { color: var(--accent); }
+  .arrow { color: var(--accent); margin: 0 6px; }
+
+  .timeline {
+    font-family: "SF Mono", Menlo, monospace;
+    font-size: 22px !important;
+    line-height: 2.2 !important;
+    margin: 0 !important;
+  }
+  .timeline .yr { color: var(--muted); margin-right: 12px; }
+
+  .screenshot {
+    max-width: 100%;
+    max-height: 360px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    border-radius: 6px;
+    border: 1px solid #333;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+    margin: 0 auto;
+    display: block;
+  }
+  .case-with-image .body {
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+  }
+  .case-with-image .body p {
+    margin-bottom: 0;
+    text-align: center;
+    max-width: 900px;
+  }
+
+  .full-image-slide { padding: 40px 50px 40px !important; }
+  .full-image-slide .body {
+    justify-content: center;
+    align-items: center;
+    gap: 18px;
+  }
+  .full-image-slide img {
+    max-width: 100%;
+    max-height: 600px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    border-radius: 6px;
+    border: 1px solid #333;
+    box-shadow: 0 6px 24px rgba(0,0,0,0.5);
+    display: block;
+  }
+  .full-image-slide .caption {
+    font-family: "SF Mono", Menlo, monospace;
+    font-size: 16px;
+    color: var(--muted);
+    text-align: center;
+    margin: 0 !important;
+  }
+  .full-image-slide .caption .accent { color: var(--accent); font-weight: 600; }
+
+  .dual-image-slide { padding: 40px 50px 40px !important; }
+  .dual-image-slide .body {
+    justify-content: center;
+    align-items: center;
+    gap: 14px;
+  }
+  .dual-image-slide .pair {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+    width: 100%;
+  }
+  .dual-image-slide .pair img {
+    width: 100%;
+    max-height: 540px;
+    object-fit: contain;
+    border-radius: 6px;
+    border: 1px solid #333;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+    display: block;
+  }
+
+  .flow {
+    font-family: "SF Mono", Menlo, monospace;
+    font-size: 26px;
+    line-height: 1.8;
+    color: white;
+    background: var(--code-bg);
+    padding: 22px 26px;
+    border-radius: 6px;
+    margin: 0 0 24px;
+  }
+  .flow .lbl { color: var(--muted); font-size: 16px; }
+  .glossary { font-size: 19px !important; line-height: 1.5; margin: 6px 0 !important; }
+  .glossary b { color: var(--accent); font-weight: 600; }
+
+  .byline { color: var(--muted); font-size: 18px; margin-top: 40px; }
+  .repos { color: var(--accent); font-family: "SF Mono", Menlo, monospace; font-size: 14px; }
+</style>
+</head>
+<body>
+<div class="reveal"><div class="slides">
+
+<section class="center">
+  <div class="head">
+    <h1>Agent'lara Güvenmek</h1>
+    <h3>MCP, Hook'lar ve OSS'in Bana Öğrettikleri</h3>
+    <p class="byline">Murat Aslan &middot; ClawCon Ankara</p>
+  </div>
+  <div class="meta">github.com/murataslan1</div>
+</section>
+
+<section class="center">
+  <div class="body">
+    <p class="quote">
+      "Agent'ınız <em>'Done'</em> diyor.<br>
+      <span class="accent">Gerçekten yaptı mı?</span>"
+    </p>
+  </div>
+  <div class="meta">3 vaka. Hepsinde "yaptı" sandım.</div>
+</section>
+
+<section>
+  <div class="head">
+    <h2>30 Saniyede Sözlük</h2>
+  </div>
+  <div class="body">
+    <div class="flow">
+      Agent <span class="accent">→</span> Hook <span class="accent">→</span> MCP Server <span class="accent">→</span> Sonuç<br>
+      <span class="lbl">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(kapı)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(dış araç)</span>
+    </div>
+    <p class="glossary"><b>Hook</b> — agent tool çağırmadan önce/sonra çalışan senin scriptin. İzin ver, engelle, log'la, bağlam ekle.</p>
+    <p class="glossary"><b>MCP</b> — agent'ın dış araçlarla konuştuğu protokol. <code>ctx_search</code>, <code>read_file</code> gibi tool'lar buradan gelir.</p>
+    <p class="glossary"><b>WSL</b> — Windows'ta hook ve MCP server'lar Linux ortamında çalışır. Bash script'in Windows'ta yaşadığı yer.</p>
+  </div>
+  <div class="meta">Bu üçü kırılınca 3 vaka çıkıyor →</div>
+</section>
+
+<section>
+  <div class="head">
+    <span class="tag"><a href="https://github.com/openai/codex/issues/16685" target="_blank" rel="noopener">VAKA 1 &middot; openai/codex#16685</a></span>
+    <h2>Sessiz İptal</h2>
+  </div>
+  <div class="body">
+    <p>Codex exec mode'da MCP tool çağrıları "user cancelled" diye kapanıyordu.</p>
+    <p>Ekranda hata yok. Tool hiç çalışmadı.</p>
+    <pre><code class="language-bash">[exec] calling tool: ctx_search
+[exec] user cancelled MCP tool call
+# kullanıcı bir şey iptal etmedi.</code></pre>
+  </div>
+  <div class="meta">Açtığım issue → upstream'de doğrulandı</div>
+</section>
+
+<section class="full-image-slide">
+  <div class="body">
+    <img src="codex-issue.png" alt="GitHub issue openai/codex#16685">
+    <p class="caption">
+      Issue açtım <span class="accent">→</span> OpenAI maintainer doğruladı, regression label'ı eklendi
+    </p>
+  </div>
+</section>
+
+<section>
+  <div class="head">
+    <span class="tag"><a href="https://github.com/vercel/ai/pull/14019" target="_blank" rel="noopener">VAKA 2 &middot; vercel/ai#14019</a></span>
+    <h2>Yalan Hata</h2>
+  </div>
+  <div class="body">
+    <p>Vercel AI SDK'da tool exception'larının tipi (<code>TypeError</code>, <code>RangeError</code>) silinip model'e gidiyordu.</p>
+    <p>Model "<code>API crashed</code>" görüyor — failure mı, normal string return mü? Anlayamıyor.</p>
+    <pre><code class="language-diff">- error.message      // "API crashed"
++ error.toString()    // "TypeError: API crashed"</code></pre>
+  </div>
+  <div class="meta">Bir kelime fark. Agent için yer ile gök.</div>
+</section>
+
+<section class="full-image-slide">
+  <div class="body">
+    <img src="vercel-pr.png" alt="Vercel AI PR #14019 merged">
+    <p class="caption">
+      Vercel AI maintainer'ları merge etti <span class="accent">→</span> ek test case eklendi, contributor olarak listelendim
+    </p>
+  </div>
+</section>
+
+<section>
+  <div class="head">
+    <span class="tag"><a href="https://github.com/mksglu/context-mode/pull/339" target="_blank" rel="noopener">VAKA 3 &middot; mksglu/context-mode#339</a></span>
+    <h2>Hayalet Tool</h2>
+  </div>
+  <div class="body">
+    <p>context-mode (OpenClaw'ın feature'ı) kurulumunda MCP sidecar register edilmiyordu.</p>
+    <p><code>ctx_*</code> tool'ları agent'a hiç ulaşmıyordu.</p>
+    <pre><code class="language-diff">install() {
++ register_mcp_sidecar()
+  link_binaries()
+}</code></pre>
+  </div>
+  <div class="meta">Bu sizin community'nizin repo'su.</div>
+</section>
+
+<section class="full-image-slide">
+  <div class="body">
+    <img src="openclaw-pr.png" alt="OpenClaw context-mode PR #339 merged">
+    <p class="caption">
+      OpenClaw maintainer (mksglu) merge etti <span class="accent">→</span> bu sizin community'nizin repo'su
+    </p>
+  </div>
+</section>
+
+<section class="full-image-slide">
+  <div class="body">
+    <img src="openclaw-pr-2.png" alt="OpenClaw PR #339 — end-to-end verification">
+    <p class="caption">
+      End-to-end doğrulama <span class="accent">→</span> install script'i ctx_* tool'larını gerçekten agent'a açıyor
+    </p>
+  </div>
+</section>
+
+<section class="dual-image-slide">
+  <div class="body">
+    <div class="pair">
+      <img src="openclaw-demo-1.png" alt="OpenClaw chat — context-mode tool calls in action">
+      <img src="openclaw-demo-2.png" alt="OpenClaw chat — agent uses ctx_execute end-to-end">
+    </div>
+    <p class="caption">
+      Ve canlıda çalışıyor <span class="accent">→</span> agent <code>ctx_fetch_and_index</code>, <code>ctx_execute</code> kullanıyor
+    </p>
+  </div>
+</section>
+
+<section class="center">
+  <div class="body">
+    <p class="big">
+      Üçünde de ekran<br>
+      <span class="accent">"çalıştı"</span> diyordu.
+    </p>
+    <p>Log'a bakmadan inanmayın.</p>
+  </div>
+</section>
+
+<section>
+  <div class="head">
+    <h2>Niye Ben Buldum?</h2>
+    <p>Çünkü kullanırken PR yolluyordum.</p>
+  </div>
+  <div class="body">
+    <p class="timeline">
+      <span class="yr">2025</span> Deno <span class="arrow">→</span> ilk büyük OSS merge<br>
+      <span class="yr">2026</span> VS Code <span class="arrow">→</span> LangChain <span class="arrow">→</span> Traefik<br>
+      <span class="yr">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> Coolify <span class="arrow">→</span> Vercel AI <span class="arrow">→</span> context-mode <span class="lbl" style="font-size:16px;">(openclaw feature)</span>
+    </p>
+  </div>
+  <div class="meta">
+    Maintainer adınızı bir kez öğrendikten sonra ikinci issue'ya cevap 5 dakikada geliyor.
+  </div>
+</section>
+
+<section>
+  <div class="head">
+    <h2>Pratik 3 Adım</h2>
+  </div>
+  <div class="body">
+    <ul>
+      <li>Kullandığın aracın repo'sunu <em>watch</em>'la</li>
+      <li>İlk PR'ın tek satır docs fix olabilir — kapı açar</li>
+      <li>Issue açarken repro repo'su koy, maintainer hatırlar</li>
+    </ul>
+    <p style="margin-top: 32px;">
+      Burada zaten OpenClaw community'sindesiniz.<br>
+      <span class="accent">Yarısı tamam. Diğer yarısı: <code>issues</code> sekmesi.</span>
+    </p>
+  </div>
+  <div class="meta repos">github.com/murataslan1 &middot; context-mode (openclaw feature) &middot; vercel/ai</div>
+</section>
+
+</div></div>
+
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/highlight/highlight.js"></script>
+<script>
+  Reveal.initialize({
+    hash: true,
+    transition: 'fade',
+    controls: false,
+    progress: true,
+    width: 1280,
+    height: 800,
+    margin: 0,
+    plugins: [ RevealHighlight ]
+  });
+</script>
+</body>
+</html>
