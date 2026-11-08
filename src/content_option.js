@@ -599,6 +599,7 @@ const dataportfolio = [
 const contactConfig = {
   YOUR_EMAIL: "murataslan0.tr@gmail.com",
   YOUR_FONE: "",
+  CALENDLY_URL: "https://calendly.com/murataslan562001/30min",
   description:
     "I'm always open to discussing new opportunities, open source collaborations, or just having a chat about technology. Feel free to reach out!",
   YOUR_SERVICE_ID: "service_id",
@@ -664,7 +665,7 @@ const communityTalks = [
   {
     title: "Trusting Your Agents: MCP, Hooks, and What OSS Taught Me",
     event: "ClawCon Ankara",
-    date: "2026",
+    date: "April 29, 2026",
     place: "Ankara",
     link: "/clawcon-ankara/",
     topics: ["MCP", "Agent hooks", "Open source"]
@@ -695,6 +696,29 @@ const communityTalks = [
   }
 ];
 
+const fdePrinciples = [
+  {
+    title: "Get on a call",
+    body: "30 minutes, no pitch. You tell me what's slowing your team down; I ask until I understand the real constraint.",
+    proof: "Free 30-min call"
+  },
+  {
+    title: "See the problem where it lives",
+    body: "I sit with the people who have the problem, in their tools and their code, not in a slide deck about it.",
+    proof: "4 community events in 8 days"
+  },
+  {
+    title: "Solve it first",
+    body: "A working fix or prototype on the real problem, before any plan or proposal. If it doesn't help, we stop there.",
+    proof: "50+ merged PRs in open source"
+  },
+  {
+    title: "Then build and scale",
+    body: "Only once the value is proven do we set up the rest: the product, the process, the scope and the terms.",
+    proof: "Value first, everything else after"
+  }
+];
+
 const communityPosts = [
   {
     event: "Devin Meetup Ankara",
@@ -705,6 +729,8 @@ const communityPosts = [
     imgAlt: "Group photo of builders at Devin Meetup Ankara",
     quote:
       "The smartest model inside Devin AI does not write your code. It tells a cheaper one what to write.",
+    fieldNote:
+      "Your value moves away from writing every line. It moves toward slicing the work well and judging what comes back.",
     takeaway:
       "After the talk we closed the slides and opened our laptops. Real projects, real mistakes, real fixes.",
     engagement: { likes: 7, comments: 0, reposts: 0 },
@@ -721,6 +747,8 @@ const communityPosts = [
     imgAlt: "Attendees of FIL Network #6 at Bilkent TEKMER",
     quote:
       "Access to tools is no longer the main advantage. Seeing the right problem, asking the right question, and moving fast is.",
+    fieldNote:
+      "The panel went from research to product, from security to robotics. The common thread: real value, not hype.",
     takeaway:
       "We have organized similar Build and Sell sessions before. People leave with something they can use, not just notes.",
     engagement: { likes: 24, comments: 0, reposts: 3 },
@@ -736,6 +764,8 @@ const communityPosts = [
     imgAlt: "Speaker on stage at E-Ticaret Sohbetleri, CoZone ODTÜ Teknokent",
     quote:
       "Revenue looks good on a dashboard. Margin is what's left after fees, shipping, returns and ads.",
+    fieldNote:
+      "Checkout isn't a back-office detail. It's where sales are won or lost.",
     takeaway:
       "A local business doesn't have to stay local anymore. Ankara already makes things; the gap is getting them in front of buyers.",
     engagement: { likes: 41, comments: 0, reposts: 4 },
@@ -750,12 +780,194 @@ const communityPosts = [
     img: "/img/community/devfest-1.jpg",
     imgAlt: "Murat with community members at the DevFest Ankara photo wall",
     quote: "First they asked who it's for. Then they asked if it's even a who.",
+    fieldNote:
+      "Give production agents hard permission limits instead of polite instructions. Someone still gets paged at 3am.",
     takeaway:
       "The talks gave me ideas. The people in between gave me reasons to actually try them.",
     engagement: { likes: 101, comments: 8, reposts: 5 },
     linkedin:
       "https://www.linkedin.com/posts/murataslan1_first-they-asked-who-its-for-then-they-ugcPost-7522656794511532034-9CGc",
     x: "https://x.com/iammurataslan/status/2116918537940050332"
+  },
+  {
+    event: "fal Meetup Ankara",
+    host: "fal · ARDVENTURE",
+    date: "Oct 23, 2026",
+    role: "Attendee",
+    img: "/img/community/fal-ankara-0.jpg",
+    imgAlt: "fal presenting generative media to a full room at ARDVENTURE, Ankara",
+    quote:
+      "It's not every day a team behind one of the fastest-growing AI platforms comes to Ankara.",
+    fieldNote:
+      "Your storyboard can be the input. Give the model a few keyframes and it builds the shot between them.",
+    takeaway:
+      "Speed matters as much as quality now. Seeing the same clip from different models side by side made that very clear.",
+    engagement: { likes: 22, comments: 2, reposts: 1 },
+    linkedin:
+      "https://www.linkedin.com/posts/murataslan1_generativeai-ai-ankara-ugcPost-7519137496681750528-6gAX"
+  },
+  {
+    event: "Kodun Ötesi #1 with Fatih Arslan",
+    host: "Yazılımcı Buluşmaları Ankara",
+    date: "Oct 3, 2026",
+    role: "Attendee",
+    img: "/img/community/kodun-otesi-0.jpg",
+    imgAlt: "Fatih Arslan on stage at Kodun Ötesi #1, Yazılımcı Buluşmaları Ankara",
+    quote: "Ankara has a developer community. Today it showed up.",
+    fieldNote:
+      "120 people signed up. No seats left: people sat on the stairs and leaned over the railing, on a Saturday afternoon.",
+    takeaway:
+      "Work used by developers all over the world, like vim-go and the Go language itself, can be built from Ankara.",
+    engagement: { likes: 64, comments: 0, reposts: 5 },
+    linkedin:
+      "https://www.linkedin.com/posts/murataslan1_ankara-opensource-softwareengineering-ugcPost-7512215390580740098-uNvy"
+  },
+  {
+    event: "Claude Community Meetup Ankara",
+    host: "Claude Community · CoZone, ODTÜ Teknokent",
+    date: "Sep 27, 2026",
+    role: "Speaker",
+    img: "/img/community/claude-community-0.jpg",
+    imgAlt: "Murat speaking at the Claude Community meetup at ODTÜ Teknokent",
+    quote:
+      "Today I stood in front of a room full of people who are quietly changing how we teach and research.",
+    fieldNote:
+      "People talked openly about what didn't work. Failed prompts, broken prototypes, dead ends. Then we opened our laptops and built something together.",
+    takeaway:
+      "The hardest questions weren't technical. They were about trust: how do we teach students to think with AI, not through it?",
+    linkedin:
+      "https://www.linkedin.com/posts/murataslan1_claudecommunity-aiineducation-ankara-activity-7509979678355456001-LIvh"
+  },
+  {
+    event: "Personal Data Protection in the Age of AI, 5G and Smart Technologies",
+    host: "KVKK · Anadolu Bilişim Buluşmaları · KamuYZ",
+    date: "Sep 24, 2026",
+    role: "Attendee",
+    img: "/img/community/kvkk-summit-0.jpg",
+    imgAlt: "Personal data protection summit hosted by KVKK",
+    quote: "AI didn't break your data compliance. A spreadsheet did.",
+    fieldNote:
+      "Breach notification runs on a 72-hour clock. Most teams would spend the first 48 just figuring out who owns the decision.",
+    takeaway:
+      "AI changes the blast radius, not the rules. The teams doing this well have people who pause before hitting export.",
+    linkedin:
+      "https://www.linkedin.com/posts/murataslan1_kvkk-dataprotection-dataprivacy-share-7509277036734033920-idcM"
+  },
+  {
+    event: "GITEX AI Türkiye",
+    host: "Istanbul Expo Center · First edition",
+    date: "Sep 2026",
+    role: "Attendee",
+    img: "/img/community/gitex-ai-0.jpg",
+    imgAlt: "Murat at GITEX AI Türkiye, Istanbul Expo Center",
+    quote: "The most expensive AI is the one nobody uses.",
+    fieldNote:
+      "300+ booths, investors in the building, models everywhere. The gap is still go-live: exploration to production.",
+    takeaway:
+      "One problem, wired into systems people already open, and someone still there after the pilot. Pilot or production?",
+    linkedin:
+      "https://www.linkedin.com/posts/murataslan1_gitexaiturkiye-aideployment-agenticai-ugcPost-7505496196812210177-tuW_"
+  },
+  {
+    event: "TOBB Business AI Summit",
+    host: "TOBB Türkiye Yazılım Meclisi · KamuYZ",
+    date: "Jul 2026",
+    role: "Attendee",
+    img: "/img/community/tobb-ai-summit-0.jpg",
+    imgAlt: "Full hall at the TOBB Business AI Summit in Ankara",
+    quote:
+      "Wrong question: which tool should we buy? Right question: which business result will we improve in 90 days?",
+    fieldNote:
+      "The hall was full, with people from 53 cities. “Keep the data at home” is not just a slogan anymore.",
+    takeaway:
+      "Don't start with a huge AI transformation plan. Start with one problem, one process and one pilot you can measure.",
+    linkedin:
+      "https://www.linkedin.com/posts/murataslan1_ai-digitaltransformation-sovereignai-share-7488621134435737602-Hygn"
+  },
+  {
+    event: "Defense Industry Integrated Technologies Summit 2026",
+    host: "Anadolu Bilişim Buluşmaları · BTK",
+    date: "Jul 2026",
+    role: "KamuYZ delegate",
+    img: "/img/community/defense-summit-0.jpg",
+    imgAlt: "KamuYZ team at the Defense Industry Integrated Technologies Summit 2026",
+    quote:
+      "Talking about where AI is heading in the public and defense space.",
+    fieldNote:
+      "AI, 5G and cybersecurity on one stage, with public institutions and industry in the same room.",
+    takeaway:
+      "Representing KamuYZ alongside people who work on AI in the public sector every day.",
+    linkedin:
+      "https://www.linkedin.com/posts/murataslan1_defensetech-ai-5g-share-7486434849197572096-063_"
+  },
+  {
+    event: "WORLDEF Istanbul 2026",
+    host: "WORLDEF · Executive pass",
+    date: "Jun 2026",
+    role: "Attendee",
+    img: "/img/community/worldef-0.jpg",
+    imgAlt: "Murat at WORLDEF Istanbul 2026",
+    quote:
+      "An Executive pass gave me the chance to engage directly with several speakers.",
+    fieldNote:
+      "AI agents and voice AI, generative content workflows and digital revenue models: practical and easy to apply.",
+    takeaway:
+      "I left with valuable connections and clear ideas to apply right away in e-commerce and AI.",
+    linkedin:
+      "https://www.linkedin.com/posts/murataslan1_worldef-worldefistanbul2026-ecommerce-share-7472314138195595265-BOP5"
+  },
+  {
+    event: "ClawCon Ankara",
+    host: "ClawCon · OpenClaw · BuilderMare",
+    date: "Apr 29, 2026",
+    role: "Speaker",
+    img: "/img/community/clawcon-ankara-0.jpg",
+    imgAlt: "Murat on stage at ClawCon Ankara",
+    quote: "Your agent says “Done.” Did it actually do anything?",
+    fieldNote:
+      "Three real cases where the screen lied: Codex, Vercel AI SDK and context-mode. All three filed, fixed and merged.",
+    takeaway:
+      "Don't trust the screen. Read the logs. I caught these because I was using the tools while contributing to them.",
+    linkedin:
+      "https://www.linkedin.com/posts/murataslan1_clawcon-mcp-aiagents-share-7455632402145533952-26oa"
+  }
+];
+
+const communityMoreNotes = [
+  {
+    event: "Grok Bot Meetup Ankara",
+    date: "Oct 2026",
+    line: "Nearly 100 developers on a Saturday morning. Agent talks have moved from what's possible to what a job costs.",
+    linkedin:
+      "https://www.linkedin.com/posts/murataslan1_grokbot-spacexsi-spacexai-ugcPost-7520149620694347776-xJdF"
+  },
+  {
+    event: "Ankara Data Community #4",
+    date: "Oct 2026",
+    line: "Good AI starts with boring data work: who owns it, is it good enough, where did it come from, who can use it.",
+    linkedin:
+      "https://www.linkedin.com/posts/murataslan1_ankaradatacommunity-datagovernance-veriyaemnetiagnimi-activity-7517877781901385728-Ngaa"
+  },
+  {
+    event: "YönetişimZeka: AI Governance, Law & Security Summit",
+    date: "Oct 2026",
+    line: "Lawyers, security people and engineers in the same conversation, not in separate rooms.",
+    linkedin:
+      "https://www.linkedin.com/posts/murataslan1_kamuyz-yaemnetiagnimzeka-etikyz-activity-7516163350741884928-3JTt"
+  },
+  {
+    event: "Google for Developers Day Istanbul",
+    date: "Oct 2026",
+    line: "Building an agent is the easy part. The hard part starts the day it goes live.",
+    linkedin:
+      "https://www.linkedin.com/posts/murataslan1_on-october-9-was-google-for-developers-day-activity-7515479413745078272-OBI0"
+  },
+  {
+    event: "Ankara AI Community Meetup",
+    date: "Oct 2026",
+    line: "Some communities talk about AI. This one builds with it, with real code on the screen and laptops open.",
+    linkedin:
+      "https://www.linkedin.com/posts/murataslan1_ankaraaicommunity-promptengineering-gepa-activity-7514282375036686336-nL85"
   }
 ];
 
@@ -767,7 +979,11 @@ const communities = [
   "ClawCon",
   "HSD Türkiye",
   "Future Innovation Leaders",
-  "BuilderMare"
+  "BuilderMare",
+  "Claude Community",
+  "Yazılımcı Buluşmaları Ankara",
+  "Ankara AI Community",
+  "Ankara Data Community"
 ];
 
 export {
@@ -787,5 +1003,7 @@ export {
   communityStats,
   communityTalks,
   communityPosts,
-  communities
+  communityMoreNotes,
+  communities,
+  fdePrinciples
 };

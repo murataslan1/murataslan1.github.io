@@ -111,6 +111,60 @@
   gap: var(--space-lg);
 }
 
+.fde-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: var(--space-lg);
+}
+
+.fde-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  height: 100%;
+  padding: var(--space-lg);
+}
+
+.fde-card__index {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--accent-blue);
+}
+
+.fde-card__title {
+  font-size: 1.05rem;
+  line-height: 1.35;
+  margin: 0;
+}
+
+.fde-card__body {
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: var(--color-ink-muted);
+  margin: 0;
+}
+
+.fde-card__proof {
+  margin-top: auto;
+  padding-top: var(--space-xs);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--color-ink);
+}
+
+.fde-cta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-md, 1rem);
+  margin-top: var(--space-xl);
+}
+
+.fde-cta__note {
+  font-size: 0.9rem;
+  color: var(--color-ink-muted);
+}
+
 .talk-card {
   display: flex;
   flex-direction: column;
@@ -234,11 +288,22 @@
   color: var(--color-ink);
 }
 
-.post-card__takeaway {
+.post-card__note {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
   font-size: 0.95rem;
   color: var(--color-ink-muted);
   line-height: 1.6;
   margin: 0;
+}
+
+.post-card__label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--accent-blue);
 }
 
 .post-card__footer {
@@ -339,4 +404,62 @@
   .post-card__body {
     padding: var(--space-lg);
   }
+}
+
+.post-card__role--speaker {
+  background: var(--accent-blue);
+  color: #fff;
+}
+
+.more-notes {
+  margin-top: var(--space-xl);
+}
+
+.more-notes__title {
+  font-size: 1.1rem;
+  margin: 0 0 var(--space-md);
+}
+
+.more-notes__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--glass-border);
+}
+
+.more-notes__item {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-md, 1rem);
+  padding: var(--space-md, 1rem) 0;
+  border-bottom: 1px solid var(--glass-border);
+}
+
+.more-notes__event {
+  font-weight: 600;
+  color: var(--color-ink);
+  margin-right: 0.6rem;
+}
+
+.more-notes__date {
+  font-size: 0.8rem;
+  color: var(--color-ink-muted);
+}
+
+.more-notes__line {
+  margin: 0.25rem 0 0;
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: var(--color-ink-muted);
+}
+
+.more-notes__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  flex-shrink: 0;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--accent-blue);
 }
